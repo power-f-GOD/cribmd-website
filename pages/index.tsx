@@ -1,3 +1,4 @@
+import Head from 'next/head'
 import { GetServerSideProps, NextPage } from 'next'
 
 interface Props {
@@ -12,7 +13,13 @@ const IndexPage: NextPage<Props> = ({ launch }) => {
   const date = new Date(launch.timestamp)
   return (
     <main>
-      <h1>Next SpaceX Launch: {launch.mission}</h1>
+      <Head>
+        <title>Studiare | Home</title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <h1>welcome to Studiare</h1>
+      <img src="studiare-logo.jpg" alt="" />
+      <h2>Next SpaceX Launch: {launch.mission}</h2>
       <p>
         {launch.rocket} will take off from {launch.site} on {date.toDateString()}
       </p>
@@ -20,6 +27,9 @@ const IndexPage: NextPage<Props> = ({ launch }) => {
   )
 }
 export default IndexPage
+
+// sample data fetching from API
+
 export const getServerSideProps: GetServerSideProps<Props> = async () => {
   const response = await fetch('https://api.spacexdata.com/v3/launches/next')
   const nextLaunch = await response.json()
