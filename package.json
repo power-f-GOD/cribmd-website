@@ -1,5 +1,5 @@
 {
-  "name": "studiare-frontend",
+  "name": "cribmd-next-js-boilerplate",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -15,6 +15,7 @@
     "next": "^10.0.8",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
+    "sass": "^1.32.8",
     "typescript": "^4.2.3"
   },
   "devDependencies": {

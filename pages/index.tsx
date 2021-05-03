@@ -1,5 +1,7 @@
 import Head from 'next/head'
+import Body from 'next/head'
 import { NextPage } from 'next'
+import styles from '../styles/app.module.scss'
 
 interface Props {
   launch: {
@@ -14,11 +16,19 @@ const IndexPage: NextPage<Props> = () => {
   return (
     <main>
       <Head>
-        <title>Studiare | Home</title>
+        <title>CribMD | Home</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <h1>welcome to Studiare</h1>
-      <img src="studiare-logo.jpg" alt="" />
+      <Body>
+        <div className="main-content">
+        <div className="header"> </div>
+        <h1>welcome to CribMD</h1>
+        </div>
+        {/* <img src="cribmd-logo.jpg" alt="" /> */}
+      </Body>
+      
+
+      
       {/* <h2>Next SpaceX Launch: {launch.mission}</h2>
       <p>
         {launch.rocket} will take off from {launch.site} on {date.toDateString()}

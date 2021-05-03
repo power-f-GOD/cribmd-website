@@ -1,4 +1,4 @@
-# studiare-frontend
+# CribMD NextJS Boilerplate
 
 `This project was scaffolded using NextJS, TypeScript and Jest` 
 
