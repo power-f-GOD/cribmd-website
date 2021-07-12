@@ -1,0 +1,178 @@
+@use 'constants';
+
+.eletrify {
+  animation: eletrify 1s infinite;
+}
+
+@keyframes eletrify {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  2% {
+    opacity: 1;
+  }
+  4% {
+    opacity: 0;
+  }
+  6%,
+  98% {
+    opacity: 1;
+  }
+}
+
+.anim__fadeInUp {
+  animation: anim__fadeInUpBig 1s cubic-bezier(0.1, 1, 0.35, 1) backwards;
+}
+
+@include anim__fade('In', 'Up', 'Big');
+
+// animate__fadeOutUp
+.anim__fadeInDown {
+  animation: anim__fadeInDown 1s cubic-bezier(0.1, 1, 0.35, 1) backwards;
+}
+
+@keyframes anim__fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-3em);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.anim__fadeInLeft {
+  animation: anim__fadeInLeft 0.75s cubic-bezier(0.215, 0.61, 0.355, 1) backwards;
+}
+
+@keyframes anim__fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(3em);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.anim__fadeInRight {
+  animation: anim__fadeInRight 0.75s cubic-bezier(0.215, 0.61, 0.355, 1) both;
+}
+
+@keyframes anim__fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(-3em);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.anim__fadeOutDown {
+  animation: anim__fadeOutDown 0.75s cubic-bezier(0.215, 0.61, 0.355, 1) both;
+}
+
+@keyframes anim__fadeOutDown {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(3em);
+  }
+}
+
+.anim__spin {
+  animation: anim__spin 0.35s linear infinite;
+}
+
+@keyframes anim__spin {
+  from {
+    transform: rotateZ(0);
+  }
+  to {
+    transform: rotateZ(360deg);
+  }
+}
+
+.anim__roll-in-right {
+  animation: anim__rollInRight 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+}
+
+@keyframes anim__rollInRight {
+  from {
+    opacity: 0;
+    transform: translateX(100vw) rotateZ(2880deg) scale(0);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) rotateZ(0) scale(1);
+  }
+}
+
+.anim__roll-in-left {
+  animation: anim__rollInLeft 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+}
+
+@keyframes anim__rollInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-100vw) rotateZ(-2880deg) scale(0);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) rotateZ(0) scale(1);
+  }
+}
+
+@keyframes rotateYBackward {
+  from {
+    transform: rotateY(180deg);
+  }
+  to {
+    transform: rotateY(0);
+  }
+}
+
+@keyframes rotateYForward {
+  from {
+    transform: rotateY(180deg);
+  }
+  to {
+    transform: rotateY(360deg);
+  }
+}
+
+[class*='anim__'] {
+  animation-fill-mode: both;
+}
+
+.anim__dur--025s {
+  animation-duration: 0.25s !important;
+}
+
+.anim__dur--05s {
+  animation-duration: 0.5s !important;
+}
+
+.anim__dur--1s {
+  animation-duration: 1s !important;
+}
+
+.anim__del--025s {
+  animation-delay: 0.25s !important;
+}
+
+.anim__del--05s {
+  animation-delay: 0.5s !important;
+}
+
+.anim__del--1s {
+  animation-delay: 1s !important;
+}

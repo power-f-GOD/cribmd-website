@@ -1,0 +1,416 @@
+@import '../constants';
+
+.AppNav {
+  left: 0;
+  display: block;
+  position: sticky;
+  right: 0;
+  top: 0;
+  z-index: 1001;
+
+  pointer-events: none;
+
+  .Logo {
+    transition: 0.3s;
+
+    &.lighten {
+      opacity: 0.25;
+    }
+
+    &:hover,
+    &:focus-within {
+      opacity: 1;
+    }
+  }
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+
+  li,
+  a {
+    position: relative;
+    color: $theme-tertiary-v2;
+  }
+
+  li {
+    font-size: 0.9em;
+    color: rgb(13, 35, 68);
+
+    .active {
+      &::before {
+        opacity: 1;
+        transform: translateY(-0.9rem);
+      }
+    }
+
+    &:hover,
+    &:focus-within {
+      color: $theme-primary;
+
+      .navbar__nav-link {
+        color: $theme-primary !important;
+        background: rgb(232, 241, 254) !important;
+
+        &::before {
+          opacity: 0.25;
+          transform: translateY(-1rem);
+        }
+      }
+    }
+  }
+}
+
+.navbar__underlay {
+  @extend .before-or-after;
+  background: rgba(255, 255, 255, 0.95);
+}
+
+ul.navbar__ctas-container,
+ul.navbar__nav-links-container {
+  list-style-type: none;
+  display: flex;
+  margin: 0;
+  position: relative;
+  pointer-events: all;
+  border-radius: $br;
+  animation-duration: 0.35s;
+  transition: transform 0.3s, opacity 0.3s !important;
+
+  &:nth-of-type(1) {
+    // box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.1);
+
+    &::before {
+      transition: transform 0.3s, opacity 0.3s;
+      background-color: white;
+    }
+  }
+
+  &::before {
+    @extend .before-or-after;
+    border: 0.0625rem solid #eee;
+  }
+
+  .custom-bars-wrapper {
+    span {
+      transition-delay: unset;
+    }
+  }
+}
+
+ul.navbar__nav-links-container {
+  animation-fill-mode: both !important;
+}
+
+ul.navbar__ctas-container {
+  .btn--primary {
+    &::after {
+      content: unset;
+    }
+  }
+}
+
+a.navbar__nav-link {
+  // @extend [class*='btn'];
+  box-shadow: none !important;
+  transition: background-color 0.3s !important;
+
+  &:hover,
+  &:focus {
+    box-shadow: 0 0.0625em 0.125em rgba(0, 0, 0, 0.15) !important;
+  }
+
+  &::before {
+    $size: 0.4rem;
+
+    @include before-or-after(
+      $bg: $theme-primary-v4,
+      $br: 50%,
+      $h: $size,
+      $w: $size,
+      $l: calc(50% - math.div($size, 2)),
+      $t: 110%
+    );
+    opacity: 0.25;
+    transition-delay: 0.15s;
+    z-index: 1;
+  }
+}
+
+.navbar__menu-button {
+  font-size: 0.75em;
+
+  &::before {
+    display: none;
+  }
+}
+
+.navbar__menu {
+  overflow: hidden;
+  border-radius: $br;
+  text-align: left;
+  max-width: 24rem;
+  transition: 0.2s, visibility 0s ease 0.2s;
+
+  &::before {
+    @extend .before-or-after;
+    background: white;
+    opacity: 0.975;
+    transition: unset;
+  }
+
+  a {
+    display: flex;
+    width: 100%;
+    padding: 1.25rem;
+    padding-bottom: 0;
+    overflow: hidden;
+    border-radius: unset;
+
+    &:hover,
+    &:focus {
+      .Icon {
+        &::before {
+          transform: scale(5);
+        }
+      }
+    }
+  }
+
+  .Icon {
+    height: 2.5rem;
+    width: 2.5rem;
+    padding: 0.75rem;
+    margin-right: 1rem;
+    border-radius: 50%;
+
+    &[name='cribmd-logo'] {
+      svg {
+        width: 67.5% !important;
+
+        &:first-child {
+          width: 35% !important;
+        }
+      }
+
+      &::before {
+        background: rgba(25, 113, 245, 0.2);
+      }
+    }
+
+    &[name='speaker'],
+    &[name='credit-card-corporate'] {
+      &::before {
+        background: rgba(248, 163, 98, 0.2);
+      }
+    }
+
+    &[name='credit-card-individual'] {
+      &::before {
+        background: rgba(101, 28, 191, 0.1);
+      }
+    }
+
+    &::before {
+      @extend .before-or-after;
+      backdrop-filter: unset;
+      transition: transform 0.3s;
+      transition-timing-function: cubic-bezier(0.35, 1, 0.35, 1.25);
+    }
+
+    svg {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+
+  p {
+    margin: 0;
+    padding-bottom: 1.125rem;
+    flex-grow: 1;
+    border-bottom: 0.0625rem solid rgb(238, 238, 238, 0.65);
+  }
+}
+
+@media screen and (max-width: 991px) {
+  body {
+    overflow: hidden !important;
+
+    &[data-nav_open='false'] {
+      overflow: unset !important;
+
+      $delay: 0.35;
+
+      .navbar__underlay {
+        animation-delay: #{$delay}s;
+      }
+
+      ul.navbar__nav-links-container {
+        animation-delay: #{$delay + 0.1}s;
+
+        li {
+          $frac: 0.1;
+
+          @for $i from 1 through 6 {
+            &:nth-child(#{$i}) {
+              .navbar__nav-link {
+                animation-delay: #{$delay - (($i - 1) * $frac)}s;
+              }
+            }
+          }
+        }
+
+        .navbar__nav-link {
+          animation-name: anim__fadeOutDown;
+          animation-duration: 0.2s;
+        }
+      }
+    }
+  }
+
+  .navbar__underlay {
+    height: 100vh;
+    position: fixed;
+    bottom: 0;
+    top: 0;
+  }
+
+  ul.navbar__nav-links-container {
+    position: fixed !important;
+    flex-direction: column;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    border-radius: 0 !important;
+    height: auto;
+    width: 100%;
+    min-height: 100%;
+    overflow-y: auto;
+    padding-top: 7rem;
+    color: white;
+
+    &::before {
+      content: unset;
+    }
+
+    li {
+      text-align: center;
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 0.75em;
+
+      &:hover,
+      &:focus-within {
+        a {
+          box-shadow: none !important;
+        }
+      }
+
+      &:focus-within {
+        .navbar__menu {
+          display: list-item;
+          transition: 0.3s cubic-bezier(0.125, 1, 0.5, 1) 0.1s;
+        }
+      }
+
+      $delay: 0.1;
+
+      @for $i from 1 through 6 {
+        &:nth-child(#{$i}) {
+          .navbar__nav-link {
+            animation-delay: #{($i + 4) * $delay}s;
+          }
+        }
+      }
+    }
+  }
+
+  .navbar__nav-links-container .navbar__nav-link {
+    border-radius: 1.75em;
+    width: 14rem;
+    font-size: 1.25em;
+    font-weight: bold;
+    padding: 1em 0 !important;
+    box-shadow: none !important;
+    animation: anim__fadeSlideUp 0.5s cubic-bezier(0.125, 1, 0.5, 1) 0s;
+    animation-fill-mode: both !important;
+  }
+
+  .navbar__menu {
+    top: 100%;
+    margin-top: 0.45em;
+    display: none;
+    border: 0.125rem solid rgb(232, 241, 254);
+    animation: anim__fadeSlideDown 0.5s;
+
+    a {
+      $delay: 0.15s;
+
+      p {
+        animation: anim__fadeSlideUp 0.4s;
+        animation-fill-mode: backwards;
+      }
+
+      @for $i from 1 through 4 {
+        &:nth-child(#{$i}) p {
+          animation-delay: #{$i * $delay} !important;
+        }
+      }
+    }
+
+    &::before {
+      content: initial;
+    }
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .AppNav {
+    &[anchor='home'] {
+      top: 0.5rem;
+    }
+  }
+
+  ul.navbar__nav-links-container {
+    border-radius: $br !important;
+
+    li {
+      perspective: 4rem;
+      perspective-origin: center 450%;
+
+      &:hover,
+      &:focus-within {
+        .navbar__menu {
+          transition: 0.3s cubic-bezier(0.125, 1, 0.5, 1) 0.1s, visibility 0s;
+          visibility: visible;
+          transform: rotateY(0) translateX(0);
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  .navbar__menu {
+    position: absolute;
+    visibility: hidden;
+    opacity: 0;
+    top: 125%;
+    transform: rotateY(3deg) translateX(3.5rem);
+    // transition: 0.2s, visibility 0s ease 0.2s;
+    box-shadow: 0 $br * 0.75 $br * 1.25 rgba(13, 35, 68, 0.12);
+
+    a {
+      width: 22rem;
+    }
+  }
+}
+
+.before-or-after {
+  @include before-or-after($bg: inherit, $br: inherit, $o: 0.9);
+  backdrop-filter: blur(0.5rem);
+}

@@ -1,7 +1,7 @@
 {
-  "name": "cribmd-next-js-boilerplate",
+  "name": "cribmd-website",
   "scripts": {
-    "dev": "next dev",
+    "dev": "open http://localhost:3000 && next dev",
     "build": "next build",
     "start": "next start",
     "type-check": "tsc --project tsconfig.json --pretty --noEmit",
@@ -10,10 +10,14 @@
     "test": "jest"
   },
   "dependencies": {
+    "@types/gsap": "^3.0.0",
     "@types/node": "^14.14.32",
     "@types/react": "^17.0.3",
-    "next": "^10.0.8",
+    "bootstrap": "^5.0.2",
+    "gsap": "^3.7.0",
+    "next": "^11.0.1",
     "react": "^17.0.1",
+    "react-bootstrap": "^1.6.1",
     "react-dom": "^17.0.1",
     "sass": "^1.32.8",
     "typescript": "^4.2.3"
@@ -38,5 +42,12 @@
     "lint-staged": "^10.5.4",
     "prettier": "^2.2.1",
     "react-test-renderer": "^17.0.1"
-  }
+  },
+  "version": "1.0.0",
+  "description": "CribMD website built with Next.js",
+  "main": "index.js",
+  "repository": "https://github.com/CribMDPLC/cribmd-website",
+  "author": "power-f-GOD <sundaypower9@gmail.com>",
+  "license": "MIT",
+  "private": true
 }

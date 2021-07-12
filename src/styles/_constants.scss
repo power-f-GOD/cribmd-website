@@ -1,0 +1,161 @@
+@mixin debugger($color: red) {
+  &,
+  * {
+    border: 1px solid $color;
+  }
+}
+
+$border-radius: 0.55rem;
+$br: 0.75rem;
+
+$theme-primary: var(--color-primary);
+$heading-default: #0d2344;
+$bg-default: #f8f9fa;
+$bg-lightblue: #e8f1ff;
+$bg-lightorange: rgba(248, 163, 98, 0.1);
+$nav-bg: #f5f8fc;
+$success: rgb(0, 156, 0);
+$sidebar-width: 16rem;
+$sidebar-min-width: 2.125rem;
+$sidebar-cubic-bezier: cubic-bezier(0.45, 1, 0.45, 1);
+$sidebar-transition: 0.4s $sidebar-cubic-bezier 0.1s;
+
+@mixin before-or-after(
+  $bg: $theme-primary,
+  $w: 100%,
+  $h: 100%,
+  $br: 0,
+  $tr: 0.3s,
+  $t: 0,
+  $l: 0,
+  $r: 0,
+  $b: 0,
+  $o: 1,
+  $zi: -1,
+  $bs: none
+) {
+  position: absolute;
+  content: ' ';
+  width: $w;
+  height: $h;
+  top: $t;
+  left: $l;
+  right: $r;
+  bottom: $b;
+  z-index: $zi;
+  background: $bg;
+  border-radius: $br;
+  box-shadow: $bs;
+  opacity: $o;
+  transition: $tr;
+}
+
+@mixin anim__fade($mode: 'In', $direction: 'Right', $magnitude: 'Small') {
+  $isIn: $mode == 'In';
+  $dir: $direction;
+  $isX: $dir == 'Right' or $direction == 'Left';
+  $isBig: $magnitude == 'Big';
+
+  @keyframes anim__fade#{$mode}#{$dir}#{$magnitude} {
+    from {
+      opacity: if($isIn, 0, 1);
+
+      @if $isIn {
+        @if $isX {
+          $isLeft: $dir == 'Left';
+
+          transform: translateX(if($isBig, if($isLeft, 100vw, -100vw), if($isLeft, 3em, -3em)));
+        } @else {
+          $isUp: $dir == 'Up';
+
+          transform: translateY(if($isBig, if($isUp, 100vh, -100vh), if($isUp, 3em, -3em)));
+        }
+      } @else {
+        @if $isX {
+          transform: translateX(0);
+        } @else {
+          transform: translateY(0);
+        }
+      }
+    }
+    to {
+      opacity: if($isIn, 1, 0);
+
+      @if $isIn {
+        @if $isX {
+          transform: translateX(0);
+        } @else {
+          transform: translateY(0);
+        }
+      } @else {
+        @if $isX {
+          $isLeft: $dir == 'Left';
+
+          transform: translateX(if($isBig, if($isLeft, -100vw, 100vw), if($isLeft, -3em, 3em)));
+        } @else {
+          $isUp: $dir == 'Up';
+
+          transform: translateY(if($isBig, if($isUp, -100vh, 100vh), if($isUp, -3em, 3em)));
+        }
+      }
+    }
+  }
+}
+
+$theme-primary: rgb(25, 113, 245); //CribMD blue
+$prim-r: 25;
+$prim-g: 113;
+$prim-b: 245;
+$theme-primary-v1: rgb($prim-r - (25 * 4), $prim-g - (25 * 4), $prim-b - (25 * 4));
+$theme-primary-v2: rgb($prim-r - (25 * 3), $prim-g - (25 * 3), $prim-b - (25 * 3));
+$theme-primary-v3: rgb($prim-r - (25 * 2), $prim-g - (25 * 2), $prim-b - (25 * 2));
+$theme-primary-v4: rgb($prim-r - (25 * 1), $prim-g - (25 * 1), $prim-b - (25 * 1));
+$theme-primary-v5: rgb($prim-r, $prim-g, $prim-b);
+$theme-primary-v6: rgb($prim-r + (25 * 1), $prim-g + (25 * 1), $prim-b + (25 * 1));
+$theme-primary-v7: rgb($prim-r + (25 * 2), $prim-g + (25 * 2), $prim-b + (25 * 2));
+$theme-primary-v8: rgb($prim-r + (25 * 3), $prim-g + (25 * 3), $prim-b + (25 * 3));
+$theme-primary-v9: rgb($prim-r + (25 * 4), $prim-g + (25 * 4), $prim-b + (25 * 4));
+//70,93,0
+$theme-secondary: rgb(248, 166, 100); // orange
+$sec-r: 248;
+$sec-g: 166;
+$sec-b: 100;
+$theme-secondary-v1: rgb($sec-r - (25 * 4), $sec-g - (25 * 4), $sec-b - (25 * 4));
+$theme-secondary-v2: rgb($sec-r - (25 * 3), $sec-g - (25 * 3), $sec-b - (25 * 3));
+$theme-secondary-v3: rgb($sec-r - (25 * 2), $sec-g - (25 * 2), $sec-b - (25 * 2));
+$theme-secondary-v4: rgb($sec-r - (25 * 1), $sec-g - (25 * 1), $sec-b - (25 * 1));
+$theme-secondary-v5: rgb($sec-r, $sec-g, $sec-b);
+$theme-secondary-v6: rgb($sec-r + (25 * 1), $sec-g + (25 * 1), $sec-b + (25 * 1));
+$theme-secondary-v7: rgb($sec-r + (25 * 2), $sec-g + (25 * 2), $sec-b + (25 * 2));
+$theme-secondary-v8: rgb($sec-r + (25 * 3), $sec-g + (25 * 3), $sec-b + (25 * 3));
+$theme-secondary-v9: rgb($sec-r + (25 * 4), $sec-g + (25 * 4), $sec-b + (25 * 4));
+
+$theme-tertiary: rgb(128, 128, 128); //grey
+$tert-r: 128;
+$tert-g: 128;
+$tert-b: 128;
+$theme-tertiary-v1: rgb($tert-r - (25 * 4), $tert-g - (25 * 4), $tert-b - (25 * 4));
+$theme-tertiary-v2: rgb($tert-r - (25 * 3), $tert-g - (25 * 3), $tert-b - (25 * 3));
+$theme-tertiary-v3: rgb($tert-r - (25 * 2), $tert-g - (25 * 2), $tert-b - (25 * 2));
+$theme-tertiary-v4: rgb($tert-r - (25 * 1), $tert-g - (25 * 1), $tert-b - (25 * 1));
+$theme-tertiary-v5: rgb($tert-r, $tert-g, $tert-b);
+$theme-tertiary-v6: rgb($tert-r + (25 * 1), $tert-g + (25 * 1), $tert-b + (25 * 1));
+$theme-tertiary-v7: rgb($tert-r + (25 * 2), $tert-g + (25 * 2), $tert-b + (25 * 2));
+$theme-tertiary-v8: rgb($tert-r + (25 * 3), $tert-g + (25 * 3), $tert-b + (25 * 3));
+$theme-tertiary-v9: rgb($tert-r + (25 * 4), $tert-g + (25 * 4), $tert-b + (25 * 4));
+
+@mixin backdrop-image-format($ext: 'webp') {
+  .backdrop-image {
+    &.banner {
+      background-image: url('../assets/img/cribMD_doctor.#{$ext}');
+    }
+
+    &.patient {
+      background-image: url('../assets/img/patient_image_2.#{$ext}');
+    }
+
+    &.doctor {
+      background-image: url('../assets/img/cribMD_doctor.#{$ext}');
+    }
+  }
+}
