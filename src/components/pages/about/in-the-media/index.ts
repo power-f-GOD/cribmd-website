@@ -1,4 +1,4 @@
-import Header from './_Header';
-import Main from './_Main';
+import Header from './Header';
+import Main from './Main';
 
 export { Header, Main };
