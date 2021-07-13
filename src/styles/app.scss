@@ -1,5 +1,8 @@
 @import 'constants';
 
 @import 'global';
-@import 'components/index';
+@import 'shared/index';
+@import 'AppNav';
+@import 'AppMain';
+@import 'AppFooter';
 @import 'animation';

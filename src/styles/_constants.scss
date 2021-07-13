@@ -6,6 +6,48 @@ $bg-lightorange: rgba(248, 163, 98, 0.1);
 $nav-bg: #f5f8fc;
 $success: rgb(0, 156, 0);
 
+$theme-primary: rgb(25, 113, 245); // CribMD blue
+$prim-r: 25;
+$prim-g: 113;
+$prim-b: 245;
+$theme-primary-v1: rgb($prim-r - (25 * 4), $prim-g - (25 * 4), $prim-b - (25 * 4));
+$theme-primary-v2: rgb($prim-r - (25 * 3), $prim-g - (25 * 3), $prim-b - (25 * 3));
+$theme-primary-v3: rgb($prim-r - (25 * 2), $prim-g - (25 * 2), $prim-b - (25 * 2));
+$theme-primary-v4: rgb($prim-r - (25 * 1), $prim-g - (25 * 1), $prim-b - (25 * 1));
+$theme-primary-v5: rgb($prim-r, $prim-g, $prim-b);
+$theme-primary-v6: rgb($prim-r + (25 * 1), $prim-g + (25 * 1), $prim-b + (25 * 1));
+$theme-primary-v7: rgb($prim-r + (25 * 2), $prim-g + (25 * 2), $prim-b + (25 * 2));
+$theme-primary-v8: rgb($prim-r + (25 * 3), $prim-g + (25 * 3), $prim-b + (25 * 3));
+$theme-primary-v9: rgb($prim-r + (25 * 4), $prim-g + (25 * 4), $prim-b + (25 * 4));
+
+$theme-secondary: rgb(248, 166, 100); // CribMD orange
+$sec-r: 248;
+$sec-g: 166;
+$sec-b: 100;
+$theme-secondary-v1: rgb($sec-r - (25 * 4), $sec-g - (25 * 4), $sec-b - (25 * 4));
+$theme-secondary-v2: rgb($sec-r - (25 * 3), $sec-g - (25 * 3), $sec-b - (25 * 3));
+$theme-secondary-v3: rgb($sec-r - (25 * 2), $sec-g - (25 * 2), $sec-b - (25 * 2));
+$theme-secondary-v4: rgb($sec-r - (25 * 1), $sec-g - (25 * 1), $sec-b - (25 * 1));
+$theme-secondary-v5: rgb($sec-r, $sec-g, $sec-b);
+$theme-secondary-v6: rgb($sec-r + (25 * 1), $sec-g + (25 * 1), $sec-b + (25 * 1));
+$theme-secondary-v7: rgb($sec-r + (25 * 2), $sec-g + (25 * 2), $sec-b + (25 * 2));
+$theme-secondary-v8: rgb($sec-r + (25 * 3), $sec-g + (25 * 3), $sec-b + (25 * 3));
+$theme-secondary-v9: rgb($sec-r + (25 * 4), $sec-g + (25 * 4), $sec-b + (25 * 4));
+
+$theme-tertiary: rgb(128, 128, 128); // grey
+$tert-r: 128;
+$tert-g: 128;
+$tert-b: 128;
+$theme-tertiary-v1: rgb($tert-r - (25 * 4), $tert-g - (25 * 4), $tert-b - (25 * 4));
+$theme-tertiary-v2: rgb($tert-r - (25 * 3), $tert-g - (25 * 3), $tert-b - (25 * 3));
+$theme-tertiary-v3: rgb($tert-r - (25 * 2), $tert-g - (25 * 2), $tert-b - (25 * 2));
+$theme-tertiary-v4: rgb($tert-r - (25 * 1), $tert-g - (25 * 1), $tert-b - (25 * 1));
+$theme-tertiary-v5: rgb($tert-r, $tert-g, $tert-b);
+$theme-tertiary-v6: rgb($tert-r + (25 * 1), $tert-g + (25 * 1), $tert-b + (25 * 1));
+$theme-tertiary-v7: rgb($tert-r + (25 * 2), $tert-g + (25 * 2), $tert-b + (25 * 2));
+$theme-tertiary-v8: rgb($tert-r + (25 * 3), $tert-g + (25 * 3), $tert-b + (25 * 3));
+$theme-tertiary-v9: rgb($tert-r + (25 * 4), $tert-g + (25 * 4), $tert-b + (25 * 4));
+
 @mixin debugger($color: red) {
   &,
   * {
@@ -105,45 +147,3 @@ $success: rgb(0, 156, 0);
     background-image: url('../assets/img/cribMD_doctor.#{$ext}');
   }
 }
-
-$theme-primary: rgb(25, 113, 245); // CribMD blue
-$prim-r: 25;
-$prim-g: 113;
-$prim-b: 245;
-$theme-primary-v1: rgb($prim-r - (25 * 4), $prim-g - (25 * 4), $prim-b - (25 * 4));
-$theme-primary-v2: rgb($prim-r - (25 * 3), $prim-g - (25 * 3), $prim-b - (25 * 3));
-$theme-primary-v3: rgb($prim-r - (25 * 2), $prim-g - (25 * 2), $prim-b - (25 * 2));
-$theme-primary-v4: rgb($prim-r - (25 * 1), $prim-g - (25 * 1), $prim-b - (25 * 1));
-$theme-primary-v5: rgb($prim-r, $prim-g, $prim-b);
-$theme-primary-v6: rgb($prim-r + (25 * 1), $prim-g + (25 * 1), $prim-b + (25 * 1));
-$theme-primary-v7: rgb($prim-r + (25 * 2), $prim-g + (25 * 2), $prim-b + (25 * 2));
-$theme-primary-v8: rgb($prim-r + (25 * 3), $prim-g + (25 * 3), $prim-b + (25 * 3));
-$theme-primary-v9: rgb($prim-r + (25 * 4), $prim-g + (25 * 4), $prim-b + (25 * 4));
-
-$theme-secondary: rgb(248, 166, 100); // CribMD orange
-$sec-r: 248;
-$sec-g: 166;
-$sec-b: 100;
-$theme-secondary-v1: rgb($sec-r - (25 * 4), $sec-g - (25 * 4), $sec-b - (25 * 4));
-$theme-secondary-v2: rgb($sec-r - (25 * 3), $sec-g - (25 * 3), $sec-b - (25 * 3));
-$theme-secondary-v3: rgb($sec-r - (25 * 2), $sec-g - (25 * 2), $sec-b - (25 * 2));
-$theme-secondary-v4: rgb($sec-r - (25 * 1), $sec-g - (25 * 1), $sec-b - (25 * 1));
-$theme-secondary-v5: rgb($sec-r, $sec-g, $sec-b);
-$theme-secondary-v6: rgb($sec-r + (25 * 1), $sec-g + (25 * 1), $sec-b + (25 * 1));
-$theme-secondary-v7: rgb($sec-r + (25 * 2), $sec-g + (25 * 2), $sec-b + (25 * 2));
-$theme-secondary-v8: rgb($sec-r + (25 * 3), $sec-g + (25 * 3), $sec-b + (25 * 3));
-$theme-secondary-v9: rgb($sec-r + (25 * 4), $sec-g + (25 * 4), $sec-b + (25 * 4));
-
-$theme-tertiary: rgb(128, 128, 128); // grey
-$tert-r: 128;
-$tert-g: 128;
-$tert-b: 128;
-$theme-tertiary-v1: rgb($tert-r - (25 * 4), $tert-g - (25 * 4), $tert-b - (25 * 4));
-$theme-tertiary-v2: rgb($tert-r - (25 * 3), $tert-g - (25 * 3), $tert-b - (25 * 3));
-$theme-tertiary-v3: rgb($tert-r - (25 * 2), $tert-g - (25 * 2), $tert-b - (25 * 2));
-$theme-tertiary-v4: rgb($tert-r - (25 * 1), $tert-g - (25 * 1), $tert-b - (25 * 1));
-$theme-tertiary-v5: rgb($tert-r, $tert-g, $tert-b);
-$theme-tertiary-v6: rgb($tert-r + (25 * 1), $tert-g + (25 * 1), $tert-b + (25 * 1));
-$theme-tertiary-v7: rgb($tert-r + (25 * 2), $tert-g + (25 * 2), $tert-b + (25 * 2));
-$theme-tertiary-v8: rgb($tert-r + (25 * 3), $tert-g + (25 * 3), $tert-b + (25 * 3));
-$theme-tertiary-v9: rgb($tert-r + (25 * 4), $tert-g + (25 * 4), $tert-b + (25 * 4));

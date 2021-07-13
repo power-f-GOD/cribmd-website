@@ -1,9 +1,7 @@
 import { NextPage } from 'next';
 
 import { AppHead } from 'src/components';
-import Header from './_Header';
-import Main from './_Main';
-import Footer from './_Footer';
+import { Header, Main, Footer } from 'src/components/pages/health-plans/corporate';
 
 const Corporate: NextPage = () => {
   return (

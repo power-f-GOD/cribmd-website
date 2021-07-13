@@ -1,8 +1,7 @@
 import { NextPage } from 'next';
 
 import { AppHead } from 'src/components';
-import Header from './_Header';
-import Main from './_Main';
+import { Header, Main } from 'src/components/pages/about/in-the-media';
 
 const InTheMedia: NextPage = () => {
   return (

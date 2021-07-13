@@ -1,11 +1,9 @@
-/* eslint-disable jsx-a11y/no-static-element-interactions */
 import { useState, useCallback, useContext, useEffect, memo, AnimationEvent } from 'react';
 import Link from 'next/link';
 import gsap from 'gsap/dist/gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 
 import Container from 'react-bootstrap/Container';
-// import Col from 'react-bootstrap/Col';
 
 import { AppContext } from 'src/pages/_app';
 import { preventDefault } from 'src/utils';
@@ -150,7 +148,7 @@ const AppNav = (): JSX.Element => {
               <Anchor
                 button
                 className="navbar__nav-link is-anchor"
-                href="#"
+                href="/health-plans"
                 onClick={preventDefault()}>
                 Health Plans
               </Anchor>
