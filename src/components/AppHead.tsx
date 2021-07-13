@@ -6,7 +6,6 @@ const AppHead = ({ title }: { title?: string }): JSX.Element => {
   return (
     <Head>
       <title>CribMD | {title || 'Home'}</title>
-      <link rel="icon" href="/favicon.ico" />
     </Head>
   );
 };
