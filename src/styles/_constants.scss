@@ -1,3 +1,11 @@
+$br: 0.75rem;
+$heading-default: #0d2344;
+$bg-default: #f8f9fa;
+$bg-lightblue: #e8f1ff;
+$bg-lightorange: rgba(248, 163, 98, 0.1);
+$nav-bg: #f5f8fc;
+$success: rgb(0, 156, 0);
+
 @mixin debugger($color: red) {
   &,
   * {
@@ -5,52 +13,12 @@
   }
 }
 
-$border-radius: 0.55rem;
-$br: 0.75rem;
-
-$theme-primary: var(--color-primary);
-$heading-default: #0d2344;
-$bg-default: #f8f9fa;
-$bg-lightblue: #e8f1ff;
-$bg-lightorange: rgba(248, 163, 98, 0.1);
-$nav-bg: #f5f8fc;
-$success: rgb(0, 156, 0);
-$sidebar-width: 16rem;
-$sidebar-min-width: 2.125rem;
-$sidebar-cubic-bezier: cubic-bezier(0.45, 1, 0.45, 1);
-$sidebar-transition: 0.4s $sidebar-cubic-bezier 0.1s;
-
-@mixin before-or-after(
-  $bg: $theme-primary,
-  $w: 100%,
-  $h: 100%,
-  $br: 0,
-  $tr: 0.3s,
-  $t: 0,
-  $l: 0,
-  $r: 0,
-  $b: 0,
-  $o: 1,
-  $zi: -1,
-  $bs: none
+/// Sidebar: The "or's" comparing the default params values here are not necessary. They are just for you to know valid values that can be passed in. Obviously, the first ones [values] win.
+@mixin anim__fade(
+  $mode: 'In' or 'Out',
+  $direction: 'Right' or 'Left' or 'Up' or 'Down',
+  $magnitude: 'Small' or 'Big'
 ) {
-  position: absolute;
-  content: ' ';
-  width: $w;
-  height: $h;
-  top: $t;
-  left: $l;
-  right: $r;
-  bottom: $b;
-  z-index: $zi;
-  background: $bg;
-  border-radius: $br;
-  box-shadow: $bs;
-  opacity: $o;
-  transition: $tr;
-}
-
-@mixin anim__fade($mode: 'In', $direction: 'Right', $magnitude: 'Small') {
   $isIn: $mode == 'In';
   $dir: $direction;
   $isX: $dir == 'Right' or $direction == 'Left';
@@ -102,7 +70,43 @@ $sidebar-transition: 0.4s $sidebar-cubic-bezier 0.1s;
   }
 }
 
-$theme-primary: rgb(25, 113, 245); //CribMD blue
+@mixin before-or-after(
+  $bg: $theme-primary,
+  $w: 100%,
+  $h: 100%,
+  $br: 0,
+  $tr: 0.3s,
+  $t: 0,
+  $l: 0,
+  $r: 0,
+  $b: 0,
+  $o: 1,
+  $zi: -1,
+  $bs: none
+) {
+  position: absolute;
+  content: ' ';
+  width: $w;
+  height: $h;
+  top: $t;
+  left: $l;
+  right: $r;
+  bottom: $b;
+  z-index: $zi;
+  background: $bg;
+  border-radius: $br;
+  box-shadow: $bs;
+  opacity: $o;
+  transition: $tr;
+}
+
+@mixin backdrop-image-format($ext: 'webp') {
+  .backdrop-image {
+    background-image: url('../assets/img/cribMD_doctor.#{$ext}');
+  }
+}
+
+$theme-primary: rgb(25, 113, 245); // CribMD blue
 $prim-r: 25;
 $prim-g: 113;
 $prim-b: 245;
@@ -115,8 +119,8 @@ $theme-primary-v6: rgb($prim-r + (25 * 1), $prim-g + (25 * 1), $prim-b + (25 * 1
 $theme-primary-v7: rgb($prim-r + (25 * 2), $prim-g + (25 * 2), $prim-b + (25 * 2));
 $theme-primary-v8: rgb($prim-r + (25 * 3), $prim-g + (25 * 3), $prim-b + (25 * 3));
 $theme-primary-v9: rgb($prim-r + (25 * 4), $prim-g + (25 * 4), $prim-b + (25 * 4));
-//70,93,0
-$theme-secondary: rgb(248, 166, 100); // orange
+
+$theme-secondary: rgb(248, 166, 100); // CribMD orange
 $sec-r: 248;
 $sec-g: 166;
 $sec-b: 100;
@@ -130,7 +134,7 @@ $theme-secondary-v7: rgb($sec-r + (25 * 2), $sec-g + (25 * 2), $sec-b + (25 * 2)
 $theme-secondary-v8: rgb($sec-r + (25 * 3), $sec-g + (25 * 3), $sec-b + (25 * 3));
 $theme-secondary-v9: rgb($sec-r + (25 * 4), $sec-g + (25 * 4), $sec-b + (25 * 4));
 
-$theme-tertiary: rgb(128, 128, 128); //grey
+$theme-tertiary: rgb(128, 128, 128); // grey
 $tert-r: 128;
 $tert-g: 128;
 $tert-b: 128;
@@ -143,19 +147,3 @@ $theme-tertiary-v6: rgb($tert-r + (25 * 1), $tert-g + (25 * 1), $tert-b + (25 * 
 $theme-tertiary-v7: rgb($tert-r + (25 * 2), $tert-g + (25 * 2), $tert-b + (25 * 2));
 $theme-tertiary-v8: rgb($tert-r + (25 * 3), $tert-g + (25 * 3), $tert-b + (25 * 3));
 $theme-tertiary-v9: rgb($tert-r + (25 * 4), $tert-g + (25 * 4), $tert-b + (25 * 4));
-
-@mixin backdrop-image-format($ext: 'webp') {
-  .backdrop-image {
-    &.banner {
-      background-image: url('../assets/img/cribMD_doctor.#{$ext}');
-    }
-
-    &.patient {
-      background-image: url('../assets/img/patient_image_2.#{$ext}');
-    }
-
-    &.doctor {
-      background-image: url('../assets/img/cribMD_doctor.#{$ext}');
-    }
-  }
-}

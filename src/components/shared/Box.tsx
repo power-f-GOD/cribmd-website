@@ -1,3 +1,4 @@
+/* eslint-disable react/display-name */
 /*
   This file defines bare components without default Bootstrap styles that affect React-Bootstraps (grid) components like <Container>, <Row> and <Col> which change their layout behaviours which may not always be desirable.
 
@@ -17,7 +18,8 @@ import {
   SVGProps,
   AnchorHTMLAttributes,
   useState,
-  useEffect
+  useEffect,
+  forwardRef
 } from 'react';
 
 export type BoxAsType = 'div' | 'span' | 'p' | 'ul' | 'li' | 'section' | 'i';
@@ -40,17 +42,21 @@ export const Button: FC<
   );
 };
 
-export const Anchor: FC<
-  {
-    button?: boolean;
-    variant?: 'text' | 'outlined' | 'contained';
-    color?: 'primary' | 'secondary' | 'tertiary';
-    _type?: 'flat-button' | 'icon-button';
-  } & DetailedHTMLProps<AnchorHTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement>
-> = ({ children, button, variant, color, _type, className, ...props }): JSX.Element => {
+export const Anchor = forwardRef<
+  HTMLAnchorElement,
+  Partial<
+    {
+      button: boolean;
+      variant: 'text' | 'outlined' | 'contained';
+      color: 'primary' | 'secondary' | 'tertiary';
+      _type: 'flat-button' | 'icon-button';
+    } & DetailedHTMLProps<AnchorHTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement>
+  >
+>(({ children, button, variant, color, _type, className, ...props }, ref): JSX.Element => {
   return (
     <a
       {...props}
+      ref={ref}
       className={
         button
           ? `${_type || 'flat-button'} btn--${variant || 'text'} btn--${
@@ -61,7 +67,7 @@ export const Anchor: FC<
       {children}
     </a>
   );
-};
+});
 
 export const SVG: FC<DetailedHTMLProps<SVGProps<SVGSVGElement>, SVGSVGElement>> = ({
   children,
