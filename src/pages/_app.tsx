@@ -5,6 +5,7 @@ import 'bootstrap/dist/css/bootstrap-utilities.min.css';
 import 'bootstrap/dist/css/bootstrap-grid.min.css';
 import 'src/styles/app.scss';
 import { AppNav, AppFooter } from 'src/components';
+import Head from 'next/head';
 
 export const AppContext = createContext<{ windowWidth: number }>({
   windowWidth: globalThis.innerWidth
@@ -33,6 +34,13 @@ const App = ({ Component, pageProps }: AppProps): JSX.Element => {
   return (
     <AppContext.Provider value={appContextValue}>
       <AppNav />
+      <Head>
+        <link
+          href="https://fonts.googleapis.com/css?family=Poppins:300,400,600,700,800&amp;display=swap"
+          rel="stylesheet"
+        />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <Component {...pageProps} />
       <AppFooter />
     </AppContext.Provider>

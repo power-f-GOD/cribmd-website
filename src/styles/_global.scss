@@ -20,7 +20,6 @@ body {
 body {
   // @include debugger();
   background-color: white;
-  // font-family: Poppins, 'Helvetica Neue', sans-serif;
   font-size: 1rem !important;
   min-height: 100vh;
   overflow: hidden;
@@ -48,6 +47,12 @@ body {
 
 * {
   font-family: Poppins, 'Helvetica Neue', sans-serif !important;
+
+  &,
+  &::before,
+  &::after {
+    box-sizing: border-box;
+  }
 }
 
 h1,
@@ -111,7 +116,7 @@ a {
   &:hover,
   &:active,
   &:focus {
-    color: $theme-secondary-v3;
+    color: $theme-secondary-v2;
     text-decoration: underline;
   }
 }

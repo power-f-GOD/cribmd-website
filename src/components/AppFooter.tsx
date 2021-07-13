@@ -2,7 +2,7 @@
 
 const AppFooter = (): JSX.Element => {
   return (
-    <footer>
+    <footer className="AppFooter">
       <h6>This is the AppFooter component!</h6>
     </footer>
   );

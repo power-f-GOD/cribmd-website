@@ -5,8 +5,11 @@
   right: 0;
   top: 0;
   z-index: 1001;
-
   pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  // position: relative;
 
   .Logo {
     transition: 0.3s;
@@ -20,13 +23,6 @@
       opacity: 1;
     }
   }
-}
-
-.navbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  position: relative;
 
   li,
   a {
@@ -61,6 +57,10 @@
     }
   }
 }
+
+// .navbar {
+
+// }
 
 .navbar__underlay {
   @extend .before-or-after;
@@ -166,6 +166,7 @@ a.navbar__nav-link {
     padding: 1.25rem;
     padding-bottom: 0;
     overflow: hidden;
+    text-decoration: none !important;
     border-radius: unset;
 
     &:hover,
@@ -369,9 +370,7 @@ a.navbar__nav-link {
 
 @media screen and (min-width: 992px) {
   .AppNav {
-    &[anchor='home'] {
-      top: 0.5rem;
-    }
+    top: 0.5rem;
   }
 
   ul.navbar__nav-links-container {
