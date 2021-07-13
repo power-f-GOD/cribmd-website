@@ -1,8 +1,10 @@
+// This is the global AppFooter that is common to all pages.
+
 const AppFooter = (): JSX.Element => {
   return (
-    <>
-      <h1>This is the AppFooter component!</h1>
-    </>
+    <footer>
+      <h6>This is the AppFooter component!</h6>
+    </footer>
   );
 };
 

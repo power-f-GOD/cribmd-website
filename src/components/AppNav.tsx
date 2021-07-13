@@ -65,10 +65,8 @@ const AppNav = (): JSX.Element => {
     });
   }, [open, isPC]);
 
-  console.log(windowWidth, isPC);
-
   return (
-    <Container className="AppNav anim__fadeInUp" fluid>
+    <Container className="AppNav">
       <Container
         as="nav"
         className="navbar sidenav-closed container pl-3 pr-1 pr-sm-2 pr-lg-3 py-1 py-sm-2 py-lg-3 mb-lg-4">
@@ -96,13 +94,14 @@ const AppNav = (): JSX.Element => {
             }`}
             onAnimationEnd={handleNavAnimationEnd}>
             <Box as="li" className="mx-lg-1">
-              <Link href="/">
-                <a
+              <Link href="/" passHref>
+                <Anchor
+                  button
                   className="navbar__nav-link"
                   onClick={!isPC ? handleNavOpenClick : undefined}
                   onKeyDown={handleNavOpenClick}>
                   Home
-                </a>
+                </Anchor>
               </Link>
             </Box>
 
@@ -110,14 +109,14 @@ const AppNav = (): JSX.Element => {
               <Anchor
                 button
                 className="navbar__nav-link is-anchor"
-                href="#"
+                href="/about"
                 onClick={preventDefault()}>
                 About us
               </Anchor>
 
               <Box className="navbar__menu">
-                <Link href="/about">
-                  <a
+                <Link href="/about/our-company" passHref>
+                  <Anchor
                     onClick={!isPC ? handleNavOpenClick : undefined}
                     onKeyDown={handleNavOpenClick}>
                     <Box as="span">I</Box>
@@ -128,11 +127,11 @@ const AppNav = (): JSX.Element => {
                       </Box>
                       Learn what we stand for, our vision and achievements
                     </Box>
-                  </a>
+                  </Anchor>
                 </Link>
 
-                <Link href="/about">
-                  <a
+                <Link href="/about/in-the-media" passHref>
+                  <Anchor
                     onClick={!isPC ? handleNavOpenClick : undefined}
                     onKeyDown={handleNavOpenClick}>
                     <Box as="span">I</Box>
@@ -142,7 +141,7 @@ const AppNav = (): JSX.Element => {
                       </Box>
                       As seen on Spotify and Arise News, catch the latest news about us
                     </Box>
-                  </a>
+                  </Anchor>
                 </Link>
               </Box>
             </Box>
@@ -157,8 +156,8 @@ const AppNav = (): JSX.Element => {
               </Anchor>
 
               <Box className="navbar__menu">
-                <Link href="/individual-plan">
-                  <a
+                <Link href="/health-plans/individual" passHref>
+                  <Anchor
                     onClick={!isPC ? handleNavOpenClick : undefined}
                     onKeyDown={handleNavOpenClick}>
                     <Box as="span">I</Box>
@@ -168,10 +167,10 @@ const AppNav = (): JSX.Element => {
                       </Box>
                       Affordable health plans for yourself and your family.
                     </Box>
-                  </a>
+                  </Anchor>
                 </Link>
-                <Link href="/corporate-plan">
-                  <a
+                <Link href="/health-plans/corporate" passHref>
+                  <Anchor
                     onClick={!isPC ? handleNavOpenClick : undefined}
                     onKeyDown={handleNavOpenClick}>
                     <Box as="span">ICN</Box>
@@ -181,35 +180,39 @@ const AppNav = (): JSX.Element => {
                       </Box>
                       We have the right health plans for your business.
                     </Box>
-                  </a>
+                  </Anchor>
                 </Link>
               </Box>
             </Box>
 
             <Box as="li" className="mx-lg-1">
-              <Link href="/faq">
-                <a
+              <Link href="/faq" passHref>
+                <Anchor
+                  button
                   className="navbar__nav-link"
                   onClick={!isPC ? handleNavOpenClick : undefined}
                   onKeyDown={handleNavOpenClick}>
                   FAQ
-                </a>
+                </Anchor>
               </Link>
             </Box>
 
             <Box as="li" className="mx-lg-1">
-              <Link href="https://blog.cribmd.com">
-                <a
-                  className="navbar__nav-link"
-                  onClick={!isPC ? handleNavOpenClick : undefined}
-                  onKeyDown={handleNavOpenClick}>
-                  Blog
-                </a>
-              </Link>
+              <Anchor
+                button
+                href="https://blog.cribmd.com"
+                className="navbar__nav-link"
+                onClick={!isPC ? handleNavOpenClick : undefined}
+                onKeyDown={handleNavOpenClick}>
+                Blog
+              </Anchor>
             </Box>
 
             <Box as="li" className="d-block d-lg-none mt-5 pt-3 mx-lg-1">
-              <Anchor button className="navbar__cta--text navbar__nav-link btn--text" href="/login">
+              <Anchor
+                button
+                className="navbar__cta--text navbar__nav-link btn--text"
+                href="https://www.cribmd.com/login">
                 Log in
               </Anchor>
             </Box>
@@ -218,7 +221,10 @@ const AppNav = (): JSX.Element => {
 
         <Box as="ul" className="navbar__ctas-container p-2">
           <Box as="li" className="d-none d-lg-block">
-            <Anchor button className="navbar__cta--text navbar__nav-link btn--text" href="/login">
+            <Anchor
+              button
+              className="navbar__cta--text navbar__nav-link btn--text"
+              href="https://www.cribmd.com/login">
               Log in
             </Anchor>
           </Box>
@@ -227,7 +233,7 @@ const AppNav = (): JSX.Element => {
             <Anchor
               button
               className="navbar__cta--primary navbar__nav-link btn--primary ml-0 ml-lg-2"
-              href="/signup">
+              href="https://www.cribmd.com/signup">
               Sign up
             </Anchor>
           </Box>
