@@ -1,9 +1,7 @@
 import { NextPage } from 'next';
 
-import Header from './_Header';
-import Main from './_Main';
-import Footer from './_Footer';
 import { AppHead } from 'src/components';
+import { Header, Main, Footer } from 'src/components/pages/faq';
 
 const FAQ: NextPage = () => {
   return (
