@@ -4,6 +4,7 @@ import { AppProps } from 'next/app';
 import 'bootstrap/dist/css/bootstrap-utilities.min.css';
 import 'bootstrap/dist/css/bootstrap-grid.min.css';
 import 'src/styles/app.scss';
+import { AppNav, AppFooter } from 'src/components';
 
 export const AppContext = createContext<{ windowWidth: number }>({
   windowWidth: globalThis.innerWidth
@@ -31,7 +32,9 @@ const App = ({ Component, pageProps }: AppProps): JSX.Element => {
 
   return (
     <AppContext.Provider value={appContextValue}>
+      <AppNav />
       <Component {...pageProps} />
+      <AppFooter />
     </AppContext.Provider>
   );
 };
