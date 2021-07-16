@@ -97,10 +97,6 @@ ul.navbar__nav-links-container {
   }
 }
 
-ul.navbar__nav-links-container {
-  animation-fill-mode: both !important;
-}
-
 ul.navbar__ctas-container {
   .btn--primary {
     &::after {
@@ -184,12 +180,16 @@ div.navbar__menu {
     margin-right: 1rem;
     border-radius: 50%;
 
-    &[name='cribmd-logo'] {
+    &.name__cribmd-logo {
       svg {
         width: 67.5% !important;
 
         &:first-child {
           width: 35% !important;
+        }
+
+        &:last-child {
+          left: 17%;
         }
       }
 
@@ -198,14 +198,14 @@ div.navbar__menu {
       }
     }
 
-    &[name='speaker'],
-    &[name='credit-card-corporate'] {
+    &.name__volume,
+    &.name__credit-card-corporate {
       &::before {
         background: rgba(248, 163, 98, 0.2);
       }
     }
 
-    &[name='credit-card-individual'] {
+    &.name__credit-card-individual {
       &::before {
         background: rgba(101, 28, 191, 0.1);
       }

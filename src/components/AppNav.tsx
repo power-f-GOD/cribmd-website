@@ -7,7 +7,7 @@ import Container from 'react-bootstrap/Container';
 import { AppContext } from 'src/pages/_app';
 import { preventDefault } from 'src/utils';
 import { Box, Logo, Anchor, Button } from '.';
-import { NavLink } from './shared';
+import { NavLink, SVGIcon } from './shared';
 
 const AppNav = (): JSX.Element => {
   const { windowWidth } = useContext(AppContext);
@@ -119,7 +119,9 @@ const AppNav = (): JSX.Element => {
                 href="/about/our-company"
                 onClick={!isPC ? handleNavOpenClick : undefined}
                 onKeyDown={handleNavOpenClick}>
-                <Box as="span">I</Box>
+                <Box as="span">
+                  <SVGIcon name="cribmd-logo" />
+                </Box>
 
                 <Box as="p" className="">
                   <Box as="span" className="h6 mt-0">
@@ -134,7 +136,10 @@ const AppNav = (): JSX.Element => {
                 href="/about/in-the-media"
                 onClick={!isPC ? handleNavOpenClick : undefined}
                 onKeyDown={handleNavOpenClick}>
-                <Box as="span">I</Box>
+                <Box as="span">
+                  <SVGIcon name="volume" />
+                </Box>
+
                 <Box as="p" className="">
                   <Box as="span" className="h6 mt-0">
                     In the media
@@ -161,7 +166,10 @@ const AppNav = (): JSX.Element => {
                 href="/health-plans/individual"
                 onClick={!isPC ? handleNavOpenClick : undefined}
                 onKeyDown={handleNavOpenClick}>
-                <Box as="span">I</Box>
+                <Box as="span">
+                  <SVGIcon name="credit-card-individual" />
+                </Box>
+
                 <Box as="p" className="">
                   <Box as="span" className="h6 mt-0">
                     Individual Plan
@@ -175,7 +183,10 @@ const AppNav = (): JSX.Element => {
                 href="/health-plans/corporate"
                 onClick={!isPC ? handleNavOpenClick : undefined}
                 onKeyDown={handleNavOpenClick}>
-                <Box as="span">ICN</Box>
+                <Box as="span">
+                  <SVGIcon name="credit-card-corporate" />
+                </Box>
+
                 <Box as="p">
                   <Box as="span" className="h6 mt-0">
                     Corporate Plan

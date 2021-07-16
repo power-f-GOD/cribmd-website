@@ -5,6 +5,12 @@ import {
   HTMLAttributes
 } from 'react';
 
+export type SVGIconName =
+  | 'credit-card-individual'
+  | 'credit-card-corporate'
+  | 'volume'
+  | 'cribmd-logo';
+
 export interface ButtonProps
   extends DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> {
   variant?: 'text' | 'outlined' | 'contained';
