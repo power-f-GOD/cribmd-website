@@ -1,5 +1,4 @@
 import { useState, useCallback, useContext, useEffect, memo, AnimationEvent } from 'react';
-import Link from 'next/link';
 import gsap from 'gsap/dist/gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 
@@ -8,6 +7,7 @@ import Container from 'react-bootstrap/Container';
 import { AppContext } from 'src/pages/_app';
 import { preventDefault } from 'src/utils';
 import { Box, Logo, Anchor, Button } from '.';
+import { NavLink, SVGIcon } from './shared';
 
 const AppNav = (): JSX.Element => {
   const { windowWidth } = useContext(AppContext);
@@ -58,7 +58,7 @@ const AppNav = (): JSX.Element => {
           if (direction === -1 && isPC) {
             setRenderNav(true);
           }
-        }, 200);
+        }, 100);
       }
     });
   }, [open, isPC]);
@@ -67,9 +67,9 @@ const AppNav = (): JSX.Element => {
     <Container
       as="nav"
       className="AppNav sidenav-closed container pl-3 pr-1 pr-sm-2 pr-lg-3 py-1 py-sm-2 py-lg-3 mb-lg-4">
-      <Logo />
+      <Logo className={isNegativeScroll ? '' : 'lighten'} />
 
-      {(renderNav || open) && (
+      {open && (
         <Box
           className={`navbar__underlay d-lg-none animate__animated anim__dur--05s ${
             !open ? 'animate__fadeOutUp' : 'animate__fadeInDown '
@@ -91,113 +91,127 @@ const AppNav = (): JSX.Element => {
           }`}
           onAnimationEnd={handleNavAnimationEnd}>
           <Box as="li" className="mx-lg-1">
-            <Link href="/" passHref>
-              <Anchor
-                button
-                className="navbar__nav-link"
-                onClick={!isPC ? handleNavOpenClick : undefined}
-                onKeyDown={handleNavOpenClick}>
-                Home
-              </Anchor>
-            </Link>
+            <NavLink
+              button
+              exact
+              href="/"
+              color="tertiary"
+              className="navbar__nav-link"
+              onClick={!isPC ? handleNavOpenClick : undefined}
+              onKeyDown={handleNavOpenClick}>
+              Home
+            </NavLink>
           </Box>
 
           <Box as="li" className="mx-lg-1">
-            <Anchor
+            <NavLink
               button
+              color="tertiary"
               className="navbar__nav-link is-anchor"
               href="/about"
               onClick={preventDefault()}>
               About us
-            </Anchor>
+            </NavLink>
 
             <Box className="navbar__menu">
-              <Link href="/about/our-company" passHref>
-                <Anchor
-                  onClick={!isPC ? handleNavOpenClick : undefined}
-                  onKeyDown={handleNavOpenClick}>
-                  <Box as="span">I</Box>
+              <Anchor
+                routeLink
+                href="/about/our-company"
+                onClick={!isPC ? handleNavOpenClick : undefined}
+                onKeyDown={handleNavOpenClick}>
+                <Box as="span">
+                  <SVGIcon name="cribmd-logo" />
+                </Box>
 
-                  <Box as="p" className="">
-                    <Box as="span" className="h6 mt-0">
-                      Our Company
-                    </Box>
-                    Learn what we stand for, our vision and achievements
+                <Box as="p" className="">
+                  <Box as="span" className="h6 mt-0">
+                    Our Company
                   </Box>
-                </Anchor>
-              </Link>
+                  Learn what we stand for, our vision and achievements
+                </Box>
+              </Anchor>
 
-              <Link href="/about/in-the-media" passHref>
-                <Anchor
-                  onClick={!isPC ? handleNavOpenClick : undefined}
-                  onKeyDown={handleNavOpenClick}>
-                  <Box as="span">I</Box>
-                  <Box as="p" className="">
-                    <Box as="span" className="h6 mt-0">
-                      In the media
-                    </Box>
-                    As seen on Spotify and Arise News, catch the latest news about us
+              <Anchor
+                routeLink
+                href="/about/in-the-media"
+                onClick={!isPC ? handleNavOpenClick : undefined}
+                onKeyDown={handleNavOpenClick}>
+                <Box as="span">
+                  <SVGIcon name="volume" />
+                </Box>
+
+                <Box as="p" className="">
+                  <Box as="span" className="h6 mt-0">
+                    In the media
                   </Box>
-                </Anchor>
-              </Link>
+                  As seen on Spotify and Arise News, catch the latest news about us
+                </Box>
+              </Anchor>
             </Box>
           </Box>
 
           <Box as="li" className="mx-lg-1">
-            <Anchor
+            <NavLink
               button
+              color="tertiary"
               className="navbar__nav-link is-anchor"
               href="/health-plans"
               onClick={preventDefault()}>
               Health Plans
-            </Anchor>
+            </NavLink>
 
             <Box className="navbar__menu">
-              <Link href="/health-plans/individual" passHref>
-                <Anchor
-                  onClick={!isPC ? handleNavOpenClick : undefined}
-                  onKeyDown={handleNavOpenClick}>
-                  <Box as="span">I</Box>
-                  <Box as="p" className="">
-                    <Box as="span" className="h6 mt-0">
-                      Individual Plan
-                    </Box>
-                    Affordable health plans for yourself and your family.
-                  </Box>
-                </Anchor>
-              </Link>
+              <Anchor
+                routeLink
+                href="/health-plans/individual"
+                onClick={!isPC ? handleNavOpenClick : undefined}
+                onKeyDown={handleNavOpenClick}>
+                <Box as="span">
+                  <SVGIcon name="credit-card-individual" />
+                </Box>
 
-              <Link href="/health-plans/corporate" passHref>
-                <Anchor
-                  onClick={!isPC ? handleNavOpenClick : undefined}
-                  onKeyDown={handleNavOpenClick}>
-                  <Box as="span">ICN</Box>
-                  <Box as="p">
-                    <Box as="span" className="h6 mt-0">
-                      Corporate Plan
-                    </Box>
-                    We have the right health plans for your business.
+                <Box as="p" className="">
+                  <Box as="span" className="h6 mt-0">
+                    Individual Plan
                   </Box>
-                </Anchor>
-              </Link>
+                  Affordable health plans for yourself and your family.
+                </Box>
+              </Anchor>
+
+              <Anchor
+                routeLink
+                href="/health-plans/corporate"
+                onClick={!isPC ? handleNavOpenClick : undefined}
+                onKeyDown={handleNavOpenClick}>
+                <Box as="span">
+                  <SVGIcon name="credit-card-corporate" />
+                </Box>
+
+                <Box as="p">
+                  <Box as="span" className="h6 mt-0">
+                    Corporate Plan
+                  </Box>
+                  We have the right health plans for your business.
+                </Box>
+              </Anchor>
             </Box>
           </Box>
 
           <Box as="li" className="mx-lg-1">
-            <Link href="/faq" passHref>
-              <Anchor
-                button
-                className="navbar__nav-link"
-                onClick={!isPC ? handleNavOpenClick : undefined}
-                onKeyDown={handleNavOpenClick}>
-                FAQ
-              </Anchor>
-            </Link>
+            <NavLink
+              button
+              href="/faq"
+              color="tertiary"
+              className="navbar__nav-link"
+              onClick={!isPC ? handleNavOpenClick : undefined}>
+              FAQ
+            </NavLink>
           </Box>
 
           <Box as="li" className="mx-lg-1">
             <Anchor
               button
+              color="tertiary"
               href="https://blog.cribmd.com"
               className="navbar__nav-link"
               onClick={!isPC ? handleNavOpenClick : undefined}
@@ -209,6 +223,7 @@ const AppNav = (): JSX.Element => {
           <Box as="li" className="d-block d-lg-none mt-5 pt-3 mx-lg-1">
             <Anchor
               button
+              color="tertiary"
               className="navbar__cta--text navbar__nav-link btn--text"
               href="https://www.cribmd.com/login">
               Log in
@@ -221,6 +236,7 @@ const AppNav = (): JSX.Element => {
         <Box as="li" className="d-none d-lg-block">
           <Anchor
             button
+            color="tertiary"
             className="navbar__cta--text navbar__nav-link btn--text"
             href="https://www.cribmd.com/login">
             Log in
@@ -230,7 +246,9 @@ const AppNav = (): JSX.Element => {
         <Box as="li">
           <Anchor
             button
-            className="navbar__cta--primary navbar__nav-link btn--primary ml-0 ml-lg-2"
+            variant="contained"
+            color="primary"
+            className="navbar__nav-link ms-0 ms-lg-2"
             href="https://www.cribmd.com/signup">
             Sign up
           </Anchor>
@@ -239,10 +257,10 @@ const AppNav = (): JSX.Element => {
         <Box as="li">
           <Button
             aria-label="menu button"
-            className="navbar__menu-button navbar__nav-link d-inline-flex d-lg-none btn--text ml-2 ml-sm-2 px-2"
+            className="navbar__menu-button navbar__nav-link d-inline-flex d-lg-none btn--text ms-2 ms-sm-2 px-2"
             onClick={handleNavOpenClick}>
             {!open ? 'Menu' : 'Close'}
-            <Box as="span" className="custom-bars-wrapper ml-1">
+            <Box as="span" className="custom-bars-wrapper ms-1">
               <Box as="span"></Box>
               <Box as="span"></Box>
               <Box as="span"></Box>

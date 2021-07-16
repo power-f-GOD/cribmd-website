@@ -21,72 +21,89 @@
   }
 }
 
-.anim__fadeInUp {
-  animation: anim__fadeInUpBig 1s cubic-bezier(0.1, 1, 0.35, 1) backwards;
-}
-
+@include anim__fade('In', 'Up');
+@include anim__fade('In', 'Down');
+@include anim__fade('In', 'Left');
+@include anim__fade('In', 'Right');
 @include anim__fade('In', 'Up', 'Big');
+@include anim__fade('In', 'Down', 'Big');
+@include anim__fade('In', 'Left', 'Big');
+@include anim__fade('In', 'Right', 'Big');
 
-// animate__fadeOutUp
-.anim__fadeInDown {
-  animation: anim__fadeInDown 1s cubic-bezier(0.1, 1, 0.35, 1) backwards;
+@include anim__fade('Out', 'Up');
+@include anim__fade('Out', 'Down');
+@include anim__fade('Out', 'Left');
+@include anim__fade('Out', 'Right');
+@include anim__fade('Out', 'Up', 'Big');
+@include anim__fade('Out', 'Down', 'Big');
+@include anim__fade('Out', 'Left', 'Big');
+@include anim__fade('Out', 'Right', 'Big');
+
+$timing-func_mode: cubic-bezier(0.1, 1, 0.35, 1) both;
+
+.anim__fadeInUp {
+  animation: anim__fadeInUp 1s $timing-func_mode;
 }
 
-@keyframes anim__fadeInDown {
-  from {
-    opacity: 0;
-    transform: translateY(-3em);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.anim__fadeInDown {
+  animation: anim__fadeInDown 1s $timing-func_mode;
 }
 
 .anim__fadeInLeft {
-  animation: anim__fadeInLeft 0.75s cubic-bezier(0.215, 0.61, 0.355, 1) backwards;
-}
-
-@keyframes anim__fadeInLeft {
-  from {
-    opacity: 0;
-    transform: translateX(3em);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
+  animation: anim__fadeInLeft 1s $timing-func_mode;
 }
 
 .anim__fadeInRight {
-  animation: anim__fadeInRight 0.75s cubic-bezier(0.215, 0.61, 0.355, 1) both;
+  animation: anim__fadeInRight 1s $timing-func_mode;
 }
 
-@keyframes anim__fadeInRight {
-  from {
-    opacity: 0;
-    transform: translateX(-3em);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
+// .anim__fadeInUpBig {
+//   animation: anim__fadeInUpBig 1s $timing-func_mode;
+// }
+
+// .anim__fadeInDownBig {
+//   animation: anim__fadeInDownBig 1s $timing-func_mode;
+// }
+
+// .anim__fadeInLeftBig {
+//   animation: anim__fadeInLeftBig 1s $timing-func_mode;
+// }
+
+// .anim__fadeInRightBig {
+//   animation: anim__fadeInRightBig 1s $timing-func_mode;
+// }
+
+.anim__fadeOutUp {
+  animation: anim__fadeOutUp 1s $timing-func_mode;
 }
 
 .anim__fadeOutDown {
-  animation: anim__fadeOutDown 0.75s cubic-bezier(0.215, 0.61, 0.355, 1) both;
+  animation: anim__fadeOutDown 1s $timing-func_mode;
 }
 
-@keyframes anim__fadeOutDown {
-  from {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  to {
-    opacity: 0;
-    transform: translateY(3em);
-  }
+.anim__fadeOutLeft {
+  animation: anim__fadeOutLeft 1s $timing-func_mode;
 }
+
+.anim__fadeOutRight {
+  animation: anim__fadeOutRight 1s $timing-func_mode;
+}
+
+// .anim__fadeOutUpBig {
+//   animation: anim__fadeOutUpBig 1s $timing-func_mode;
+// }
+
+// .anim__fadeOutDownBig {
+//   animation: anim__fadeOutDownBig 1s $timing-func_mode;
+// }
+
+// .anim__fadeOutLeftBig {
+//   animation: anim__fadeOutLeftBig 1s $timing-func_mode;
+// }
+
+// .anim__fadeOutRightBig {
+//   animation: anim__fadeOutRightBig 1s $timing-func_mode;
+// }
 
 .anim__spin {
   animation: anim__spin 0.35s linear infinite;
@@ -101,56 +118,12 @@
   }
 }
 
-.anim__roll-in-right {
-  animation: anim__rollInRight 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+.anim__mode--backwards {
+  animation-fill-mode: backwards !important;
 }
 
-@keyframes anim__rollInRight {
-  from {
-    opacity: 0;
-    transform: translateX(100vw) rotateZ(2880deg) scale(0);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0) rotateZ(0) scale(1);
-  }
-}
-
-.anim__roll-in-left {
-  animation: anim__rollInLeft 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
-}
-
-@keyframes anim__rollInLeft {
-  from {
-    opacity: 0;
-    transform: translateX(-100vw) rotateZ(-2880deg) scale(0);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0) rotateZ(0) scale(1);
-  }
-}
-
-@keyframes rotateYBackward {
-  from {
-    transform: rotateY(180deg);
-  }
-  to {
-    transform: rotateY(0);
-  }
-}
-
-@keyframes rotateYForward {
-  from {
-    transform: rotateY(180deg);
-  }
-  to {
-    transform: rotateY(360deg);
-  }
-}
-
-[class*='anim__'] {
-  animation-fill-mode: both;
+.anim__mode--forwards {
+  animation-fill-mode: forwards !important;
 }
 
 .anim__dur--025s {
