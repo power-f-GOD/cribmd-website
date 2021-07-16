@@ -2,7 +2,10 @@ import Link from 'next/link';
 import { SyntheticEvent, FC, useCallback } from 'react';
 import { SVG, Box, Img } from '.';
 
-const Logo: FC<{ variant?: 'on-white' | 'on-black' | 'on-blue' }> = ({ variant }): JSX.Element => {
+const Logo: FC<{ variant?: 'on-white' | 'on-black' | 'on-blue'; className?: string }> = ({
+  variant,
+  className
+}): JSX.Element => {
   const handleImgError = useCallback((e: SyntheticEvent<HTMLImageElement, Event>): void => {
     const target = e.target as HTMLImageElement;
 
@@ -10,7 +13,7 @@ const Logo: FC<{ variant?: 'on-white' | 'on-black' | 'on-blue' }> = ({ variant }
   }, []);
 
   return (
-    <Box className="Logo top px-0">
+    <Box className={`Logo top px-0 ${className || ''}`.trim()}>
       <SVG
         xmlns="http://www.w3.org/2000/svg"
         id="flag-icon-css-ng"

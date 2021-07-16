@@ -2,7 +2,9 @@
 
 import { FC } from 'react';
 
-const SVGIcon: FC<{ name: string }> = ({ name }): JSX.Element => {
+export type SVGIconName = '';
+
+const SVGIcon: FC<{ name: SVGIconName }> = ({ name }): JSX.Element => {
   switch (name) {
     case '':
       return <></>;

@@ -22,7 +22,7 @@ body {
   background-color: white;
   font-size: 1rem !important;
   min-height: 100vh;
-  overflow: hidden;
+  // overflow: hidden;
   overflow-x: hidden !important;
 
   &.desktop.is-pc {
@@ -168,6 +168,7 @@ textarea {
   border-radius: $br * 0.9;
   box-shadow: 0 0.0625em 0.125em rgba(0, 0, 0, 0.1);
   text-decoration: none !important;
+  overflow: hidden;
   // @extend .text-overflow-ellipsis;
 
   &.active {
@@ -205,15 +206,15 @@ textarea {
 }
 
 .btn--contained {
-  color: white;
+  color: white !important;
 
   &.primary {
     background-color: $theme-primary;
 
     &:hover,
     &:focus {
-      border-color: $theme-primary;
-      color: $theme-primary;
+      // border-color: $theme-primary;
+      color: $theme-primary !important;
     }
   }
 
@@ -222,8 +223,8 @@ textarea {
 
     &:hover,
     &:focus {
-      border-color: $theme-secondary;
-      color: $theme-secondary;
+      // border-color: $theme-secondary;
+      color: $theme-secondary !important;
     }
   }
 
@@ -232,8 +233,8 @@ textarea {
 
     &:hover,
     &:focus {
-      border-color: $theme-tertiary;
-      color: $theme-tertiary;
+      // border-color: $theme-tertiary;
+      color: $theme-tertiary !important;
     }
   }
 
