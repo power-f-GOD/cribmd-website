@@ -5,11 +5,11 @@ import {
   HTMLAttributes
 } from 'react';
 
-export type SVGIconName =
-  | 'credit-card-individual'
-  | 'credit-card-corporate'
-  | 'volume'
-  | 'cribmd-logo';
+export interface IconProps {
+  name?: SVGIconName & string;
+  className?: string;
+  size?: 'tiny' | 'small' | 'medium' | 'large' | 'inherit';
+}
 
 export interface ButtonProps
   extends DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> {
@@ -37,6 +37,20 @@ export interface BoxProps
   > {
   as?: BoxAs;
 }
+
+export type SVGIconName =
+  | 'credit-card-individual'
+  | 'credit-card-corporate'
+  | 'volume'
+  | 'cribmd-logo'
+  | 'wave'
+  | 'heart'
+  | 'blood'
+  | 'users'
+  | 'girl'
+  | 'eye'
+  | 'cross'
+  | 'smiley';
 
 export type BoxAs =
   | 'nav'

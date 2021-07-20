@@ -52,7 +52,7 @@
     &:focus-within {
       color: $theme-primary;
 
-      .navbar__nav-link {
+      .AppNav__nav-link {
         color: $theme-primary !important;
         background: rgb(232, 241, 254) !important;
 
@@ -65,7 +65,7 @@
   }
 }
 
-div.navbar__underlay {
+div.AppNav__underlay {
   @extend .before-or-after;
   background: rgba(255, 255, 255, 0.95) !important;
   opacity: 1;
@@ -77,8 +77,8 @@ div.navbar__underlay {
   // }
 }
 
-ul.navbar__nav-links-container,
-ul.navbar__ctas-container {
+ul.AppNav__nav-links-container,
+ul.AppNav__ctas-container {
   list-style-type: none;
   display: flex;
   margin: 0;
@@ -107,7 +107,7 @@ ul.navbar__ctas-container {
   }
 }
 
-ul.navbar__ctas-container {
+ul.AppNav__ctas-container {
   .btn--primary {
     &::after {
       content: unset;
@@ -115,13 +115,13 @@ ul.navbar__ctas-container {
   }
 }
 
-.navbar__nav-link {
+.AppNav__nav-link {
   box-shadow: none !important;
   transition: background-color 0.3s !important;
 
   &:hover,
   &:focus {
-    box-shadow: 0 0.0625em 0.125em rgba(0, 0, 0, 0.15) !important;
+    box-shadow: 0 0.0625em 0.125em rgba(15, 103, 235, 0.25) !important;
   }
 
   &::before {
@@ -141,7 +141,7 @@ ul.navbar__ctas-container {
   }
 }
 
-button.navbar__menu-button {
+button.AppNav__menu-button {
   font-size: 0.75em;
 
   &::before {
@@ -149,7 +149,7 @@ button.navbar__menu-button {
   }
 }
 
-div.navbar__menu {
+div.AppNav__menu {
   overflow: hidden;
   border-radius: $br;
   text-align: left;
@@ -304,11 +304,11 @@ div.navbar__menu {
 
       // $delay: 0.25;
 
-      // .navbar__underlay {
+      // .AppNav__underlay {
       //   animation-delay: #{$delay}s;
       // }
 
-      // ul.navbar__nav-links-container {
+      // ul.AppNav__nav-links-container {
       //   animation-delay: #{$delay}s;
 
       //   li {
@@ -316,14 +316,14 @@ div.navbar__menu {
 
       //     @for $i from 1 through 6 {
       //       &:nth-child(#{$i}) {
-      //         .navbar__nav-link {
+      //         .AppNav__nav-link {
       //           animation-delay: #{$delay - (($i - 1) * $frac)}s;
       //         }
       //       }
       //     }
       //   }
 
-      //   .navbar__nav-link {
+      //   .AppNav__nav-link {
       //     animation-name: anim__fadeOut;
       //     animation-duration: 0.2s;
       //   }
@@ -350,14 +350,14 @@ div.navbar__menu {
     }
   }
 
-  div.navbar__underlay {
+  div.AppNav__underlay {
     height: 105vh;
     position: fixed;
     bottom: 0;
     top: 0;
   }
 
-  ul.navbar__nav-links-container {
+  ul.AppNav__nav-links-container {
     position: fixed !important;
     flex-direction: column;
     top: 0;
@@ -390,7 +390,7 @@ div.navbar__menu {
       }
 
       &:focus-within {
-        .navbar__menu {
+        .AppNav__menu {
           display: list-item;
           transition: 0.3s cubic-bezier(0.125, 1, 0.5, 1) 0.1s;
         }
@@ -400,7 +400,7 @@ div.navbar__menu {
 
       @for $i from 1 through 6 {
         &:nth-child(#{$i}) {
-          .navbar__nav-link {
+          .AppNav__nav-link {
             animation-delay: #{($i + 3) * $delay}s;
           }
         }
@@ -408,18 +408,19 @@ div.navbar__menu {
     }
   }
 
-  ul.navbar__nav-links-container .navbar__nav-link {
+  ul.AppNav__nav-links-container .AppNav__nav-link {
     border-radius: 1.75em;
     width: 14rem;
     font-size: 1.25em;
     font-weight: bold;
     padding: 1em 0 !important;
     box-shadow: none !important;
+    background-color: white;
     animation: anim__fadeInUp 0.5s cubic-bezier(0.125, 1, 0.5, 1) 0s;
     animation-fill-mode: both !important;
   }
 
-  div.navbar__menu {
+  div.AppNav__menu {
     top: 100%;
     margin-top: 0.45em;
     display: none;
@@ -452,7 +453,7 @@ div.navbar__menu {
     top: 0.5rem;
   }
 
-  ul.navbar__nav-links-container {
+  ul.AppNav__nav-links-container {
     border-radius: $br !important;
 
     &::before {
@@ -465,7 +466,7 @@ div.navbar__menu {
 
       &:hover,
       &:focus-within {
-        .navbar__menu {
+        .AppNav__menu {
           transition: 0.3s cubic-bezier(0.125, 1, 0.5, 1) 0.1s, visibility 0s;
           visibility: visible;
           transform: translateX(0);
@@ -475,7 +476,7 @@ div.navbar__menu {
     }
   }
 
-  div.navbar__menu {
+  div.AppNav__menu {
     position: absolute;
     visibility: hidden;
     opacity: 0;

@@ -9,15 +9,7 @@
  */
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import {
-  FC,
-  DetailedHTMLProps,
-  ImgHTMLAttributes,
-  SVGProps,
-  useState,
-  useEffect,
-  cloneElement
-} from 'react';
+import { FC, DetailedHTMLProps, ImgHTMLAttributes, useState, useEffect, cloneElement } from 'react';
 import { ButtonProps, AnchorProps, BoxProps } from 'src/types';
 import { useRouter } from 'next/dist/client/router';
 import Link from 'next/link';
@@ -99,17 +91,26 @@ export const NavLink: FC<Omit<AnchorProps, 'routeLink'>> = ({
   );
 };
 
-export const SVG: FC<DetailedHTMLProps<SVGProps<SVGSVGElement>, SVGSVGElement>> = ({
-  children,
-  ...props
-}): JSX.Element => {
-  return <svg {...props}>{children}</svg>;
-};
+export const Img: FC<
+  { isJPG?: boolean } & DetailedHTMLProps<ImgHTMLAttributes<HTMLImageElement>, HTMLImageElement>
+> = ({ isJPG, ...props }): JSX.Element => {
+  return (
+    <img
+      {...props}
+      alt={props.alt || 'image'}
+      aria-hidden={true}
+      onError={(e) => {
+        const img = e.target as HTMLImageElement;
 
-export const Img: FC<DetailedHTMLProps<ImgHTMLAttributes<HTMLImageElement>, HTMLImageElement>> = ({
-  ...props
-}): JSX.Element => {
-  return <img {...props} alt={props.alt || 'image'} />;
+        if (/\.webp/i.test(img.src)) {
+          img.src = img.src.replace(/\.webp/i, isJPG ? '.jpg' : '.png');
+        } else if (/\.webp/i.test(img.srcset)) {
+          img.srcset = img.srcset.replace(/\.webp/gi, isJPG ? '.jpg' : '.png');
+        }
+      }}
+      onLoad={(e) => ((e.target as any).ariaHidden = false)}
+    />
+  );
 };
 
 export const Box: FC<BoxProps> = ({ as, children, ...props }): JSX.Element => {

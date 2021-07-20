@@ -15,6 +15,10 @@ body {
   width: 100%;
   margin: 0;
   font-weight: 300;
+
+  @media screen and (max-width: 767px) {
+    font-size: 0.9rem;
+  }
 }
 
 body {
@@ -51,7 +55,7 @@ body {
     @extend .anim__fadeIn;
   }
 
-  main > * {
+  > main > * {
     padding-left: 1rem;
     padding-right: 1rem;
   }
@@ -60,7 +64,7 @@ body {
 * {
   font-family: Poppins, 'Helvetica Neue', sans-serif !important;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  line-height: 1.5em;
+  line-height: 1.75em;
 
   &,
   &::before,
@@ -85,12 +89,13 @@ h6,
   font-family: Poppins, sans-serif;
   margin: 0.5rem 0;
   display: block;
-  line-height: 1.25em;
+  line-height: 1.3em;
 }
 
 @mixin h-xs($s: 1.85) {
-  @media screen and (max-width: 575px) {
+  @media screen and (max-width: 767px) {
     font-size: 1em * $s;
+    line-height: 1.4em;
   }
 }
 
@@ -106,14 +111,14 @@ h1 {
 h2 {
   font-size: 1em * 2;
   font-weight: 700 !important;
-  @include h-xs(1.65);
+  @include h-xs(1.6);
 }
 
 .h3,
 h3 {
   font-size: 1em * 1.75;
   font-weight: 600 !important;
-  @include h-xs(1.45);
+  @include h-xs(1.4);
 }
 
 .h4,
@@ -127,14 +132,14 @@ h4 {
 h5 {
   font-size: 1em * 1.25;
   font-weight: 500 !important;
-  @include h-xs(1.05);
+  @include h-xs(1.15);
 }
 
 .h6,
 h6 {
   font-size: 1em * 1;
   font-weight: 500 !important;
-  @include h-xs(1);
+  @include h-xs(1.1);
 }
 
 a {
@@ -157,14 +162,15 @@ strong {
 div[role='img'],
 img,
 iframe {
+  max-width: 100%;
   transition: 0.5s;
-  animation: fadeIn 0.5s;
+  animation: fadeIn 1.5s;
 
-  // &[aria-hidden='true'],
-  // &[data-hidden='true'] {
-  //   opacity: 0;
-  //   pointer-events: none;
-  // }
+  &[aria-hidden='true'],
+  &[data-hidden='true'] {
+    opacity: 0;
+    // pointer-events: none;
+  }
 }
 
 a,
@@ -195,7 +201,7 @@ textarea {
   padding: 0 1.25rem;
   border-radius: $br * 0.9;
   font-size: 0.9em;
-  box-shadow: 0 0.0625em 0.125em rgba(0, 0, 0, 0.1);
+  box-shadow: 0.375em 0.375em 1em rgba(25, 113, 245, 0.08); // 0 0.0625em 0.125em rgba(0, 0, 0, 0.1);
   text-decoration: none !important;
   overflow: hidden;
   cursor: pointer;
@@ -225,7 +231,7 @@ textarea {
   &:hover,
   &:focus {
     opacity: 0.9;
-    box-shadow: 0 0.125em 0.25em rgba(0, 0, 0, 0.25);
+    box-shadow: 0 0.125em 0.25em rgba(15, 103, 235, 0.25);
   }
 
   &:disabled {
@@ -307,7 +313,7 @@ textarea {
 }
 
 .btn--outlined {
-  background-color: white; // transparent;
+  background-color: transparent;
 
   &.primary {
     color: $theme-primary;
@@ -346,7 +352,7 @@ textarea {
 }
 
 .btn--text {
-  background-color: white; // transparent;
+  background-color: transparent;
   border-color: transparent;
 
   &.primary {
@@ -439,6 +445,7 @@ input[type='password'] {
   }
 }
 
+[class~='col'],
 [class*='col-'],
 .container,
 .container-fluid {

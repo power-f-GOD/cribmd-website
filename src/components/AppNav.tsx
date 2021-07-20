@@ -50,6 +50,8 @@ const AppNav = (): JSX.Element => {
       end: document.body.offsetHeight,
       trigger: document.body,
       onUpdate: ({ direction }) => {
+        if (!isPC) return;
+
         clearTimeout(throttle);
 
         throttle = setTimeout(() => {
@@ -63,19 +65,17 @@ const AppNav = (): JSX.Element => {
     });
   }, [open, isPC]);
 
-  useEffect(() => {
-    setIsNegativeScroll(isPC);
-  }, [isPC]);
+  // useEffect(() => {
+  //   setRenderNav(isPC);
+  // }, [isPC]);
 
   return (
-    <Container
-      as="nav"
-      className="AppNav container ps-3 pe-3 ps-sm-2 pe-lg-3 py-1 py-sm-2 py-lg-3 mb-3 mb-lg-4">
-      <Logo className={isNegativeScroll ? '' : 'lighten'} />
+    <Container as="nav" className="AppNav container px-3 py-1 py-sm-2 py-lg-3 mb-3 mb-lg-4">
+      <Logo className={isPC ? (isNegativeScroll ? '' : 'lighten') : ''} />
 
       {!isPC && (renderNav || open) && (
         <Box
-          className={`navbar__underlay d-lg-none anim__dur--05s ${
+          className={`AppNav__underlay d-lg-none anim__dur--05s ${
             open ? 'anim__fadeInDownBig' : 'anim__fadeOutDownBig'
           }`}
         />
@@ -84,7 +84,7 @@ const AppNav = (): JSX.Element => {
       {(renderNav || open) && (
         <Box
           as="ul"
-          className={`navbar__nav-links-container px-2 px-sm-3 px-lg-2 pb-5 pb-lg-2 pt-lg-2 mx-auto ${
+          className={`AppNav__nav-links-container px-2 px-sm-3 px-lg-2 pb-5 pb-lg-2 pt-lg-2 mx-auto ${
             isPC
               ? isNegativeScroll
                 ? 'anim__fadeInDown anim__dur--025s'
@@ -100,7 +100,7 @@ const AppNav = (): JSX.Element => {
               exact
               href="/"
               color="tertiary"
-              className="navbar__nav-link"
+              className="AppNav__nav-link"
               onClick={!isPC ? handleNavOpenClick : undefined}
               onKeyDown={handleNavOpenClick}>
               Home
@@ -111,13 +111,13 @@ const AppNav = (): JSX.Element => {
             <NavLink
               button
               color="tertiary"
-              className="navbar__nav-link is-anchor"
+              className="AppNav__nav-link is-anchor"
               href="/about"
               onClick={preventDefault()}>
               About us
             </NavLink>
 
-            <Box className="navbar__menu">
+            <Box className="AppNav__menu">
               <Anchor
                 routeLink
                 href="/about/our-company"
@@ -158,13 +158,13 @@ const AppNav = (): JSX.Element => {
             <NavLink
               button
               color="tertiary"
-              className="navbar__nav-link is-anchor"
+              className="AppNav__nav-link is-anchor"
               href="/health-plans"
               onClick={preventDefault()}>
               Health Plans
             </NavLink>
 
-            <Box className="navbar__menu">
+            <Box className="AppNav__menu">
               <Anchor
                 routeLink
                 href="/health-plans/individual"
@@ -206,7 +206,7 @@ const AppNav = (): JSX.Element => {
               button
               href="/faq"
               color="tertiary"
-              className="navbar__nav-link"
+              className="AppNav__nav-link"
               onClick={!isPC ? handleNavOpenClick : undefined}>
               FAQ
             </NavLink>
@@ -217,7 +217,7 @@ const AppNav = (): JSX.Element => {
               button
               color="tertiary"
               href="https://blog.cribmd.com"
-              className="navbar__nav-link"
+              className="AppNav__nav-link"
               onClick={!isPC ? handleNavOpenClick : undefined}
               onKeyDown={handleNavOpenClick}>
               Blog
@@ -228,7 +228,7 @@ const AppNav = (): JSX.Element => {
             <Anchor
               button
               color="tertiary"
-              className="navbar__cta--text navbar__nav-link btn--text"
+              className="AppNav__cta--text AppNav__nav-link btn--text"
               href="https://www.cribmd.com/login">
               Log in
             </Anchor>
@@ -236,12 +236,12 @@ const AppNav = (): JSX.Element => {
         </Box>
       )}
 
-      <Box as="ul" className="navbar__ctas-container p-2">
+      <Box as="ul" className="AppNav__ctas-container p-2">
         <Box as="li" className="d-none d-lg-block">
           <Anchor
             button
             color="tertiary"
-            className="navbar__cta--text navbar__nav-link btn--text"
+            className="AppNav__cta--text AppNav__nav-link btn--text"
             href="https://www.cribmd.com/login">
             Log in
           </Anchor>
@@ -252,7 +252,7 @@ const AppNav = (): JSX.Element => {
             button
             variant="contained"
             color="primary"
-            className="navbar__nav-link ms-0 ms-lg-2"
+            className="AppNav__nav-link ms-0 ms-lg-2"
             href="https://www.cribmd.com/signup">
             Sign up
           </Anchor>
@@ -261,7 +261,7 @@ const AppNav = (): JSX.Element => {
         <Box as="li">
           <Button
             aria-label="menu button"
-            className="navbar__menu-button navbar__nav-link d-inline-flex d-lg-none btn--text ms-2 ms-sm-2 px-2"
+            className="AppNav__menu-button AppNav__nav-link d-inline-flex d-lg-none btn--text ms-2 ms-sm-2 px-2"
             onClick={handleNavOpenClick}>
             {!open ? 'Menu' : 'Close'}
             <Box as="span" className="custom-bars-wrapper ms-1">

@@ -9,10 +9,10 @@
 
   // &.responsive {
   // }
-  @media screen and (max-width: 575px) {
+  @media screen and (max-width: 767px) {
     a {
       display: block;
-      width: 5rem;
+      width: 4.85rem;
       overflow: hidden;
     }
   }
@@ -23,12 +23,13 @@
   }
 
   img {
-    width: 8rem;
+    width: 8.25rem;
     border-left: 0.0625rem solid rgba(221, 221, 221, 0.5);
     padding: 0.125rem 0 0.125rem 0.45rem;
     margin-left: 2.1rem;
     min-height: 2.35rem;
     max-height: 2.5rem;
+    max-width: unset;
   }
 
   .flag-icon {

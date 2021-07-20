@@ -7,7 +7,9 @@
     "type-check": "tsc --project tsconfig.json --pretty --noEmit",
     "lint": "eslint --ext js,jsx,ts,tsx --fix",
     "postinstall": "husky install",
-    "test": "jest"
+    "test": "jest",
+    "merge:power-ui": "git pull origin staging && git checkout staging && git pull origin staging && git merge power-ui && git checkout power-ui && git pull origin power-ui && git merge staging",
+    "webp": "for file in *; do cwebp $file -o ${file%.*}.webp; done"
   },
   "dependencies": {
     "@types/gsap": "^3.0.0",
