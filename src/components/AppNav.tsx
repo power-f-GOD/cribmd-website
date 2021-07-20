@@ -63,16 +63,20 @@ const AppNav = (): JSX.Element => {
     });
   }, [open, isPC]);
 
+  useEffect(() => {
+    setIsNegativeScroll(isPC);
+  }, [isPC]);
+
   return (
     <Container
       as="nav"
-      className="AppNav sidenav-closed container pl-3 pr-1 pr-sm-2 pr-lg-3 py-1 py-sm-2 py-lg-3 mb-lg-4">
+      className="AppNav container ps-3 pe-3 ps-sm-2 pe-lg-3 py-1 py-sm-2 py-lg-3 mb-3 mb-lg-4">
       <Logo className={isNegativeScroll ? '' : 'lighten'} />
 
-      {open && (
+      {!isPC && (renderNav || open) && (
         <Box
-          className={`navbar__underlay d-lg-none animate__animated anim__dur--05s ${
-            !open ? 'animate__fadeOutUp' : 'animate__fadeInDown '
+          className={`navbar__underlay d-lg-none anim__dur--05s ${
+            open ? 'anim__fadeInDownBig' : 'anim__fadeOutDownBig'
           }`}
         />
       )}
@@ -86,7 +90,7 @@ const AppNav = (): JSX.Element => {
                 ? 'anim__fadeInDown anim__dur--025s'
                 : 'anim__fadeOutUp'
               : !open
-              ? 'anim__fadeOut'
+              ? 'anim__OutDownBig anim__dur--05s'
               : 'anim__fadeIn anim__dur--05s'
           }`}
           onAnimationEnd={handleNavAnimationEnd}>

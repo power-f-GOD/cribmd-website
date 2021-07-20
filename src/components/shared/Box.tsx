@@ -147,6 +147,8 @@ export const Box: FC<BoxProps> = ({ as, children, ...props }): JSX.Element => {
       return <footer {...props}>{children}</footer>;
     case 'i':
       return <i {...props}>{children}</i>;
+    case 'small':
+      return <small {...props}>{children}</small>;
     case 'span':
       return <span {...props}>{children}</span>;
     case 'p':

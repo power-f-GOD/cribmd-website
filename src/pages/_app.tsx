@@ -30,17 +30,17 @@ const App = ({ Component, pageProps }: AppProps): JSX.Element => {
       }, 250);
     };
   }, []);
-
+  console.log('APPPP RENDERS OH NO');
   return (
     <AppContext.Provider value={appContextValue}>
-      <AppNav />
       <Head>
         <link
-          href="https://fonts.googleapis.com/css?family=Poppins:300,400,600,700,800&amp;display=swap"
+          href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700,800&amp;display=swap"
           rel="stylesheet"
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <AppNav />
       <Component {...pageProps} />
       <AppFooter />
     </AppContext.Provider>

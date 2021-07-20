@@ -1,3 +1,8 @@
+.before-or-after {
+  @include before-or-after($bg: inherit, $br: inherit, $o: 0.9);
+  backdrop-filter: blur(0.5rem);
+}
+
 .AppNav {
   left: 0;
   display: block;
@@ -62,11 +67,18 @@
 
 div.navbar__underlay {
   @extend .before-or-after;
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(255, 255, 255, 0.95) !important;
+  opacity: 1;
+  transition: unset;
+  box-shadow: 0 1em 0 rgba($prim-r, $prim-g, $prim-b, 0.5);
+
+  // &[class*='Out'] {
+  //   box-shadow: 0 -1em 0 rgba($prim-r, $prim-g, $prim-b, 0.5);
+  // }
 }
 
-ul.navbar__ctas-container,
-ul.navbar__nav-links-container {
+ul.navbar__nav-links-container,
+ul.navbar__ctas-container {
   list-style-type: none;
   display: flex;
   margin: 0;
@@ -77,8 +89,6 @@ ul.navbar__nav-links-container {
   transition: transform 0.3s, opacity 0.3s !important;
 
   &:nth-of-type(1) {
-    // box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.1);
-
     &::before {
       transition: transform 0.3s, opacity 0.3s;
       background-color: white;
@@ -105,8 +115,7 @@ ul.navbar__ctas-container {
   }
 }
 
-a.navbar__nav-link {
-  // @extend [class*='btn'];
+.navbar__nav-link {
   box-shadow: none !important;
   transition: background-color 0.3s !important;
 
@@ -233,6 +242,59 @@ div.navbar__menu {
   }
 }
 
+.custom-bars-wrapper {
+  display: inline-flex;
+  flex-direction: column;
+  width: 1.5rem;
+  transform: scale(1);
+  transition: 0.25s;
+
+  span {
+    height: 0.125rem;
+    background-color: $theme-primary;
+    transform: translateY(0);
+    border-radius: 0.125rem;
+    transform-origin: 0%;
+    transition: 0.25s;
+
+    &:nth-child(1) {
+      transform: translate(0.25rem, -0.4rem) rotateZ(45deg);
+      // transform: translate(0, -0.35rem);
+      width: 100%;
+    }
+
+    &:nth-child(2) {
+      width: 60%;
+      opacity: 0;
+      // opacity: 1;
+    }
+
+    &:nth-child(3) {
+      transform: translate(0.25rem, 0.4rem) rotateZ(-45deg);
+      // transform: translate(0, 0.35rem);
+    }
+
+    @media screen and (max-width: 1199px) {
+      transition-delay: 0.3s;
+      width: 100%;
+    }
+
+    @media screen and (min-width: 1200px) {
+      &:nth-child(1) {
+        transform: translate(0, -0.35rem);
+      }
+
+      &:nth-child(2) {
+        opacity: 1;
+      }
+
+      &:nth-child(3) {
+        transform: translate(0, 0.35rem);
+      }
+    }
+  }
+}
+
 @media screen and (max-width: 991px) {
   body {
     overflow: hidden !important;
@@ -240,37 +302,56 @@ div.navbar__menu {
     &[data-nav_open='false'] {
       overflow: unset !important;
 
-      $delay: 0.35;
+      // $delay: 0.25;
 
-      .navbar__underlay {
-        animation-delay: #{$delay}s;
-      }
+      // .navbar__underlay {
+      //   animation-delay: #{$delay}s;
+      // }
 
-      ul.navbar__nav-links-container {
-        animation-delay: #{$delay + 0.1}s;
+      // ul.navbar__nav-links-container {
+      //   animation-delay: #{$delay}s;
 
-        li {
-          $frac: 0.1;
+      //   li {
+      //     $frac: 0.15;
 
-          @for $i from 1 through 6 {
-            &:nth-child(#{$i}) {
-              .navbar__nav-link {
-                animation-delay: #{$delay - (($i - 1) * $frac)}s;
-              }
-            }
+      //     @for $i from 1 through 6 {
+      //       &:nth-child(#{$i}) {
+      //         .navbar__nav-link {
+      //           animation-delay: #{$delay - (($i - 1) * $frac)}s;
+      //         }
+      //       }
+      //     }
+      //   }
+
+      //   .navbar__nav-link {
+      //     animation-name: anim__fadeOut;
+      //     animation-duration: 0.2s;
+      //   }
+      // }
+
+      .custom-bars-wrapper {
+        span {
+          &:nth-child(1) {
+            transform: translate(0, -0.4rem);
           }
-        }
 
-        .navbar__nav-link {
-          animation-name: anim__fadeOutDown;
-          animation-duration: 0.2s;
+          &:nth-child(2) {
+            transform: translateY(0);
+            opacity: 1;
+            width: 80%;
+          }
+
+          &:nth-child(3) {
+            transform: translate(0, 0.4rem);
+            width: 100%;
+          }
         }
       }
     }
   }
 
   div.navbar__underlay {
-    height: 100vh;
+    height: 105vh;
     position: fixed;
     bottom: 0;
     top: 0;
@@ -291,7 +372,7 @@ div.navbar__menu {
     color: white;
 
     &::before {
-      content: unset;
+      content: unset !important;
     }
 
     li {
@@ -315,12 +396,12 @@ div.navbar__menu {
         }
       }
 
-      $delay: 0.1;
+      $delay: 0.03;
 
       @for $i from 1 through 6 {
         &:nth-child(#{$i}) {
           .navbar__nav-link {
-            animation-delay: #{($i + 4) * $delay}s;
+            animation-delay: #{($i + 3) * $delay}s;
           }
         }
       }
@@ -334,7 +415,7 @@ div.navbar__menu {
     font-weight: bold;
     padding: 1em 0 !important;
     box-shadow: none !important;
-    animation: anim__fadeSlideUp 0.5s cubic-bezier(0.125, 1, 0.5, 1) 0s;
+    animation: anim__fadeInUp 0.5s cubic-bezier(0.125, 1, 0.5, 1) 0s;
     animation-fill-mode: both !important;
   }
 
@@ -343,13 +424,13 @@ div.navbar__menu {
     margin-top: 0.45em;
     display: none;
     border: 0.125rem solid rgb(232, 241, 254);
-    animation: anim__fadeSlideDown 0.5s;
+    animation: anim__fadeInDown 0.5s;
 
     a {
-      $delay: 0.15s;
+      $delay: 0.1s;
 
       p {
-        animation: anim__fadeSlideUp 0.4s;
+        animation: anim__fadeInUp 0.4s;
         animation-fill-mode: backwards;
       }
 
@@ -373,6 +454,10 @@ div.navbar__menu {
 
   ul.navbar__nav-links-container {
     border-radius: $br !important;
+
+    &::before {
+      content: ' ';
+    }
 
     li {
       perspective: 4rem;
@@ -404,9 +489,4 @@ div.navbar__menu {
       width: 22rem;
     }
   }
-}
-
-.before-or-after {
-  @include before-or-after($bg: inherit, $br: inherit, $o: 0.9);
-  backdrop-filter: blur(0.5rem);
 }

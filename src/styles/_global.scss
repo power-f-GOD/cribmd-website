@@ -45,8 +45,22 @@ body {
   }
 }
 
+#__next {
+  &,
+  > main {
+    @extend .anim__fadeIn;
+  }
+
+  main > * {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
 * {
   font-family: Poppins, 'Helvetica Neue', sans-serif !important;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  line-height: 1.5em;
 
   &,
   &::before,
@@ -71,42 +85,56 @@ h6,
   font-family: Poppins, sans-serif;
   margin: 0.5rem 0;
   display: block;
+  line-height: 1.25em;
+}
+
+@mixin h-xs($s: 1.85) {
+  @media screen and (max-width: 575px) {
+    font-size: 1em * $s;
+  }
 }
 
 .h1,
 h1 {
   font-size: 1em * 2.25;
-  font-weight: 800 !important;
+  font-weight: 700 !important;
+
+  @include h-xs();
 }
 
 .h2,
 h2 {
   font-size: 1em * 2;
   font-weight: 700 !important;
+  @include h-xs(1.65);
 }
 
 .h3,
 h3 {
   font-size: 1em * 1.75;
-  font-weight: 700 !important;
+  font-weight: 600 !important;
+  @include h-xs(1.45);
 }
 
 .h4,
 h4 {
   font-size: 1em * 1.5;
   font-weight: 600 !important;
+  @include h-xs(1.25);
 }
 
 .h5,
 h5 {
   font-size: 1em * 1.25;
-  font-weight: 600 !important;
+  font-weight: 500 !important;
+  @include h-xs(1.05);
 }
 
 .h6,
 h6 {
   font-size: 1em * 1;
-  font-weight: 600 !important;
+  font-weight: 500 !important;
+  @include h-xs(1);
 }
 
 a {
@@ -163,12 +191,14 @@ textarea {
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  min-height: 2.75rem;
+  min-height: 2.65rem;
   padding: 0 1.25rem;
   border-radius: $br * 0.9;
+  font-size: 0.9em;
   box-shadow: 0 0.0625em 0.125em rgba(0, 0, 0, 0.1);
   text-decoration: none !important;
   overflow: hidden;
+  cursor: pointer;
   // @extend .text-overflow-ellipsis;
 
   &.active {
@@ -242,10 +272,42 @@ textarea {
   &:focus {
     background-color: transparent;
   }
+
+  &-light {
+    &.primary {
+      color: $theme-primary !important;
+      background-color: rgba($prim-r, $prim-g, $prim-b, 0.15);
+
+      &:hover,
+      &:focus {
+        background-color: rgba($prim-r, $prim-g, $prim-b, 0.25);
+      }
+    }
+
+    &.secondary {
+      color: $theme-secondary !important;
+      background-color: rgba($sec-r, $sec-g, $sec-b, 0.15);
+
+      &:hover,
+      &:focus {
+        background-color: rgba($sec-r, $sec-g, $sec-b, 0.25);
+      }
+    }
+
+    &.tertiary {
+      color: $theme-tertiary !important;
+      background-color: rgba($tert-r, $tert-g, $tert-b, 0.15);
+
+      &:hover,
+      &:focus {
+        background-color: rgba($tert-r, $tert-g, $tert-b, 0.25);
+      }
+    }
+  }
 }
 
 .btn--outlined {
-  background-color: transparent;
+  background-color: white; // transparent;
 
   &.primary {
     color: $theme-primary;
@@ -284,7 +346,7 @@ textarea {
 }
 
 .btn--text {
-  background-color: transparent;
+  background-color: white; // transparent;
   border-color: transparent;
 
   &.primary {
@@ -381,4 +443,126 @@ input[type='password'] {
 .container,
 .container-fluid {
   padding: 0;
+}
+
+.row {
+  margin: 0;
+}
+
+.pointer-events-none {
+  pointer-events: none;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.white-space-nowrap {
+  white-space: nowrap;
+}
+
+.text-overflow-ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 100%;
+  text-overflow: ellipsis;
+}
+
+button.no-shadow,
+a.no-shadow,
+.no-shadow {
+  box-shadow: unset !important;
+  text-shadow: unset !important;
+}
+
+.theme-primary {
+  color: $theme-primary !important;
+}
+.theme-primary-lighter {
+  color: $theme-primary-v7 !important;
+}
+.theme-primary-lightest {
+  color: $theme-primary-v9 !important;
+}
+.theme-primary-darker {
+  color: $theme-primary-v3 !important;
+}
+.theme-primary-darkest {
+  color: $theme-primary-v1 !important;
+}
+
+.theme-secondary {
+  color: $theme-secondary !important;
+}
+.theme-secondary-lighter {
+  color: $theme-secondary-v7 !important;
+}
+.theme-secondary-lightest {
+  color: $theme-secondary-v9 !important;
+}
+.theme-secondary-darker {
+  color: $theme-secondary-v3 !important;
+}
+.theme-secondary-darkest {
+  color: $theme-secondary-v1 !important;
+}
+
+.theme-tertiary {
+  color: $theme-tertiary !important;
+}
+.theme-tertiary-darker {
+  color: $theme-tertiary-v3 !important;
+}
+.theme-tertiary-darkest {
+  color: $theme-tertiary-v1 !important;
+}
+.theme-tertiary-lighter {
+  color: $theme-tertiary-v7 !important;
+}
+.theme-tertiary-lightest {
+  color: $theme-tertiary-v9 !important;
+}
+
+.theme-bg-primary-darkest {
+  background-color: $theme-primary-v1;
+}
+
+.theme-bg-primary-darker {
+  background-color: $theme-primary-v3;
+}
+
+.theme-bg-primary {
+  background-color: $theme-primary;
+}
+
+.theme-bg-primary-lighter {
+  background-color: $theme-primary-v7;
+}
+
+.theme-bg-primary-lightest {
+  background-color: $theme-primary-v9;
+}
+
+.theme-bg-secondary {
+  background-color: $theme-secondary;
+}
+
+.theme-bg-tertiary-darkest {
+  background-color: $theme-tertiary-v1;
+}
+
+.theme-bg-tertiary-darker {
+  background-color: $theme-tertiary-v3;
+}
+
+.theme-bg-tertiary {
+  background-color: $theme-tertiary;
+}
+
+.theme-bg-tertiary-lighter {
+  background-color: $theme-tertiary-v7;
+}
+
+.theme-bg-tertiary-lightest {
+  background-color: #eee;
 }

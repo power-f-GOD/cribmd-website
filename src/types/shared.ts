@@ -21,7 +21,7 @@ export interface ButtonProps
 export interface AnchorProps
   extends Partial<DetailedHTMLProps<AnchorHTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement>> {
   button?: boolean;
-  variant?: 'text' | 'outlined' | 'contained';
+  variant?: 'text' | 'outlined' | 'contained' | 'contained-light';
   color?: 'primary' | 'secondary' | 'tertiary';
   _type?: 'flat-button' | 'icon-button';
   exact?: boolean;
@@ -56,4 +56,5 @@ export type BoxAs =
   | 'ul'
   | 'li'
   | 'section'
-  | 'i';
+  | 'i'
+  | 'small';
