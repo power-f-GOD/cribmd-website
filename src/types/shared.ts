@@ -2,7 +2,8 @@ import {
   DetailedHTMLProps,
   ButtonHTMLAttributes,
   AnchorHTMLAttributes,
-  HTMLAttributes
+  HTMLAttributes,
+  RefObject
 } from 'react';
 
 export interface IconProps {
@@ -36,6 +37,7 @@ export interface BoxProps
     >
   > {
   as?: BoxAs;
+  _ref?: RefObject<HTMLElement & HTMLParagraphElement & HTMLUListElement & HTMLLIElement>;
 }
 
 export type SVGIconName =

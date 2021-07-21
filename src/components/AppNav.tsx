@@ -60,7 +60,7 @@ const AppNav = (): JSX.Element => {
           if (direction === -1 && isPC) {
             setRenderNav(true);
           }
-        }, 100);
+        }, 50);
       }
     });
   }, [open, isPC]);

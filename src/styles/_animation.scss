@@ -4,6 +4,10 @@ $timing-func_mode: 1s cubic-bezier(0.1, 1, 0.35, 1) both;
 
 // translateFadeIn animations
 
+[data-anim*='fade'] {
+  opacity: 0;
+}
+
 .anim__fadeIn {
   animation: anim__fadeIn $timing-func_mode;
 }
@@ -211,6 +215,10 @@ $timing-func_mode: 1s cubic-bezier(0.1, 1, 0.35, 1) both;
 
 .anim__del--05s {
   animation-delay: 0.5s !important;
+}
+
+.anim__del--075s {
+  animation-delay: 0.75s !important;
 }
 
 .anim__del--1s {

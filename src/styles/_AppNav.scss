@@ -158,7 +158,7 @@ div.AppNav__menu {
 
   &::before {
     @extend .before-or-after;
-    background: white;
+    // background: white;
     opacity: 0.975;
     transition: unset;
   }
@@ -489,5 +489,11 @@ div.AppNav__menu {
     a {
       width: 22rem;
     }
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .AppNav {
+    max-width: 1120px;
   }
 }

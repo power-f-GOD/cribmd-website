@@ -1,3 +1,5 @@
+@use 'sass:math';
+
 :root {
   --color-primary: rgb(25, 113, 245);
   --color-primary-light: rgba(21, 105, 232, 0.12);
@@ -85,12 +87,14 @@ h5,
 .h5,
 h6,
 .h6 {
-  color: $heading-default;
+  color: #0d2344; // $heading-default;
   font-family: Poppins, sans-serif;
   margin: 0.5rem 0;
   display: block;
-  line-height: 1.3em;
+  line-height: 1.25em;
 }
+
+$h1-size: 3em;
 
 @mixin h-xs($s: 1.85) {
   @media screen and (max-width: 767px) {
@@ -101,7 +105,7 @@ h6,
 
 .h1,
 h1 {
-  font-size: 1em * 2.25;
+  font-size: $h1-size;
   font-weight: 700 !important;
 
   @include h-xs();
@@ -109,35 +113,35 @@ h1 {
 
 .h2,
 h2 {
-  font-size: 1em * 2;
+  font-size: $h1-size * math.pow(0.805, 2);
   font-weight: 700 !important;
   @include h-xs(1.6);
 }
 
 .h3,
 h3 {
-  font-size: 1em * 1.75;
+  font-size: $h1-size * math.pow(0.805, 3);
   font-weight: 600 !important;
   @include h-xs(1.4);
 }
 
 .h4,
 h4 {
-  font-size: 1em * 1.5;
+  font-size: $h1-size * math.pow(0.805, 4);
   font-weight: 600 !important;
   @include h-xs(1.25);
 }
 
 .h5,
 h5 {
-  font-size: 1em * 1.25;
+  font-size: $h1-size * math.pow(0.805, 5);
   font-weight: 500 !important;
   @include h-xs(1.15);
 }
 
 .h6,
 h6 {
-  font-size: 1em * 1;
+  font-size: $h1-size * math.pow(0.805, 6);
   font-weight: 500 !important;
   @include h-xs(1.1);
 }
@@ -180,7 +184,7 @@ textarea {
   transition: 0.3s;
   font-weight: normal;
   font-family: Poppins, sans-serif;
-  animation-fill-mode: backwards !important;
+  animation-fill-mode: both;
   border-radius: $br * 0.9;
   max-width: 100%;
   min-height: 2rem;
@@ -480,6 +484,10 @@ a.no-shadow,
 .no-shadow {
   box-shadow: unset !important;
   text-shadow: unset !important;
+}
+
+.text-wrapper {
+  overflow: hidden;
 }
 
 .theme-primary {

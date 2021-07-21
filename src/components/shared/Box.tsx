@@ -120,6 +120,11 @@ export const Box: FC<BoxProps> = ({ as, children, ...props }): JSX.Element => {
     setRender(true);
   }, []);
 
+  if (props._ref) {
+    props.ref = props._ref;
+    delete props._ref;
+  }
+
   //Fix for SSR error: 'Warning: Expected server HTML to contain a matching <div> in <nav>'
   if (!render) return <></>;
 

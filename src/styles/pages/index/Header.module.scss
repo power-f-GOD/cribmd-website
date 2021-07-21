@@ -5,7 +5,17 @@
   border-radius: 1.5em;
   padding: 1.25em;
   overflow: hidden;
+  min-height: 40rem;
   position: relative;
+
+  h1 {
+    overflow: hidden;
+
+    > span {
+      display: inline-block;
+      overflow: hidden;
+    }
+  }
 
   a {
     background-color: white;
@@ -14,6 +24,7 @@
 
 .heroImage {
   margin-top: 4rem;
+  width: 19rem;
 }
 
 .mediaGrid {
@@ -29,6 +40,7 @@
     box-shadow: inset 0.0625em 0 0 #e6e9ef;
     display: flex;
     align-items: center;
+    overflow: hidden;
     // padding-right: 0.9em;
     // padding-left: 0.9em;
     justify-content: center;
@@ -52,5 +64,6 @@
 @media screen and (min-width: 768px) {
   .heroImage {
     margin: 2em 0;
+    width: 26rem;
   }
 }
