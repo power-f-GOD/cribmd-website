@@ -5,10 +5,10 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
-import { Box, Anchor, Img } from 'src/components/shared';
+import { Box, Anchor, Img, AnimateOnScroll } from 'src/components/shared';
 import { SVGEllipse } from 'src/components/shared/SVG';
-import { GetLogo, registerScrollAnim } from 'src/utils';
-import S from 'src/styles/pages/index/Header.module.scss';
+import { GetLogo, ScrollReveal } from 'src/utils';
+import S from 'src/styles/pages/home/Header.module.scss';
 
 const Header = (): JSX.Element => {
   const headerRef = useRef<HTMLElement | null>(null);
@@ -21,19 +21,11 @@ const Header = (): JSX.Element => {
         null;
       };
 
-    registerScrollAnim(header, {
-      selectors: ['h1', 'p', 'h2'],
-      animClass: 'fadeInUp'
-    });
-    registerScrollAnim(header, {
-      selectors: ['a', 'img', 'section'],
-      animClass: (i, element) =>
-        `fadeIn${element.tagName === 'A' ? 'Right' : element.tagName === 'SECTION' ? '' : 'Up'}`
-    });
-    registerScrollAnim(header, {
-      selectors: ['a + *'],
-      animClass: 'fadeInLeft'
-    });
+    new ScrollReveal(header);
+
+    // return () => {
+    // scrollReveal.unregister();
+    // };
   }, []);
 
   return (
@@ -48,28 +40,27 @@ const Header = (): JSX.Element => {
         <SVGEllipse type="5" />
 
         <Col xs={12} md={8} lg={7} xl={6} className="ps-lg-4 ps-xl-5 pe-md-4 pe-lg-0">
-          <Box className="text-wrapper">
-            <Box as="h1" data-animdelay="0.2">
+          <AnimateOnScroll>
+            <Box as="h1" data-anim_delay="0.1">
               The digital health consultation platform just for you
             </Box>
-          </Box>
-
-          <Box className="text-wrapper">
-            <Box as="p" className="mb-4 mb-lg-5" data-animdelay="0.4">
+          </AnimateOnScroll>
+          <AnimateOnScroll>
+            <Box as="p" className="mb-4 mb-lg-5" data-anim_delay="0.4">
               Skip the waiting room and instantly connect with verified medical practitioners for
               quality healthcare 24/7.
             </Box>
-          </Box>
-          <Box className="d-flex justify-content-between">
+          </AnimateOnScroll>
+          <AnimateOnScroll className="d-flex justify-content-between" animDelay={0.9}>
             <Anchor
               button
               color="primary"
               variant="text"
               href="https://www.cribmd.com/signup"
-              data-animdelay="0.9">
+              data-anim="fadeInRight">
               Get Started
             </Anchor>
-            <Box data-animdelay="0.9">
+            <Box data-anim="fadeInLeft">
               <Box as="small" className="d-block">
                 POWERED BY
               </Box>
@@ -77,9 +68,15 @@ const Header = (): JSX.Element => {
                 TheGuardian
               </Box>
             </Box>
-          </Box>
+          </AnimateOnScroll>
         </Col>
-        <Col xs={12} md={4} lg={5} xl={6} className="px-sm-3 ps-xl-5 pe-xl-0 text-center">
+        <AnimateOnScroll
+          component={Col}
+          xs={12}
+          md={4}
+          lg={5}
+          xl={6}
+          className="px-sm-3 ps-xl-5 pe-xl-0 text-center">
           <Img
             src="/img/home/header-hero-image.png"
             className={`${S.heroImage} ms-lg-4 ms-xl-5`}
@@ -87,14 +84,17 @@ const Header = (): JSX.Element => {
             data-animdelay="0.85"
             data-animease="cubic-bezier(0.5, 0, .5, 1.25)"
           />
-        </Col>
+        </AnimateOnScroll>
       </Row>
-      <Box className="text-wrapper">
+      <AnimateOnScroll>
         <Box as="h2" className="mt-5 mb-4 pt-2 pt-md-4 text-md-center">
           CribMD in the Media
         </Box>
-      </Box>
-      <Row as="section" className={`${S.mediaGrid} align-items-stretch`}>
+      </AnimateOnScroll>
+      <AnimateOnScroll
+        component={Row}
+        as="section"
+        className={`${S.mediaGrid} align-items-stretch`}>
         <Col className="py-2 py-lg-4" xs={3}>
           <Img src={GetLogo.media('techpoint')} alt="Techpoint logo" />
         </Col>
@@ -107,7 +107,7 @@ const Header = (): JSX.Element => {
         <Col className="py-2 py-lg-4" xs={3}>
           <Img src={GetLogo.media('yahoo-finance')} alt="Techpoint logo" />
         </Col>
-      </Row>
+      </AnimateOnScroll>
     </Container>
   );
 };

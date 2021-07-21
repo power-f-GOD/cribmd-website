@@ -1,20 +1,6 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import { MouseEvent } from 'react';
-import gsap from 'gsap/dist/gsap';
-import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
-
-export const preventDefault =
-  <T = HTMLElement>(callback?: () => void) =>
-  (e: MouseEvent<T>): void => {
-    e.preventDefault();
-
-    if (callback) callback();
-  };
-
-export const getMediaLogo = (name: string): string => `/img/logo/media/${name}-logo__250x.webp`;
-
-export const getPLogo = (name: string): string => `/img/logo/media/${name}-logo__250x.webp`;
 
 export class GetLogo {
   static baseUrl = '/img/logo/';
@@ -28,56 +14,75 @@ export class GetLogo {
   }
 }
 
-export const registerScrollAnim = (
-  anchor: HTMLElement | null,
-  options: {
-    selectors: string[];
-    windowWidth?: number;
-    animClass:
-      | ((elementIndex: number, element: HTMLElement, windowWidth?: number) => string)
-      | string;
+export class ScrollReveal {
+  private root: HTMLElement | Document;
+  private animAnchors: NodeListOf<HTMLElement> | undefined;
+  private observer: IntersectionObserver;
+
+  constructor(root: HTMLElement | Document) {
+    this.root = root;
+    this.observer = createObserver(
+      null,
+      (entries) => {
+        entries.forEach((entry) => {
+          const target = entry.target as HTMLElement;
+
+          target.dataset.animate_targets = entry.isIntersecting ? 'true' : 'false';
+        });
+      },
+      { threshold: 0.7 }
+    );
+    // delay a few millisec to ascertain anchors have mounted in the DOM
+    setTimeout(() => {
+      this.animAnchors = this.root.querySelectorAll('[data-anim_anchor]');
+      this.register();
+    }, 50);
   }
-) => {
-  const { selectors, animClass } = options;
 
-  setTimeout(() => {
-    gsap.registerPlugin(ScrollTrigger);
-    (anchor || document).querySelectorAll(`${selectors.join(',')}`).forEach((_element, i) => {
-      const element = _element as HTMLElement;
+  register() {
+    this.animAnchors?.forEach((animAnchor) => {
+      animAnchor.querySelectorAll(':scope > [data-anim_target]').forEach((_target, i) => {
+        const target = _target as HTMLElement;
 
-      if (!element.dataset.anim) {
-        element.dataset.anim = typeof animClass === 'string' ? animClass : animClass(i, element);
-      }
-
-      element.style.animationDelay = `${element.dataset.animdelay || (i * 0.075).toFixed(2)}s`;
-      element.style.animationTimingFunction =
-        element.dataset.animease || 'cubic-bezier(0.5, 0, .25, 1.5)';
-      // const anim = gsap.fromTo(
-      //   element,
-      //   {
-      //     // scrollTrigger: {
-      //     //   trigger: element,
-      //     //   toggleActions: 'restart none none none',
-      //     //   toggleClass: `anim__${
-      //     //     typeof animClass === 'string' ? element.dataset.anim : animClass(i, element)
-      //     //   }`
-      //     // }
-      //     y: 100,
-      //     opacity: 0
-      //   },
-      //   {
-      //     y: 0,
-      //     opacity: 1
-      //   }
-      // );
-      ScrollTrigger.create({
-        trigger: element,
-        // animation: anim,
-        toggleActions: 'restart none none none',
-        scrub: 1,
-        toggleClass: `anim__${element.dataset.anim}`
-        // once: true
+        target.classList.add(`anim__${target.dataset.anim || 'fadeInUp'}`);
+        target.style.animationDelay = `${target.dataset.anim_delay || (i * 0.1).toFixed(2)}s`;
+        target.style.animationTimingFunction =
+          target.dataset.anim_ease || 'cubic-bezier(0.5, 0, .25, 1.5)';
       });
+      this.observer.observe(animAnchor);
     });
-  }, 0);
+  }
+
+  unregister() {
+    this.animAnchors?.forEach((animAnchor) => this.observer.unobserve(animAnchor));
+  }
+}
+
+export const preventDefault =
+  <T = HTMLElement>(callback?: () => void) =>
+  (e: MouseEvent<T>): void => {
+    e.preventDefault();
+
+    if (callback) callback();
+  };
+
+export const createObserver = (
+  root: HTMLElement | null,
+  callback: IntersectionObserverCallback,
+  options?: IntersectionObserverInit
+) => {
+  const { rootMargin, threshold } = options || {};
+
+  return new IntersectionObserver(
+    callback,
+    options
+      ? { rootMargin: rootMargin ?? '0px', threshold: threshold ?? 1.0, root }
+      : {
+          root,
+          rootMargin: '0px',
+          threshold: Array(101)
+            .fill(0)
+            .map((_, i) => Number((i / 100).toFixed(2)))
+        }
+  );
 };

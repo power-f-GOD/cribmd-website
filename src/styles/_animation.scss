@@ -8,6 +8,19 @@ $timing-func_mode: 1s cubic-bezier(0.1, 1, 0.35, 1) both;
   opacity: 0;
 }
 
+[data-animate_targets='false'] {
+  [class*='anim__'] {
+    animation-name: anim__fadeOut !important;
+  }
+}
+
+[data-anim_target] {
+  &[class*='fade'],
+  &[data-anim*='fade'] {
+    opacity: 0;
+  }
+}
+
 .anim__fadeIn {
   animation: anim__fadeIn $timing-func_mode;
 }

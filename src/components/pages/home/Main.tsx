@@ -2,10 +2,12 @@
 import { useContext, useEffect, useCallback, useRef } from 'react';
 import { Container } from 'react-bootstrap';
 
-import S from 'src/styles/pages/index/Main.module.scss';
-import { Box, SVGIcon } from 'src/components/shared';
+import S from 'src/styles/pages/home/Main.module.scss';
+import { Box, SVGIcon, AnimateOnScroll } from 'src/components/shared';
 import { AppContext } from 'src/pages/_app';
-import { registerScrollAnim } from 'src/utils';
+import { ScrollReveal } from 'src/utils';
+
+// let observer: IntersectionObserver;
 
 const Main = (): JSX.Element => {
   const { windowWidth } = useContext(AppContext);
@@ -25,61 +27,61 @@ const Main = (): JSX.Element => {
         null;
       };
 
-    registerScrollAnim(main, {
-      selectors: ["[class*='specializationsGrid'] > *", 'h2', 'p'],
-      animClass: (i, element) =>
-        /^H2|P$/.test(element.tagName) ? 'fadeInUp' : specializationsAnim(i % 2 === 0)
-    });
+    new ScrollReveal(main);
+
+    // return () => {
+    //   scrollReveal.unregister();
+    // };
   }, [specializationsAnim]);
 
   return (
     <Container as="main" className="my-5" ref={mainRef}>
-      <Box className="text-wrapper">
-        <Box as="h2" className="text-md-center pt-md-5" data-animdelay="0.4">
+      <AnimateOnScroll className="text-wrapper">
+        <Box as="h2" className="text-md-center pt-md-5">
           Thousands of doctors at your beck and call
         </Box>
-      </Box>
-      <Box className="text-wrapper">
-        <Box as="p" className="text-md-center mb-md-5" data-animdelay="0.6">
+      </AnimateOnScroll>
+      <AnimateOnScroll className="text-wrapper">
+        <Box as="p" className="text-md-center mb-md-5" data-anim_delay="0.6">
           Get access to highly qualified doctors on CribMD!
           <br />
           Don’t risk your health by relying on self-medication or amateur advice.
         </Box>
-      </Box>
-      <Box as="section" className={S.specializationsGrid}>
-        <Box className="p-4 px-3">
+      </AnimateOnScroll>
+      <AnimateOnScroll as="section" className={S.specializationsGrid} allowOverflow>
+        <Box className="p-4 px-3" data-anim={specializationsAnim(true)}>
           <SVGIcon name="wave" size="medium" />
           <Box as="span">Dermatologist</Box>
         </Box>
-        <Box className="p-4 px-3">
+        <Box className="p-4 px-3" data-anim={specializationsAnim()}>
           <SVGIcon name="smiley" size="medium" />
           <Box as="span">Pediatrician</Box>
         </Box>
-        <Box className="p-4 px-3">
+        <Box className="p-4 px-3" data-anim={specializationsAnim(true)}>
           <SVGIcon name="cross" size="medium" />
           <Box as="span">General Practice</Box>
         </Box>
-        <Box className="p-4 px-3">
+        <Box className="p-4 px-3" data-anim={specializationsAnim()}>
           <SVGIcon name="girl" size="medium" />
           <Box as="span">Gynecologist</Box>
         </Box>
-        <Box className="p-4 px-3">
+        <Box className="p-4 px-3" data-anim={specializationsAnim(true)}>
           <SVGIcon name="eye" size="medium" />
           <Box as="span">Optometry</Box>
         </Box>
-        <Box className="p-4 px-3">
+        <Box className="p-4 px-3" data-anim={specializationsAnim()}>
           <SVGIcon name="users" size="medium" />
           <Box as="span">Family Medicine</Box>
         </Box>
-        <Box className="p-4 px-3">
+        <Box className="p-4 px-3" data-anim={specializationsAnim(true)}>
           <SVGIcon name="blood" size="medium" />
           <Box as="span">Endocrinology</Box>
         </Box>
-        <Box className="p-4 px-3">
+        <Box className="p-4 px-3" data-anim={specializationsAnim(true)}>
           <SVGIcon name="heart" size="medium" />
           <Box as="span">Cardiology</Box>
         </Box>
-      </Box>
+      </AnimateOnScroll>
     </Container>
   );
 };
