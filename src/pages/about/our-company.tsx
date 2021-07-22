@@ -5,9 +5,8 @@ import { Header, Main, Footer } from 'src/components/pages/about/our-company';
 
 const OurCompany: NextPage = () => {
   return (
-    <div className="OurCompany">
+    <div className="">
       <AppHead title="About Us - Our Company" />
-      <h1>Welcome to the About/OurCompany page!</h1>
       <Header />
       <Main />
       <Footer />

@@ -1,8 +1,9 @@
-@use '../commons';
-
+@import '../commons';
+@import 'Cta';
 @import 'Header';
 @import 'Main';
 @import 'Main.OurMission';
 @import 'Main.OurTeam';
 @import 'Main.OurDoctors';
+@import 'TeamModal';
 @import 'Footer';

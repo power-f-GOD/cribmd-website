@@ -1,0 +1,28 @@
+.footerSection {
+  justify-content: center;
+  position: relative;
+  padding: 4rem 2rem 0;
+  width: 100%;
+  @media (max-width: 700px) {
+    padding: 1rem 1rem 0;
+    margin-top: 1rem;
+  }
+}
+.footerContainer {
+  background: rgb(158, 172, 229, 0.12) !important;
+  padding: 1rem 1.5rem;
+  z-index: 100;
+  overflow: hidden;
+  border-radius: 1.5rem;
+  position: relative;
+
+  img {
+    width: 100%;
+    object-fit: cover;
+    z-index: 10;
+    border-radius: 10px;
+    @media (max-width: 700px) {
+      margin-left: -1rem;
+    }
+  }
+}

@@ -4,6 +4,7 @@ import { AppProps } from 'next/app';
 import 'bootstrap/dist/css/bootstrap-utilities.min.css';
 import 'bootstrap/dist/css/bootstrap-grid.min.css';
 import 'src/styles/app.scss';
+
 import { AppNav, AppFooter } from 'src/components';
 import Head from 'next/head';
 

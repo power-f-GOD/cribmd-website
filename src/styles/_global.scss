@@ -14,7 +14,7 @@ html,
 body {
   width: 100%;
   margin: 0;
-  font-weight: 300;
+  font-weight: 400;
 }
 
 body {
@@ -75,38 +75,56 @@ h6,
 
 .h1,
 h1 {
-  font-size: 1em * 2.25;
-  font-weight: 800 !important;
+  font-size: 1em * 3;
+  font-weight: 600 !important;
+  @media (max-width: 576px) {
+    font-size: 1em * 1.5;
+  }
 }
 
 .h2,
 h2 {
-  font-size: 1em * 2;
-  font-weight: 700 !important;
+  font-size: 1em * 2.25;
+  font-weight: 600 !important;
+  @media (max-width: 576px) {
+    font-size: 1em * 1.125;
+  }
 }
 
 .h3,
 h3 {
-  font-size: 1em * 1.75;
-  font-weight: 700 !important;
+  font-size: 1em * 2;
+  font-weight: 600 !important;
+  @media (max-width: 576px) {
+    font-size: 1em * 1;
+  }
 }
 
 .h4,
 h4 {
-  font-size: 1em * 1.5;
+  font-size: 1em * 1.75;
   font-weight: 600 !important;
+  @media (max-width: 576px) {
+    font-size: 1em * 0.873;
+  }
 }
 
 .h5,
 h5 {
-  font-size: 1em * 1.25;
+  font-size: 1em * 1.5;
   font-weight: 600 !important;
+  @media (max-width: 576px) {
+    font-size: 1em * 0.75;
+  }
 }
 
 .h6,
 h6 {
   font-size: 1em * 1;
   font-weight: 600 !important;
+  @media (max-width: 576px) {
+    font-size: 1em * 0.5;
+  }
 }
 
 a {
@@ -184,7 +202,7 @@ textarea {
     // padding-right: 2.5rem ;
     // padding-left: 2.5rem ;
     // background-color: $theme-primary ;
-    // color: white ;
+    color: $heading-default;
 
     &:hover,
     &:focus {
@@ -334,6 +352,21 @@ textarea {
     min-width: 2.5rem;
   }
 }
+.modal-backdrop {
+  background-color: rgba(13, 35, 68, 0.5) !important;
+}
+.modal-dialog {
+  @media (min-width: 992px) {
+    max-width: 800px !important;
+  }
+}
+.modal {
+  backdrop-filter: blur(0.25rem);
+}
+.modal-content {
+  border-radius: 1.125rem !important;
+  border: none !important;
+}
 
 input[type='text'],
 input[type='password'] {
@@ -344,7 +377,7 @@ input[type='password'] {
 
 [aria-hidden='true'],
 [data-hidden='true'] {
-  opacity: 0;
+  // opacity: 0;
   pointer-events: none;
 }
 
@@ -377,8 +410,37 @@ input[type='password'] {
   }
 }
 
-[class*='col-'],
-.container,
-.container-fluid {
-  padding: 0;
+// [class*='col-'],
+// .container,
+// .container-fluid {
+//   padding: 0;
+// }
+
+//for paragraph contents
+.primary-content {
+  font-size: 1.25rem;
+  line-height: 2.125rem;
+  color: $content-default;
+  @media (max-width: 576px) {
+    font-size: 1rem;
+    line-height: 1.75rem;
+  }
+}
+.secondary-content {
+  font-size: 1rem;
+  line-height: 1.875rem;
+  color: $content-default;
+  @media (max-width: 576px) {
+    font-size: 0.875rem;
+    line-height: 1.625rem;
+  }
+}
+.tertiary-content {
+  font-size: 0.875rem;
+  line-height: 1.75rem;
+  color: $content-default-s;
+  @media (max-width: 576px) {
+    font-size: 0.625rem;
+    line-height: 1.125rem;
+  }
 }
