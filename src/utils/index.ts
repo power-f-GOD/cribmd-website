@@ -26,15 +26,15 @@ export class ScrollReveal {
       null,
       (entries) => {
         entries.forEach((entry) => {
-          const target = entry.target as HTMLElement;
+          const animAnchor = entry.target as HTMLElement;
           const isIntersecting = entry.isIntersecting;
 
-          target.dataset.animate_targets = entry.isIntersecting ? 'true' : 'false';
+          animAnchor.dataset.animate_targets = entry.isIntersecting ? 'true' : 'false';
 
-          if (target.dataset.anim_once) {
+          if (animAnchor.dataset.anim_once) {
             if (isIntersecting) {
-              target.dataset.animate_targets = 'true';
-              this.observer.unobserve(target);
+              animAnchor.dataset.animate_targets = 'true';
+              this.observer.unobserve(animAnchor);
             }
           }
         });
