@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { FC, Children, CSSProperties } from 'react';
+import { FC, Children, CSSProperties, memo } from 'react';
 
 import { Box } from '.';
 import { BoxProps, AnimName } from 'src/types';
 import { ColProps, ContainerProps, RowProps } from 'react-bootstrap';
 
-export const RevealOnScroll: FC<
+const _RevealOnScroll: FC<
   BoxProps &
     Partial<ColProps | ContainerProps | RowProps> &
     Partial<{
@@ -15,6 +15,7 @@ export const RevealOnScroll: FC<
       animName: AnimName;
       duration: number;
       easing: string;
+      once: boolean;
     }>
 > = ({
   children,
@@ -25,6 +26,7 @@ export const RevealOnScroll: FC<
   animName,
   duration,
   allowOverflow,
+  once,
   ...props
 }): JSX.Element => {
   const Component = component || Box;
@@ -33,7 +35,8 @@ export const RevealOnScroll: FC<
     <Component
       {...props}
       className={`${className} ${allowOverflow ? 'overflow-visible' : 'overflow-clip'}`}
-      data-anim_anchor>
+      data-anim_anchor
+      {...(once ? { 'data-anim_once': 'true' } : {})}>
       {Children.map(children, (_child: any, i) => {
         const newChild = { ..._child };
         const { style, ...childProps }: { style: CSSProperties; [key: string]: any } = {
@@ -74,3 +77,14 @@ export const RevealOnScroll: FC<
     </Component>
   );
 };
+
+/**
+ * @param {FC} component Component to use to render wrapper instead of `<Box>`'s default: `div`.
+ * @param {boolean} allowOverflow Whether to allow wrapping component make animating child overflowing visible.
+ * @param {boolean} once Whether to allow the (scroll) animation run only once.
+ * @param {string} easing Animation/Transition easing/timing function
+ * @param {AnimName} animName Animation name
+ * @param {number} duration Animation duration
+ * @param {number} delay Animation delay
+ */
+export const RevealOnScroll = memo(_RevealOnScroll);

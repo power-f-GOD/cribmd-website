@@ -31,6 +31,7 @@
   border: 0.0625rem solid #e6e9ef;
   box-shadow: 0 0.125rem 0.25rem rgba(17, 17, 17, 0.04);
   border-radius: 0.25rem;
+  min-height: 3rem;
 
   > * {
     &:first-child {
@@ -58,6 +59,7 @@
 
   .mediaGrid {
     border-radius: 0.75em;
+    min-height: 5rem;
   }
 }
 
@@ -65,5 +67,9 @@
   .heroImage {
     margin: 2em 0;
     width: 26rem;
+  }
+
+  .mediaGrid {
+    min-height: 8rem;
   }
 }
