@@ -9,10 +9,10 @@
  */
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { FC, useState, useEffect } from 'react';
+import { FC, useState, useEffect, memo } from 'react';
 import { BoxProps } from 'src/types';
 
-export const Box: FC<BoxProps> = ({ as, children, ...props }): JSX.Element => {
+const _Box: FC<BoxProps> = ({ as, children, ...props }): JSX.Element => {
   const [render, setRender] = useState(false);
 
   useEffect(() => {
@@ -68,3 +68,5 @@ export const Box: FC<BoxProps> = ({ as, children, ...props }): JSX.Element => {
       return <div {...props}>{children}</div>;
   }
 };
+
+export const Box = memo(_Box);

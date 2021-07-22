@@ -1,8 +1,8 @@
-import { FC } from 'react';
+import { FC, memo } from 'react';
 import { Box } from '.';
 import { IconProps } from 'src/types';
 
-export const Icon: FC<IconProps> = ({ children, name, size, className }) => {
+const _Icon: FC<IconProps> = ({ children, name, size, className }) => {
   return (
     <Box
       as="i"
@@ -13,3 +13,5 @@ export const Icon: FC<IconProps> = ({ children, name, size, className }) => {
     </Box>
   );
 };
+
+export const Icon: FC<IconProps> = memo(_Icon);

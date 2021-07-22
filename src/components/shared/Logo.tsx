@@ -1,8 +1,8 @@
 import Link from 'next/link';
-import { FC } from 'react';
+import { FC, memo } from 'react';
 import { SVG, Box, Img } from '.';
 
-export const Logo: FC<{ variant?: 'on-white' | 'on-black' | 'on-blue'; className?: string }> = ({
+const _Logo: FC<{ variant?: 'on-white' | 'on-black' | 'on-blue'; className?: string }> = ({
   variant,
   className
 }): JSX.Element => {
@@ -32,3 +32,5 @@ export const Logo: FC<{ variant?: 'on-white' | 'on-black' | 'on-blue'; className
     </Box>
   );
 };
+
+export const Logo = memo(_Logo);
