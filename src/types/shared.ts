@@ -5,11 +5,11 @@ import {
   HTMLAttributes
 } from 'react';
 
-export type SVGIconName =
-  | 'credit-card-individual'
-  | 'credit-card-corporate'
-  | 'volume'
-  | 'cribmd-logo';
+export interface IconProps {
+  name?: SVGIconName & string;
+  className?: string;
+  size?: 'tiny' | 'small' | 'medium' | 'large' | 'inherit';
+}
 
 export interface ButtonProps
   extends DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> {
@@ -21,7 +21,7 @@ export interface ButtonProps
 export interface AnchorProps
   extends Partial<DetailedHTMLProps<AnchorHTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement>> {
   button?: boolean;
-  variant?: 'text' | 'outlined' | 'contained';
+  variant?: 'text' | 'outlined' | 'contained' | 'contained-light';
   color?: 'primary' | 'secondary' | 'tertiary';
   _type?: 'flat-button' | 'icon-button';
   exact?: boolean;
@@ -37,6 +37,20 @@ export interface BoxProps
   > {
   as?: BoxAs;
 }
+
+export type SVGIconName =
+  | 'credit-card-individual'
+  | 'credit-card-corporate'
+  | 'volume'
+  | 'cribmd-logo'
+  | 'wave'
+  | 'heart'
+  | 'blood'
+  | 'users'
+  | 'girl'
+  | 'eye'
+  | 'cross'
+  | 'smiley';
 
 export type BoxAs =
   | 'nav'
@@ -56,4 +70,5 @@ export type BoxAs =
   | 'ul'
   | 'li'
   | 'section'
-  | 'i';
+  | 'i'
+  | 'small';

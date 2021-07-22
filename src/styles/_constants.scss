@@ -58,57 +58,66 @@ $theme-tertiary-v9: rgb($tert-r + (25 * 4), $tert-g + (25 * 4), $tert-b + (25 * 
 }
 
 /// Sidebar: The "or's" comparing the default params values here are not necessary. They are just for you to know valid values that can be passed in. Obviously, the first ones [values] win.
-@mixin anim__fade(
-  $mode: 'In' or 'Out',
-  $direction: 'Right' or 'Left' or 'Up' or 'Down',
-  $magnitude: 'Small' or 'Big'
+@mixin anim__(
+  $mode: 'fadeIn' or 'fadeOut',
+  $direction: 'Right' or 'Left' or 'Up' or 'Down' or null,
+  $magnitude: 'Small' or 'Big' or null
 ) {
-  $isIn: $mode == 'In';
+  $isIn: $mode == 'fadeIn' or $mode == 'In';
+  $isFade: $mode == 'fadeIn' or $mode == 'fadeOut';
   $dir: $direction;
   $isX: $dir == 'Right' or $direction == 'Left';
   $isBig: $magnitude == 'Big';
 
-  @keyframes anim__fade#{$mode}#{$dir}#{if($isBig, $magnitude, '')} {
+  @keyframes anim__#{$mode}#{if($dir, $dir, '')}#{if($isBig, $magnitude, '')} {
     from {
-      opacity: if($isIn, 0, 1);
+      @if ($isFade) {
+        opacity: if($isIn, 0, 1);
+      }
 
-      @if $isIn {
-        @if $isX {
-          $isLeft: $dir == 'Left';
+      @if ($dir) {
+        @if $isIn {
+          @if $isX {
+            $isLeft: $dir == 'Left';
 
-          transform: translateX(if($isBig, if($isLeft, 100vw, -100vw), if($isLeft, 3em, -3em)));
+            transform: translateX(if($isBig, if($isLeft, 100vw, -100vw), if($isLeft, 3em, -3em)));
+          } @else {
+            $isUp: $dir == 'Up';
+
+            transform: translateY(if($isBig, if($isUp, 100vh, -100vh), if($isUp, 3em, -3em)));
+          }
         } @else {
-          $isUp: $dir == 'Up';
-
-          transform: translateY(if($isBig, if($isUp, 100vh, -100vh), if($isUp, 3em, -3em)));
-        }
-      } @else {
-        @if $isX {
-          transform: translateX(0);
-        } @else {
-          transform: translateY(0);
+          @if $isX {
+            transform: translateX(0);
+          } @else {
+            transform: translateY(0);
+          }
         }
       }
     }
 
     to {
-      opacity: if($isIn, 1, 0);
+      @if $isFade {
+        opacity: if($isIn, 1, 0);
+      }
 
-      @if $isIn {
-        @if $isX {
-          transform: translateX(0);
+      @if $dir {
+        @if $isIn {
+          @if $isX {
+            transform: translateX(0);
+          } @else {
+            transform: translateY(0);
+          }
         } @else {
-          transform: translateY(0);
-        }
-      } @else {
-        @if $isX {
-          $isLeft: $dir == 'Left';
+          @if $isX {
+            $isLeft: $dir == 'Left';
 
-          transform: translateX(if($isBig, if($isLeft, -100vw, 100vw), if($isLeft, -3em, 3em)));
-        } @else {
-          $isUp: $dir == 'Up';
+            transform: translateX(if($isBig, if($isLeft, -100vw, 100vw), if($isLeft, -3em, 3em)));
+          } @else {
+            $isUp: $dir == 'Up';
 
-          transform: translateY(if($isBig, if($isUp, -100vh, 100vh), if($isUp, -3em, 3em)));
+            transform: translateY(if($isBig, if($isUp, -100vh, 100vh), if($isUp, -3em, 3em)));
+          }
         }
       }
     }

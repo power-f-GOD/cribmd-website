@@ -1,0 +1,56 @@
+@import '../../constants';
+
+.hero {
+  background-color: rgba(25, 113, 245, 0.05);
+  border-radius: 1.5em;
+  padding: 1.25em;
+  overflow: hidden;
+  position: relative;
+
+  a {
+    background-color: white;
+  }
+}
+
+.heroImage {
+  margin-top: 4rem;
+}
+
+.mediaGrid {
+  border: 0.0625rem solid #e6e9ef;
+  box-shadow: 0 0.125rem 0.25rem rgba(17, 17, 17, 0.04);
+  border-radius: 0.25rem;
+
+  > * {
+    &:first-child {
+      box-shadow: none;
+    }
+
+    box-shadow: inset 0.0625em 0 0 #e6e9ef;
+    display: flex;
+    align-items: center;
+    // padding-right: 0.9em;
+    // padding-left: 0.9em;
+    justify-content: center;
+  }
+
+  img {
+    width: 15em;
+  }
+}
+
+@media screen and (min-width: 576px) {
+  .hero {
+    border-radius: 2.5em;
+  }
+
+  .mediaGrid {
+    border-radius: 0.75em;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .heroImage {
+    margin: 2em 0;
+  }
+}

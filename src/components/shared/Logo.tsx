@@ -1,17 +1,11 @@
 import Link from 'next/link';
-import { SyntheticEvent, FC, useCallback } from 'react';
+import { FC } from 'react';
 import { SVG, Box, Img } from '.';
 
 const Logo: FC<{ variant?: 'on-white' | 'on-black' | 'on-blue'; className?: string }> = ({
   variant,
   className
 }): JSX.Element => {
-  const handleImgError = useCallback((e: SyntheticEvent<HTMLImageElement, Event>): void => {
-    const target = e.target as HTMLImageElement;
-
-    if (/\.webp/.test(target.srcset)) target.srcset = target.srcset.replaceAll('.webp', '.png');
-  }, []);
-
   return (
     <Box className={`Logo top px-0 ${className || ''}`.trim()}>
       <SVG
@@ -27,12 +21,11 @@ const Logo: FC<{ variant?: 'on-white' | 'on-black' | 'on-blue'; className?: stri
       <Link href="/">
         <a>
           <Img
-            srcSet={`/img/logo/logo-${variant || 'on-white'}__500x.webp 2x, /img/logo/logo-${
+            srcSet={`/img/logo/cribmd/logo-${
               variant || 'on-white'
-            }__250x.webp 1x`}
+            }__500x.webp 2x, /img/logo/cribmd/logo-${variant || 'on-white'}__250x.webp 1x`}
             sizes="200px"
             alt="CribMD logo"
-            onError={handleImgError}
           />
         </a>
       </Link>

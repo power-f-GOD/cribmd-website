@@ -15,6 +15,9 @@ body {
   width: 100%;
   margin: 0;
   font-weight: 400;
+  @media screen and (max-width: 767px) {
+    font-size: 0.9rem;
+  }
 }
 
 body {
@@ -45,8 +48,22 @@ body {
   }
 }
 
+#__next {
+  &,
+  > main {
+    @extend .anim__fadeIn;
+  }
+
+  > main > * {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
 * {
   font-family: Poppins, 'Helvetica Neue', sans-serif !important;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  line-height: 1.75em;
 
   &,
   &::before,
@@ -71,6 +88,14 @@ h6,
   font-family: Poppins, sans-serif;
   margin: 0.5rem 0;
   display: block;
+  line-height: 1.3em;
+}
+
+@mixin h-xs($s: 1.85) {
+  @media screen and (max-width: 767px) {
+    font-size: 1em * $s;
+    line-height: 1.4em;
+  }
 }
 
 .h1,
@@ -80,6 +105,7 @@ h1 {
   @media (max-width: 576px) {
     font-size: 1em * 1.5;
   }
+  @include h-xs();
 }
 
 .h2,
@@ -89,6 +115,7 @@ h2 {
   @media (max-width: 576px) {
     font-size: 1em * 1.125;
   }
+  @include h-xs(1.6);
 }
 
 .h3,
@@ -98,6 +125,7 @@ h3 {
   @media (max-width: 576px) {
     font-size: 1em * 1;
   }
+  @include h-xs(1.4);
 }
 
 .h4,
@@ -107,6 +135,7 @@ h4 {
   @media (max-width: 576px) {
     font-size: 1em * 0.873;
   }
+  @include h-xs(1.25);
 }
 
 .h5,
@@ -116,6 +145,7 @@ h5 {
   @media (max-width: 576px) {
     font-size: 1em * 0.75;
   }
+  @include h-xs(1.15);
 }
 
 .h6,
@@ -125,6 +155,8 @@ h6 {
   @media (max-width: 576px) {
     font-size: 1em * 0.5;
   }
+
+  @include h-xs(1.1);
 }
 
 a {
@@ -147,14 +179,15 @@ strong {
 div[role='img'],
 img,
 iframe {
+  max-width: 100%;
   transition: 0.5s;
-  animation: fadeIn 0.5s;
+  animation: fadeIn 1.5s;
 
-  // &[aria-hidden='true'],
-  // &[data-hidden='true'] {
-  //   opacity: 0;
-  //   pointer-events: none;
-  // }
+  &[aria-hidden='true'],
+  &[data-hidden='true'] {
+    opacity: 0;
+    // pointer-events: none;
+  }
 }
 
 a,
@@ -181,12 +214,14 @@ textarea {
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  min-height: 2.75rem;
+  min-height: 2.65rem;
   padding: 0 1.25rem;
   border-radius: $br * 0.9;
-  box-shadow: 0 0.0625em 0.125em rgba(0, 0, 0, 0.1);
+  font-size: 0.9em;
+  box-shadow: 0.375em 0.375em 1em rgba(25, 113, 245, 0.08); // 0 0.0625em 0.125em rgba(0, 0, 0, 0.1);
   text-decoration: none !important;
   overflow: hidden;
+  cursor: pointer;
   // @extend .text-overflow-ellipsis;
 
   &.active {
@@ -213,7 +248,7 @@ textarea {
   &:hover,
   &:focus {
     opacity: 0.9;
-    box-shadow: 0 0.125em 0.25em rgba(0, 0, 0, 0.25);
+    box-shadow: 0 0.125em 0.25em rgba(15, 103, 235, 0.25);
   }
 
   &:disabled {
@@ -259,6 +294,38 @@ textarea {
   &:hover,
   &:focus {
     background-color: transparent;
+  }
+
+  &-light {
+    &.primary {
+      color: $theme-primary !important;
+      background-color: rgba($prim-r, $prim-g, $prim-b, 0.15);
+
+      &:hover,
+      &:focus {
+        background-color: rgba($prim-r, $prim-g, $prim-b, 0.25);
+      }
+    }
+
+    &.secondary {
+      color: $theme-secondary !important;
+      background-color: rgba($sec-r, $sec-g, $sec-b, 0.15);
+
+      &:hover,
+      &:focus {
+        background-color: rgba($sec-r, $sec-g, $sec-b, 0.25);
+      }
+    }
+
+    &.tertiary {
+      color: $theme-tertiary !important;
+      background-color: rgba($tert-r, $tert-g, $tert-b, 0.15);
+
+      &:hover,
+      &:focus {
+        background-color: rgba($tert-r, $tert-g, $tert-b, 0.25);
+      }
+    }
   }
 }
 
@@ -443,4 +510,132 @@ input[type='password'] {
     font-size: 0.625rem;
     line-height: 1.125rem;
   }
+}
+[class~='col'],
+[class*='col-'],
+.container,
+.container-fluid {
+  padding: 0;
+}
+
+.row {
+  margin: 0;
+}
+
+.pointer-events-none {
+  pointer-events: none;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.white-space-nowrap {
+  white-space: nowrap;
+}
+
+.text-overflow-ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 100%;
+  text-overflow: ellipsis;
+}
+
+button.no-shadow,
+a.no-shadow,
+.no-shadow {
+  box-shadow: unset !important;
+  text-shadow: unset !important;
+}
+
+.theme-primary {
+  color: $theme-primary !important;
+}
+.theme-primary-lighter {
+  color: $theme-primary-v7 !important;
+}
+.theme-primary-lightest {
+  color: $theme-primary-v9 !important;
+}
+.theme-primary-darker {
+  color: $theme-primary-v3 !important;
+}
+.theme-primary-darkest {
+  color: $theme-primary-v1 !important;
+}
+
+.theme-secondary {
+  color: $theme-secondary !important;
+}
+.theme-secondary-lighter {
+  color: $theme-secondary-v7 !important;
+}
+.theme-secondary-lightest {
+  color: $theme-secondary-v9 !important;
+}
+.theme-secondary-darker {
+  color: $theme-secondary-v3 !important;
+}
+.theme-secondary-darkest {
+  color: $theme-secondary-v1 !important;
+}
+
+.theme-tertiary {
+  color: $theme-tertiary !important;
+}
+.theme-tertiary-darker {
+  color: $theme-tertiary-v3 !important;
+}
+.theme-tertiary-darkest {
+  color: $theme-tertiary-v1 !important;
+}
+.theme-tertiary-lighter {
+  color: $theme-tertiary-v7 !important;
+}
+.theme-tertiary-lightest {
+  color: $theme-tertiary-v9 !important;
+}
+
+.theme-bg-primary-darkest {
+  background-color: $theme-primary-v1;
+}
+
+.theme-bg-primary-darker {
+  background-color: $theme-primary-v3;
+}
+
+.theme-bg-primary {
+  background-color: $theme-primary;
+}
+
+.theme-bg-primary-lighter {
+  background-color: $theme-primary-v7;
+}
+
+.theme-bg-primary-lightest {
+  background-color: $theme-primary-v9;
+}
+
+.theme-bg-secondary {
+  background-color: $theme-secondary;
+}
+
+.theme-bg-tertiary-darkest {
+  background-color: $theme-tertiary-v1;
+}
+
+.theme-bg-tertiary-darker {
+  background-color: $theme-tertiary-v3;
+}
+
+.theme-bg-tertiary {
+  background-color: $theme-tertiary;
+}
+
+.theme-bg-tertiary-lighter {
+  background-color: $theme-tertiary-v7;
+}
+
+.theme-bg-tertiary-lightest {
+  background-color: #eee;
 }

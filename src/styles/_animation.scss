@@ -1,122 +1,189 @@
 @use 'constants';
 
-.eletrify {
-  animation: eletrify 1s infinite;
+$timing-func_mode: 1s cubic-bezier(0.1, 1, 0.35, 1) both;
+
+// translateFadeIn animations
+
+.anim__fadeIn {
+  animation: anim__fadeIn $timing-func_mode;
 }
-
-@keyframes eletrify {
-  0%,
-  100% {
-    opacity: 0;
-  }
-  2% {
-    opacity: 1;
-  }
-  4% {
-    opacity: 0;
-  }
-  6%,
-  98% {
-    opacity: 1;
-  }
-}
-
-@include anim__fade('In', 'Up');
-@include anim__fade('In', 'Down');
-@include anim__fade('In', 'Left');
-@include anim__fade('In', 'Right');
-@include anim__fade('In', 'Up', 'Big');
-@include anim__fade('In', 'Down', 'Big');
-@include anim__fade('In', 'Left', 'Big');
-@include anim__fade('In', 'Right', 'Big');
-
-@include anim__fade('Out', 'Up');
-@include anim__fade('Out', 'Down');
-@include anim__fade('Out', 'Left');
-@include anim__fade('Out', 'Right');
-@include anim__fade('Out', 'Up', 'Big');
-@include anim__fade('Out', 'Down', 'Big');
-@include anim__fade('Out', 'Left', 'Big');
-@include anim__fade('Out', 'Right', 'Big');
-
-$timing-func_mode: cubic-bezier(0.1, 1, 0.35, 1) both;
 
 .anim__fadeInUp {
-  animation: anim__fadeInUp 1s $timing-func_mode;
+  animation: anim__fadeInUp $timing-func_mode;
 }
 
 .anim__fadeInDown {
-  animation: anim__fadeInDown 1s $timing-func_mode;
+  animation: anim__fadeInDown $timing-func_mode;
 }
 
 .anim__fadeInLeft {
-  animation: anim__fadeInLeft 1s $timing-func_mode;
+  animation: anim__fadeInLeft $timing-func_mode;
 }
 
 .anim__fadeInRight {
-  animation: anim__fadeInRight 1s $timing-func_mode;
+  animation: anim__fadeInRight $timing-func_mode;
 }
 
-// .anim__fadeInUpBig {
-//   animation: anim__fadeInUpBig 1s $timing-func_mode;
-// }
+.anim__fadeInUpBig {
+  animation: anim__fadeInUpBig $timing-func_mode;
+}
 
-// .anim__fadeInDownBig {
-//   animation: anim__fadeInDownBig 1s $timing-func_mode;
-// }
+.anim__fadeInDownBig {
+  animation: anim__fadeInDownBig $timing-func_mode;
+}
 
-// .anim__fadeInLeftBig {
-//   animation: anim__fadeInLeftBig 1s $timing-func_mode;
-// }
+.anim__fadeInLeftBig {
+  animation: anim__fadeInLeftBig $timing-func_mode;
+}
 
-// .anim__fadeInRightBig {
-//   animation: anim__fadeInRightBig 1s $timing-func_mode;
-// }
+.anim__fadeInRightBig {
+  animation: anim__fadeInRightBig $timing-func_mode;
+}
+
+// translateFadeOut animations
+
+.anim__fadeOut {
+  animation: anim__fadeOut $timing-func_mode;
+}
 
 .anim__fadeOutUp {
-  animation: anim__fadeOutUp 1s $timing-func_mode;
+  animation: anim__fadeOutUp $timing-func_mode;
 }
 
 .anim__fadeOutDown {
-  animation: anim__fadeOutDown 1s $timing-func_mode;
+  animation: anim__fadeOutDown $timing-func_mode;
 }
 
 .anim__fadeOutLeft {
-  animation: anim__fadeOutLeft 1s $timing-func_mode;
+  animation: anim__fadeOutLeft $timing-func_mode;
 }
 
 .anim__fadeOutRight {
-  animation: anim__fadeOutRight 1s $timing-func_mode;
+  animation: anim__fadeOutRight $timing-func_mode;
 }
 
-// .anim__fadeOutUpBig {
-//   animation: anim__fadeOutUpBig 1s $timing-func_mode;
-// }
-
-// .anim__fadeOutDownBig {
-//   animation: anim__fadeOutDownBig 1s $timing-func_mode;
-// }
-
-// .anim__fadeOutLeftBig {
-//   animation: anim__fadeOutLeftBig 1s $timing-func_mode;
-// }
-
-// .anim__fadeOutRightBig {
-//   animation: anim__fadeOutRightBig 1s $timing-func_mode;
-// }
-
-.anim__spin {
-  animation: anim__spin 0.35s linear infinite;
+.anim__fadeOutUpBig {
+  animation: anim__fadeOutUpBig $timing-func_mode;
 }
 
-@keyframes anim__spin {
-  from {
-    transform: rotateZ(0);
-  }
-  to {
-    transform: rotateZ(360deg);
-  }
+.anim__fadeOutDownBig {
+  animation: anim__fadeOutDownBig $timing-func_mode;
 }
+
+.anim__fadeOutLeftBig {
+  animation: anim__fadeOutLeftBig $timing-func_mode;
+}
+
+.anim__fadeOutRightBig {
+  animation: anim__fadeOutRightBig $timing-func_mode;
+}
+
+// translateIn animations
+
+.anim__InUp {
+  animation: anim__InUp $timing-func_mode;
+}
+
+.anim__InDown {
+  animation: anim__InDown $timing-func_mode;
+}
+
+.anim__InLeft {
+  animation: anim__InLeft $timing-func_mode;
+}
+
+.anim__InRight {
+  animation: anim__InRight $timing-func_mode;
+}
+
+.anim__InUpBig {
+  animation: anim__InUpBig $timing-func_mode;
+}
+
+.anim__InDownBig {
+  animation: anim__InDownBig $timing-func_mode;
+}
+
+.anim__InLeftBig {
+  animation: anim__InLeftBig $timing-func_mode;
+}
+
+.anim__InRightBig {
+  animation: anim__InRightBig $timing-func_mode;
+}
+
+// translateOut animations
+
+.anim__OutUp {
+  animation: anim__OutUp $timing-func_mode;
+}
+
+.anim__OutDown {
+  animation: anim__OutDown $timing-func_mode;
+}
+
+.anim__OutLeft {
+  animation: anim__OutLeft $timing-func_mode;
+}
+
+.anim__OutRight {
+  animation: anim__OutRight $timing-func_mode;
+}
+
+.anim__OutUpBig {
+  animation: anim__OutUpBig $timing-func_mode;
+}
+
+.anim__OutDownBig {
+  animation: anim__OutDownBig $timing-func_mode;
+}
+
+.anim__OutLeftBig {
+  animation: anim__OutLeftBig $timing-func_mode;
+}
+
+.anim__OutRightBig {
+  animation: anim__OutRightBig $timing-func_mode;
+}
+
+@include anim__('fadeIn', null);
+@include anim__('fadeIn', 'Up');
+@include anim__('fadeIn', 'Down');
+@include anim__('fadeIn', 'Left');
+@include anim__('fadeIn', 'Right');
+@include anim__('fadeIn', 'Up', 'Big');
+@include anim__('fadeIn', 'Down', 'Big');
+@include anim__('fadeIn', 'Left', 'Big');
+@include anim__('fadeIn', 'Right', 'Big');
+
+@include anim__('fadeOut', null);
+@include anim__('fadeOut', 'Up');
+@include anim__('fadeOut', 'Down');
+@include anim__('fadeOut', 'Left');
+@include anim__('fadeOut', 'Right');
+@include anim__('fadeOut', 'Up', 'Big');
+@include anim__('fadeOut', 'Down', 'Big');
+@include anim__('fadeOut', 'Left', 'Big');
+@include anim__('fadeOut', 'Right', 'Big');
+
+@include anim__('In', 'Up');
+@include anim__('In', 'Down');
+@include anim__('In', 'Left');
+@include anim__('In', 'Right');
+@include anim__('In', 'Up', 'Big');
+@include anim__('In', 'Down', 'Big');
+@include anim__('In', 'Left', 'Big');
+@include anim__('In', 'Right', 'Big');
+
+@include anim__('Out', null);
+@include anim__('Out', 'Up');
+@include anim__('Out', 'Down');
+@include anim__('Out', 'Left');
+@include anim__('Out', 'Right');
+@include anim__('Out', 'Up', 'Big');
+@include anim__('Out', 'Down', 'Big');
+@include anim__('Out', 'Left', 'Big');
+@include anim__('Out', 'Right', 'Big');
 
 .anim__mode--backwards {
   animation-fill-mode: backwards !important;
