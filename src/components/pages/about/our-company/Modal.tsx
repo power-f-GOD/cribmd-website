@@ -1,6 +1,6 @@
 import React, { useState, FC, SyntheticEvent, useCallback } from 'react';
 
-import { Anchor, Box, SVG, Img, Button } from 'src/components/shared';
+import { Anchor, Box, SVGIcon, Img, Button } from 'src/components/shared';
 import { Modal } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -11,6 +11,9 @@ const TeamModal: FC<{ content: any }> = ({ content }): JSX.Element => {
   const handleOnHide = useCallback(() => {
     setShowModal(false);
   }, []);
+  const handleOnOpen = useCallback(() => {
+    setShowModal(true);
+  }, []);
   const handleImgError = useCallback((e: SyntheticEvent<HTMLImageElement, Event>): void => {
     const target = e.target as HTMLImageElement;
 
@@ -18,47 +21,8 @@ const TeamModal: FC<{ content: any }> = ({ content }): JSX.Element => {
   }, []);
   return (
     <Box key={content.id}>
-      <Anchor
-        key={content.id}
-        onClick={() => {
-          setShowModal(true);
-        }}>
-        <SVG
-          className="max-icon"
-          width="40"
-          height="40"
-          viewBox="0 0 24 24"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg">
-          <path
-            d="M15 3H21V9"
-            stroke="#1971F5"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-          <path
-            d="M9 21H3V15"
-            stroke="#1971F5"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-          <path
-            d="M21 3L14 10"
-            stroke="#1971F5"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-          <path
-            d="M3 21L10 14"
-            stroke="#1971F5"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </SVG>
+      <Anchor key={content.id} onClick={handleOnOpen}>
+        <SVGIcon name="double-arrow" size="tiny" />
       </Anchor>
       <Modal onHide={handleOnHide} show={showModal}>
         <Box className={`${styles.teamModal}`}>
@@ -72,29 +36,7 @@ const TeamModal: FC<{ content: any }> = ({ content }): JSX.Element => {
               <Box className="flex-column">
                 <Box as="h6" className="mb-n3">
                   {content.name}
-                  <SVG
-                    width="20"
-                    height="20"
-                    viewBox="0 0 20 20"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path
-                      d="M5.83301 14.1667L14.1663 5.83337"
-                      stroke="#0D2344"
-                      strokeOpacity="0.4"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                    <path
-                      d="M5.83301 5.83337H14.1663V14.1667"
-                      stroke="#0D2344"
-                      strokeOpacity="0.4"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </SVG>
+                  <SVGIcon name="arrow-top-right" size="inherit" />
                 </Box>
                 <Box as="span" className="tertiary-content">
                   {content.role} | {content.skill}

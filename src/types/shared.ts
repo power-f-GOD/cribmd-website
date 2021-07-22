@@ -64,7 +64,9 @@ export type SVGIconName =
   | 'girl'
   | 'eye'
   | 'cross'
-  | 'smiley';
+  | 'smiley'
+  | 'double-arrow'
+  | 'arrow-top-right';
 
 export type BoxAs =
   | 'nav'
