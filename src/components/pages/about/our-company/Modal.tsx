@@ -3,10 +3,14 @@ import React, { useState, FC, SyntheticEvent, useCallback } from 'react';
 import { Anchor, Box, SVG, Img, Button } from 'src/components/shared';
 import { Modal } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
+
 import styles from 'src/styles/pages/about/our-company/index.module.scss';
 
 const TeamModal: FC<{ content: any }> = ({ content }): JSX.Element => {
   const [showModal, setShowModal] = useState(false);
+  const handleOnHide = useCallback(() => {
+    setShowModal(false);
+  }, []);
   const handleImgError = useCallback((e: SyntheticEvent<HTMLImageElement, Event>): void => {
     const target = e.target as HTMLImageElement;
 
@@ -56,7 +60,7 @@ const TeamModal: FC<{ content: any }> = ({ content }): JSX.Element => {
           />
         </SVG>
       </Anchor>
-      <Modal onHide={() => setShowModal(false)} show={showModal}>
+      <Modal onHide={handleOnHide} show={showModal}>
         <Box className={`${styles.teamModal}`}>
           <Box className={`${styles.modalHeader} modal-header `}>
             <Box className="align-items-center d-flex ">

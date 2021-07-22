@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { FC } from 'react';
 import { SVG, Box, Img } from '.';
 
-const Logo: FC<{ variant?: 'on-white' | 'on-black' | 'on-blue'; className?: string }> = ({
+export const Logo: FC<{ variant?: 'on-white' | 'on-black' | 'on-blue'; className?: string }> = ({
   variant,
   className
 }): JSX.Element => {
@@ -32,5 +32,3 @@ const Logo: FC<{ variant?: 'on-white' | 'on-black' | 'on-blue'; className?: stri
     </Box>
   );
 };
-
-export default Logo;

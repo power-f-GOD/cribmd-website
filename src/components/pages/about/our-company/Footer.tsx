@@ -10,7 +10,7 @@ const Footer = (): JSX.Element => {
   }, []);
 
   return (
-    <footer className={`${styles.footerSection}`}>
+    <Box as="footer" className={`${styles.footerSection}`}>
       <Box as="section" className={`container ${styles.footerContainer}`}>
         <Box className="row align-items-center">
           <Box className="col-12 col-md-7 px-0 px-md-3 ">
@@ -33,7 +33,7 @@ const Footer = (): JSX.Element => {
           </Box>
         </Box>
       </Box>
-    </footer>
+    </Box>
   );
 };
 

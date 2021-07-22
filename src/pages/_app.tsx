@@ -4,8 +4,7 @@ import { AppProps } from 'next/app';
 import 'bootstrap/dist/css/bootstrap-utilities.min.css';
 import 'bootstrap/dist/css/bootstrap-grid.min.css';
 import 'src/styles/app.scss';
-
-import { AppNav, AppFooter } from 'src/components';
+import { AppNav } from 'src/components';
 import Head from 'next/head';
 
 export const AppContext = createContext<{ windowWidth: number }>({
@@ -31,7 +30,7 @@ const App = ({ Component, pageProps }: AppProps): JSX.Element => {
       }, 250);
     };
   }, []);
-  console.log('APPPP RENDERS OH NO');
+
   return (
     <AppContext.Provider value={appContextValue}>
       <Head>
@@ -43,7 +42,7 @@ const App = ({ Component, pageProps }: AppProps): JSX.Element => {
       </Head>
       <AppNav />
       <Component {...pageProps} />
-      <AppFooter />
+      {/* <AppFooter /> */}
     </AppContext.Provider>
   );
 };

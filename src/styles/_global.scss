@@ -1,3 +1,5 @@
+@use 'sass:math';
+
 :root {
   --color-primary: rgb(25, 113, 245);
   --color-primary-light: rgba(21, 105, 232, 0.12);
@@ -84,12 +86,14 @@ h5,
 .h5,
 h6,
 .h6 {
-  color: $heading-default;
+  color: #0d2344; // $heading-default;
   font-family: Poppins, sans-serif;
   margin: 0.5rem 0;
   display: block;
-  line-height: 1.3em;
+  line-height: 1.25em;
 }
+
+$h1-size: 3em;
 
 @mixin h-xs($s: 1.85) {
   @media screen and (max-width: 767px) {
@@ -100,27 +104,21 @@ h6,
 
 .h1,
 h1 {
-  font-size: 1em * 3;
-  font-weight: 600 !important;
-  @media (max-width: 576px) {
-    font-size: 1em * 1.5;
-  }
+  font-size: $h1-size;
+  font-weight: 700 !important;
+
   @include h-xs();
 }
 
 .h2,
 h2 {
-  font-size: 1em * 2.25;
-  font-weight: 600 !important;
-  @media (max-width: 576px) {
-    font-size: 1em * 1.125;
-  }
-  @include h-xs(1.6);
+  font-size: $h1-size * math.pow(0.805, 2);
+  font-weight: 700 !important;
 }
 
 .h3,
 h3 {
-  font-size: 1em * 2;
+  font-size: $h1-size * math.pow(0.805, 3);
   font-weight: 600 !important;
   @media (max-width: 576px) {
     font-size: 1em * 1;
@@ -130,7 +128,7 @@ h3 {
 
 .h4,
 h4 {
-  font-size: 1em * 1.75;
+  font-size: $h1-size * math.pow(0.805, 4);
   font-weight: 600 !important;
   @media (max-width: 576px) {
     font-size: 1em * 0.873;
@@ -140,22 +138,15 @@ h4 {
 
 .h5,
 h5 {
-  font-size: 1em * 1.5;
-  font-weight: 600 !important;
-  @media (max-width: 576px) {
-    font-size: 1em * 0.75;
-  }
+  font-size: $h1-size * math.pow(0.805, 5);
+  font-weight: 500 !important;
   @include h-xs(1.15);
 }
 
 .h6,
 h6 {
-  font-size: 1em * 1;
-  font-weight: 600 !important;
-  @media (max-width: 576px) {
-    font-size: 1em * 0.5;
-  }
-
+  font-size: $h1-size * math.pow(0.805, 6);
+  font-weight: 500 !important;
   @include h-xs(1.1);
 }
 
@@ -176,12 +167,16 @@ strong {
   font-weight: 600;
 }
 
+main {
+  overflow-x: clip !important;
+}
+
 div[role='img'],
 img,
 iframe {
   max-width: 100%;
   transition: 0.5s;
-  animation: fadeIn 1.5s;
+  // animation: fadeIn 1.5s;
 
   &[aria-hidden='true'],
   &[data-hidden='true'] {
@@ -194,13 +189,13 @@ a,
 button,
 input,
 textarea {
-  transition: 0.3s;
   font-weight: normal;
   font-family: Poppins, sans-serif;
-  animation-fill-mode: backwards !important;
+  animation-fill-mode: both;
   border-radius: $br * 0.9;
   max-width: 100%;
   min-height: 2rem;
+  transition-duration: 0.3s;
 
   &,
   &:focus {
@@ -546,6 +541,11 @@ a.no-shadow,
 .no-shadow {
   box-shadow: unset !important;
   text-shadow: unset !important;
+}
+
+.overflow-clip {
+  overflow: hidden !important;
+  overflow: clip !important;
 }
 
 .theme-primary {

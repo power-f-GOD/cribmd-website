@@ -2,7 +2,8 @@ import {
   DetailedHTMLProps,
   ButtonHTMLAttributes,
   AnchorHTMLAttributes,
-  HTMLAttributes
+  HTMLAttributes,
+  RefObject
 } from 'react';
 
 export interface IconProps {
@@ -36,7 +37,20 @@ export interface BoxProps
     >
   > {
   as?: BoxAs;
+  _ref?: RefObject<HTMLElement & HTMLParagraphElement & HTMLUListElement & HTMLLIElement>;
+  'data-anim'?: AnimName;
 }
+
+export type AnimName =
+  | 'fadeIn'
+  | 'fadeInUp'
+  | 'fadeInDown'
+  | 'fadeInLeft'
+  | 'fadeInRight'
+  | 'fadeInUpBig'
+  | 'fadeInDownBig'
+  | 'fadeInLeftBig'
+  | 'fadeInRightBig';
 
 export type SVGIconName =
   | 'credit-card-individual'

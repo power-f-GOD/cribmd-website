@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { NextPage } from 'next';
 
 import { AppHead, Box } from 'src/components';

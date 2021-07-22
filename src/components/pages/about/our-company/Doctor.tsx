@@ -7,7 +7,6 @@ const Doctor = (): JSX.Element => {
     const target = e.target as HTMLImageElement;
     if (/\.webp/.test(target.srcset)) target.srcset = target.srcset.replaceAll('.webp', '.png');
   }, []);
-
   const doctorsData: {
     id: number;
     name: string;

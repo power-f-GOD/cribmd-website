@@ -9,109 +9,8 @@
  */
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { FC, DetailedHTMLProps, ImgHTMLAttributes, useState, useEffect, cloneElement } from 'react';
-import { ButtonProps, AnchorProps, BoxProps } from 'src/types';
-import { useRouter } from 'next/dist/client/router';
-import Link from 'next/link';
-
-export const Button: FC<ButtonProps> = ({
-  children,
-  variant,
-  color,
-  _type,
-  className,
-  ...props
-}): JSX.Element => {
-  return (
-    <button
-      {...props}
-      className={`${_type || 'flat-button'} btn--${variant || 'text'} ${
-        color || 'primary'
-      } ${className}`.replace(/\s+/g, ' ')}>
-      {children}
-    </button>
-  );
-};
-
-export const Anchor: FC<Omit<AnchorProps, 'exact'>> = ({
-  children,
-  button,
-  variant,
-  color,
-  _type,
-  href,
-  className,
-  routeLink,
-  ...props
-}): JSX.Element => {
-  const anchor = (
-    <a
-      {...props}
-      className={
-        button
-          ? `${_type || 'flat-button'} btn--${variant || 'text'} ${
-              color || 'primary'
-            } ${className}`.replace(/\s+/g, ' ')
-          : className
-      }>
-      {children}
-    </a>
-  );
-
-  return routeLink ? <Link href={href as string}>{anchor}</Link> : cloneElement(anchor, { href });
-};
-
-export const NavLink: FC<Omit<AnchorProps, 'routeLink'>> = ({
-  children,
-  button,
-  variant,
-  color,
-  _type,
-  href,
-  exact,
-  className,
-  ...props
-}): JSX.Element => {
-  const { route } = useRouter();
-  const isActive = exact ? route === href : new RegExp(href || '').test(route);
-
-  return (
-    <Link href={href as string}>
-      <a
-        {...props}
-        className={(button
-          ? `${_type || 'flat-button'} btn--${variant || 'text'} ${color || 'primary'} ${className}`
-          : className || ''
-        )
-          .concat(isActive ? ' active' : '')
-          .replace(/\s+/g, ' ')}>
-        {children}
-      </a>
-    </Link>
-  );
-};
-
-export const Img: FC<
-  { isJPG?: boolean } & DetailedHTMLProps<ImgHTMLAttributes<HTMLImageElement>, HTMLImageElement>
-> = ({ isJPG, ...props }): JSX.Element => {
-  return (
-    <img
-      {...props}
-      alt={props.alt || 'image'}
-      aria-hidden={true}
-      onError={(e) => {
-        const img = e.target as HTMLImageElement;
-
-        if (/\.webp/i.test(img.src)) {
-          img.src = img.src.replace(/\.webp/i, isJPG ? '.jpg' : '.png');
-        } else if (/\.webp/i.test(img.srcset)) {
-          img.srcset = img.srcset.replace(/\.webp/gi, isJPG ? '.jpg' : '.png');
-        }
-      }}
-      onLoad={(e) => ((e.target as any).ariaHidden = false)}
-    />
-  );
-};
+import { FC, useState, useEffect } from 'react';
+import { BoxProps } from 'src/types';
 
 export const Box: FC<BoxProps> = ({ as, children, ...props }): JSX.Element => {
   const [render, setRender] = useState(false);
@@ -119,6 +18,11 @@ export const Box: FC<BoxProps> = ({ as, children, ...props }): JSX.Element => {
   useEffect(() => {
     setRender(true);
   }, []);
+
+  if (props._ref) {
+    props.ref = props._ref;
+    delete props._ref;
+  }
 
   //Fix for SSR error: 'Warning: Expected server HTML to contain a matching <div> in <nav>'
   if (!render) return <></>;
