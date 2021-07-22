@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import { MouseEvent } from 'react';
@@ -26,11 +27,19 @@ export class ScrollReveal {
       (entries) => {
         entries.forEach((entry) => {
           const target = entry.target as HTMLElement;
+          const isIntersecting = entry.isIntersecting;
 
           target.dataset.animate_targets = entry.isIntersecting ? 'true' : 'false';
+
+          if (target.dataset.anim_once) {
+            if (isIntersecting) {
+              target.dataset.animate_targets = 'true';
+              this.observer.unobserve(target);
+            }
+          }
         });
       },
-      { threshold: globalThis.innerWidth < 768 ? 0.5 : 0.75 }
+      { threshold: globalThis.innerWidth < 768 ? 0.75 : 0.5 }
     );
     // throttle for a few millisec to ascertain anchors have mounted in the DOM
     throttle(() => this.register());
