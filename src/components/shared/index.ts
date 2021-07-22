@@ -1,7 +1,9 @@
-import Logo from './Logo';
-import Icon from './Icon';
-import SVG from './SVG';
-import SVGIcon from './SVG.Icons';
-
 export * from './Box';
-export { Logo, Icon, SVG, SVGIcon };
+export * from './Button';
+export * from './Icon';
+export * from './Img';
+export * from './Link';
+export * from './Logo';
+export * from './SVG';
+export * from './SVG.Icons';
+export * from './AnimateOnScroll';

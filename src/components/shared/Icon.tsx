@@ -2,7 +2,7 @@ import { FC } from 'react';
 import { Box } from '.';
 import { IconProps } from 'src/types';
 
-const Icon: FC<IconProps> = ({ children, name, size, className }) => {
+export const Icon: FC<IconProps> = ({ children, name, size, className }) => {
   return (
     <Box
       as="i"
@@ -13,5 +13,3 @@ const Icon: FC<IconProps> = ({ children, name, size, className }) => {
     </Box>
   );
 };
-
-export default Icon;

@@ -1,6 +1,6 @@
 import { SVGProps, DetailedHTMLProps, FC } from 'react';
 
-const SVG: FC<DetailedHTMLProps<SVGProps<SVGSVGElement>, SVGSVGElement>> = ({
+export const SVG: FC<DetailedHTMLProps<SVGProps<SVGSVGElement>, SVGSVGElement>> = ({
   children,
   ...props
 }): JSX.Element => {
@@ -158,5 +158,3 @@ export const SVGEllipse: FC<{ type?: '1' | '2' | '3' | '4' | '5' }> = ({ type })
       );
   }
 };
-
-export default SVG;
