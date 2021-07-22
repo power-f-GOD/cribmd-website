@@ -9,6 +9,9 @@
     "postinstall": "husky install",
     "test": "jest",
     "merge:power-ui": "git pull origin staging && git checkout staging && git pull origin staging && git merge power-ui && git push && git checkout power-ui && git pull origin power-ui && git merge staging",
+    "stash": "git stash save -m echo `date`",
+    "stash:list": "git stash list --format='%gd (%cr): %gs'",
+    "stash:update-ref": "git update-ref refs/stash stash@{0}",
     "webp": "for file in *; do cwebp $file -o ${file%.*}.webp; done"
   },
   "dependencies": {

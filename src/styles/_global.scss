@@ -163,12 +163,16 @@ strong {
   font-weight: 600;
 }
 
+main {
+  overflow-x: clip !important;
+}
+
 div[role='img'],
 img,
 iframe {
   max-width: 100%;
   transition: 0.5s;
-  animation: fadeIn 1.5s;
+  // animation: fadeIn 1.5s;
 
   &[aria-hidden='true'],
   &[data-hidden='true'] {
@@ -181,13 +185,13 @@ a,
 button,
 input,
 textarea {
-  transition: 0.3s;
   font-weight: normal;
   font-family: Poppins, sans-serif;
   animation-fill-mode: both;
   border-radius: $br * 0.9;
   max-width: 100%;
   min-height: 2rem;
+  transition-duration: 0.3s;
 
   &,
   &:focus {
@@ -484,6 +488,11 @@ a.no-shadow,
 .no-shadow {
   box-shadow: unset !important;
   text-shadow: unset !important;
+}
+
+.overflow-clip {
+  overflow: hidden !important;
+  overflow: clip !important;
 }
 
 .theme-primary {

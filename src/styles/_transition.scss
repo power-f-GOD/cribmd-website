@@ -1,0 +1,50 @@
+$time-func: 1s cubic-bezier(0.5, 0, 0.25, 1.5);
+
+@mixin trans__(
+  $mode: 'fadeIn' or 'In',
+  $direction: 'Right' or 'Left' or 'Up' or 'Down' or null,
+  $magnitude: 'Small' or 'Big' or null
+) {
+  $isIn: $mode == 'fadeIn' or $mode == 'In';
+  $isFade: $mode == 'fadeIn';
+  $dir: $direction;
+  $isX: $dir == 'Right' or $direction == 'Left';
+  $isBig: $magnitude == 'Big';
+
+  .trans__#{$mode}#{if($dir, $dir, '')}#{if($isBig, $magnitude, '')} {
+    @if $isFade {
+      opacity: 0;
+    }
+
+    @if $dir {
+      @if $isX {
+        $isLeft: $dir == 'Left';
+
+        transform: translateX(if($isBig, if($isLeft, 100vw, -100vw), if($isLeft, 3em, -3em)));
+      } @else {
+        $isUp: $dir == 'Up';
+
+        transform: translateY(if($isBig, if($isUp, 100vh, -100vh), if($isUp, 3em, -3em)));
+      }
+    }
+
+    transition: opacity 1s $time-func, transform $time-func;
+  }
+}
+
+@include trans__('fadeIn', null, null);
+@include trans__('fadeIn', 'Up', null);
+@include trans__('fadeIn', 'Down', null);
+@include trans__('fadeIn', 'Left', null);
+@include trans__('fadeIn', 'Right', null);
+@include trans__('fadeIn', 'Up', 'Big');
+@include trans__('fadeIn', 'Down', 'Big');
+@include trans__('fadeIn', 'Left', 'Big');
+@include trans__('fadeIn', 'Right', 'Big');
+
+[data-animate_targets='true'] {
+  [class*='trans__'] {
+    transform: translateZ(0);
+    opacity: 1;
+  }
+}

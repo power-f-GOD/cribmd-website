@@ -30,27 +30,15 @@ export class ScrollReveal {
           target.dataset.animate_targets = entry.isIntersecting ? 'true' : 'false';
         });
       },
-      { threshold: 0.7 }
+      { threshold: globalThis.innerWidth < 768 ? 0.5 : 0.75 }
     );
-    // delay a few millisec to ascertain anchors have mounted in the DOM
-    setTimeout(() => {
-      this.animAnchors = this.root.querySelectorAll('[data-anim_anchor]');
-      this.register();
-    }, 50);
+    // throttle for a few millisec to ascertain anchors have mounted in the DOM
+    throttle(() => this.register());
   }
 
   register() {
-    this.animAnchors?.forEach((animAnchor) => {
-      animAnchor.querySelectorAll(':scope > [data-anim_target]').forEach((_target, i) => {
-        const target = _target as HTMLElement;
-
-        target.classList.add(`anim__${target.dataset.anim || 'fadeInUp'}`);
-        target.style.animationDelay = `${target.dataset.anim_delay || (i * 0.1).toFixed(2)}s`;
-        target.style.animationTimingFunction =
-          target.dataset.anim_ease || 'cubic-bezier(0.5, 0, .25, 1.5)';
-      });
-      this.observer.observe(animAnchor);
-    });
+    this.animAnchors = this.root.querySelectorAll('[data-anim_anchor]');
+    this.animAnchors?.forEach((animAnchor) => this.observer.observe(animAnchor));
   }
 
   unregister() {
@@ -85,4 +73,8 @@ export const createObserver = (
             .map((_, i) => Number((i / 100).toFixed(2)))
         }
   );
+};
+
+export const throttle = (callback: () => void, delay?: number) => {
+  setTimeout(() => callback(), delay || 50);
 };
