@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { DetailedHTMLProps, FC, ImgHTMLAttributes } from 'react';
+import { DetailedHTMLProps, FC, ImgHTMLAttributes, memo } from 'react';
 
-export const Img: FC<
+const _Img: FC<
   { isJPG?: boolean } & DetailedHTMLProps<ImgHTMLAttributes<HTMLImageElement>, HTMLImageElement>
 > = ({ isJPG, ...props }): JSX.Element => {
   return (
@@ -22,3 +22,5 @@ export const Img: FC<
     />
   );
 };
+
+export const Img = memo(_Img);

@@ -1,7 +1,7 @@
-import { FC } from 'react';
+import { FC, memo } from 'react';
 import { ButtonProps } from 'src/types';
 
-export const Button: FC<ButtonProps> = ({
+const _Button: FC<ButtonProps> = ({
   children,
   variant,
   color,
@@ -19,3 +19,5 @@ export const Button: FC<ButtonProps> = ({
     </button>
   );
 };
+
+export const Button = memo(_Button);

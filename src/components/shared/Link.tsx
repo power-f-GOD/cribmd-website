@@ -1,10 +1,10 @@
-import { FC, cloneElement } from 'react';
+import { FC, cloneElement, memo } from 'react';
 import { useRouter } from 'next/dist/client/router';
 import Link from 'next/link';
 
 import { AnchorProps } from 'src/types';
 
-export const Anchor: FC<Omit<AnchorProps, 'exact'>> = ({
+const _Anchor: FC<Omit<AnchorProps, 'exact'>> = ({
   children,
   button,
   variant,
@@ -32,7 +32,7 @@ export const Anchor: FC<Omit<AnchorProps, 'exact'>> = ({
   return routeLink ? <Link href={href as string}>{anchor}</Link> : cloneElement(anchor, { href });
 };
 
-export const NavLink: FC<Omit<AnchorProps, 'routeLink'>> = ({
+const _NavLink: FC<Omit<AnchorProps, 'routeLink'>> = ({
   children,
   button,
   variant,
@@ -61,3 +61,7 @@ export const NavLink: FC<Omit<AnchorProps, 'routeLink'>> = ({
     </Link>
   );
 };
+
+export const Anchor = memo(_Anchor);
+
+export const NavLink = memo(_NavLink);
