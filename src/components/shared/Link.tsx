@@ -63,5 +63,4 @@ const _NavLink: FC<Omit<AnchorProps, 'routeLink'>> = ({
 };
 
 export const Anchor = memo(_Anchor);
-
 export const NavLink = memo(_NavLink);

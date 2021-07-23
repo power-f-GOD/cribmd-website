@@ -39,7 +39,7 @@ export class ScrollReveal {
           }
         });
       },
-      { threshold: globalThis.innerWidth < 768 ? 0.75 : 0.5 }
+      { threshold: globalThis.innerWidth < 768 ? 0.5 : 0.75 }
     );
     // throttle for a few millisec to ascertain anchors have mounted in the DOM
     throttle(() => this.register());
@@ -84,6 +84,5 @@ export const createObserver = (
   );
 };
 
-export const throttle = (callback: () => void, delay?: number) => {
+export const throttle = (callback: () => void, delay?: number) =>
   setTimeout(() => callback(), delay || 50);
-};

@@ -126,13 +126,13 @@ $theme-tertiary-v9: rgb($tert-r + (25 * 4), $tert-g + (25 * 4), $tert-b + (25 * 
   $bg: $theme-primary,
   $w: 100%,
   $h: 100%,
-  $br: 0,
+  $br: inherit,
   $tr: 0.3s,
   $t: 0,
   $l: 0,
   $r: 0,
   $b: 0,
-  $o: 1,
+  $o: inherit,
   $zi: -1,
   $bs: none
 ) {

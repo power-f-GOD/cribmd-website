@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import {
   DetailedHTMLProps,
   ButtonHTMLAttributes,
@@ -64,7 +65,11 @@ export type SVGIconName =
   | 'girl'
   | 'eye'
   | 'cross'
-  | 'smiley';
+  | 'smiley'
+  | 'home'
+  | 'mobile'
+  | 'drug-container'
+  | 'shield';
 
 export type BoxAs =
   | 'nav'
