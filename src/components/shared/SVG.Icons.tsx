@@ -14,6 +14,85 @@ export const SVGIcon: FC<
   <Icon name={name} size={size}>
     {(() => {
       switch (name) {
+        case 'home':
+          return (
+            <SVG viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/SVG">
+              <rect width="56" height="56" rx="12" fill="#651CBF" fillOpacity="0.04" />
+              <path
+                d="M19 25L28 18L37 25V36C37 36.5304 36.7893 37.0391 36.4142 37.4142C36.0391 37.7893 35.5304 38 35 38H21C20.4696 38 19.9609 37.7893 19.5858 37.4142C19.2107 37.0391 19 36.5304 19 36V25Z"
+                stroke="#651CBF"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <path
+                d="M25 38V28H31V38"
+                stroke="#651CBF"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </SVG>
+          );
+        case 'mobile':
+          return (
+            <SVG
+              width="56"
+              height="56"
+              viewBox="0 0 56 56"
+              fill="none"
+              xmlns="http://www.w3.org/2000/SVG">
+              <rect width="56" height="56" rx="12" fill="black" fillOpacity="0.04" />
+              <path
+                d="M33 18H23C21.8954 18 21 18.8954 21 20V36C21 37.1046 21.8954 38 23 38H33C34.1046 38 35 37.1046 35 36V20C35 18.8954 34.1046 18 33 18Z"
+                stroke="#1F1CBF"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <path
+                d="M28 34H28.01"
+                stroke="#1F1CBF"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </SVG>
+          );
+        case 'drug-container':
+          return (
+            <SVG
+              width="56"
+              height="56"
+              viewBox="0 0 56 56"
+              fill="none"
+              xmlns="http://www.w3.org/2000/SVG">
+              <rect width="56" height="56" rx="12" fill="black" fillOpacity="0.04" />
+              <path
+                d="M36 14H20C19.4696 14 18.9609 14.2107 18.5858 14.5858C18.2107 14.9609 18 15.4696 18 16V20C18 20.5304 18.2107 21.0391 18.5858 21.4142C18.9609 21.7893 19.4696 22 20 22V40C20 40.5304 20.2107 41.0391 20.5858 41.4142C20.9609 41.7893 21.4696 42 22 42H34C34.5304 42 35.0391 41.7893 35.4142 41.4142C35.7893 41.0391 36 40.5304 36 40V22C36.5304 22 37.0391 21.7893 37.4142 21.4142C37.7893 21.0391 38 20.5304 38 20V16C38 15.4696 37.7893 14.9609 37.4142 14.5858C37.0391 14.2107 36.5304 14 36 14ZM22 26H25V36H22V26ZM34 40H22V38H27V24H22V22H34V40ZM20 20V16H36V20H20Z"
+                fill="#00CC6A"
+              />
+            </SVG>
+          );
+        case 'shield':
+          return (
+            <SVG
+              width="56"
+              height="56"
+              viewBox="0 0 56 56"
+              fill="none"
+              xmlns="http://www.w3.org/2000/SVG">
+              <rect width="56" height="56" rx="12" fill="black" fillOpacity="0.04" />
+              <path
+                d="M27.5275 37.9478C27.5275 37.9478 35.5275 33.9478 35.5275 27.9478V20.9478L27.5275 17.9478L19.5275 20.9478V27.9478C19.5275 33.9478 27.5275 37.9478 27.5275 37.9478Z"
+                stroke="#1971F5"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </SVG>
+          );
+
         case 'heart':
           return (
             <SVG viewBox="0 0 33 32" fill="none" xmlns="http://www.w3.org/2000/SVG">
@@ -196,7 +275,7 @@ export const SVGIcon: FC<
           );
         case 'credit-card-individual':
           return (
-            <SVG fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40">
+            <SVG fill="none" xmlns="http://www.w3.org/2000/SVG" viewBox="0 0 40 40">
               <path
                 d="M29.625 22.75V14.8438C29.625 13.8945 28.8415 13.125 27.875 13.125H12.125C11.1585 13.125 10.375 13.8945 10.375 14.8438V25.1562C10.375 26.1055 11.1585 26.875 12.125 26.875H20"
                 stroke="#C6ABE7"

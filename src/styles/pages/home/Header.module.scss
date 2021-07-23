@@ -5,7 +5,8 @@
   border-radius: 1.5em;
   padding: 2.5em 1.25em;
   overflow: hidden;
-  min-height: 40rem;
+  min-height: 40rem; // fallback for browsers that may not support 'clamp'
+  min-height: clamp(30rem, 80vh, 40rem);
   position: relative;
 
   h1 {

@@ -70,7 +70,9 @@ const AppNav = (): JSX.Element => {
   // }, [isPC]);
 
   return (
-    <Container as="nav" className="AppNav container px-3 py-1 py-sm-2 py-lg-3 mb-3 mb-lg-4">
+    <Container
+      as="nav"
+      className="AppNav shrink-max-width-xxl px-3 py-1 py-sm-2 py-lg-3 mb-3 mb-lg-4">
       <Logo className={isPC ? (isNegativeScroll ? '' : 'lighten') : ''} />
 
       {!isPC && (renderNav || open) && (

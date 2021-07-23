@@ -1,0 +1,47 @@
+// This is the Main 'main/body' section of the 'main' section.
+
+.servicesWrapper {
+  background-color: #f5f9ff;
+  padding: 3rem 0;
+  margin: 4rem 0;
+
+  p {
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+  }
+}
+
+.serviceCard {
+  background: white;
+  box-shadow: 0.375em 0.75em 1.875em rgba(230, 233, 239, 0.85);
+  border-radius: $br;
+  padding: 1.35em;
+  position: relative;
+  max-width: 25em;
+
+  &::before {
+    @include before-or-after($bg: white, $o: 0.85);
+    backdrop-filter: blur(0.5em);
+  }
+
+  > *:first-child {
+    display: flex;
+    align-items: center;
+
+    i {
+      margin-right: 1em;
+    }
+  }
+
+  h3 {
+    display: inline-block;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .servicesWrapper {
+    background-color: #f5f9ff;
+    padding: 6rem 0;
+    margin: 7rem 0;
+  }
+}

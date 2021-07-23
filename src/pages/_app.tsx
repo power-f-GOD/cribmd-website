@@ -1,11 +1,12 @@
 import { createContext, useState, useEffect, useMemo } from 'react';
 import { AppProps } from 'next/app';
+import Head from 'next/head';
 
 import 'bootstrap/dist/css/bootstrap-utilities.min.css';
 import 'bootstrap/dist/css/bootstrap-grid.min.css';
 import 'src/styles/app.scss';
 import { AppNav } from 'src/components';
-import Head from 'next/head';
+import { throttle } from 'src/utils';
 
 export const AppContext = createContext<{ windowWidth: number }>({
   windowWidth: globalThis.innerWidth
@@ -21,11 +22,11 @@ const App = ({ Component, pageProps }: AppProps): JSX.Element => {
   );
 
   useEffect(() => {
-    let throttle: NodeJS.Timeout;
+    let _throttle: NodeJS.Timeout;
 
     globalThis.onresize = () => {
-      clearTimeout(throttle);
-      throttle = setTimeout(() => {
+      clearTimeout(_throttle);
+      _throttle = throttle(() => {
         setWindowWidth(globalThis.innerWidth);
       }, 250);
     };

@@ -34,7 +34,9 @@ const _RevealOnScroll: FC<
   return (
     <Component
       {...props}
-      className={`${className} ${allowOverflow ? 'overflow-visible' : 'overflow-clip'}`}
+      className={`${className || ''} ${
+        allowOverflow ? 'overflow-visible' : 'overflow-clip'
+      }`.trim()}
       data-anim_anchor
       {...(once ? { 'data-anim_once': 'true' } : {})}>
       {Children.map(children, (_child: any, i) => {
@@ -63,11 +65,11 @@ const _RevealOnScroll: FC<
           delete childProps['data-anim_duration'];
         }
 
-        if (!childProps['data-anim_ease']) {
+        if (!childProps['data-anim_easing']) {
           style.transitionTimingFunction = `${easing || 'cubic-bezier(0.5, 0, .25, 1.5)'}s`;
         } else {
-          style.transitionTimingFunction = `${childProps['data-anim_ease']}s`;
-          delete childProps['data-anim_ease'];
+          style.transitionTimingFunction = `${childProps['data-anim_easing']}`;
+          delete childProps['data-anim_easing'];
         }
 
         newChild.props = { ...childProps, ...(Object.keys(style).length < 1 ? {} : { style }) };

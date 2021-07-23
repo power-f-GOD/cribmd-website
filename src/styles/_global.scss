@@ -56,7 +56,7 @@ body {
     @extend .anim__fadeIn;
   }
 
-  > main > * {
+  > main > * > * {
     padding-left: 1rem;
     padding-right: 1rem;
   }
@@ -66,7 +66,7 @@ body {
   font-family: Poppins, 'Helvetica Neue', sans-serif !important;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   line-height: 1.75em;
-
+  color: rgba(13, 35, 68, 0.8);
   &,
   &::before,
   &::after {
@@ -169,6 +169,12 @@ strong {
 
 main {
   overflow-x: clip !important;
+}
+
+p {
+  max-width: 48em;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 div[role='img'],
@@ -546,6 +552,47 @@ a.no-shadow,
 .overflow-clip {
   overflow: hidden !important;
   overflow: clip !important;
+}
+
+.container,
+.container-sm {
+  @media screen and (min-width: 576px) {
+    max-width: 540px;
+  }
+}
+
+.container,
+.container-md {
+  @media screen and (min-width: 768px) {
+    max-width: 730px;
+  }
+}
+
+.container,
+.container-lg {
+  @media screen and (min-width: 992px) {
+    max-width: 960px;
+  }
+}
+
+.container,
+.container-xl {
+  @media screen and (min-width: 1200px) {
+    max-width: 1120px;
+  }
+}
+
+.container,
+.container-xxl {
+  @media screen and (min-width: 1400px) {
+    max-width: 1270px;
+  }
+}
+
+.shrink-max-width-xxl {
+  @media screen and (min-width: 1400px) {
+    max-width: 1110px;
+  }
 }
 
 .theme-primary {

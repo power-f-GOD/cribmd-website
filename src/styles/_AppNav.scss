@@ -70,7 +70,7 @@ div.AppNav__underlay {
   background: rgba(255, 255, 255, 0.95) !important;
   opacity: 1;
   transition: unset;
-  box-shadow: 0 1em 0 rgba($prim-r, $prim-g, $prim-b, 0.5);
+  // box-shadow: 0 1em 0 rgba($prim-r, $prim-g, $prim-b, 0.5);
 
   // &[class*='Out'] {
   //   box-shadow: 0 -1em 0 rgba($prim-r, $prim-g, $prim-b, 0.5);
@@ -302,33 +302,6 @@ div.AppNav__menu {
     &[data-nav_open='false'] {
       overflow: unset !important;
 
-      // $delay: 0.25;
-
-      // .AppNav__underlay {
-      //   animation-delay: #{$delay}s;
-      // }
-
-      // ul.AppNav__nav-links-container {
-      //   animation-delay: #{$delay}s;
-
-      //   li {
-      //     $frac: 0.15;
-
-      //     @for $i from 1 through 6 {
-      //       &:nth-child(#{$i}) {
-      //         .AppNav__nav-link {
-      //           animation-delay: #{$delay - (($i - 1) * $frac)}s;
-      //         }
-      //       }
-      //     }
-      //   }
-
-      //   .AppNav__nav-link {
-      //     animation-name: anim__fadeOut;
-      //     animation-duration: 0.2s;
-      //   }
-      // }
-
       .custom-bars-wrapper {
         span {
           &:nth-child(1) {
@@ -489,11 +462,5 @@ div.AppNav__menu {
     a {
       width: 22rem;
     }
-  }
-}
-
-@media screen and (min-width: 1200px) {
-  .AppNav {
-    max-width: 1120px;
   }
 }
