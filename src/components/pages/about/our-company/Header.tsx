@@ -1,10 +1,39 @@
 import { Box } from 'src/components/shared';
-import styles from 'src/styles/pages/about/our-company/index.module.scss';
+import { useEffect, useRef } from 'react';
+import { ScrollReveal } from 'src/utils';
+
+import S from 'src/styles/pages/about/our-company/index.module.scss';
+import { Container } from 'react-bootstrap';
 
 const Header = (): JSX.Element => {
+  const headerRef = useRef<HTMLElement | null>(null);
+
+  useEffect(() => {
+    const header = headerRef.current;
+
+    if (header) {
+      new ScrollReveal(header);
+    }
+  }, []);
+
   return (
-    <header className={styles.headerSection}>
-      <Box className="container">
+    <Container
+      as="header"
+      fluid
+      className={`${S.headerSection} text-left text-md-center`}
+      ref={headerRef as any}>
+      <Container>
+        {/* <RevealOnScroll once>
+          <Row className="justify-content-md-center">
+            <Col xs={12} md={8}>
+              <RevealOnScroll className="pt-3 pb-2">
+                <Box as="h1" className="mt-3">
+                  Technology for health care
+                </Box>
+              </RevealOnScroll>
+            </Col>
+          </Row>
+        </RevealOnScroll> */}
         <Box className="row justify-content-md-center text-md-center">
           <Box className="col-12 col-md-8">
             <Box as="h1" className="mt-3">
@@ -50,8 +79,8 @@ const Header = (): JSX.Element => {
           </Box>
         </Box>
         {/* User Statistics End */}
-      </Box>
-    </header>
+      </Container>
+    </Container>
   );
 };
 

@@ -1,5 +1,6 @@
 .ourTeamLayout {
   position: relative;
+
   &::before {
     position: absolute;
     content: ' ';
@@ -16,37 +17,45 @@
     opacity: 1;
     transition: 0.3s;
   }
+
   svg.rect {
     z-index: -1;
     position: absolute;
   }
+
   svg.rect.positionBottom {
     bottom: -40px;
     width: 100%;
     left: 0;
+
     @media (max-width: 425px) {
       bottom: -30px;
     }
   }
+
   svg.positionRight.outerRect {
     top: 30rem;
     right: 0;
   }
+
   svg.positionRight.innerRect {
     z-index: 10;
     top: 30rem;
     right: -10px;
   }
+
   svg.positionLeft.outerRect {
     bottom: 40px;
     left: 0;
   }
+
   svg.positionLeft.innerRect {
     z-index: 10;
     bottom: 40px;
     left: -10px;
   }
 }
+
 .ourTeam {
   display: flex;
   justify-content: center;
@@ -58,6 +67,7 @@
   min-width: 20rem;
   position: relative;
   box-shadow: 4px 4px 0px rgb(13 35 68 / 8%);
+
   a {
     z-index: 10;
     position: absolute;
@@ -69,16 +79,17 @@
     border-radius: 6px;
     padding: 0.4rem 0.7rem 0;
     transition: visibility 0.3s linear, opacity 0.3s linear;
-    svg {
-    }
   }
+
   a {
     visibility: hidden;
   }
+
   &:hover a {
     visibility: visible;
     opacity: 1;
   }
+
   img {
     height: 100px;
     width: 100px;
@@ -86,9 +97,11 @@
     object-fit: cover;
     border-radius: 50%;
   }
+
   @media (max-width: 1024px) {
     min-width: 15rem;
   }
+
   @media (max-width: 500px) {
     box-shadow: 2.00399px 2.00399px 0px rgba(13, 35, 68, 0.08);
     padding: 1rem 0.2rem;
@@ -113,6 +126,7 @@
   justify-content: center;
   align-items: center;
   text-align: center;
+
   img {
     height: 100px;
     width: 100px;
