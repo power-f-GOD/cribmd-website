@@ -66,6 +66,8 @@ export type SVGIconName =
   | 'eye'
   | 'cross'
   | 'smiley'
+  | 'double-arrow'
+  | 'arrow-top-right'
   | 'home'
   | 'mobile'
   | 'drug-container'

@@ -1,7 +1,9 @@
 {
   "name": "cribmd-website",
   "scripts": {
-    "dev": "open http://localhost:3000 && next dev",
+    "dev": "next dev",
+    "dev:w": "start \"\" http://localhost:3000 && next dev",
+    "dev:m": "open http://localhost:3000 && next dev",
     "build": "next build",
     "start": "next start",
     "type-check": "tsc --project tsconfig.json --pretty --noEmit",

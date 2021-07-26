@@ -419,6 +419,75 @@ export const SVGIcon: FC<
               </SVG>
             </>
           );
+        case 'double-arrow':
+          return (
+            <>
+              <SVG
+                className="max-icon"
+                width="40"
+                height="40"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M15 3H21V9"
+                  stroke="#1971F5"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+                <path
+                  d="M9 21H3V15"
+                  stroke="#1971F5"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+                <path
+                  d="M21 3L14 10"
+                  stroke="#1971F5"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+                <path
+                  d="M3 21L10 14"
+                  stroke="#1971F5"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </SVG>
+            </>
+          );
+        case 'arrow-top-right':
+          return (
+            <>
+              <SVG
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M5.83301 14.1667L14.1663 5.83337"
+                  stroke="#0D2344"
+                  strokeOpacity="0.4"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+                <path
+                  d="M5.83301 5.83337H14.1663V14.1667"
+                  stroke="#0D2344"
+                  strokeOpacity="0.4"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </SVG>
+            </>
+          );
         default:
           return <></>;
       }
