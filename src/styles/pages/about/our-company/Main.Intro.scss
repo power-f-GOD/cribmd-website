@@ -1,0 +1,120 @@
+.mainIntroSection {
+  .svgWrapper {
+    z-index: -1;
+    position: absolute;
+
+    i {
+      width: inherit;
+      height: inherit;
+    }
+    svg {
+      height: unset;
+      width: unset;
+    }
+  }
+
+  .poster img {
+    -o-object-fit: cover;
+    object-fit: cover;
+    width: 100%;
+    border-radius: 1.5rem;
+    height: 100%;
+    vertical-align: middle;
+  }
+}
+
+.missionPoster {
+  position: relative;
+  margin-left: 5rem;
+  padding-left: 4rem;
+  padding-right: 3rem;
+
+  .svgWrapper {
+    bottom: -40px;
+    right: 10px;
+  }
+
+  @media (max-width: 1024px) {
+    margin-left: 2.5rem;
+    padding-left: 2rem;
+    padding-right: 1.5rem;
+  }
+
+  @media (max-width: 768px) {
+    margin-left: 0px !important;
+    padding: 0;
+  }
+}
+
+.visionPoster {
+  position: relative;
+  margin-right: 5rem;
+  padding-left: 3rem;
+  padding-right: 4rem;
+
+  .svgWrapper {
+    top: -30px;
+    left: 10px;
+  }
+  @media (max-width: 1024px) {
+    margin-right: 2.5rem;
+    padding-left: 1.5rem;
+    padding-right: 2rem;
+  }
+
+  @media (max-width: 768px) {
+    margin-right: 0px !important;
+    padding: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .visionPoster,
+  .missionPoster {
+    padding: 0px !important;
+
+    img {
+      border-bottom-right-radius: 0px !important;
+      border-bottom-left-radius: 0px !important;
+    }
+
+    .svgWrapper {
+      width: 100%;
+      right: 0;
+      z-index: 10;
+      margin-bottom: 2rem;
+      bottom: -70px;
+    }
+    .bottomLayer svg {
+      width: 100% !important;
+      border-bottom-left-radius: 2.5rem;
+      border-bottom-right-radius: 2.5rem;
+    }
+    .topLayer i {
+      bottom: 65px;
+
+      @media (max-width: 375px) {
+        bottom: 50px;
+      }
+      @media (max-width: 320px) {
+        bottom: 40px !important;
+      }
+    }
+
+    .svgWrapper.visionSvg {
+      left: 0px;
+      top: unset;
+    }
+
+    .svgWrapper.visionSvg.topLayer {
+      bottom: -8.5rem;
+
+      @media (max-width: 375px) {
+        bottom: -7.5rem;
+      }
+      @media (max-width: 320px) {
+        bottom: -7rem;
+      }
+    }
+  }
+}
