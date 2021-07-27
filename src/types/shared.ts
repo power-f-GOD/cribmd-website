@@ -80,7 +80,17 @@ export type SVGIconName =
   | 'home'
   | 'mobile'
   | 'drug-container'
-  | 'shield';
+  | 'shield'
+  | 'curved-square(blue)'
+  | 'wide-rectangle(blue)'
+  | 'curved-square(purple)'
+  | 'wide-rectangle(purple)'
+  | 'doctors-briefcase'
+  | 'flower'
+  | 'rectangle-slanted-right'
+  | 'rectangle-slanted-left'
+  | 'wavy-rectangle-sm'
+  | 'wavy-rectangle-lg';
 
 export type BoxAs =
   | 'nav'

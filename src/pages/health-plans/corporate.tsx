@@ -7,7 +7,6 @@ const Corporate: NextPage = () => {
   return (
     <div className="Corporate">
       <AppHead title="Plans - Corporate" />
-      <h1>Welcome to the CorporatePlan page!</h1>
       <Header />
       <Main />
       <Footer />
