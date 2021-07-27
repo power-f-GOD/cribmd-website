@@ -7,3 +7,5 @@ export * from './Logo';
 export * from './SVG';
 export * from './SVG.Icons';
 export * from './RevealOnScroll';
+export * from './OurInvestors';
+export * from './OurPartners';

@@ -2,7 +2,6 @@ import React, { useState, FC, SyntheticEvent, useCallback } from 'react';
 
 import { Anchor, Box, SVGIcon, Img, Button } from 'src/components/shared';
 import { Modal } from 'react-bootstrap';
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 import styles from 'src/styles/pages/about/our-company/index.module.scss';
 

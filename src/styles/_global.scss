@@ -17,7 +17,8 @@ body {
   width: 100%;
   margin: 0;
   font-weight: 400;
-  @media screen and (max-width: 767px) {
+
+  @media screen and (max-width: 359px) {
     font-size: 0.9rem;
   }
 }
@@ -25,7 +26,7 @@ body {
 body {
   // @include debugger();
   background-color: white;
-  font-size: 1rem !important;
+  // font-size: 1rem !important;
   min-height: 100vh;
   // overflow: hidden;
   overflow-x: hidden !important;
@@ -57,8 +58,8 @@ body {
   }
 
   > main > * > * {
-    padding-left: 1rem;
-    padding-right: 1rem;
+    padding-left: 1.25em;
+    padding-right: 1.25em;
   }
 }
 
@@ -67,6 +68,7 @@ body {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   line-height: 1.75em;
   color: rgba(13, 35, 68, 0.8);
+
   &,
   &::before,
   &::after {
@@ -88,15 +90,16 @@ h6,
 .h6 {
   color: #0d2344; // $heading-default;
   font-family: Poppins, sans-serif;
-  margin: 0.5rem 0;
+  margin: 1em 0;
   display: block;
   line-height: 1.25em;
 }
 
 $h1-size: 3em;
+$fraction: 0.835;
 
-@mixin h-xs($s: 1.85) {
-  @media screen and (max-width: 767px) {
+@mixin h-sm($s: 1.8) {
+  @media screen and (max-width: 991px) {
     font-size: 1em * $s;
     line-height: 1.4em;
   }
@@ -107,47 +110,47 @@ h1 {
   font-size: $h1-size;
   font-weight: 700 !important;
 
-  @include h-xs();
+  @include h-sm();
 }
 
 .h2,
 h2 {
-  font-size: $h1-size * math.pow(0.805, 2);
+  font-size: $h1-size * math.pow($fraction, 2);
   font-weight: 700 !important;
+
+  @include h-sm(1.4);
 }
 
 .h3,
 h3 {
-  font-size: $h1-size * math.pow(0.805, 3);
-  font-weight: 600 !important;
-  @media (max-width: 576px) {
-    font-size: 1em * 1;
-  }
-  @include h-xs(1.4);
+  font-size: $h1-size * math.pow($fraction, 3);
+  font-weight: 700 !important;
+
+  @include h-sm(1.2);
 }
 
 .h4,
 h4 {
-  font-size: $h1-size * math.pow(0.805, 4);
+  font-size: $h1-size * math.pow($fraction, 4);
   font-weight: 600 !important;
-  @media (max-width: 576px) {
-    font-size: 1em * 0.873;
-  }
-  @include h-xs(1.25);
+
+  @include h-sm(1.1);
 }
 
 .h5,
 h5 {
-  font-size: $h1-size * math.pow(0.805, 5);
-  font-weight: 500 !important;
-  @include h-xs(1.15);
+  font-size: $h1-size * math.pow($fraction, 5);
+  font-weight: 600 !important;
+
+  @include h-sm(1.05);
 }
 
 .h6,
 h6 {
-  font-size: $h1-size * math.pow(0.805, 6);
-  font-weight: 500 !important;
-  @include h-xs(1.1);
+  font-size: $h1-size * math.pow($fraction, 6);
+  font-weight: 600 !important;
+
+  @include h-sm(1.025);
 }
 
 a {
@@ -188,6 +191,11 @@ iframe {
   &[data-hidden='true'] {
     opacity: 0;
     // pointer-events: none;
+  }
+
+  &.with-frame {
+    border: 0.25em solid rgba(25, 113, 245, 0.1);
+    border-radius: $br * 1.5;
   }
 }
 
@@ -420,17 +428,21 @@ textarea {
     min-width: 2.5rem;
   }
 }
+
 .modal-backdrop {
   background-color: rgba(13, 35, 68, 0.5) !important;
 }
+
 .modal-dialog {
   @media (min-width: 992px) {
     max-width: 800px !important;
   }
 }
+
 .modal {
   backdrop-filter: blur(0.25rem);
 }
+
 .modal-content {
   border-radius: 1.125rem !important;
   border: none !important;
@@ -516,11 +528,13 @@ input[type='password'] {
 [class*='col-'],
 .container,
 .container-fluid {
-  padding: 0;
+  padding-right: 0;
+  padding-left: 0;
 }
 
 .row {
-  margin: 0;
+  margin-right: 0;
+  margin-left: 0;
 }
 
 .pointer-events-none {

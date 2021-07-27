@@ -1,16 +1,21 @@
 import { useState, useCallback, useContext, useEffect, memo, AnimationEvent } from 'react';
-import gsap from 'gsap/dist/gsap';
-import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+// import gsap from 'gsap/dist/gsap';
+// import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 
 import Container from 'react-bootstrap/Container';
 
-import { AppContext } from 'src/pages/_app';
+import { AppWindowContext } from 'src/pages/_app';
 import { preventDefault } from 'src/utils';
 import { Box, Logo, Anchor, Button } from '.';
 import { NavLink, SVGIcon } from './shared';
 
+let scrollTimeout: NodeJS.Timeout;
+let scrollPositionTimeout: NodeJS.Timeout;
+let initialScrollPosition = 0;
+let finalScrollPosition = 0;
+
 const AppNav = (): JSX.Element => {
-  const { windowWidth } = useContext(AppContext);
+  const windowWidth = useContext(AppWindowContext);
   const isPC = windowWidth > 991;
   const [open, setOpen] = useState(false);
   const [renderNav, setRenderNav] = useState(isPC);
@@ -30,44 +35,53 @@ const AppNav = (): JSX.Element => {
       }
 
       setRenderNav(isPC ? isNegativeScroll : open);
-      // this.renderNav = this.isPC ? !!this.isNegativeScroll : !this.sidebar.shrink;
     },
     [isPC, open, isNegativeScroll]
   );
 
-  useEffect(() => {
-    let throttle: NodeJS.Timeout;
+  const clearScrollTimeout = useCallback(() => {
+    clearTimeout(scrollTimeout);
+  }, []);
 
+  const handleWindowScroll = useCallback(() => {
+    clearScrollTimeout();
+    scrollTimeout = setTimeout(() => {
+      clearTimeout(scrollPositionTimeout);
+
+      const window = globalThis;
+
+      initialScrollPosition = window.scrollY || window.pageYOffset;
+      scrollPositionTimeout = setTimeout(() => {
+        finalScrollPosition = initialScrollPosition;
+      }, 50);
+
+      const isNegativeScroll = initialScrollPosition - finalScrollPosition < 0;
+
+      setIsNegativeScroll(isNegativeScroll);
+
+      if (isNegativeScroll) {
+        setRenderNav(true);
+      }
+    }, 25);
+  }, [clearScrollTimeout]);
+
+  useEffect(() => {
     if (!isPC) {
       document.body.dataset.nav_open = String(open);
     } else {
       document.body.dataset.nav_open = 'false';
     }
-
-    gsap.registerPlugin(ScrollTrigger);
-    ScrollTrigger.create({
-      start: 'top top',
-      end: document.body.offsetHeight,
-      trigger: document.body,
-      onUpdate: ({ direction }) => {
-        if (!isPC) return;
-
-        clearTimeout(throttle);
-
-        throttle = setTimeout(() => {
-          setIsNegativeScroll(direction === -1);
-
-          if (direction === -1 && isPC) {
-            setRenderNav(true);
-          }
-        }, 15);
-      }
-    });
   }, [open, isPC]);
 
-  // useEffect(() => {
-  //   setRenderNav(isPC);
-  // }, [isPC]);
+  useEffect(() => {
+    if (isPC) {
+      window.addEventListener('scroll', handleWindowScroll);
+
+      return () => {
+        window.removeEventListener('scroll', handleWindowScroll);
+      };
+    }
+  }, [isPC, handleWindowScroll]);
 
   return (
     <Container
@@ -130,7 +144,7 @@ const AppNav = (): JSX.Element => {
                 </Box>
 
                 <Box as="p" className="">
-                  <Box as="span" className="h6 mt-0">
+                  <Box as="span" className="h6 mt-0 mb-2">
                     Our Company
                   </Box>
                   Learn what we stand for, our vision and achievements
@@ -147,7 +161,7 @@ const AppNav = (): JSX.Element => {
                 </Box>
 
                 <Box as="p" className="">
-                  <Box as="span" className="h6 mt-0">
+                  <Box as="span" className="h6 mt-0 mb-2">
                     In the media
                   </Box>
                   As seen on Spotify and Arise News, catch the latest news about us
@@ -177,7 +191,7 @@ const AppNav = (): JSX.Element => {
                 </Box>
 
                 <Box as="p" className="">
-                  <Box as="span" className="h6 mt-0">
+                  <Box as="span" className="h6 mt-0 mb-2">
                     Individual Plan
                   </Box>
                   Affordable health plans for yourself and your family.
@@ -194,7 +208,7 @@ const AppNav = (): JSX.Element => {
                 </Box>
 
                 <Box as="p">
-                  <Box as="span" className="h6 mt-0">
+                  <Box as="span" className="h6 mt-0 mb-2">
                     Corporate Plan
                   </Box>
                   We have the right health plans for your business.

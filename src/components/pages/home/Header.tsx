@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useEffect, useRef } from 'react';
 
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -7,22 +6,12 @@ import Col from 'react-bootstrap/Col';
 
 import { Box, Anchor, Img, RevealOnScroll } from 'src/components/shared';
 import { SVGEllipse } from 'src/components/shared/SVG';
-import { GetLogo, ScrollReveal } from 'src/utils';
+import { GetImage } from 'src/utils';
 import S from 'src/styles/pages/home/Header.module.scss';
 
 const Header = (): JSX.Element => {
-  const headerRef = useRef<HTMLElement | null>(null);
-
-  useEffect(() => {
-    const header = headerRef.current;
-
-    if (header) {
-      new ScrollReveal(header);
-    }
-  }, []);
-
   return (
-    <Container as="header" ref={headerRef as any}>
+    <Container as="header">
       <RevealOnScroll once>
         <Row
           as="section"
@@ -41,7 +30,7 @@ const Header = (): JSX.Element => {
             lg={7}
             xl={6}
             className="ps-lg-4 ps-xl-5 pe-md-4 pe-lg-0  overflow-clip">
-            <RevealOnScroll className="pt-3 pb-2">
+            <RevealOnScroll className="pt-3">
               <Box as="h1" data-anim_delay="0.3">
                 The digital health consultation platform just for you
               </Box>
@@ -78,9 +67,9 @@ const Header = (): JSX.Element => {
             md={4}
             lg={5}
             xl={6}
-            className="px-sm-3 ps-xl-5 pe-xl-0 text-center">
+            className="ps-xl-5 pe-xl-0 text-center">
             <Img
-              src="/img/home/header-hero-image.png"
+              src={GetImage.home('header-hero-image')}
               className={`${S.heroImage} ms-lg-4 ms-xl-5`}
               data-anim="fadeIn"
               data-anim_delay="1"
@@ -94,20 +83,15 @@ const Header = (): JSX.Element => {
           CribMD in the Media
         </Box>
       </RevealOnScroll>
-      <RevealOnScroll component={Row} as="section" className={`${S.mediaGrid} align-items-stretch`}>
-        <Col className="py-2 py-lg-4" xs={3}>
-          <Img src={GetLogo.media('techpoint')} alt="Techpoint logo" />
-        </Col>
-        <Col className="py-2 py-lg-4" xs={3}>
-          <Img src={GetLogo.media('spotify')} alt="Techpoint logo" />
-        </Col>
-        <Col className="py-2 py-lg-4" xs={3}>
-          <Img src={GetLogo.media('markets-insider')} alt="Techpoint logo" />
-        </Col>
-        <Col className="py-2 py-lg-4" xs={3}>
-          <Img src={GetLogo.media('yahoo-finance')} alt="Techpoint logo" />
-        </Col>
-      </RevealOnScroll>
+      <Box as="section">
+        <RevealOnScroll component={Row} className={`${S.mediaGrid} align-items-stretch`}>
+          {['techpoint', 'spotify', 'markets-insider', 'yahoo-finance'].map((medium) => (
+            <Col className="py-2 py-lg-4" xs={3} key={medium}>
+              <Img src={GetImage.mediaLogo(medium)} alt={`${medium} logo`} />
+            </Col>
+          ))}
+        </RevealOnScroll>
+      </Box>
     </Container>
   );
 };

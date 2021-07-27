@@ -1,0 +1,192 @@
+@media screen and (max-width: 991px) {
+  body {
+    overflow: hidden !important;
+
+    &[data-nav_open='false'] {
+      overflow: unset !important;
+
+      .custom-bars-wrapper {
+        span {
+          &:nth-child(1) {
+            transform: translate(0, -0.4rem);
+          }
+
+          &:nth-child(2) {
+            transform: translateY(0);
+            opacity: 1;
+            width: 80%;
+          }
+
+          &:nth-child(3) {
+            transform: translate(0, 0.4rem);
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+
+  div.AppNav__underlay {
+    height: 105vh;
+    position: fixed;
+    bottom: 0;
+    top: 0;
+  }
+
+  ul.AppNav__nav-links-container {
+    position: fixed !important;
+    flex-direction: column;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    border-radius: 0 !important;
+    height: auto;
+    width: 100%;
+    min-height: 100%;
+    overflow-y: auto;
+    padding-top: 7rem;
+    color: white;
+
+    &::before {
+      content: unset !important;
+    }
+
+    li {
+      text-align: center;
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 0.75em;
+
+      &:hover,
+      &:focus-within {
+        a {
+          box-shadow: none !important;
+        }
+      }
+
+      &:focus-within {
+        .AppNav__menu {
+          display: list-item;
+          transition: 0.3s cubic-bezier(0.125, 1, 0.5, 1) 0.1s;
+        }
+      }
+
+      $delay: 0.03;
+
+      @for $i from 1 through 6 {
+        &:nth-child(#{$i}) {
+          .AppNav__nav-link {
+            animation-delay: #{($i + 3) * $delay}s;
+          }
+        }
+      }
+    }
+  }
+
+  ul.AppNav__nav-links-container .AppNav__nav-link {
+    border-radius: 1.75em;
+    width: 14rem;
+    font-size: 1.25em;
+    font-weight: bold;
+    padding: 1em 0 !important;
+    box-shadow: none !important;
+    background-color: white;
+    animation: anim__fadeInUp 0.5s cubic-bezier(0.125, 1, 0.5, 1) 0s;
+    animation-fill-mode: both !important;
+  }
+
+  div.AppNav__menu {
+    top: 100%;
+    margin-top: 0.45em;
+    display: none;
+    border: 0.125rem solid rgb(232, 241, 254);
+    animation: anim__fadeInDown 0.5s;
+
+    a {
+      $delay: 0.1s;
+
+      p {
+        animation: anim__fadeInUp 0.4s;
+        animation-fill-mode: backwards;
+      }
+
+      @for $i from 1 through 4 {
+        &:nth-child(#{$i}) p {
+          animation-delay: #{$i * $delay} !important;
+        }
+      }
+    }
+
+    &::before {
+      content: initial;
+    }
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .AppNav {
+    top: 0.5rem;
+  }
+
+  ul.AppNav__nav-links-container {
+    border-radius: $br !important;
+
+    &::before {
+      content: ' ';
+    }
+
+    li {
+      perspective: 4rem;
+      perspective-origin: center 450%;
+
+      &:hover,
+      &:focus-within {
+        .AppNav__menu {
+          transition: 0.3s cubic-bezier(0.125, 1, 0.5, 1) 0.1s, visibility 0s;
+          visibility: visible;
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  div.AppNav__menu {
+    position: absolute;
+    visibility: hidden;
+    opacity: 0;
+    top: 110%;
+    background-color: rgba(255, 255, 255, 0.85);
+    transform: translateY(-1rem);
+    // transition: 0.2s, visibility 0s ease 0.2s;
+    box-shadow: 0 $br * 0.85 $br * 1.25 rgba(13, 35, 68, 0.12);
+
+    a {
+      width: 22rem;
+    }
+  }
+}
+
+.custom-bars-wrapper {
+  span {
+    @media screen and (max-width: 1199px) {
+      transition-delay: 0.3s;
+      width: 100%;
+    }
+
+    @media screen and (min-width: 1200px) {
+      &:nth-child(1) {
+        transform: translate(0, -0.35rem);
+      }
+
+      &:nth-child(2) {
+        opacity: 1;
+      }
+
+      &:nth-child(3) {
+        transform: translate(0, 0.35rem);
+      }
+    }
+  }
+}

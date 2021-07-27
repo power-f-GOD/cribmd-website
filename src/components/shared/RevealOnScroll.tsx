@@ -2,7 +2,7 @@
 import { FC, Children, CSSProperties, memo } from 'react';
 
 import { Box } from '.';
-import { BoxProps, AnimName } from 'src/types';
+import { BoxProps, TransitionAnimName } from 'src/types';
 import { ColProps, ContainerProps, RowProps } from 'react-bootstrap';
 
 const _RevealOnScroll: FC<
@@ -12,7 +12,7 @@ const _RevealOnScroll: FC<
       component: FC<any>;
       allowOverflow: boolean;
       delay: number;
-      animName: AnimName;
+      animName: TransitionAnimName;
       duration: number;
       easing: string;
       once: boolean;
@@ -85,7 +85,7 @@ const _RevealOnScroll: FC<
  * @param {boolean} allowOverflow Whether to allow wrapping component make animating child overflowing visible.
  * @param {boolean} once Whether to allow the (scroll) animation run only once.
  * @param {string} easing Animation/Transition easing/timing function
- * @param {AnimName} animName Animation name
+ * @param {TransitionAnimName} animName Animation name
  * @param {number} duration Animation duration
  * @param {number} delay Animation delay
  */

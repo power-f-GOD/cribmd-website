@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { FC, memo } from 'react';
 import { SVG, Box, Img } from '.';
+import { GetImage } from 'src/utils';
 
 const _Logo: FC<{ variant?: 'on-white' | 'on-black' | 'on-blue'; className?: string }> = ({
   variant,
@@ -21,9 +22,7 @@ const _Logo: FC<{ variant?: 'on-white' | 'on-black' | 'on-blue'; className?: str
       <Link href="/">
         <a>
           <Img
-            srcSet={`/img/logo/cribmd/logo-${
-              variant || 'on-white'
-            }__500x.webp 2x, /img/logo/cribmd/logo-${variant || 'on-white'}__250x.webp 1x`}
+            srcSet={GetImage.cribmdLogo(variant || 'on-white')}
             sizes="200px"
             alt="CribMD logo"
           />

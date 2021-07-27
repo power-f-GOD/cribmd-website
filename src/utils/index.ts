@@ -3,15 +3,25 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import { MouseEvent } from 'react';
 
-export class GetLogo {
-  static baseUrl = '/img/logo/';
+export class GetImage {
+  private static baseUrl = '/img/';
+  private static logoUrl = GetImage.baseUrl + '_logo/';
+  private static homeUrl = GetImage.baseUrl + 'home/';
 
-  static media(name: string) {
-    return `${this.baseUrl}media/${name}-logo__250x.webp`;
+  static mediaLogo(name: string) {
+    return `${this.logoUrl}media/${name}-logo__250x.webp`;
   }
 
-  static partner(name: string) {
-    return `${this.baseUrl}partner/${name}-logo__250x.webp`;
+  static partnerLogo(name: string) {
+    return `${this.logoUrl}partner/${name}-logo__250x.webp`;
+  }
+
+  static cribmdLogo(name: string) {
+    return `${this.logoUrl}cribmd/logo-${name}__250x.webp`;
+  }
+
+  static home(name: string, size?: '1x' | '2x') {
+    return `${this.homeUrl}${name}__${parseInt(String(size || 1)) * 400}x.webp`;
   }
 }
 
@@ -21,6 +31,8 @@ export class ScrollReveal {
   private observer: IntersectionObserver;
 
   constructor(root: HTMLElement | Document) {
+    const { innerWidth: width, innerHeight: height } = globalThis;
+
     this.root = root;
     this.observer = createObserver(
       null,
@@ -39,7 +51,7 @@ export class ScrollReveal {
           }
         });
       },
-      { threshold: globalThis.innerWidth < 768 ? 0.5 : 0.75 }
+      { threshold: width < 768 ? (height < width ? 0.25 : 0.5) : 0.4 }
     );
     // throttle for a few millisec to ascertain anchors have mounted in the DOM
     throttle(() => this.register());

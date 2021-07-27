@@ -2,7 +2,7 @@
 
 .servicesWrapper {
   background-color: #f5f9ff;
-  padding: 3rem 0;
+  padding: 1rem 0 3rem 0;
   margin: 4rem 0;
 
   p {
@@ -35,6 +35,16 @@
 
   h3 {
     display: inline-block;
+  }
+}
+
+.covidConcernsCard {
+  border-radius: $br;
+  padding: $br * 1.25;
+  background-color: $bg-lightblue;
+
+  h5 {
+    color: $theme-primary-v4;
   }
 }
 

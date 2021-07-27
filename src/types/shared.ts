@@ -39,10 +39,10 @@ export interface BoxProps
   > {
   as?: BoxAs;
   _ref?: RefObject<HTMLElement & HTMLParagraphElement & HTMLUListElement & HTMLLIElement>;
-  'data-anim'?: AnimName;
+  'data-anim'?: TransitionAnimName;
 }
 
-export type AnimName =
+export type TransitionAnimName =
   | 'fadeIn'
   | 'fadeInUp'
   | 'fadeInDown'
@@ -51,7 +51,16 @@ export type AnimName =
   | 'fadeInUpBig'
   | 'fadeInDownBig'
   | 'fadeInLeftBig'
-  | 'fadeInRightBig';
+  | 'fadeInRightBig'
+  | 'In'
+  | 'InUp'
+  | 'InDown'
+  | 'InLeft'
+  | 'InRight'
+  | 'InUpBig'
+  | 'InDownBig'
+  | 'InLeftBig'
+  | 'InRightBig';
 
 export type SVGIconName =
   | 'credit-card-individual'
