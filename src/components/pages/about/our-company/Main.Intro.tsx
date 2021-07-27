@@ -26,16 +26,16 @@ const MainIntro = (): JSX.Element => {
                   data-anim_delay="1"
                   data-anim_ease="cubic-bezier(0.5, 0, .5, 1.25)"
                 />
-                <Box className={`${S.svgWrapper} d-none d-sm-block`} data-anim_delay="1">
+                <Box className={`${S.svgWrapper} d-none d-lg-block`} data-anim_delay="1">
                   <SVGIcon name="curved-square(blue)" />
                 </Box>
                 <Box
-                  className={`${S.svgWrapper} ${S.bottomLayer}  d-block d-sm-none`}
+                  className={`${S.svgWrapper} ${S.bottomLayer}  d-block d-md-none`}
                   data-anim_delay="1">
                   <SVGIcon name="wide-rectangle(blue)" />
                 </Box>
                 <Box
-                  className={`  ${S.svgWrapper} ${S.topLayer} d-block d-sm-none `}
+                  className={`  ${S.svgWrapper} ${S.topLayer} d-block d-md-none `}
                   data-anim_delay="1">
                   <SVGIcon name="doctors-briefcase" />
                 </Box>

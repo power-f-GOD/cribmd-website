@@ -16,11 +16,7 @@ const Header = (): JSX.Element => {
   }, []);
 
   return (
-    <Container
-      as="header"
-      fluid
-      className={`${S.headerSection} text-left text-md-center`}
-      ref={headerRef}>
+    <Container as="header" fluid className={`${S.headerSection}  text-md-center`} ref={headerRef}>
       <RevealOnScroll className="container">
         <Row className="justify-content-md-center py-3">
           <Col xs={12} lg={8}>

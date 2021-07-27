@@ -30,8 +30,8 @@
   padding-right: 3rem;
 
   .svgWrapper {
-    bottom: -40px;
-    right: 10px;
+    bottom: -3rem;
+    right: 1rem;
   }
 
   @media (max-width: 1024px) {
@@ -53,8 +53,8 @@
   padding-right: 4rem;
 
   .svgWrapper {
-    top: -30px;
-    left: 10px;
+    top: -2rem;
+    left: 1rem;
   }
   @media (max-width: 1024px) {
     margin-right: 2.5rem;
@@ -83,7 +83,7 @@
       right: 0;
       z-index: 10;
       margin-bottom: 2rem;
-      bottom: -70px;
+      bottom: -5rem;
     }
     .bottomLayer svg {
       width: 100% !important;
@@ -91,18 +91,18 @@
       border-bottom-right-radius: 2.5rem;
     }
     .topLayer i {
-      bottom: 65px;
+      bottom: 4.5rem;
 
       @media (max-width: 375px) {
-        bottom: 50px;
+        bottom: 3.5rem;
       }
       @media (max-width: 320px) {
-        bottom: 40px !important;
+        bottom: 2.5rem !important;
       }
     }
 
     .svgWrapper.visionSvg {
-      left: 0px;
+      left: 0;
       top: unset;
     }
 
