@@ -4,29 +4,40 @@ import { Anchor, Box, SVGIcon, Img, Button } from 'src/components/shared';
 import { Modal } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import styles from 'src/styles/pages/about/our-company/index.module.scss';
+import S from 'src/styles/pages/about/our-company/Main.module.scss';
 
-const TeamModal: FC<{ content: any }> = ({ content }): JSX.Element => {
+const TeamModal: FC<{
+  content: {
+    name: string;
+    imagePath: string;
+    role: string;
+    skill: string;
+    contentFirst: string;
+    contentSecond: string;
+  };
+}> = ({ content }): JSX.Element => {
   const [showModal, setShowModal] = useState(false);
   const handleOnHide = useCallback(() => {
     setShowModal(false);
   }, []);
+
   const handleOnOpen = useCallback(() => {
     setShowModal(true);
   }, []);
+
   const handleImgError = useCallback((e: SyntheticEvent<HTMLImageElement, Event>): void => {
     const target = e.target as HTMLImageElement;
 
     if (/\.webp/.test(target.srcset)) target.srcset = target.srcset.replaceAll('.webp', '.png');
   }, []);
   return (
-    <Box key={content.id}>
-      <Anchor key={content.id} onClick={handleOnOpen}>
+    <Box>
+      <Anchor key={content.name} onClick={handleOnOpen}>
         <SVGIcon name="double-arrow" size="tiny" />
       </Anchor>
       <Modal onHide={handleOnHide} show={showModal}>
-        <Box className={`${styles.teamModal}`}>
-          <Box className={`${styles.modalHeader} modal-header `}>
+        <Box className={`${S.teamModal}`}>
+          <Box className={`${S.modalHeader} modal-header `}>
             <Box className="align-items-center d-flex ">
               <Img
                 srcSet={`${content.imagePath}, ${content.imagePath}`}
@@ -49,12 +60,12 @@ const TeamModal: FC<{ content: any }> = ({ content }): JSX.Element => {
             </Button>
           </Box>
           <Box className="modal-body mb-2">
-            <Box className={`${styles.modalContent} secondary-content`}>
+            <Box className={`${S.modalContent} secondary-content`}>
               {content.contentFirst}
               <br></br>
               {content.contentSecond}
               <a
-                className={styles.linkd}
+                className={S.linkd}
                 href="https://www.linkedin.com/in/ngiriuchechukwu"
                 target="_blank"
                 rel="noreferrer">

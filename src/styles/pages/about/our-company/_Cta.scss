@@ -2,14 +2,10 @@
   background: rgb(158, 172, 229, 0.12) !important;
   padding: 1rem 1.5rem;
   z-index: 100;
-  overflow: hidden;
   border-radius: 1.5rem;
-  position: relative;
 
   img {
     width: 100%;
     object-fit: cover;
-    z-index: 10;
-    border-radius: 10px;
   }
 }
