@@ -429,25 +429,6 @@ textarea {
   }
 }
 
-.modal-backdrop {
-  background-color: rgba(13, 35, 68, 0.5) !important;
-}
-
-.modal-dialog {
-  @media (min-width: 992px) {
-    max-width: 800px !important;
-  }
-}
-
-.modal {
-  backdrop-filter: blur(0.25rem);
-}
-
-.modal-content {
-  border-radius: 1.125rem !important;
-  border: none !important;
-}
-
 input[type='text'],
 input[type='password'] {
   -webkit-appearance: none;
@@ -699,4 +680,88 @@ a.no-shadow,
 
 .theme-bg-tertiary-lightest {
   background-color: #eee;
+}
+
+.modal-backdrop {
+  background-color: rgba(13, 35, 68, 0.5) !important;
+}
+
+.modal-dialog {
+  position: relative;
+  width: auto;
+  margin: 0.5rem;
+  pointer-events: none;
+
+  @media (min-width: 992px) {
+    max-width: 800px !important;
+  }
+  @media (min-width: 576px) {
+    margin: 1.75rem auto;
+  }
+}
+
+.modal {
+  backdrop-filter: blur(0.25rem);
+}
+
+.modal.fade .modal-dialog {
+  transition: -webkit-transform 0.3s ease-out;
+  transition: transform 0.3s ease-out;
+  transition: transform 0.3s ease-out, -webkit-transform 0.3s ease-out, -moz-transform 0.3s ease-out;
+  transform: translate(0, -50px);
+}
+.modal-content {
+  border-radius: 1.125rem !important;
+  border: none !important;
+}
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1040;
+  width: 100vw;
+  height: 100vh;
+  background-color: #000;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1060;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  outline: 0;
+  padding-right: 0px !important;
+}
+
+.modal-header {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+}
+.modal-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+}
+.fade {
+  transition: opacity 0.15s linear;
+}
+.modal-backdrop.fade {
+  opacity: 0;
+}
+.modal-backdrop.show {
+  opacity: 0.5;
+}
+.modal.show .modal-dialog {
+  transform: none;
+  @media (min-width: 576px) {
+    margin: 1.75rem auto;
+  }
 }

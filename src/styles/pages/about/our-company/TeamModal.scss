@@ -15,6 +15,13 @@
       color: $content-default;
     }
   }
+  .modalContent {
+    padding: 1rem 1.5rem;
+
+    // @media (max-width ) {
+    //   padding: 0.5rem;
+    // }
+  }
 
   img {
     height: 3rem;

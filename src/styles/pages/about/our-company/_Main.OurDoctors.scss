@@ -1,9 +1,9 @@
 .doctorsContainer {
   border: 4px solid #f5f9ff;
   border-radius: 2rem;
-  padding: 1.5rem;
-
-  @media (max-width: 700px) {
+  padding: 1.2rem;
+  @media (max-width: 767px) {
+    padding: 0.5rem 0;
     border: none;
   }
 
@@ -36,13 +36,12 @@
 
 .doctorContainer {
   border-radius: 1.5rem;
-  padding: 2rem;
+  padding: 1rem;
   margin-bottom: 1.5rem;
   color: $heading-default;
 
-  @media (max-width: 700px) {
+  @media (max-width: 768px) {
     margin-bottom: 1rem;
-    padding: 1rem;
   }
 
   span {

@@ -10,7 +10,7 @@ const Cta = (): JSX.Element => {
   }, []);
 
   return (
-    <Container as="section" className="mt-5">
+    <Container as="section" className="mt-md-5">
       <RevealOnScroll once className={S.ctaContainer}>
         <Row className="align-items-center">
           <Col className="px-0 px-md-3" xs={12} md={7}>
@@ -24,12 +24,24 @@ const Cta = (): JSX.Element => {
                 From the comfort of your home, provide services to people and help save more lives.
               </Box>
             </RevealOnScroll>
-            <RevealOnScroll delay={0.9}>
+            <RevealOnScroll delay={0.9} className="d-block d-sm-none">
               <Box data-anim="fadeInRight">
                 <Anchor
                   button
                   color="primary"
                   className="bg-white col-12 col-md-2"
+                  variant="text"
+                  href="https://www.cribmd.com/signup">
+                  Join Us
+                </Anchor>
+              </Box>
+            </RevealOnScroll>
+            <RevealOnScroll delay={0.9} className="d-none d-sm-block">
+              <Box data-anim="fadeInRight">
+                <Anchor
+                  button
+                  color="primary"
+                  className="bg-white"
                   variant="text"
                   href="https://www.cribmd.com/signup">
                   Join Us
