@@ -2,19 +2,20 @@ import { useContext, useCallback, SyntheticEvent, memo } from 'react';
 import { Box, Img, SVGIcon, RevealOnScroll } from 'src/components/shared';
 import S from 'src/styles/pages/about/our-company/main.module.scss';
 import TeamModal from './Modal';
-import { AppContext } from 'src/pages/_app';
+import { AppWindowContext } from 'src/pages/_app';
 import { Col, Container, Row } from 'react-bootstrap';
 import { teamData, teamMembersData, advisorsData } from './data';
-import { AnimName } from 'src/types';
+import { TransitionAnimName } from 'src/types';
 import Doctor from './Doctor';
 import Cta from './Cta';
 
 const MainBody = (): JSX.Element => {
-  const { windowWidth } = useContext(AppContext);
+  const windowWidth = useContext(AppWindowContext);
   const isMobile = windowWidth < 768;
 
   const teamsAnim = useCallback(
-    (right?: boolean) => `fadeIn${!isMobile ? 'Up' : right ? 'Right' : 'Left'}` as AnimName,
+    (right?: boolean) =>
+      `fadeIn${!isMobile ? 'Up' : right ? 'Right' : 'Left'}` as TransitionAnimName,
     [isMobile]
   );
 

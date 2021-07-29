@@ -73,7 +73,7 @@ export const specializations: { icon: SVGIconName; specialization: string }[] = 
   },
   {
     icon: 'smiley',
-    specialization: 'Pediatricis'
+    specialization: 'Pediatrics'
   },
   {
     icon: 'cross',

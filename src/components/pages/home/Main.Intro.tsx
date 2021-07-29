@@ -39,7 +39,18 @@ const MainIntro = (): JSX.Element => {
       {/* Specializations */}
       <Container as="section">
         <RevealOnScroll allowOverflow className={S.specializationsGrid}>
-          {specializations.slice(0).map(({ icon, specialization }, i) => (
+          {specializations.slice(0, 4).map(({ icon, specialization }, i) => (
+            <Box
+              className="p-4 px-3"
+              data-anim={specializationsAnim(i % 2 === 0)}
+              key={specialization}>
+              <SVGIcon name={icon} size="medium" />
+              <Box as="span">{specialization}</Box>
+            </Box>
+          ))}
+        </RevealOnScroll>
+        <RevealOnScroll allowOverflow className={S.specializationsGrid}>
+          {specializations.slice(4).map(({ icon, specialization }, i) => (
             <Box
               className="p-4 px-3"
               data-anim={specializationsAnim(i % 2 === 0)}

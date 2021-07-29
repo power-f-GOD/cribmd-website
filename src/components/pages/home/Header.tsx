@@ -30,21 +30,18 @@ const Header = (): JSX.Element => {
             lg={7}
             xl={6}
             className="ps-lg-4 ps-xl-5 pe-md-4 pe-lg-0  overflow-clip">
-            <RevealOnScroll className="pt-3">
-              <Box as="h1" data-anim_delay="0.3">
+            <RevealOnScroll className="pt-md-3">
+              <Box as="h1" data-anim_delay="0.125">
                 The digital health consultation platform just for you
               </Box>
             </RevealOnScroll>
             <RevealOnScroll className="mb-4 mb-lg-3">
-              <Box as="p" data-anim_delay="0.6">
+              <Box as="p" data-anim_delay="0.4">
                 Skip the waiting room and instantly connect with verified medical practitioners for
                 quality healthcare 24/7.
               </Box>
             </RevealOnScroll>
-            <RevealOnScroll
-              allowOverflow
-              className="d-flex justify-content-between py-4"
-              delay={1.1}>
+            <RevealOnScroll allowOverflow className="d-flex justify-content-between py-4" delay={1}>
               <Box data-anim="fadeInRight">
                 <Anchor button color="primary" variant="text" href="https://www.cribmd.com/signup">
                   Get Started
@@ -72,7 +69,7 @@ const Header = (): JSX.Element => {
               src={GetImage.home('header-hero-image')}
               className={`${S.heroImage} ms-lg-4 ms-xl-5`}
               data-anim="fadeIn"
-              data-anim_delay="1"
+              data-anim_delay="0.9"
               data-anim_ease="cubic-bezier(0.5, 0, .5, 1.25)"
             />
           </RevealOnScroll>

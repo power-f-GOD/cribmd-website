@@ -64,6 +64,8 @@ const _Box: FC<BoxProps> = ({ as, children, ...props }): JSX.Element => {
       return <li {...props}>{children}</li>;
     case 'section':
       return <section {...props}>{children}</section>;
+    case 'blockquote':
+      return <blockquote {...props}>{children}</blockquote>;
     default:
       return <div {...props}>{children}</div>;
   }

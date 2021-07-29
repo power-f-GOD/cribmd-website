@@ -12,9 +12,9 @@ const _Button: FC<ButtonProps> = ({
   return (
     <button
       {...props}
-      className={`${_type || 'flat-button'} btn--${variant || 'text'} ${color || 'primary'} ${
-        className || ''
-      }`.replace(/\s+/g, ' ')}>
+      className={`Button ${_type || 'flat-button'} btn--${variant || 'text'} ${
+        color || 'primary'
+      } ${className || ''}`.replace(/\s+/g, ' ')}>
       {children}
     </button>
   );

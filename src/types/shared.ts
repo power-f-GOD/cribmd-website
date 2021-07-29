@@ -4,8 +4,15 @@ import {
   ButtonHTMLAttributes,
   AnchorHTMLAttributes,
   HTMLAttributes,
-  RefObject
+  RefObject,
+  BlockquoteHTMLAttributes,
+  ImgHTMLAttributes
 } from 'react';
+
+export interface ImgProps
+  extends DetailedHTMLProps<ImgHTMLAttributes<HTMLImageElement>, HTMLImageElement> {
+  isJPG?: boolean;
+}
 
 export interface IconProps {
   name?: SVGIconName & string;
@@ -33,7 +40,7 @@ export interface AnchorProps
 export interface BoxProps
   extends Partial<
     DetailedHTMLProps<
-      HTMLAttributes<HTMLElement>,
+      HTMLAttributes<HTMLElement> & BlockquoteHTMLAttributes<HTMLElement>,
       HTMLElement & HTMLParagraphElement & HTMLUListElement & HTMLLIElement
     >
   > {
@@ -63,6 +70,9 @@ export type TransitionAnimName =
   | 'InRightBig';
 
 export type SVGIconName =
+  | 'caret-down'
+  | 'previous'
+  | 'next'
   | 'credit-card-individual'
   | 'credit-card-corporate'
   | 'volume'
@@ -111,4 +121,5 @@ export type BoxAs =
   | 'li'
   | 'section'
   | 'i'
-  | 'small';
+  | 'small'
+  | 'blockquote';
