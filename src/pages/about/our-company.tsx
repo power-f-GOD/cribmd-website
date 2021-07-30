@@ -9,10 +9,10 @@ const OurCompany: NextPage = () => {
   const ourCompanyRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
-    const home = ourCompanyRef.current;
+    const ourCompany = ourCompanyRef.current;
 
-    if (home) {
-      new ScrollReveal(home);
+    if (ourCompany) {
+      new ScrollReveal(ourCompany);
     }
   }, []);
   return (

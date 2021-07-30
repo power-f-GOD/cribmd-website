@@ -105,7 +105,10 @@ export type SVGIconName =
   | 'activity-green'
   | 'activity-wine'
   | 'activity-beige'
-  | 'svgName';
+  | 'svgName'
+  | 'mobile-phone'
+  | 'web'
+  | 'clock';
 
 export type BoxAs =
   | 'nav'

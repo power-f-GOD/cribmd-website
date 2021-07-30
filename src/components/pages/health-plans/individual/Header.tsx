@@ -29,7 +29,7 @@ const Header = (): JSX.Element => {
                       color="primary"
                       className="AppNav__nav-link ms-0 ms-lg-2"
                       href="https://www.cribmd.com/signup">
-                      Subscribe Today
+                      Subscribe Now
                     </Anchor>
                   </Box>
                 </RevealOnScroll>
