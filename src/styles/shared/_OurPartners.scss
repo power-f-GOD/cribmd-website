@@ -1,0 +1,8 @@
+.OurPartners {
+  @extend .OurInvestors;
+
+  .__grid {
+    max-width: unset;
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

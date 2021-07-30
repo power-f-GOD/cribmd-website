@@ -1,0 +1,98 @@
+.CustomersTestimonies {
+  .__content {
+    background-color: #f8f5ff;
+    border-radius: $br * 1.5;
+    padding: $br * 1.75;
+    overflow: hidden;
+  }
+
+  blockquote {
+    min-height: 7rem;
+    margin: 0 auto;
+    width: auto;
+    display: grid;
+    place-items: center;
+    position: relative;
+  }
+
+  .__avatars-grid-wrapper {
+    .name__caret-down {
+      animation: bounceY 5s linear infinite;
+    }
+  }
+
+  .__avatars-grid {
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    place-items: center;
+    width: 6rem * 7;
+    position: relative;
+    left: calc(50% - 3rem);
+    transition: 0.3s;
+  }
+
+  .__testifier-name {
+    min-height: 3em;
+    position: relative;
+  }
+
+  .__testifier-name span,
+  blockquote p {
+    display: block;
+    text-align: center;
+    width: 100%;
+    position: absolute;
+    opacity: 0;
+    transform: translateY(2rem);
+    transition: opacity 0.2s, transform 0.4s;
+
+    &.active {
+      transform: translate(0);
+      opacity: 1;
+    }
+  }
+
+  .__testifier-name span {
+    transform: translateY(-2rem);
+  }
+
+  button {
+    background-color: white;
+    margin: 0 0.25em;
+    box-shadow: 0 0.25em 1em rgba(25, 113, 245, 0.08) !important;
+  }
+
+  @media screen and (min-width: 768px) {
+    margin-top: $br * 6;
+    margin-bottom: $br * 6;
+
+    .__content {
+      border-radius: $br * 3;
+      padding: $br * 6;
+    }
+  }
+}
+
+@keyframes bounceY {
+  0% {
+    transform: scale(1) translateY(0);
+  }
+  4% {
+    transform: translateY(-0.75em);
+  }
+  8% {
+    transform: translateY(0.5em);
+  }
+  12% {
+    transform: scale(1.5) translateY(-0.5em);
+  }
+  16% {
+    transform: translateY(0.25em);
+  }
+  20% {
+    transform: translateY(-0.25em);
+  }
+  24% {
+    transform: translateY(0);
+  }
+}

@@ -20,7 +20,7 @@ const _Anchor: FC<Omit<AnchorProps, 'exact'>> = ({
       {...props}
       className={
         button
-          ? `${_type || 'flat-button'} btn--${variant || 'text'} ${
+          ? `Button ${_type || 'flat-button'} btn--${variant || 'text'} ${
               color || 'primary'
             } ${className}`.replace(/\s+/g, ' ')
           : className
@@ -51,7 +51,9 @@ const _NavLink: FC<Omit<AnchorProps, 'routeLink'>> = ({
       <a
         {...props}
         className={(button
-          ? `${_type || 'flat-button'} btn--${variant || 'text'} ${color || 'primary'} ${className}`
+          ? `Button ${_type || 'flat-button'} btn--${variant || 'text'} ${
+              color || 'primary'
+            } ${className}`
           : className || ''
         )
           .concat(isActive ? ' active' : '')

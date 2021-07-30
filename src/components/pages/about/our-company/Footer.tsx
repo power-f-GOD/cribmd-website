@@ -1,10 +1,8 @@
 // Please, note that this Footer is different from the global (or app) AppFooter that is common to all pages. This is the base/exit section of this page just before the AppFooter
 import { SyntheticEvent, useCallback } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
-import { Box, Img, Anchor, RevealOnScroll } from 'src/components/shared';
+import { Box, Img, Anchor, RevealOnScroll, OurInvestors, OurPartners } from 'src/components/shared';
 import S from 'src/styles/pages/about/our-company/index.module.scss';
-import { useEffect, useRef } from 'react';
-import { ScrollReveal } from 'src/utils';
 
 const Footer = (): JSX.Element => {
   const handleImgError = useCallback((e: SyntheticEvent<HTMLImageElement, Event>): void => {
@@ -12,18 +10,11 @@ const Footer = (): JSX.Element => {
     if (/\.webp/.test(target.srcset)) target.srcset = target.srcset.replaceAll('.webp', '.png');
   }, []);
 
-  const footerRef = useRef<HTMLElement | null>(null);
-
-  useEffect(() => {
-    const footer = footerRef.current;
-
-    if (footer) {
-      new ScrollReveal(footer);
-    }
-  }, []);
   return (
-    <Container as="footer" className="mt-5" ref={footerRef}>
-      <RevealOnScroll once>
+    <Container as="footer" className="mt-5">
+      <OurInvestors />
+      <OurPartners />
+      <RevealOnScroll>
         <Box className={S.footerContainer}>
           <Row className="align-items-center">
             <Col className="px-0 px-md-3" xs={12} md={7}>

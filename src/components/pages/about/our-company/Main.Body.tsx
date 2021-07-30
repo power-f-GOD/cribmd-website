@@ -78,7 +78,7 @@ const MainBody = (): JSX.Element => {
             {teamData.map((team, i) => (
               <Box
                 key={team.name}
-                className={`p-4 px-3 ${S.teamContainer}`}
+                className={`p-4 px-3 ${S.teamContainer} order-${team.order} order-lg-${team.orderLg}`}
                 data-anim={teamsAnim(i % 2 === 0)}>
                 <TeamModal content={team} />
                 <Img

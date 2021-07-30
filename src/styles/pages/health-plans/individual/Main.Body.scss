@@ -1,0 +1,9 @@
+.processOptionCard {
+  border-radius: $br;
+  padding: $br * 0.75;
+  background-color: $bg-lightblue;
+
+  h5 {
+    color: $theme-primary-v4;
+  }
+}

@@ -14,6 +14,47 @@ export const SVGIcon: FC<
   <Icon name={name} size={size}>
     {(() => {
       switch (name) {
+        case 'caret-down':
+          return (
+            <SVG
+              width="24"
+              height="21"
+              viewBox="0 0 24 21"
+              fill="none"
+              xmlns="http://www.w3.org/2000/SVG">
+              <path
+                d="M14.5981 19.5C13.4434 21.5 10.5566 21.5 9.40192 19.5L0.74167 4.5C-0.413031 2.5 1.03035 -2.35776e-06 3.33975 -2.15587e-06L20.6603 -6.41661e-07C22.9697 -4.39766e-07 24.413 2.5 23.2583 4.5L14.5981 19.5Z"
+                fill="#0D2344"
+                fillOpacity="0.1"
+              />
+            </SVG>
+          );
+        case 'previous':
+          return (
+            <SVG viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/SVG">
+              <path
+                d="M6.5 1L1.5 6L6.5 11"
+                stroke="#0D2344"
+                strokeOpacity="0.6"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </SVG>
+          );
+        case 'next':
+          return (
+            <SVG viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/SVG">
+              <path
+                d="M1.5 11L6.5 6L1.5 1"
+                stroke="#0D2344"
+                strokeOpacity="0.6"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </SVG>
+          );
         case 'home':
           return (
             <SVG viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/SVG">
@@ -709,6 +750,89 @@ export const SVGIcon: FC<
                 fill="#CFE1FC"
               />
             </SVG>
+          );
+        case 'check':
+          return (
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 16 16"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M8 0C3.58172 0 0 3.58172 0 8C0 12.4183 3.58172 16 8 16C12.4183 16 16 12.4183 16 8C15.9949 3.58385 12.4161 0.00514317 8 0Z"
+                fill="#1971F5"
+                fillOpacity="0.4"
+              />
+              <path
+                d="M12.6173 5.46675L8.05402 11.6594C7.94519 11.8038 7.7829 11.8984 7.60363 11.922C7.42436 11.9456 7.24314 11.8961 7.10068 11.7847L3.84202 9.17941C3.55446 8.9493 3.5079 8.52964 3.73802 8.24208C3.96814 7.95452 4.38779 7.90796 4.67535 8.13808L7.39268 10.3121L11.544 4.67808C11.6801 4.47381 11.9175 4.36087 12.1619 4.38411C12.4063 4.40734 12.6181 4.56299 12.7133 4.78926C12.8085 5.01553 12.7716 5.2758 12.6173 5.46675Z"
+                fill="white"
+              />
+            </svg>
+          );
+        case 'activity-green':
+          return (
+            <svg
+              width="29"
+              height="34"
+              viewBox="0 0 29 34"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M22.535 6.42269L13.1209 2.43021C9.95617 1.08804 6.48224 2.38589 5.3617 5.32903L2.02845 14.0839C0.907906 17.027 2.56507 20.5009 5.72983 21.8431L15.1439 25.8356C18.3087 27.1778 21.7826 25.8799 22.9032 22.9368L26.2364 14.1819C27.3569 11.2388 25.6998 7.76486 22.535 6.42269Z"
+                fill="#DCF9E4"
+              />
+              <path
+                d="M22 22H18L15 31L9 13L6 22H2"
+                stroke="#0D2344"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          );
+        case 'activity-wine':
+          return (
+            <svg
+              width="29"
+              height="34"
+              viewBox="0 0 29 34"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M22.535 6.42269L13.1209 2.43021C9.95617 1.08804 6.48224 2.38589 5.3617 5.32903L2.02845 14.0839C0.907906 17.027 2.56507 20.5009 5.72983 21.8431L15.1439 25.8356C18.3087 27.1778 21.7826 25.8799 22.9032 22.9368L26.2364 14.1819C27.3569 11.2388 25.6998 7.76486 22.535 6.42269Z"
+                fill="#FBE4E4"
+              />
+              <path
+                d="M22 22H18L15 31L9 13L6 22H2"
+                stroke="#0D2344"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          );
+        case 'activity-beige':
+          return (
+            <svg
+              width="29"
+              height="34"
+              viewBox="0 0 29 34"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M22 22H18L15 31L9 13L6 22H2"
+                stroke="#0D2344"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <path
+                d="M22.535 6.42269L13.1209 2.43021C9.95617 1.08804 6.48224 2.38589 5.3617 5.32903L2.02845 14.0839C0.907906 17.027 2.56507 20.5009 5.72983 21.8431L15.1439 25.8356C18.3087 27.1778 21.7826 25.8799 22.9032 22.9368L26.2364 14.1819C27.3569 11.2388 25.6998 7.76486 22.535 6.42269Z"
+                fill="#F8A362"
+                fillOpacity="0.1"
+              />
+            </svg>
           );
         case 'flower':
           return (
