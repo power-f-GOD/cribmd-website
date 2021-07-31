@@ -100,7 +100,15 @@ export type SVGIconName =
   | 'rectangle-slanted-right'
   | 'rectangle-slanted-left'
   | 'wavy-rectangle-sm'
-  | 'wavy-rectangle-lg';
+  | 'wavy-rectangle-lg'
+  | 'check'
+  | 'activity-green'
+  | 'activity-wine'
+  | 'activity-beige'
+  | 'svgName'
+  | 'mobile-phone'
+  | 'web'
+  | 'clock';
 
 export type BoxAs =
   | 'nav'

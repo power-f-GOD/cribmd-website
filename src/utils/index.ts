@@ -7,6 +7,12 @@ export class GetImage {
   private static baseUrl = '/img/';
   private static logoUrl = GetImage.baseUrl + '_logo/';
   private static homeUrl = GetImage.baseUrl + 'home/';
+  private static aboutUrl = GetImage.baseUrl + 'about/our-company';
+  private static teamUrl = GetImage.baseUrl + 'about/our-company/team';
+  private static otherTeamMembersUrl = GetImage.baseUrl + 'about/our-company/other-team-members';
+  private static advisorsUrl = GetImage.baseUrl + 'about/our-company/team';
+
+  private static individualUrl = GetImage.baseUrl + 'health-plans/individual';
 
   static mediaLogo(name: string) {
     return `${this.logoUrl}media/${name}-logo__250x.webp`;
@@ -27,7 +33,24 @@ export class GetImage {
   static home(name: string, size?: '1x' | '2x') {
     return `${this.homeUrl}${name}__${parseInt(String(size || 1)) * 400}x.webp`;
   }
-
+  static about(name: string, size?: '1x' | '2x') {
+    return `${this.aboutUrl}${name}__${parseInt(String(size || 1)) * 400}x.webp`;
+  }
+  static team(name: string, size?: '1x' | '2x') {
+    return `${this.teamUrl}${name}__${parseInt(String(size || 1)) * 400}x.webp`;
+  }
+  static otherTeamMembers(name: string, size?: '1x' | '2x') {
+    return `${this.otherTeamMembersUrl}${name}__${parseInt(String(size || 1)) * 400}x.webp`;
+  }
+  static advisors(name: string, size?: '1x' | '2x') {
+    return `${this.advisorsUrl}${name}__${parseInt(String(size || 1)) * 400}x.webp`;
+  }
+  static individual(name: string, size?: '1x' | '2x') {
+    return `${this.individualUrl}${name}__${parseInt(String(size || 1)) * 400}x.webp`;
+  }
+  static corporate(name: string, size?: '1x' | '2x') {
+    return `${this.individualUrl}${name}__${parseInt(String(size || 1)) * 400}x.webp`;
+  }
   static testifier(name: string) {
     return `${this.baseUrl}_testifiers/${name}.webp`;
   }

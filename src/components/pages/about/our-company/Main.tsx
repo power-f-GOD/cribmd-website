@@ -17,7 +17,7 @@ const Main = (): JSX.Element => {
   }, []);
 
   return (
-    <Container as="main" className={S.mainSection} fluid ref={mainRef}>
+    <Container as="main" className={S.mainSection} fluid>
       <MainIntro />
       <MainBody />
     </Container>

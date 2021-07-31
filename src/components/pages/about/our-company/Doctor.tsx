@@ -10,11 +10,11 @@ const Doctor = (): JSX.Element => {
   }, []);
 
   return (
-    <Container as="section" className="mt-5">
-      <RevealOnScroll className={S.doctorsContainer}>
-        <RevealOnScroll once>
+    <Container as="section" className="mt-md-5">
+      <Box className={S.doctorsContainer}>
+        <Box>
           <Row className="justify-content-center align-self-center ">
-            <Col xs={12} md={6}>
+            <Col xs={12} md={6} className="px-md-3">
               <RevealOnScroll>
                 <Box as="h2" className="mt-md-5 pt-md-3" data-anim_delay="0.3">
                   Meet Our Doctors
@@ -68,7 +68,7 @@ const Doctor = (): JSX.Element => {
                 </RevealOnScroll>
               ))}
             </Col>
-            <Col xs={12} md={6}>
+            <Col xs={12} md={6} className="px-md-3">
               {doctorsData.slice(2).map((doctor) => (
                 <RevealOnScroll key={doctor.name}>
                   <Box
@@ -112,8 +112,8 @@ const Doctor = (): JSX.Element => {
               ))}
             </Col>
           </Row>
-        </RevealOnScroll>
-      </RevealOnScroll>
+        </Box>
+      </Box>
     </Container>
   );
 };

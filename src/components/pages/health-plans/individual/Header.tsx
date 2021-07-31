@@ -1,20 +1,10 @@
 import { Col, Container, Row } from 'react-bootstrap';
-import { useEffect, useRef } from 'react';
 import { Anchor, Box, RevealOnScroll } from 'src/components/shared';
 import S from 'src/styles/pages/health-plans/individual/Header.module.scss';
-import { ScrollReveal } from 'src/utils';
 
 const Header = (): JSX.Element => {
-  const headerRef = useRef<HTMLElement | null>(null);
-  useEffect(() => {
-    const header = headerRef.current;
-    if (header) {
-      new ScrollReveal(header);
-    }
-  }, []);
-
   return (
-    <Container fluid as="header" ref={headerRef}>
+    <Container fluid as="header">
       <RevealOnScroll once>
         <Box className={`${S.headerContainer} `}>
           <Container className="text-md-center">
@@ -39,7 +29,7 @@ const Header = (): JSX.Element => {
                       color="primary"
                       className="AppNav__nav-link ms-0 ms-lg-2"
                       href="https://www.cribmd.com/signup">
-                      Subscribe Today
+                      Subscribe Now
                     </Anchor>
                   </Box>
                 </RevealOnScroll>

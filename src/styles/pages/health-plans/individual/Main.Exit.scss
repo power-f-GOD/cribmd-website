@@ -1,0 +1,32 @@
+.benfitsContainer {
+  background-color: #fafbfc;
+  border-radius: $br * 1.5;
+  padding: $br * 2.5;
+  p {
+    margin: 0;
+  }
+  span {
+    color: $theme-primary-v4;
+  }
+}
+
+.benefitsGrid {
+  display: grid;
+  grid-template-columns: 2fr;
+  gap: 1em;
+  margin-bottom: 1em;
+
+  > * {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+
+    i {
+      margin-bottom: 0.5rem !important;
+    }
+  }
+
+  @media screen and (min-width: 768px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
