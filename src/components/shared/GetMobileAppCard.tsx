@@ -12,8 +12,8 @@ const _GetMobileAppCard: FC<{ headerText?: string; bodyText?: string }> = ({
 }): JSX.Element => {
   return (
     <Container as="section" className="GetMobileAppCard shrink-max-width-xxl text-center">
-      <Row className="px-3 py-4 p-md-4">
-        <Col xs={12}>
+      <Row className="px-3 py-4 px-md-5 py-md-3 align-items-center">
+        <Col xs={12} md={7} className="text-md-start">
           <Box as="h2" className="h3 theme-white">
             {headerText || 'Your Doctor On The Go'}
           </Box>
@@ -27,7 +27,7 @@ const _GetMobileAppCard: FC<{ headerText?: string; bodyText?: string }> = ({
             <AppstoreButton />
           </Box>
         </Col>
-        <Col xs={12} className="text-center">
+        <Col xs={12} md={5} className="text-center">
           <Img className="__mobile-dashboard" src={GetImage.shared('mobile-dashboard')} />
         </Col>
       </Row>

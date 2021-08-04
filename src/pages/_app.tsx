@@ -3,7 +3,7 @@ import { AppProps } from 'next/app';
 import Head from 'next/head';
 
 import 'src/styles/app.scss';
-import { AppNav } from 'src/components';
+import { AppNav, AppFooter } from 'src/components';
 import { throttle } from 'src/utils';
 
 export const AppContext = createContext({});
@@ -46,7 +46,7 @@ const App = ({ Component, pageProps }: AppProps): JSX.Element => {
         </Head>
         <AppNav />
         <Component {...pageProps} />
-        {/* <AppFooter /> */}
+        <AppFooter />
       </AppWindowContext.Provider>
     </AppContext.Provider>
   );

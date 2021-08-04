@@ -113,6 +113,7 @@ export type SVGIconName =
   | 'clock';
 
 export type BoxAs =
+  | 'address'
   | 'nav'
   | 'header'
   | 'main'

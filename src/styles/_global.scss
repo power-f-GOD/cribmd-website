@@ -215,15 +215,20 @@ textarea {
   font-weight: normal;
   font-family: Poppins, sans-serif;
   animation-fill-mode: both;
-  border-radius: $br * 0.9;
-  max-width: 100%;
-  min-height: 2rem;
   transition-duration: 0.3s;
 
   &,
   &:focus {
     outline: none;
   }
+}
+
+button,
+input,
+textarea {
+  border-radius: $br * 0.9;
+  max-width: 100%;
+  min-height: 2rem;
 }
 
 input[type='text'],
