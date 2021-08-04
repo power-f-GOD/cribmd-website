@@ -209,3 +209,34 @@
     min-width: 2.65rem;
   }
 }
+
+.AppstoreButton,
+.PlaystoreButton {
+  padding: 0;
+  border: 0.2em solid #bbb;
+  background-color: transparent !important;
+  // position: relative;
+
+  &:hover,
+  &:focus {
+    border-color: white;
+  }
+
+  .Icon {
+    min-height: inherit;
+    width: 10em;
+    overflow: hidden;
+    // border-radius: inherit;
+
+    svg {
+      min-height: inherit;
+      position: absolute;
+    }
+  }
+}
+
+.AppstoreButton {
+  .Icon {
+    width: 8.75em;
+  }
+}

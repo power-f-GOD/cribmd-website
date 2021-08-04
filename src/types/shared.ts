@@ -70,6 +70,8 @@ export type TransitionAnimName =
   | 'InRightBig';
 
 export type SVGIconName =
+  | 'appstore-button'
+  | 'playstore-button'
   | 'caret-down'
   | 'previous'
   | 'next'

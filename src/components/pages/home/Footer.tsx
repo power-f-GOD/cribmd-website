@@ -4,6 +4,7 @@
 import { Container } from 'react-bootstrap';
 
 import { OurInvestors, OurPartners, CustomerTestimonies } from 'src/components/shared';
+import { GetMobileAppCard } from 'src/components/shared/GetMobileAppCard';
 
 const Footer = (): JSX.Element => {
   return (
@@ -11,6 +12,7 @@ const Footer = (): JSX.Element => {
       <CustomerTestimonies />
       <OurInvestors />
       <OurPartners />
+      <GetMobileAppCard />
     </Container>
   );
 };

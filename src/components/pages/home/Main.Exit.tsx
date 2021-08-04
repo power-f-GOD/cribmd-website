@@ -12,13 +12,7 @@ const MainExit = (): JSX.Element => {
       {servicesIllustrations.map(
         ({ buttonText, buttonUrl, heading, imageName, p1, rider, p2, p3 }, i) => (
           <Row key={heading} className="my-5 align-items-center pb-3 pb-md-2">
-            <RevealOnScroll
-              component={Col}
-              xs={12}
-              md={6}
-              easing="ease"
-              duration={0.75}
-              allowOverflow>
+            <RevealOnScroll component={Col} xs={12} md={6} easing="ease" duration={0.75}>
               <Box as="h3" className="h6 theme-tertiary mt-0" data-anim="fadeInDown">
                 {heading}
               </Box>
@@ -44,7 +38,12 @@ const MainExit = (): JSX.Element => {
                   </Box>
                 )}
               </Box>
-              <Anchor button href={buttonUrl} variant="outlined">
+              <Anchor
+                button
+                href={buttonUrl}
+                variant="outlined"
+                data-anim_delay={0.6}
+                data-anim="fadeIn">
                 {buttonText}
               </Anchor>
             </RevealOnScroll>
