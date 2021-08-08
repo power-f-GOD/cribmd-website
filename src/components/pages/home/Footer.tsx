@@ -10,7 +10,7 @@ const Footer = (): JSX.Element => {
     <Container>
       <CustomerTestimonies />
       <OurInvestors />
-      <OurPartners />
+      <OurPartners shrink />
     </Container>
   );
 };

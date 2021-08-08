@@ -1,13 +1,15 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
-import { memo } from 'react';
+import { memo, FC } from 'react';
 import { Container } from 'react-bootstrap';
 
 import { Box, Img } from '.';
 import { GetImage } from 'src/utils';
 
-const _OurPartners = (): JSX.Element => {
+const _OurPartners: FC<{ shrink?: boolean }> = ({ shrink }): JSX.Element => {
   return (
-    <Container as="section" className="OurPartners shrink-max-width-xxl text-md-center">
+    <Container
+      as="section"
+      className={`OurPartners  ${shrink ? 'shrink-max-width-xxl' : ''}  text-md-center`}>
       <Box as="h2" className="mb-0">
         Our Partners
       </Box>
