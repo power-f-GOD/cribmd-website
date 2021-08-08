@@ -215,15 +215,20 @@ textarea {
   font-weight: normal;
   font-family: Poppins, sans-serif;
   animation-fill-mode: both;
-  border-radius: $br * 0.9;
-  max-width: 100%;
-  min-height: 2rem;
   transition-duration: 0.3s;
 
   &,
   &:focus {
     outline: none;
   }
+}
+
+button,
+input,
+textarea {
+  border-radius: $br * 0.9;
+  max-width: 100%;
+  min-height: 2rem;
 }
 
 input[type='text'],
@@ -434,23 +439,22 @@ a.no-shadow,
 .theme-tertiary-lightest {
   color: $theme-tertiary-v9 !important;
 }
+.theme-white {
+  color: white !important;
+}
 
 .theme-bg-primary-darkest {
   background-color: $theme-primary-v1;
 }
-
 .theme-bg-primary-darker {
   background-color: $theme-primary-v3;
 }
-
 .theme-bg-primary {
   background-color: $theme-primary;
 }
-
 .theme-bg-primary-lighter {
   background-color: $theme-primary-v7;
 }
-
 .theme-bg-primary-lightest {
   background-color: $theme-primary-v9;
 }
@@ -462,21 +466,20 @@ a.no-shadow,
 .theme-bg-tertiary-darkest {
   background-color: $theme-tertiary-v1;
 }
-
 .theme-bg-tertiary-darker {
   background-color: $theme-tertiary-v3;
 }
-
 .theme-bg-tertiary {
   background-color: $theme-tertiary;
 }
-
 .theme-bg-tertiary-lighter {
   background-color: $theme-tertiary-v7;
 }
-
 .theme-bg-tertiary-lightest {
-  background-color: #eee;
+  background-color: $theme-tertiary-v9;
+}
+.theme-bg-white {
+  background-color: white !important;
 }
 
 .modal-backdrop {

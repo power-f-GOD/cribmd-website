@@ -1,0 +1,90 @@
+.AppFooter {
+  // @include debugger();
+  // color: white;
+  // background-color: #fafafa;
+  display: block;
+  margin-bottom: 7em;
+
+  * {
+    color: inherit;
+  }
+
+  .row {
+    font-size: 0.875rem;
+  }
+
+  h4 {
+    font-size: 1.875rem;
+    line-height: 150%;
+
+    + p {
+      line-height: 160%;
+    }
+  }
+
+  h5 {
+    font-size: inherit;
+    text-transform: uppercase;
+    color: $theme-tertiary-v6;
+  }
+
+  p {
+    margin-bottom: 0.75rem;
+  }
+
+  a {
+    font-weight: 300;
+    display: inline-block;
+    overflow: hidden;
+    transition: 0.25s;
+
+    &[href*='tel'],
+    &[href*='mail'] {
+      color: $theme-primary-v4;
+    }
+
+    &:hover,
+    &:focus {
+      text-decoration: underline;
+    }
+  }
+
+  hr {
+    background: $theme-tertiary-v9 !important;
+    height: 0.0625em;
+    margin-bottom: 3em;
+    border: none;
+  }
+
+  .Logo a {
+    width: unset !important;
+  }
+
+  .__group {
+    margin-bottom: 1em;
+  }
+
+  .__social-links a {
+    $size: 2.75rem;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: $size;
+    height: $size;
+    font-size: 1.25rem;
+    text-decoration: none !important;
+    background-color: $bg-lightblue;
+    max-width: calc(20% - 0.4rem);
+    margin-right: 0.4rem;
+
+    &:hover,
+    &:focus {
+      transform: scale(1.1) translateY(-0.125rem);
+    }
+  }
+
+  .__logo-container img {
+    width: 8rem;
+  }
+}

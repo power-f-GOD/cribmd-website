@@ -70,6 +70,8 @@ export type TransitionAnimName =
   | 'InRightBig';
 
 export type SVGIconName =
+  | 'appstore-button'
+  | 'playstore-button'
   | 'caret-down'
   | 'previous'
   | 'next'
@@ -111,6 +113,7 @@ export type SVGIconName =
   | 'clock';
 
 export type BoxAs =
+  | 'address'
   | 'nav'
   | 'header'
   | 'main'
