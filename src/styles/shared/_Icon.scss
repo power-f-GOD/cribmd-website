@@ -3,6 +3,7 @@
   font-size: inherit;
   justify-content: center;
   position: relative;
+  transition: 0.3s;
 
   &.size__tiny {
     $size: 1.5rem;

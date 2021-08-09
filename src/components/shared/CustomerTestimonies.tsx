@@ -72,7 +72,7 @@ export const CustomerTestimonies = (): JSX.Element => {
         </Box>
 
         <Box className="__avatars-grid-wrapper">
-          <SVGIcon name="caret-down" />
+          <SVGIcon name="caret-filled-down" />
           <Box
             className="__avatars-grid"
             style={{

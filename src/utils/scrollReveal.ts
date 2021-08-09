@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import { throttle, createObserver } from '.';
 
@@ -7,7 +8,7 @@ export class ScrollReveal {
   private animAnchors: NodeListOf<HTMLElement> | undefined;
   private observer: IntersectionObserver;
 
-  constructor(root: HTMLElement | Document) {
+  constructor(root: HTMLElement | Document, options?: { once: boolean }) {
     const { innerWidth: width, innerHeight: height } = globalThis;
 
     this.root = root;
@@ -20,9 +21,9 @@ export class ScrollReveal {
 
           animAnchor.dataset.animate_targets = entry.isIntersecting ? 'true' : 'false';
 
-          if (animAnchor.dataset.anim_once) {
+          if (animAnchor.dataset.anim_once || options?.once) {
             if (isIntersecting) {
-              animAnchor.dataset.animate_targets = 'true';
+              delete animAnchor.dataset.anim_anchor;
               this.observer.unobserve(animAnchor);
             }
           }

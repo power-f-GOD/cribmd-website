@@ -7,7 +7,7 @@
   padding: 0 1.25rem;
   border-radius: $br * 0.9;
   font-size: 0.9em;
-  box-shadow: 0.375em 0.375em 1em rgba(25, 113, 245, 0.08); // 0 0.0625em 0.125em rgba(0, 0, 0, 0.1);
+  box-shadow: $button-box-shadow; // 0 0.0625em 0.125em rgba(0, 0, 0, 0.1);
   text-decoration: none !important;
   overflow: hidden;
   cursor: pointer;
@@ -37,7 +37,7 @@
   &:hover,
   &:focus {
     opacity: 0.9;
-    box-shadow: 0 0.125em 0.25em rgba(15, 103, 235, 0.25);
+    box-shadow: $button-box-shadow-hover;
     transition-delay: unset !important;
   }
 
@@ -121,10 +121,11 @@
 
 .btn--outlined {
   background-color: transparent;
+  border-color: $theme-tertiary-v9;
 
   &.primary {
     color: $theme-primary;
-    border-color: $theme-primary;
+    // border-color: $theme-primary;
 
     &:hover,
     &:focus {
@@ -134,7 +135,7 @@
 
   &.secondary {
     color: $theme-secondary;
-    border-color: $theme-secondary;
+    // border-color: $theme-secondary;
 
     &:hover,
     &:focus {
@@ -143,12 +144,12 @@
   }
 
   &.tertiary {
-    color: $theme-tertiary;
-    border-color: $theme-tertiary;
+    color: $theme-tertiary-v5;
+    // border-color: $theme-tertiary;
 
     &:hover,
     &:focus {
-      background-color: $theme-tertiary;
+      background-color: $theme-tertiary-v3;
     }
   }
 

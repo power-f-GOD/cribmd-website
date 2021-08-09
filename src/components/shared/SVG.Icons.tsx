@@ -14,6 +14,18 @@ export const SVGIcon: FC<
   <Icon name={name} size={size}>
     {(() => {
       switch (name) {
+        case 'caret-down':
+          return (
+            <SVG viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/SVG">
+              <path
+                d="M1 1L7 7L13 1"
+                stroke="#202046"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </SVG>
+          );
         case 'appstore-button':
           return (
             <SVG viewBox="0 0 120 40" fill="none" xmlns="http://www.w3.org/2000/SVG">
@@ -246,14 +258,9 @@ export const SVGIcon: FC<
               </defs>
             </SVG>
           );
-        case 'caret-down':
+        case 'caret-filled-down':
           return (
-            <SVG
-              width="24"
-              height="21"
-              viewBox="0 0 24 21"
-              fill="none"
-              xmlns="http://www.w3.org/2000/SVG">
+            <SVG viewBox="0 0 24 21" fill="none" xmlns="http://www.w3.org/2000/SVG">
               <path
                 d="M14.5981 19.5C13.4434 21.5 10.5566 21.5 9.40192 19.5L0.74167 4.5C-0.413031 2.5 1.03035 -2.35776e-06 3.33975 -2.15587e-06L20.6603 -6.41661e-07C22.9697 -4.39766e-07 24.413 2.5 23.2583 4.5L14.5981 19.5Z"
                 fill="#0D2344"

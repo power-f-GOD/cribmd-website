@@ -4,7 +4,7 @@
 import { Container } from 'react-bootstrap';
 
 import { OurInvestors, OurPartners, CustomerTestimonies } from 'src/components/shared';
-import { GetMobileAppCard } from 'src/components/shared/GetMobileAppCard';
+import { GetMobileAppCard } from 'src/components';
 
 const Footer = (): JSX.Element => {
   return (

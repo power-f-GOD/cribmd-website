@@ -1,0 +1,21 @@
+.Main {
+  @media screen and (min-width: 992px) {
+    max-width: 45em;
+  }
+}
+
+.category {
+  margin: 2.5em 0;
+
+  @media screen and (min-width: 768px) {
+    margin: 5em 0;
+  }
+}
+
+.categoryButtonsWrapper {
+  button {
+    font-weight: 500;
+    margin-right: 0.75em;
+    margin-bottom: 0.75em;
+  }
+}
