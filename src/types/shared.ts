@@ -75,6 +75,7 @@ export type TransitionAnimName =
   | 'InRightBig';
 
 export type SVGIconName =
+  | 'tick'
   | 'appstore-button'
   | 'playstore-button'
   | 'caret-filled-down'

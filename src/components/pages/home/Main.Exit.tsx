@@ -3,7 +3,7 @@ import { Container, Row, Col } from 'react-bootstrap';
 
 import S from 'src/styles/pages/home/Main.module.scss';
 import { Box, Img, Anchor, RevealOnScroll } from 'src/components/shared';
-import { servicesIllustrations } from './data';
+import { servicesIllustrations } from '../../../data/home';
 import { GetImage } from 'src/utils';
 
 const MainExit = (): JSX.Element => {

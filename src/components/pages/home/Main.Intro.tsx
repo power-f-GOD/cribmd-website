@@ -6,7 +6,7 @@ import S from 'src/styles/pages/home/Main.module.scss';
 
 import { AppWindowContext } from 'src/pages/_app';
 import { TransitionAnimName } from 'src/types';
-import { specializations } from './data';
+import { specializations } from '../../../data/home';
 
 import { Box, SVGIcon, RevealOnScroll } from 'src/components/shared';
 

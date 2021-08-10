@@ -5,7 +5,7 @@ import { Container, Row, Col } from 'react-bootstrap';
 import S from 'src/styles/pages/home/Main.module.scss';
 import { Box, SVGIcon, RevealOnScroll, Img } from 'src/components/shared';
 import { TransitionAnimName } from 'src/types';
-import { ourServices } from './data';
+import { ourServices } from '../../../data/home';
 import { AppWindowContext } from 'src/pages/_app';
 import { GetImage } from 'src/utils';
 
