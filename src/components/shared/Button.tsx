@@ -9,6 +9,7 @@ const _Button: FC<ButtonProps> = ({
   variant,
   color,
   _type,
+  cta,
   className,
   ...props
 }): JSX.Element => {
@@ -17,7 +18,7 @@ const _Button: FC<ButtonProps> = ({
       {...props}
       className={`Button ${_type || 'flat-button'} btn--${variant || 'text'} ${
         color || 'primary'
-      } ${className || ''}`.replace(/\s+/g, ' ')}>
+      } ${className || ''} ${cta ? 'cta-btn' : ''}`.replace(/\s+/g, ' ')}>
       {children}
     </button>
   );

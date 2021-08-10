@@ -40,6 +40,10 @@ const _RevealOnScroll: FC<
       data-anim_anchor
       {...(once ? { 'data-anim_once': 'true' } : {})}>
       {Children.map(children, (_child: any, i) => {
+        if (!_child?.props) {
+          return _child;
+        }
+
         const newChild = { ..._child };
         const { style, ...childProps }: { style: CSSProperties; [key: string]: any } = {
           ...newChild.props,

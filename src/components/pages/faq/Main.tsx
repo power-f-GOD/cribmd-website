@@ -56,19 +56,21 @@ const Main = (): JSX.Element => {
         <Box as="p">Filter questions by category</Box>
       </RevealOnScroll>
 
-      <RevealOnScroll className={S.categoryButtonsWrapper} animName="fadeInLeft" duration={0.5}>
-        <Button color="tertiary" variant="outlined" onClick={handleFilterCategoryClick}>
-          General Info <SVGIcon name="tick" />
-        </Button>
-        <Button color="tertiary" variant="outlined" onClick={handleFilterCategoryClick}>
-          Pricing and Plans
-          <SVGIcon name="tick" />
-        </Button>
-        <Button color="tertiary" variant="outlined" onClick={handleFilterCategoryClick}>
-          Medical Questions
-          <SVGIcon name="tick" />
-        </Button>
-      </RevealOnScroll>
+      <Box className={S.categoryButtonsWrapper}>
+        <RevealOnScroll className={S.categoryButtonsContainer} animName="fadeInLeft" duration={0.5}>
+          <Button color="tertiary" variant="outlined" onClick={handleFilterCategoryClick}>
+            General Info <SVGIcon name="tick" crop />
+          </Button>
+          <Button color="tertiary" variant="outlined" onClick={handleFilterCategoryClick}>
+            Pricing and Plans
+            <SVGIcon name="tick" crop />
+          </Button>
+          <Button color="tertiary" variant="outlined" onClick={handleFilterCategoryClick}>
+            Medical Questions
+            <SVGIcon name="tick" crop />
+          </Button>
+        </RevealOnScroll>
+      </Box>
 
       {(noFilteredCategory || filteredCategory.generalInfo) && (
         <Box as="section" className={S.category}>

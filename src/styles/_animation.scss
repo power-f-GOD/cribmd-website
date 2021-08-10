@@ -23,6 +23,7 @@ $timing-func_mode: 1s cubic-bezier(0.1, 1, 0.35, 1) both;
 
 .anim__fadeIn {
   animation: anim__fadeIn $timing-func_mode;
+  animation-timing-function: ease;
 }
 
 .anim__fadeInUp {

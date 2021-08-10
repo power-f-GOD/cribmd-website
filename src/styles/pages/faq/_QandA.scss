@@ -74,7 +74,6 @@
     top: calc(100% - 0.5em);
     cursor: pointer;
     box-shadow: $button-box-shadow;
-    z-index: 88;
     border: inherit;
     border-radius: inherit;
 
@@ -85,7 +84,7 @@
 }
 
 .open {
-  z-index: 1;
+  z-index: 2;
 
   i {
     transform: rotateZ(180deg) scale(1);

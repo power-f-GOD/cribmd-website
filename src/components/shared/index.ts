@@ -13,3 +13,4 @@ export * from './SVG.Icons';
 export * from './RevealOnScroll';
 export * from './Avatar';
 export * from './GetMobileAppCard';
+export * from './PageHeader';

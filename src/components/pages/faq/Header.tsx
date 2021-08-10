@@ -1,7 +1,7 @@
-import { Container } from 'react-bootstrap';
+import { PageHeader } from 'src/components';
 
 const Header = (): JSX.Element => {
-  return <Container as="header">{/* <h6>This is the Header component!</h6> */}</Container>;
+  return <PageHeader headerText="Hi! How can we help?" />;
 };
 
 export default Header;

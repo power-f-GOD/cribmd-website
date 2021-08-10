@@ -16,13 +16,35 @@
   @media screen and (min-width: 768px) {
     margin: 5em 0;
   }
+
+  h2 {
+    position: sticky;
+    top: 5em;
+    background-color: white;
+    z-index: 1;
+  }
 }
 
 .categoryButtonsWrapper {
+  overflow-x: auto !important;
+  min-height: 3.25em;
+  max-width: 100%;
+  position: relative;
+}
+
+.categoryButtonsContainer {
+  display: flex;
+  position: absolute;
+  white-space: nowrap;
+
   button {
     font-weight: 500;
+    float: left;
     margin-right: 0.75em;
+    white-space: nowrap;
+    float: left;
     margin-bottom: 0.75em;
+    min-height: 3em;
     padding-right: 0.85em;
     padding-left: 0.85em;
     border-width: 0.125em;

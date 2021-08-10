@@ -6,10 +6,7 @@ import { Icon, SVG } from '.';
 import { SVGIconName, IconProps } from 'src/types';
 
 export const SVGIcon: FC<
-  { name: SVGIconName; size?: IconProps['size'] } & DetailedHTMLProps<
-    SVGProps<SVGSVGElement>,
-    SVGSVGElement
-  >
+  { name: SVGIconName } & IconProps & DetailedHTMLProps<SVGProps<SVGSVGElement>, SVGSVGElement>
 > = ({ name, size, ...props }): JSX.Element => (
   <Icon {...props} name={name} size={size}>
     {(() => {
