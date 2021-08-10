@@ -1,3 +1,5 @@
+import { SVGIconName } from 'src/types';
+
 export const processData: {
   heading: string;
   p1?: string;
@@ -52,8 +54,8 @@ export const processData: {
   }
 ];
 
-export const benefitsData: {
-  svgName: string;
+export const moreBenefitsData: {
+  svgName: SVGIconName;
   heading: string;
   content: string;
 }[] = [
@@ -74,5 +76,85 @@ export const benefitsData: {
     heading: '24/7 Care',
     content:
       'Our doctors are available 24/7, for in-person appointments,  telemedicine and chat sessions.'
+  }
+];
+export const benefitsData: {
+  header: string;
+  list1: string;
+  list2: string;
+  list3: string;
+  list4: string;
+  list5: string;
+  list6: string;
+  list7: string;
+  list8: string;
+  list9: string;
+  list10: string;
+  list11: string;
+  footer: string;
+  fee?: string;
+}[] = [
+  {
+    header: 'Benefits',
+    list1: 'Care through CribMD',
+    list2: 'Preventive Care',
+    list3: 'Outpatient Care',
+    list4: 'Advanced diagnostics',
+    list5: 'Inpatient Hospital Care',
+    list6: 'Fertility',
+    list7: 'Maternity',
+    list8: 'Emergency and Urgent / Clinic Care',
+    list9: 'Prescription drugs',
+    list10: 'Dental Care',
+    list11: 'Eye Care',
+    footer: 'Download full coverage document'
+  },
+  {
+    header: 'Basic',
+    list1: '1 person, 1 visit',
+    list2: '',
+    list3: 'checked',
+    list4: '',
+    list5: 'checked',
+    list6: '',
+    list7: '',
+    list8: '',
+    list9: 'checked',
+    list10: 'checked',
+    list11: '',
+    footer: 'SUBSCRIBE Now',
+    fee: '₦3,000'
+  },
+  {
+    header: 'Premium',
+    list1: '1 person, UNLIMITED visits',
+    list2: 'checked',
+    list3: 'checked',
+    list4: 'checked',
+    list5: 'checked',
+    list6: '',
+    list7: 'checked',
+    list8: 'checked',
+    list9: 'checked',
+    list10: 'checked',
+    list11: 'checked',
+    footer: 'SUBSCRIBE Now',
+    fee: '₦5,000'
+  },
+  {
+    header: 'Family',
+    list1: '6 people, unlimited visits',
+    list2: 'checked',
+    list3: 'checked',
+    list4: 'checked',
+    list5: 'checked',
+    list6: 'checked',
+    list7: 'checked',
+    list8: 'checked',
+    list9: 'checked',
+    list10: 'checked',
+    list11: 'checked',
+    footer: 'SUBSCRIBE Now',
+    fee: '₦19,000'
   }
 ];

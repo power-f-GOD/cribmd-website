@@ -1,4 +1,4 @@
-.benfitsContainer {
+.moreBenefitsContainer {
   background-color: #fafbfc;
   border-radius: $br * 1.5;
   padding: $br * 2.5;
@@ -9,8 +9,7 @@
     color: $theme-primary-v4;
   }
 }
-
-.benefitsGrid {
+.moreBenefitsGrid {
   display: grid;
   grid-template-columns: 2fr;
   gap: 1em;

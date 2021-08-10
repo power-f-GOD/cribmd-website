@@ -7,7 +7,6 @@
   > * {
     display: flex;
     justify-content: space-between;
-    align-items: left;
     flex-direction: column;
   }
 }
@@ -29,18 +28,20 @@
   > div {
     border-bottom: 1px solid #e6e9ef;
     padding: 0.5rem 1rem;
-    min-height: 3rem;
+    min-height: 8rem;
     display: flex;
-    align-items: center;
-    font-weight: 600;
+    flex-direction: column !important;
     font-size: 3em * 0.3;
+    justify-content: center;
 
     @media (max-width: 1024px) {
-      min-height: 5rem;
+      min-height: 10rem;
     }
 
     @media (max-width: 767px) {
       min-height: 3rem;
+      flex-direction: row !important;
+      justify-content: start;
     }
 
     p {
@@ -48,19 +49,21 @@
       padding: 0;
     }
 
-    &:last-child {
-      border-bottom: none;
-      min-height: 6rem;
-    }
-
     span {
       color: $theme-primary;
+    }
+
+    &:nth-child(1) {
+      min-height: 3rem;
+    }
+
+    &:nth-child(2) {
+      min-height: 3rem;
     }
 
     .subscribeButton {
       border: 1px solid $theme-primary;
       transition: 0.5s;
-      // padding: 0.5rem 1.5rem;
       font-style: normal;
       border-radius: 0.5rem;
       cursor: pointer;
@@ -74,11 +77,13 @@
           font-size: 1em * 0.6;
           letter-spacing: 0.1rem;
         }
+
         &:last-child {
           font-size: 1em * 1.2;
           letter-spacing: 0.1rem;
         }
       }
+
       &:hover {
         border: none;
         background: $theme-primary;
@@ -91,8 +96,13 @@
     }
   }
 }
+
+.benefitsHeader {
+  align-items: center;
+}
+
 @media screen and (min-width: 768px) {
   .benefitsGrid {
-    grid-template-columns: repeat(4, 40% 20% 20% 20%);
+    grid-template-columns: repeat(3, 40% 30% 30%);
   }
 }

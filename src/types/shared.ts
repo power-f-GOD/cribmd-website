@@ -110,13 +110,16 @@ export type SVGIconName =
   | 'rectangle-slanted-left'
   | 'wavy-rectangle-sm'
   | 'wavy-rectangle-lg'
-  | 'check'
+  | 'check-circle'
+  | 'check(blue)'
+  | 'check(grey)'
   | 'activity-green'
   | 'activity-wine'
   | 'activity-beige'
   | 'svgName'
   | 'mobile-phone'
   | 'web'
+  | 'download-cloud'
   | 'clock';
 
 export type BoxAs =
