@@ -1,6 +1,6 @@
 import { useContext, useCallback, SyntheticEvent, memo } from 'react';
 import { Box, Img, SVGIcon, RevealOnScroll } from 'src/components/shared';
-import S from 'src/styles/pages/about/our-company/main.module.scss';
+import S from 'src/styles/pages/about/our-company/Main.module.scss';
 import TeamModal from './Modal';
 import { AppWindowContext } from 'src/pages/_app';
 import { Col, Container, Row } from 'react-bootstrap';

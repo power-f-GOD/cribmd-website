@@ -2,12 +2,17 @@
 
 import { Container } from 'react-bootstrap';
 import { OurInvestors, OurPartners } from 'src/components/shared';
+import { GetMobileAppCard } from 'src/components/shared/GetMobileAppCard';
 
 const Footer = (): JSX.Element => {
   return (
     <Container>
       <OurInvestors />
       <OurPartners />
+      <GetMobileAppCard
+        headerText="Book a doctor appointment in less than 2 minutes via our mobile app"
+        bodyText="Start using CribMD Mobile right away"
+      />
     </Container>
   );
 };

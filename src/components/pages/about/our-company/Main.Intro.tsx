@@ -1,6 +1,6 @@
 import { memo } from 'react';
 import { Box, Img, RevealOnScroll, SVGIcon } from 'src/components/shared';
-import S from 'src/styles/pages/about/our-company/main.module.scss';
+import S from 'src/styles/pages/about/our-company/Main.module.scss';
 import { SyntheticEvent, useCallback } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 

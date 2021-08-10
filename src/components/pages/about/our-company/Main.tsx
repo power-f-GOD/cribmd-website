@@ -1,4 +1,4 @@
-import S from 'src/styles/pages/about/our-company/main.module.scss';
+import S from 'src/styles/pages/about/our-company/Main.module.scss';
 import { useEffect, useRef } from 'react';
 import { ScrollReveal } from 'src/utils';
 import MainIntro from './Main.Intro';

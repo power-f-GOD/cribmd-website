@@ -25,7 +25,7 @@ const MainBody = (): JSX.Element => {
         </Box>
       </RevealOnScroll>
 
-      <RevealOnScroll component={Container}>
+      <Container>
         {processData.map(
           (
             {
@@ -51,7 +51,7 @@ const MainBody = (): JSX.Element => {
                 easing="ease"
                 duration={0.75}
                 allowOverflow
-                className={` order-${contentOrder}  `}>
+                className={` order-md-${contentOrder}  `}>
                 <Box as="h3" className="h5" data-anim="fadeInDown">
                   {heading}
                 </Box>
@@ -59,21 +59,23 @@ const MainBody = (): JSX.Element => {
                 <RevealOnScroll>
                   <Box data-anim="fadeInRight" className="align-items-center" data-anim_delay="0.2">
                     {list1 && (
-                      <Box as="p">
-                        <span className="me-2">
-                          <SVGIcon name="check" size="inherit" />
-                        </span>
-                        {list1}
+                      <Box className="d-flex">
+                        <Box className="me-2">
+                          <SVGIcon name="check-circle" size="inherit" />
+                        </Box>
+
+                        <Box>{list1}</Box>
                       </Box>
                     )}
                   </Box>
                   <Box data-anim="fadeInRight" data-anim_delay="0.4">
                     {list2 && (
-                      <Box as="p">
-                        <span className="me-2">
-                          <SVGIcon name="check" size="inherit" />
-                        </span>
-                        {list2}
+                      <Box className="d-flex">
+                        <Box className="me-2">
+                          <SVGIcon name="check-circle" size="inherit" />
+                        </Box>
+
+                        <Box>{list2}</Box>
                       </Box>
                     )}
                   </Box>
@@ -126,7 +128,7 @@ const MainBody = (): JSX.Element => {
             </Row>
           )
         )}
-      </RevealOnScroll>
+      </Container>
       <CustomerTestimonies />
     </>
   );

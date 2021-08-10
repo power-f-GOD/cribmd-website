@@ -1,3 +1,5 @@
+import { SVGIconName } from 'src/types';
+
 export const processData: {
   heading: string;
   p1?: string;
@@ -46,8 +48,8 @@ export const processData: {
   }
 ];
 
-export const benefitsData: {
-  svgName: string;
+export const moreBenefitsData: {
+  svgName: SVGIconName;
   heading: string;
   content: string;
 }[] = [
@@ -68,5 +70,73 @@ export const benefitsData: {
     heading: '24/7 Care',
     content:
       'Our doctors are available 24/7, for in-person appointments,  telemedicine and chat sessions.'
+  }
+];
+
+export const benefitsData: {
+  header: string;
+  list1: string;
+  list2Title: string;
+  list2Content: string;
+  list3Title: string;
+  list3Content?: string;
+  list4Title: string;
+  list4Content?: string;
+  list5Title: string;
+  list5Content?: string;
+  list6Title: string;
+  list6Content?: string;
+  list7Title: string;
+  list7Content?: string;
+  footer: string;
+  monthlyFee?: string;
+  yearlyfee?: string;
+}[] = [
+  {
+    header: 'Benefits',
+    list1: 'Countries of Coverage',
+    list2Title: 'Preventive Care',
+    list2Content: 'In Patient and Out Patient Care, General and Specialist Consultation',
+    list3Title: 'Treatment of Basic Medical and Surgical Cases',
+    list4Title: 'Chat with Doctors',
+    list4Content: 'Free chat for medical information and consultations.',
+    list5Title: 'Admission, Accommodation & Feeding',
+    list5Content: 'Hospital Ward Care',
+    list6Title: 'Obstetrics Care',
+    list6Content: 'Ante-Natal Care and Delivery',
+    list7Title: 'Family Plan',
+    footer: 'Download full coverage document'
+  },
+  {
+    header: 'Classic',
+    list1: 'country',
+    list2Title: 'checked',
+    list2Content: 'Outpatients and Inpatients',
+    list3Title: 'checked',
+    list3Content: 'Up to ₦200,000 after 6 months wait period.',
+    list4Title: 'checked',
+    list5Title: 'checked',
+    list6Title: '',
+    list7Title: 'checked',
+    list7Content: 'Up to 1 family member',
+    footer: 'SUBSCRIBE Now',
+    monthlyFee: '₦5,000',
+    yearlyfee: '₦55,000'
+  },
+  {
+    header: 'Executive',
+    list1: 'country',
+    list2Title: 'checked',
+    list2Content: 'Outpatients and Inpatients',
+    list3Title: 'checked',
+    list3Content: 'Up to ₦500,000 after 6 months wait period.',
+    list4Title: 'checked',
+    list5Title: 'checked',
+    list6Title: 'checked',
+    list7Title: 'checked',
+    list7Content: 'Up to 6 family member',
+    footer: 'SUBSCRIBE Now',
+    monthlyFee: '₦19,000',
+    yearlyfee: '₦209,000'
   }
 ];
