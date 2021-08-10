@@ -9,6 +9,11 @@ import {
   ImgHTMLAttributes
 } from 'react';
 
+export interface QandAProps {
+  question: string;
+  answer: string;
+}
+
 export interface ImgProps
   extends DetailedHTMLProps<ImgHTMLAttributes<HTMLImageElement>, HTMLImageElement> {
   isJPG?: boolean;
@@ -72,6 +77,7 @@ export type TransitionAnimName =
 export type SVGIconName =
   | 'appstore-button'
   | 'playstore-button'
+  | 'caret-filled-down'
   | 'caret-down'
   | 'previous'
   | 'next'
