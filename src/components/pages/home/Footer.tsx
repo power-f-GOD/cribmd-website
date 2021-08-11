@@ -8,7 +8,7 @@ import { GetMobileAppCard } from 'src/components';
 
 const Footer = (): JSX.Element => {
   return (
-    <Container>
+    <Container as="footer">
       <CustomerTestimonies />
       <OurInvestors />
       <OurPartners />

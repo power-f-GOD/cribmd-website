@@ -10,11 +10,23 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 0.0625em;
-    background-color: $theme-tertiary-v9;
+    background-color: #f8f8f8;
+
+    &.first {
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+
+    &.second {
+      border-top: none;
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+    }
   }
 
   .__grid-item {
     background-color: white;
+    box-shadow: 0 0 0 0.0625em $theme-tertiary-v9;
   }
 
   @media screen and (min-width: 992px) {

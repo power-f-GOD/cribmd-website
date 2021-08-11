@@ -2,41 +2,29 @@
 import { memo, FC } from 'react';
 import { Container } from 'react-bootstrap';
 
-import { Box, Img } from '.';
+import { Box, Img, RevealOnScroll } from '.';
 import { GetImage } from 'src/utils';
+import { partnerImageNames } from 'src/data';
 
-const _OurPartners: FC<{ shrink?: boolean }> = ({ shrink }): JSX.Element => {
+const _OurPartners: FC<{ shrink?: boolean }> = (): JSX.Element => {
   return (
-    <Container
-      as="section"
-      className={`OurPartners  ${shrink ? 'shrink-max-width-xxl' : ''}  text-md-center`}>
-      <Box as="h2" className="mb-0">
-        Our Partners
-      </Box>
-      <Box as="p" className="pb-md-3">
-        We share our vision and passion to bring affordable healthcare to everyone with these
-        organizations
-      </Box>
+    <Container as="section" className={`OurPartners shrink-max-width-xxl text-md-center`}>
+      <RevealOnScroll easing="ease">
+        <Box as="h2" className="mb-0">
+          Our Partners
+        </Box>
+        <Box as="p" className="pb-md-3">
+          We share our vision and passion to bring affordable healthcare to everyone with these
+          organizations
+        </Box>
+      </RevealOnScroll>
 
-      <Box className="__grid mx-auto">
-        {[
-          'algrowithm',
-          'andaman',
-          'atlanta-fire-rescue',
-          'bora',
-          'ihs',
-          'launchpad',
-          'longenesis',
-          'lorna',
-          'mepro',
-          'oncore',
-          'pioneer-pharma',
-          'stella-technology',
-          'the-guardian',
-          'transahel',
-          'ucla',
-          'usc'
-        ].map((logo) => (
+      <RevealOnScroll
+        className="__grid first mx-auto"
+        animName="scale"
+        easing="ease-out"
+        duration={0.5}>
+        {partnerImageNames.slice(0, 8).map((logo) => (
           <Box
             as="span"
             key={logo}
@@ -44,7 +32,21 @@ const _OurPartners: FC<{ shrink?: boolean }> = ({ shrink }): JSX.Element => {
             <Img src={GetImage.partnerLogo(logo)} />
           </Box>
         ))}
-      </Box>
+      </RevealOnScroll>
+      <RevealOnScroll
+        className="__grid second mx-auto"
+        animName="scale"
+        easing="ease-out"
+        duration={0.5}>
+        {partnerImageNames.slice(8).map((logo) => (
+          <Box
+            as="span"
+            key={logo}
+            className="__grid-item d-flex align-items-center p-3 px-sm-4 px-md-5 py-sm-4">
+            <Img src={GetImage.partnerLogo(logo)} />
+          </Box>
+        ))}
+      </RevealOnScroll>
     </Container>
   );
 };

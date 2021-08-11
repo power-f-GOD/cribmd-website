@@ -53,7 +53,7 @@ export const CustomerTestimonies = (): JSX.Element => {
   }, [handleTestifierToggle]);
 
   return (
-    <Container className="CustomersTestimonies text-center">
+    <Container className="CustomerTestimonies text-center">
       <Box as="section" className="__content">
         <RevealOnScroll as="h2" className="mt-3 mb-4" animName="fadeInLeft" easing="ease">
           {'What our customers are saying ...'.split(' ').map((word, i) => (
