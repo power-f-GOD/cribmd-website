@@ -3,10 +3,10 @@
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  min-height: 2.65rem;
+  min-height: 3.125rem; //2.65rem;
   padding: 0 1.25rem;
   border-radius: $br * 0.9;
-  font-size: 0.9em;
+  // font-size: 0.9em;
   box-shadow: $button-box-shadow; // 0 0.0625em 0.125em rgba(0, 0, 0, 0.1);
   text-decoration: none !important;
   overflow: hidden;
@@ -23,9 +23,11 @@
   &.cta-btn {
     // min-height: 3.25rem;
     // min-width: 16rem;
-    // padding-right: 2.5rem ;
-    // padding-left: 2.5rem ;
+    padding-right: 2em;
+    padding-left: 2em;
     // background-color: $theme-primary ;
+    font-size: 1em;
+    min-height: 3.5rem;
     color: $heading-default;
 
     &:hover,

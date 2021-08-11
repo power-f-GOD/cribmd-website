@@ -9,7 +9,7 @@ export class ScrollReveal {
   private observer: IntersectionObserver;
 
   constructor(root: HTMLElement | Document, options?: { once: boolean }) {
-    const { innerWidth: width, innerHeight: height } = globalThis;
+    const { innerWidth: width } = globalThis;
 
     this.root = root;
     this.observer = createObserver(
@@ -29,7 +29,7 @@ export class ScrollReveal {
           }
         });
       },
-      { threshold: width < 768 ? (height < width ? 0.25 : 0.5) : 0.4 }
+      { threshold: width < 768 ? 0.25 : 0.5 }
     );
     // throttle for a few millisec to ascertain anchors have mounted in the DOM
     throttle(() => this.register());

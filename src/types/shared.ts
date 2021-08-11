@@ -23,6 +23,7 @@ export interface IconProps {
   name?: SVGIconName & string;
   className?: string;
   size?: 'tiny' | 'small' | 'medium' | 'large' | 'inherit';
+  crop?: boolean;
 }
 
 export interface ButtonProps
@@ -30,11 +31,13 @@ export interface ButtonProps
   variant?: 'text' | 'outlined' | 'contained';
   color?: 'primary' | 'secondary' | 'tertiary';
   _type?: 'flat-button' | 'icon-button';
+  cta?: boolean;
 }
 
 export interface AnchorProps
   extends Partial<DetailedHTMLProps<AnchorHTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement>> {
   button?: boolean;
+  cta?: boolean;
   variant?: 'text' | 'outlined' | 'contained' | 'contained-light';
   color?: 'primary' | 'secondary' | 'tertiary';
   _type?: 'flat-button' | 'icon-button';
@@ -75,6 +78,7 @@ export type TransitionAnimName =
   | 'InRightBig';
 
 export type SVGIconName =
+  | 'tick'
   | 'appstore-button'
   | 'playstore-button'
   | 'caret-filled-down'

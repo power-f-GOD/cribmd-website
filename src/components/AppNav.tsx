@@ -8,6 +8,7 @@ import { AppWindowContext } from 'src/pages/_app';
 import { preventDefault } from 'src/utils';
 import { Box, Logo, Anchor, Button } from '.';
 import { NavLink, SVGIcon } from './shared';
+import { useRouter } from 'next/dist/client/router';
 
 let scrollTimeout: NodeJS.Timeout;
 let scrollPositionTimeout: NodeJS.Timeout;
@@ -20,6 +21,8 @@ const AppNav = (): JSX.Element => {
   const [open, setOpen] = useState(false);
   const [renderNav, setRenderNav] = useState(isPC);
   const [isNegativeScroll, setIsNegativeScroll] = useState(isPC);
+  const router = useRouter();
+  const onLanding = /^\/(home)?$/.test(router.pathname);
 
   const handleNavOpenClick = useCallback(() => {
     setOpen((prev) => !prev && !isPC);
@@ -62,7 +65,7 @@ const AppNav = (): JSX.Element => {
       if (isNegativeScroll) {
         setRenderNav(true);
       }
-    }, 25);
+    }, 20);
   }, [clearScrollTimeout]);
 
   useEffect(() => {
@@ -86,7 +89,9 @@ const AppNav = (): JSX.Element => {
   return (
     <Container
       as="nav"
-      className="AppNav shrink-max-width-xxl px-3 py-1 py-sm-2 py-lg-3 mb-3 mb-lg-4">
+      className={`AppNav ${
+        !onLanding && initialScrollPosition < 150 ? 'transparentize-ul-bg' : ''
+      } shrink-max-width-xxl px-3 py-1 py-sm-2 py-lg-3 mb-3 mb-lg-4"`}>
       <Logo className={isPC ? (isNegativeScroll ? '' : 'lighten') : ''} />
 
       {!isPC && (renderNav || open) && (

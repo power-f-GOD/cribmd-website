@@ -13,6 +13,7 @@ const _Anchor: FC<Omit<AnchorProps, 'exact'>> = ({
   href,
   className,
   routeLink,
+  cta,
   ...props
 }): JSX.Element => {
   const anchor = (
@@ -22,7 +23,7 @@ const _Anchor: FC<Omit<AnchorProps, 'exact'>> = ({
         button
           ? `Button ${_type || 'flat-button'} btn--${variant || 'text'} ${
               color || 'primary'
-            } ${className}`.replace(/\s+/g, ' ')
+            } ${className} ${cta ? 'cta-btn' : ''}`.replace(/\s+/g, ' ')
           : className
       }>
       {children}
@@ -40,6 +41,7 @@ const _NavLink: FC<Omit<AnchorProps, 'routeLink'>> = ({
   _type,
   href,
   exact,
+  cta,
   className,
   ...props
 }): JSX.Element => {
@@ -53,7 +55,7 @@ const _NavLink: FC<Omit<AnchorProps, 'routeLink'>> = ({
         className={(button
           ? `Button ${_type || 'flat-button'} btn--${variant || 'text'} ${
               color || 'primary'
-            } ${className}`
+            } ${className} ${cta ? 'cta-btn' : ''}`
           : className || ''
         )
           .concat(isActive ? ' active' : '')

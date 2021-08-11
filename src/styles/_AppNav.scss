@@ -14,7 +14,19 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  // position: relative;
+
+  &.transparentize-ul-bg {
+    ul:nth-of-type(1) {
+      a {
+        color: $theme-tertiary-v2;
+      }
+
+      &::before {
+        background-color: transparent;
+        border-color: transparent;
+      }
+    }
+  }
 
   .Logo {
     transition: 0.3s;
@@ -88,16 +100,18 @@ ul.AppNav__ctas-container {
   animation-duration: 0.35s;
   transition: transform 0.3s, opacity 0.3s !important;
 
-  &:nth-of-type(1) {
-    &::before {
-      transition: transform 0.3s, opacity 0.3s;
-      background-color: white;
-    }
-  }
+  // &:nth-of-type(1) {
+  //   &::before {
+  //     background-color: white;
+  //     border-color: #eee;
+  //   }
+  // }
 
   &::before {
     @extend .before-or-after;
     border: 0.0625rem solid #eee;
+    transition: transform 0.3s, opacity 0.3s;
+    background-color: white;
   }
 
   .custom-bars-wrapper {

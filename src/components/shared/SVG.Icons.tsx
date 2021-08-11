@@ -6,14 +6,23 @@ import { Icon, SVG } from '.';
 import { SVGIconName, IconProps } from 'src/types';
 
 export const SVGIcon: FC<
-  { name: SVGIconName; size?: IconProps['size'] } & DetailedHTMLProps<
-    SVGProps<SVGSVGElement>,
-    SVGSVGElement
-  >
-> = ({ name, size }): JSX.Element => (
-  <Icon name={name} size={size}>
+  { name: SVGIconName } & IconProps & DetailedHTMLProps<SVGProps<SVGSVGElement>, SVGSVGElement>
+> = ({ name, size, ...props }): JSX.Element => (
+  <Icon {...props} name={name} size={size}>
     {(() => {
       switch (name) {
+        case 'tick':
+          return (
+            <SVG viewBox="0 0 16 12" fill="none" xmlns="http://www.w3.org/2000/SVG">
+              <path
+                d="M14.6673 1L5.50065 10.1667L1.33398 6"
+                stroke="#1971F5"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </SVG>
+          );
         case 'caret-down':
           return (
             <SVG viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/SVG">
@@ -316,12 +325,7 @@ export const SVGIcon: FC<
           );
         case 'mobile':
           return (
-            <SVG
-              width="56"
-              height="56"
-              viewBox="0 0 56 56"
-              fill="none"
-              xmlns="http://www.w3.org/2000/SVG">
+            <SVG viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/SVG">
               <rect width="56" height="56" rx="12" fill="black" fillOpacity="0.04" />
               <path
                 d="M33 18H23C21.8954 18 21 18.8954 21 20V36C21 37.1046 21.8954 38 23 38H33C34.1046 38 35 37.1046 35 36V20C35 18.8954 34.1046 18 33 18Z"
@@ -341,12 +345,7 @@ export const SVGIcon: FC<
           );
         case 'drug-container':
           return (
-            <SVG
-              width="56"
-              height="56"
-              viewBox="0 0 56 56"
-              fill="none"
-              xmlns="http://www.w3.org/2000/SVG">
+            <SVG viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/SVG">
               <rect width="56" height="56" rx="12" fill="black" fillOpacity="0.04" />
               <path
                 d="M36 14H20C19.4696 14 18.9609 14.2107 18.5858 14.5858C18.2107 14.9609 18 15.4696 18 16V20C18 20.5304 18.2107 21.0391 18.5858 21.4142C18.9609 21.7893 19.4696 22 20 22V40C20 40.5304 20.2107 41.0391 20.5858 41.4142C20.9609 41.7893 21.4696 42 22 42H34C34.5304 42 35.0391 41.7893 35.4142 41.4142C35.7893 41.0391 36 40.5304 36 40V22C36.5304 22 37.0391 21.7893 37.4142 21.4142C37.7893 21.0391 38 20.5304 38 20V16C38 15.4696 37.7893 14.9609 37.4142 14.5858C37.0391 14.2107 36.5304 14 36 14ZM22 26H25V36H22V26ZM34 40H22V38H27V24H22V22H34V40ZM20 20V16H36V20H20Z"
@@ -356,12 +355,7 @@ export const SVGIcon: FC<
           );
         case 'shield':
           return (
-            <SVG
-              width="56"
-              height="56"
-              viewBox="0 0 56 56"
-              fill="none"
-              xmlns="http://www.w3.org/2000/SVG">
+            <SVG viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/SVG">
               <rect width="56" height="56" rx="12" fill="black" fillOpacity="0.04" />
               <path
                 d="M27.5275 37.9478C27.5275 37.9478 35.5275 33.9478 35.5275 27.9478V20.9478L27.5275 17.9478L19.5275 20.9478V27.9478C19.5275 33.9478 27.5275 37.9478 27.5275 37.9478Z"
@@ -588,12 +582,7 @@ export const SVGIcon: FC<
           );
         case 'credit-card-corporate':
           return (
-            <SVG
-              width="40"
-              height="40"
-              viewBox="0 0 40 40"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg">
+            <SVG viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path
                 d="M29.625 22.75V14.8438C29.625 13.8945 28.8415 13.125 27.875 13.125H12.125C11.1585 13.125 10.375 13.8945 10.375 14.8438V22.75"
                 stroke="#F8A362"
@@ -701,12 +690,7 @@ export const SVGIcon: FC<
           );
         case 'double-arrow':
           return (
-            <SVG
-              width="40"
-              height="40"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg">
+            <SVG viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path
                 d="M15 3H21V9"
                 stroke="#1971F5"
@@ -739,12 +723,7 @@ export const SVGIcon: FC<
           );
         case 'arrow-top-right':
           return (
-            <SVG
-              width="20"
-              height="20"
-              viewBox="0 0 20 20"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg">
+            <SVG viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path
                 d="M5.83301 14.1667L14.1663 5.83337"
                 stroke="#0D2344"
@@ -765,56 +744,31 @@ export const SVGIcon: FC<
           );
         case 'curved-square(blue)':
           return (
-            <SVG
-              width="146"
-              height="146"
-              viewBox="0 0 146 146"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg">
+            <SVG viewBox="0 0 146 146" fill="none" xmlns="http://www.w3.org/2000/svg">
               <rect width="146" height="146" rx="22" fill="#1971F5" fillOpacity="0.1" />
             </SVG>
           );
         case 'curved-square(purple)':
           return (
-            <SVG
-              width="146"
-              height="146"
-              viewBox="0 0 146 146"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg">
+            <SVG viewBox="0 0 146 146" fill="none" xmlns="http://www.w3.org/2000/svg">
               <rect width="146" height="146" rx="22" fill="#651CBF" fillOpacity="0.1" />
             </SVG>
           );
         case 'wide-rectangle(blue)':
           return (
-            <SVG
-              width="327"
-              height="90"
-              viewBox="0 0 327 65"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg">
+            <SVG viewBox="0 0 327 65" fill="none" xmlns="http://www.w3.org/2000/svg">
               <rect x="-25.1992" y="0.781738" width="377.994" height="64.2183" fill="#F3F7FF" />
             </SVG>
           );
         case 'wide-rectangle(purple)':
           return (
-            <SVG
-              width="327"
-              height="90"
-              viewBox="0 0 327 65"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg">
+            <SVG viewBox="0 0 327 65" fill="none" xmlns="http://www.w3.org/2000/svg">
               <rect x="-25.1992" y="0.781738" width="377.994" height="64.2183" fill="#F1EBFF" />
             </SVG>
           );
         case 'rectangle-slanted-right':
           return (
-            <SVG
-              width="186"
-              height="338"
-              viewBox="0 0 186 338"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg">
+            <SVG viewBox="0 0 186 338" fill="none" xmlns="http://www.w3.org/2000/svg">
               <g filter="url(#filter0_b)">
                 <rect
                   width="395.348"
@@ -880,12 +834,7 @@ export const SVGIcon: FC<
 
         case 'rectangle-slanted-left':
           return (
-            <SVG
-              width="186"
-              height="338"
-              viewBox="0 0 186 338"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg">
+            <SVG viewBox="0 0 186 338" fill="none" xmlns="http://www.w3.org/2000/svg">
               <g filter="url(#filter0_b)">
                 <rect
                   width="395.348"
@@ -950,12 +899,7 @@ export const SVGIcon: FC<
           );
         case 'wavy-rectangle-lg':
           return (
-            <SVG
-              width="1940"
-              height="90"
-              viewBox="0 0 1940 60"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg">
+            <SVG viewBox="0 0 1940 60" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path
                 d="M0 0H1440V27.9248C1440 27.9248 1325.5 62.9558 1164.5 59.3354C1077.76 57.385 1019.5 40.1124 901.5 40.1124C783.5 40.1124 683.5 70 562.5 70C460.5 70 357 43.6551 236.5 43.6551C116 43.6551 0 51.5203 0 51.5203V0Z"
                 fill="#F8F5FF"
@@ -964,12 +908,7 @@ export const SVGIcon: FC<
           );
         case 'wavy-rectangle-sm':
           return (
-            <SVG
-              width="375"
-              height="81"
-              viewBox="0 0 375 71"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg">
+            <SVG viewBox="0 0 375 71" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path
                 d="M-1 0.580566H375V28.5053C375 28.5053 345.103 63.5364 303.064 59.916C280.416 57.9656 265.203 40.6929 234.392 40.6929C203.581 40.6929 177.469 70.5806 145.875 70.5806C119.242 70.5806 92.2167 44.2357 60.7528 44.2357C29.2889 44.2357 -1 52.1008 -1 52.1008V0.580566Z"
                 fill="#F8F5FF"
@@ -978,12 +917,7 @@ export const SVGIcon: FC<
           );
         case 'doctors-briefcase':
           return (
-            <SVG
-              width="63"
-              height="60"
-              viewBox="0 0 63 60"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg">
+            <SVG viewBox="0 0 63 60" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path
                 d="M56.4665 12.374L46.7499 12.374V6.54406C46.7499 3.32544 44.1386 0.714111 40.92 0.714111L21.4868 0.714111C18.2682 0.714111 15.6569 3.32544 15.6569 6.54406V12.374H5.9403C2.72168 12.374 0.110352 14.9853 0.110352 18.2039L0.110352 53.1836C0.110352 56.4022 2.72168 59.0136 5.9403 59.0136H56.4665C59.6851 59.0136 62.2964 56.4022 62.2964 53.1836V18.2039C62.2964 14.9853 59.6851 12.374 56.4665 12.374ZM23.4301 8.48737L38.9766 8.48737V12.374H23.4301V8.48737ZM42.8633 38.6087C42.8633 39.1432 42.426 39.5804 41.8916 39.5804H35.09V46.382C35.09 46.9164 34.6528 47.3537 34.1184 47.3537H28.2884C27.754 47.3537 27.3168 46.9164 27.3168 46.382V39.5804H20.5152C19.9807 39.5804 19.5435 39.1432 19.5435 38.6087V32.7788C19.5435 32.2444 19.9807 31.8071 20.5152 31.8071H27.3168V25.0055C27.3168 24.4711 27.754 24.0339 28.2884 24.0339L34.1184 24.0339C34.6528 24.0339 35.09 24.4711 35.09 25.0055V31.8071H41.8916C42.426 31.8071 42.8633 32.2444 42.8633 32.7788V38.6087Z"
                 fill="#CFE1FC"
@@ -992,12 +926,7 @@ export const SVGIcon: FC<
           );
         case 'check-circle':
           return (
-            <svg
-              width="16"
-              height="16"
-              viewBox="0 0 16 16"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg">
+            <SVG viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/SVG">
               <path
                 d="M8 0C3.58172 0 0 3.58172 0 8C0 12.4183 3.58172 16 8 16C12.4183 16 16 12.4183 16 8C15.9949 3.58385 12.4161 0.00514317 8 0Z"
                 fill="#1971F5"
@@ -1007,7 +936,7 @@ export const SVGIcon: FC<
                 d="M12.6173 5.46675L8.05402 11.6594C7.94519 11.8038 7.7829 11.8984 7.60363 11.922C7.42436 11.9456 7.24314 11.8961 7.10068 11.7847L3.84202 9.17941C3.55446 8.9493 3.5079 8.52964 3.73802 8.24208C3.96814 7.95452 4.38779 7.90796 4.67535 8.13808L7.39268 10.3121L11.544 4.67808C11.6801 4.47381 11.9175 4.36087 12.1619 4.38411C12.4063 4.40734 12.6181 4.56299 12.7133 4.78926C12.8085 5.01553 12.7716 5.2758 12.6173 5.46675Z"
                 fill="white"
               />
-            </svg>
+            </SVG>
           );
         case 'check(blue)':
           return (
@@ -1079,12 +1008,7 @@ export const SVGIcon: FC<
 
         case 'activity-green':
           return (
-            <svg
-              width="29"
-              height="34"
-              viewBox="0 0 29 34"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg">
+            <SVG viewBox="0 0 29 34" fill="none" xmlns="http://www.w3.org/2000/SVG">
               <path
                 d="M22.535 6.42269L13.1209 2.43021C9.95617 1.08804 6.48224 2.38589 5.3617 5.32903L2.02845 14.0839C0.907906 17.027 2.56507 20.5009 5.72983 21.8431L15.1439 25.8356C18.3087 27.1778 21.7826 25.8799 22.9032 22.9368L26.2364 14.1819C27.3569 11.2388 25.6998 7.76486 22.535 6.42269Z"
                 fill="#DCF9E4"
@@ -1096,16 +1020,11 @@ export const SVGIcon: FC<
                 strokeLinecap="round"
                 strokeLinejoin="round"
               />
-            </svg>
+            </SVG>
           );
         case 'activity-wine':
           return (
-            <svg
-              width="29"
-              height="34"
-              viewBox="0 0 29 34"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg">
+            <SVG viewBox="0 0 29 34" fill="none" xmlns="http://www.w3.org/2000/SVG">
               <path
                 d="M22.535 6.42269L13.1209 2.43021C9.95617 1.08804 6.48224 2.38589 5.3617 5.32903L2.02845 14.0839C0.907906 17.027 2.56507 20.5009 5.72983 21.8431L15.1439 25.8356C18.3087 27.1778 21.7826 25.8799 22.9032 22.9368L26.2364 14.1819C27.3569 11.2388 25.6998 7.76486 22.535 6.42269Z"
                 fill="#FBE4E4"
@@ -1117,16 +1036,11 @@ export const SVGIcon: FC<
                 strokeLinecap="round"
                 strokeLinejoin="round"
               />
-            </svg>
+            </SVG>
           );
         case 'activity-beige':
           return (
-            <svg
-              width="29"
-              height="34"
-              viewBox="0 0 29 34"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg">
+            <SVG viewBox="0 0 29 34" fill="none" xmlns="http://www.w3.org/2000/SVG">
               <path
                 d="M22 22H18L15 31L9 13L6 22H2"
                 stroke="#0D2344"
@@ -1139,16 +1053,11 @@ export const SVGIcon: FC<
                 fill="#F8A362"
                 fillOpacity="0.1"
               />
-            </svg>
+            </SVG>
           );
         case 'mobile-phone':
           return (
-            <svg
-              width="29"
-              height="34"
-              viewBox="0 0 29 34"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg">
+            <SVG viewBox="0 0 29 34" fill="none" xmlns="http://www.w3.org/2000/SVG">
               <path
                 d="M22.535 6.42269L13.1209 2.43021C9.95617 1.08804 6.48224 2.38589 5.3617 5.32903L2.02845 14.0839C0.907906 17.027 2.56507 20.5009 5.72983 21.8431L15.1439 25.8356C18.3087 27.1778 21.7826 25.8799 22.9032 22.9368L26.2364 14.1819C27.3569 11.2388 25.6998 7.76486 22.535 6.42269Z"
                 fill="#DCF9E4"
@@ -1167,16 +1076,11 @@ export const SVGIcon: FC<
                 strokeLinecap="round"
                 strokeLinejoin="round"
               />
-            </svg>
+            </SVG>
           );
         case 'clock':
           return (
-            <svg
-              width="29"
-              height="34"
-              viewBox="0 0 29 34"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg">
+            <SVG viewBox="0 0 29 34" fill="none" xmlns="http://www.w3.org/2000/SVG">
               <path
                 d="M22.535 6.42269L13.1209 2.43021C9.95617 1.08804 6.48224 2.38589 5.3617 5.32903L2.02845 14.0839C0.907906 17.027 2.56507 20.5009 5.72983 21.8431L15.1439 25.8356C18.3087 27.1778 21.7826 25.8799 22.9032 22.9368L26.2364 14.1819C27.3569 11.2388 25.6998 7.76486 22.535 6.42269Z"
                 fill="#FBE4E4"
@@ -1202,16 +1106,11 @@ export const SVGIcon: FC<
                 strokeLinecap="round"
                 strokeLinejoin="round"
               />
-            </svg>
+            </SVG>
           );
         case 'web':
           return (
-            <svg
-              width="29"
-              height="34"
-              viewBox="0 0 29 34"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg">
+            <SVG viewBox="0 0 29 34" fill="none" xmlns="http://www.w3.org/2000/SVG">
               <path
                 d="M22.535 6.42269L13.1209 2.43021C9.95617 1.08804 6.48224 2.38589 5.3617 5.32903L2.02845 14.0839C0.907906 17.027 2.56507 20.5009 5.72983 21.8431L15.1439 25.8356C18.3087 27.1778 21.7826 25.8799 22.9032 22.9368L26.2364 14.1819C27.3569 11.2388 25.6998 7.76486 22.535 6.42269Z"
                 fill="#F8A362"
@@ -1231,16 +1130,11 @@ export const SVGIcon: FC<
                 strokeLinecap="round"
                 strokeLinejoin="round"
               />
-            </svg>
+            </SVG>
           );
         case 'flower':
           return (
-            <SVG
-              width="117"
-              height="129"
-              viewBox="0 0 117 129"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg">
+            <SVG viewBox="0 0 117 129" fill="none" xmlns="http://www.w3.org/2000/svg">
               <g opacity="0.7">
                 <path
                   opacity="0.7"

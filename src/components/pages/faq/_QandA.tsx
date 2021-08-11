@@ -57,7 +57,7 @@ const _QandA: FC<{
             className="p-3 p-md-4"
             onClick={handleFAQClick}
             transition={animDuration}>
-            {answer}
+            <Box as="span">{answer}</Box>
           </motion.p>
         )}
       </AnimatePresence>

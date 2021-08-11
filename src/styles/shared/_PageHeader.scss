@@ -1,0 +1,23 @@
+.PageHeader {
+  margin-top: -2.5em;
+  margin-bottom: 5em;
+  padding: 2em 0 3.5em 0;
+  width: 100%;
+  min-height: 18em;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  &::before,
+  &::after {
+    @include before-or-after($bg: #f5f9ff, $br: 0 0 50% 0, $h: 150%, $w: 125vw, $l: 50%);
+    transform: translate(-50%, -29.5%) rotateZ(1.5deg);
+  }
+
+  &::before {
+    background-color: $bg-lightblue;
+    border-radius: 0;
+    transform: translate(-50%, -27.5%) rotateZ(2deg);
+  }
+}
