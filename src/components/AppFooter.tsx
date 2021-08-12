@@ -1,20 +1,37 @@
 // This is the global AppFooter that is common to all pages.
 
-import { Box, Anchor, Logo } from '.';
 import { Container, Row, Col } from 'react-bootstrap';
-import { memo } from 'react';
+import { memo, useRef, useContext, useEffect } from 'react';
+
+import { Box, Anchor, Logo, RevealOnScroll, SVGIcon } from '.';
+import { AppWindowContext } from 'src/pages/_app';
+import { ScrollReveal } from 'src/utils';
 
 const AppFooter = (): JSX.Element => {
+  const windowWidth = useContext(AppWindowContext);
+  const footerRef = useRef<HTMLElement | null>(null);
+
+  useEffect(() => {
+    const footer = footerRef.current;
+
+    if (footer) {
+      new ScrollReveal(footer, { once: windowWidth < 768 });
+    }
+  }, [windowWidth]);
+
   return (
-    <Container as="footer" fluid className="AppFooter p-3 py-5">
+    <Container as="footer" fluid className="AppFooter p-3 py-5" ref={footerRef}>
       <Container className="">
         <hr />
         <Row className="row mx-0 text-left">
-          <Col
+          <RevealOnScroll
+            component={Col}
             sm={6}
             md={5}
             lg={3}
-            className="__about __group mb-0 order-2 order-lg-0 ps-0  pe-0 pe-md-4 pe-lg-5">
+            className="__about __group mb-0 order-2 order-lg-0 ps-0  pe-0 pe-md-4 pe-lg-5"
+            animName="fadeInRight"
+            easing="ease">
             <Logo className="pb-0 mb-0 mt-3 mt-md-0" />
 
             <Box as="p" className="mt-2">
@@ -24,40 +41,46 @@ const AppFooter = (): JSX.Element => {
 
             <Box className="__social-links d-flex my-3">
               <Anchor button _type="icon-button" href="https://facebook.com/cribmd" target="_blank">
-                <Box as="i" className="fab fa-facebook-f"></Box>
+                <SVGIcon name="facebook" />
               </Anchor>
               <Anchor button _type="icon-button" href="https://twitter.com/crib_md" target="_blank">
-                <Box as="i" className="fab fa-twitter"></Box>
+                <SVGIcon name="twitter" />
               </Anchor>
-              <Anchor
+              {/* <Anchor
                 button
                 _type="icon-button"
                 href="https://www.linkedin.com/company/cribmd"
                 target="_blank">
-                <Box as="i" className="fab fa-linkedin-in"></Box>
-              </Anchor>
+                <SVGIcon name="facebook" />
+              </Anchor> */}
               <Anchor
                 button
                 _type="icon-button"
                 href="https://www.instagram.com/cribmd/"
                 target="_blank">
-                <Box as="i" className="fab fa-instagram"></Box>
+                <SVGIcon name="instagram" />
               </Anchor>
               <Anchor
                 button
                 _type="icon-button"
                 href="https://www.youtube.com/channel/UCMiVsvcvj-ru54-gwwH3d7g"
                 target="_blank">
-                <Box as="i" className="fab fa-youtube"></Box>
+                <SVGIcon name="youtube" />
               </Anchor>
             </Box>
 
             <hr className="my-4" />
 
             <Box as="p">
-              <Anchor href="mailto:ossai@cribmd.com">ossai@cribmd.com</Anchor>
+              <Anchor href="mailto:ossai@cribmd.com" className="d-inline-flex align-items-center">
+                <SVGIcon name="mail" className="me-2" />
+                ossai@cribmd.com
+              </Anchor>
               <br />
-              <Anchor href="mailto:support@cribmd.com">support@cribmd.com</Anchor>
+              <Anchor href="mailto:support@cribmd.com" className="d-inline-flex align-items-center">
+                <SVGIcon name="mail" className="me-2" />
+                support@cribmd.com
+              </Anchor>
             </Box>
 
             <hr className="my-3" />
@@ -65,9 +88,12 @@ const AppFooter = (): JSX.Element => {
             <Box as="p" className="theme-tertiary">
               &copy; 2020 CribMD. All rights reserved.
             </Box>
-          </Col>
+          </RevealOnScroll>
 
-          <Row className="row mx-0 px-0 order-0 order-lg-1 col-sm-8 col-lg-7">
+          <RevealOnScroll
+            component={Row}
+            className="row mx-0 px-0 order-0 order-lg-1 col-sm-8 col-lg-7"
+            easing="ease">
             <Col xs={6} md={3} className="__for-patients __group">
               <Box as="h5" className="mb-3">
                 For Patients
@@ -101,7 +127,7 @@ const AppFooter = (): JSX.Element => {
               </Box>
             </Col>
 
-            <Box className="__company __group mb-4 col-6 col-md-3 ps-0">
+            <Col xs={6} md={3} className="__company __group mb-4 ps-0">
               <Box as="h5" className="mb-3">
                 Company
               </Box>
@@ -127,9 +153,9 @@ const AppFooter = (): JSX.Element => {
                   FAQ
                 </Anchor>
               </Box>
-            </Box>
+            </Col>
 
-            <Box className="__legal __group mb-4 col-6 col-md-3 ps-md-0">
+            <Col xs={6} md={3} className="__legal __group mb-4 ps-md-0">
               <Box as="h5" className="mb-3">
                 Legal
               </Box>
@@ -139,10 +165,16 @@ const AppFooter = (): JSX.Element => {
               {/* <Box>
                 <Anchor href="/legal/privacy">Terms of Service</Anchor>
               </Box> */}
-            </Box>
-          </Row>
+            </Col>
+          </RevealOnScroll>
 
-          <Col sm={4} lg={2} className="__contact __group mb-4 order-1 order-lg-2 px-0">
+          <RevealOnScroll
+            component={Col}
+            sm={4}
+            lg={2}
+            animName="fadeInLeft"
+            className="__contact __group mb-4 order-1 order-lg-2 px-0"
+            easing="ease">
             <Box as="h5" className="mb-3">
               Contact
             </Box>
@@ -163,17 +195,23 @@ const AppFooter = (): JSX.Element => {
 
             <Box as="p" className="d-flex w-100">
               <Box as="i" className="fas fa-phone-alt me-2 mt-1"></Box>
-              <Anchor href="tel:+16312381645">+1 631-238-1645</Anchor>
+              <Anchor href="tel:+16312381645" className="d-inline-flex align-items-center">
+                <SVGIcon name="phone" className="me-2" /> +1 631-238-1645
+              </Anchor>
             </Box>
             <Box as="p" className="d-flex">
               <Box as="i" className="fas fa-phone-alt me-2 mt-1"></Box>
-              <Anchor href="tel:+2349060346075">+234 906 034 6075</Anchor>
+              <Anchor href="tel:+2349060346075" className="d-inline-flex align-items-center">
+                <SVGIcon name="phone" className="me-2" /> +234 906 034 6075
+              </Anchor>
             </Box>
             <Box as="p" className="d-flex">
               <Box as="i" className="fas fa-phone-alt me-2 mt-1"></Box>
-              <Anchor href="tel:+2348081951702">+234 808 195 1702</Anchor>
+              <Anchor href="tel:+2348081951702" className="d-inline-flex align-items-center">
+                <SVGIcon name="phone" className="me-2" /> +234 808 195 1702
+              </Anchor>
             </Box>
-          </Col>
+          </RevealOnScroll>
         </Row>
       </Container>
     </Container>

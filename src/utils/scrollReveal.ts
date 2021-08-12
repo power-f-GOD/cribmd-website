@@ -29,7 +29,7 @@ export class ScrollReveal {
           }
         });
       },
-      { threshold: width < 768 ? 0.25 : 0.5 }
+      { threshold: width < 768 ? 0.5 : 0.25 }
     );
     // throttle for a few millisec to ascertain anchors have mounted in the DOM
     throttle(() => this.register());

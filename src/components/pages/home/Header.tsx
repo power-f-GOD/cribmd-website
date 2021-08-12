@@ -30,7 +30,7 @@ const Header = (): JSX.Element => {
             lg={7}
             xl={6}
             className="ps-lg-4 ps-xl-5 pe-md-4 pe-lg-0  overflow-clip">
-            <RevealOnScroll className="pt-md-3">
+            <RevealOnScroll className="pt-md-3" easing="ease">
               <Box as="h1" data-anim_delay="0.125">
                 The digital health consultation platform just for you
               </Box>

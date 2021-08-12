@@ -39,7 +39,7 @@ body {
       }
 
       &::-webkit-scrollbar-track {
-        border-radius: 0.5rem;  
+        border-radius: 0.5rem;
       }
 
       &::-webkit-scrollbar-thumb {
@@ -318,6 +318,7 @@ input[type='password'] {
 .row {
   margin-right: 0;
   margin-left: 0;
+  position: relative;
 }
 
 .pointer-events-none {

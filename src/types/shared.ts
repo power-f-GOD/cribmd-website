@@ -75,9 +75,18 @@ export type TransitionAnimName =
   | 'InUpBig'
   | 'InDownBig'
   | 'InLeftBig'
-  | 'InRightBig';
+  | 'InRightBig'
+  | 'scale'
+  | 'scaleX'
+  | 'scaleY';
 
 export type SVGIconName =
+  | 'mail'
+  | 'phone'
+  | 'instagram'
+  | 'facebook'
+  | 'twitter'
+  | 'youtube'
   | 'tick'
   | 'appstore-button'
   | 'playstore-button'
