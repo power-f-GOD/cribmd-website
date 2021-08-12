@@ -12,7 +12,7 @@
   }
 }
 .benefitsContainer {
-  border: 1px solid #e6e9ef;
+  border: 0.0625rem solid #e6e9ef;
   border-radius: 0.5rem;
 
   .careCount {
@@ -27,7 +27,7 @@
   }
 
   > div {
-    border-bottom: 1px solid #e6e9ef;
+    border-bottom: 0.0625rem solid #e6e9ef;
     padding: 0.5rem 1rem;
     min-height: 3rem;
     display: flex;
@@ -58,7 +58,7 @@
     }
 
     .subscribeButton {
-      border: 1px solid $theme-primary;
+      border: 0.0625rem solid $theme-primary;
       transition: 0.5s;
       // padding: 0.5rem 1.5rem;
       font-style: normal;
