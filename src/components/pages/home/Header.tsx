@@ -52,9 +52,11 @@ const Header = (): JSX.Element => {
                 <Box as="small" className="d-block">
                   POWERED BY
                 </Box>
-                <Box as="h6" className="my-1">
-                  TheGuardian
-                </Box>
+                <Img
+                  width="125"
+                  src={GetImage.investorLogo('the-guardian')}
+                  alt="the guardian logo"
+                />
               </Box>
             </RevealOnScroll>
           </Col>

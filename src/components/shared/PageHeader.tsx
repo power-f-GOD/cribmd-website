@@ -10,28 +10,28 @@ const _PageHeader: FC<{
   headerText: string;
   rider?: string;
   children?: ReactNode;
-  bodyText?: string;
-}> = ({ ctaHref, ctaText, headerText, rider, bodyText, children }): JSX.Element => {
+}> = ({ ctaHref, ctaText, headerText, rider, children }): JSX.Element => {
   return (
-    <Container fluid as="header" className="PageHeader">
+    <Container fluid as="header" className={`PageHeader ${ctaHref ? 'has-cta' : ''}`}>
       <Container className="text-md-center">
         <Row className="justify-content-md-center my-3">
           <Col xs={12}>
-            <RevealOnScroll className="pt-3">
-              <Box as="h1" data-anim_delay="0.2" className="mb-4">
-                {headerText}
-              </Box>
+            <RevealOnScroll className="pt-3" easing="ease">
+              <Box
+                as="h1"
+                data-anim_delay="0.2"
+                className="my-4"
+                data-anim_easing="ease"
+                dangerouslySetInnerHTML={{ __html: headerText }}
+              />
 
               {rider && (
-                <Box as="p" data-anim_delay={0.5} className="mx-md-auto px-md-5 py-1 my-3 my-lg-4">
-                  {rider}
-                </Box>
-              )}
-
-              {bodyText && (
-                <Box as="p" data-anim_delay={0.5} className="mx-md-auto px-md-5 py-1 my-3 my-lg-4">
-                  {bodyText}
-                </Box>
+                <Box
+                  as="p"
+                  data-anim_delay={0.5}
+                  className="mx-md-auto px-md-5 py-1 my-3 my-lg-4"
+                  dangerouslySetInnerHTML={{ __html: rider }}
+                />
               )}
 
               {ctaHref && (

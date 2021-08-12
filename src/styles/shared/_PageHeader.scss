@@ -3,21 +3,35 @@
   margin-bottom: 5em;
   padding: 2em 0 3.5em 0;
   width: 100%;
-  min-height: 18em;
+  min-height: 15em;
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
 
+  &.has-cta {
+    min-height: 30em;
+  }
+
+  @media screen and (min-width: 768px) {
+    min-height: 20em;
+    margin-bottom: 7em;
+
+    &.has-cta {
+      min-height: 35em;
+    }
+  }
+
   &::before,
   &::after {
-    @include before-or-after($bg: #f5f9ff, $br: 0 0 50% 0, $h: 150%, $w: 125vw, $l: 50%);
-    transform: translate(-50%, -29.5%) rotateZ(1.5deg);
+    @include before-or-after($bg: #f5f9ff, $br: 0 0 50% 0, $h: 150%, $w: 130vw, $l: 50%);
+    transform: translate(-50%, -33%) rotateZ(1.75deg);
+    min-width: 70em;
   }
 
   &::before {
     background-color: $bg-lightblue;
     border-radius: 0;
-    transform: translate(-50%, -27.5%) rotateZ(2deg);
+    transform: translate(-50%, -31%) rotateZ(2.5deg);
   }
 }
