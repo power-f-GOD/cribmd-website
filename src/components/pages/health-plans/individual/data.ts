@@ -80,80 +80,87 @@ export const moreBenefitsData: {
 ];
 export const benefitsData: {
   header: string;
+  list: {
+    content?: string;
+    header?: string;
+  }[];
   list1: string;
-  list2: string;
-  list3: string;
-  list4: string;
-  list5: string;
-  list6: string;
-  list7: string;
-  list8: string;
-  list9: string;
-  list10: string;
-  list11: string;
   footer: string;
   fee?: string;
 }[] = [
   {
     header: 'Benefits',
+    list: [
+      { content: 'Preventive Care' },
+      { content: 'Outpatient Care' },
+      { content: 'Advanced diagnostics' },
+      { content: 'Inpatient Hospital Care' },
+      { content: 'Fertility' },
+      { content: 'Maternity' },
+      { content: 'Emergency and Urgent / Clinic Care' },
+      { content: 'Prescription drugs' },
+      { content: 'Dental Care' },
+      { content: 'Eye Care' }
+    ],
     list1: 'Care through CribMD',
-    list2: 'Preventive Care',
-    list3: 'Outpatient Care',
-    list4: 'Advanced diagnostics',
-    list5: 'Inpatient Hospital Care',
-    list6: 'Fertility',
-    list7: 'Maternity',
-    list8: 'Emergency and Urgent / Clinic Care',
-    list9: 'Prescription drugs',
-    list10: 'Dental Care',
-    list11: 'Eye Care',
+
     footer: 'Download full coverage document'
   },
   {
     header: 'Basic',
+    list: [
+      { content: '', header: 'Preventive Care' },
+      { content: 'checked', header: 'Outpatient Care' },
+      { content: '', header: 'Advanced diagnostics' },
+      { content: 'checked', header: 'Inpatient Hospital Care' },
+      { content: '', header: 'Fertility' },
+      { content: '', header: 'Maternity' },
+      { content: 'checked', header: 'Emergency and Urgent / Clinic Care' },
+      { content: 'checked', header: 'Prescription drugs' },
+      { content: '', header: 'Dental Care' },
+      { content: '', header: 'Eye Care' }
+    ],
+
     list1: '1 person, 1 visit',
-    list2: '',
-    list3: 'checked',
-    list4: '',
-    list5: 'checked',
-    list6: '',
-    list7: '',
-    list8: '',
-    list9: 'checked',
-    list10: 'checked',
-    list11: '',
+
     footer: 'SUBSCRIBE Now',
     fee: '₦3,000'
   },
   {
     header: 'Premium',
+    list: [
+      { content: 'checked', header: 'Preventive Care' },
+      { content: 'checked', header: 'Outpatient Care' },
+      { content: 'checked', header: 'Advanced diagnostics' },
+      { content: 'checked', header: 'Inpatient Hospital Care' },
+      { content: '', header: 'Fertility' },
+      { content: '', header: 'Maternity' },
+      { content: 'checked', header: 'Emergency and Urgent / Clinic Care' },
+      { content: 'checked', header: 'Prescription drugs' },
+      { content: 'checked', header: 'Dental Care' },
+      { content: 'checked', header: 'Eye Care' }
+    ],
+
     list1: '1 person, UNLIMITED visits',
-    list2: 'checked',
-    list3: 'checked',
-    list4: 'checked',
-    list5: 'checked',
-    list6: '',
-    list7: 'checked',
-    list8: 'checked',
-    list9: 'checked',
-    list10: 'checked',
-    list11: 'checked',
+
     footer: 'SUBSCRIBE Now',
     fee: '₦5,000'
   },
   {
     header: 'Family',
+    list: [
+      { content: 'checked', header: 'Preventive Care' },
+      { content: 'checked', header: 'Outpatient Care' },
+      { content: 'checked', header: 'Advanced diagnostics' },
+      { content: 'checked', header: 'Inpatient Hospital Care' },
+      { content: 'checked', header: 'Fertility' },
+      { content: 'checked', header: 'Maternity' },
+      { content: 'checked', header: 'Emergency and Urgent / Clinic Care' },
+      { content: 'checked', header: 'Prescription drugs' },
+      { content: 'checked', header: 'Dental Care' },
+      { content: 'checked', header: 'Eye Care' }
+    ],
     list1: '6 people, unlimited visits',
-    list2: 'checked',
-    list3: 'checked',
-    list4: 'checked',
-    list5: 'checked',
-    list6: 'checked',
-    list7: 'checked',
-    list8: 'checked',
-    list9: 'checked',
-    list10: 'checked',
-    list11: 'checked',
     footer: 'SUBSCRIBE Now',
     fee: '₦19,000'
   }
