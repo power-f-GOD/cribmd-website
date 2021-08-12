@@ -81,6 +81,12 @@ export type TransitionAnimName =
   | 'scaleY';
 
 export type SVGIconName =
+  | 'mail'
+  | 'phone'
+  | 'instagram'
+  | 'facebook'
+  | 'twitter'
+  | 'youtube'
   | 'tick'
   | 'appstore-button'
   | 'playstore-button'

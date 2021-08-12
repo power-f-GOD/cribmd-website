@@ -59,7 +59,7 @@ const MainExit = (): JSX.Element => {
               md={6}
               className="text-center text-md-end ps-md-5"
               easing="ease"
-              animName="fadeInLeft">
+              animName="fadeInRight">
               <Img
                 src={GetImage.home(imageName)}
                 className={`mt-5 mt-md-0 ${i === 0 ? 'with-frame' : ''}`.trim()}

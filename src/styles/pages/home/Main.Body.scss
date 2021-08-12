@@ -11,16 +11,77 @@
   }
 }
 
+.servicesCarouselButtonsContainer {
+  position: relative;
+  margin-top: 3em;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  // background-color: red;
+
+  @media screen and (min-width: 992px) {
+    position: absolute;
+    left: -9em;
+    top: 7em;
+    transform: rotateZ(90deg);
+  }
+
+  button {
+    margin: 0 0.25em;
+    background-color: white;
+    box-shadow: $button-box-shadow !important;
+
+    &:hover,
+    &:focus {
+      box-shadow: $button-box-shadow-hover !important;
+    }
+
+    @media screen and (min-width: 992px) {
+      order: 1;
+    }
+  }
+
+  i {
+    font-size: 0.75em;
+  }
+}
+
+.particlesContainer {
+  display: inline-flex;
+  align-items: center;
+  margin: 0 3em;
+
+  @media screen and (min-width: 992px) {
+    order: 0;
+  }
+}
+
+$size: 0.5em;
+
+.particle {
+  background-color: rgba(25, 113, 245, 0.1);
+  height: $size;
+  width: $size;
+  display: inline-block;
+  border-radius: 0.25em;
+  margin-right: $size;
+  transition: 0.3s;
+}
+
+.particleActive {
+  background-color: rgba(25, 113, 245, 0.3);
+  width: $size * 2;
+}
+
 .serviceCard {
-  background: white;
-  box-shadow: 0.375em 0.75em 1.875em rgba(230, 233, 239, 0.85);
+  box-shadow: none;
   border-radius: $br;
   padding: 1.35em;
   position: relative;
-  max-width: 25em;
+  max-width: 24em;
 
   &::before {
-    @include before-or-after($bg: white, $o: 0.85);
+    @include before-or-after($bg: transparent, $o: 0.85);
     backdrop-filter: blur(0.5em);
   }
 
@@ -35,6 +96,22 @@
 
   h3 {
     display: inline-block;
+  }
+
+  p {
+    display: none;
+  }
+}
+
+.serviceCardActive {
+  box-shadow: 0.375em 0.75em 1.875em rgba(230, 233, 239, 0.85);
+
+  &::before {
+    background-color: white;
+  }
+
+  p {
+    display: block;
   }
 }
 

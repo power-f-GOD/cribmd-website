@@ -36,6 +36,7 @@ const _GetMobileAppCard: FC<{ headerText?: string; bodyText?: string }> = ({
           md={5}
           className="text-center"
           easing="ease"
+          delay={0.5}
           allowOverflow>
           <Box>
             <Img className="__mobile-dashboard" src={GetImage.shared('mobile-dashboard')} />
