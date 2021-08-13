@@ -31,7 +31,7 @@ const MainIntro = (): JSX.Element => {
                       {list1 === 'checked' ? <SVGIcon name="check(blue)" size="inherit" /> : list1}
                     </Box>
                   </Box>
-                  {list.map(({ content }, i) => (
+                  {list.map(({ content }) => (
                     <Box key={i} className={`${i !== 0 ? 'justify-content-center' : ''}`}>
                       {content === 'checked' ? (
                         <SVGIcon name="check(blue)" size="inherit" />
