@@ -13,7 +13,7 @@ const MainIntro = (): JSX.Element => {
         <Box as="h2" data-anim_delay="0.3">
           Benefits
         </Box>
-        <Box>
+        <Box className="px-2">
           {windowWidth > 767 && (
             <Box className={`${S.benefitsGrid}`}>
               {benefitsData.map(({ header, list, list1, footer, monthlyFee }, i) => (
