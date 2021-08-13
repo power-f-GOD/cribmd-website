@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { NextPage } from 'next';
 import { Container } from 'react-bootstrap';
 import { useRef, useEffect } from 'react';
@@ -15,6 +16,7 @@ const InTheMedia: NextPage = () => {
       new ScrollReveal(ourCompany);
     }
   }, []);
+
   return (
     <>
       <AppHead title="About Us - In the Media" />

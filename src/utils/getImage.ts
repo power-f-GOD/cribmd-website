@@ -62,4 +62,8 @@ export class GetImage {
   static shared(name: string) {
     return `${this.baseUrl}_shared/${name}.webp`;
   }
+
+  static gallery(name: string) {
+    return `${this.baseUrl}about/in-the-media/${name}.webp`;
+  }
 }
