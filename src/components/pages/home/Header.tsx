@@ -5,7 +5,6 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
 import { Box, Anchor, Img, RevealOnScroll } from 'src/components/shared';
-import { SVGEllipse } from 'src/components/shared/SVG';
 import { GetImage } from 'src/utils';
 import S from 'src/styles/pages/home/Header.module.scss';
 
@@ -18,12 +17,6 @@ const Header = (): JSX.Element => {
           className={`${S.hero} p-sm-5 align-items-center`}
           data-anim_delay="0.2"
           data-anim="fadeInUp">
-          <SVGEllipse type="1" />
-          <SVGEllipse type="2" />
-          <SVGEllipse type="3" />
-          <SVGEllipse type="4" />
-          <SVGEllipse type="5" />
-
           <Col
             xs={12}
             md={8}
@@ -75,6 +68,11 @@ const Header = (): JSX.Element => {
               data-anim_ease="cubic-bezier(0.5, 0, .5, 1.25)"
             />
           </RevealOnScroll>
+
+          <Box className={S.after}>
+            <Box className={S.blurredEllipse} />
+            <Box className={S.blurredEllipse} />
+          </Box>
         </Row>
       </RevealOnScroll>
       <RevealOnScroll>

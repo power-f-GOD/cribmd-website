@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { createContext, useState, useEffect, useMemo } from 'react';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
@@ -28,6 +29,11 @@ const App = ({ Component, pageProps }: AppProps): JSX.Element => {
     <AppContext.Provider value={appContextValue}>
       <AppWindowContext.Provider value={windowWidth}>
         <Head>
+          <meta
+            name="description"
+            content="Author: CribMD Telemedicine and Doctor Home Visit, Desc: We are a technology company that offers low cost medical services from online to door-step outreach."
+          />
+          <meta name="viewport" content="width=device-width, initial-scale=1.0" />
           <link
             href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700,800&amp;display=swap"
             rel="stylesheet"
@@ -44,6 +50,7 @@ const App = ({ Component, pageProps }: AppProps): JSX.Element => {
           />
           <link rel="icon" href="/favicon.ico" />
         </Head>
+
         <AppNav />
         <Component {...pageProps} />
         <AppFooter />

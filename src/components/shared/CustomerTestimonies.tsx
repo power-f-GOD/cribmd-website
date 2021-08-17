@@ -24,10 +24,11 @@ let unmounted = false;
 export const CustomerTestimonies = (): JSX.Element => {
   const [activeTIndex, setActiveTestifierIndex] = useState(3);
   const [swapped, setSwapped] = useState(true);
-  // const [unmounted, setUnmounted] = useState(false);
 
   const handleTestifierToggle = useCallback(
     (step: 'next' | 'prev') => () => {
+      if (unmounted) return;
+
       setSwapped((prev) => !prev);
       setActiveTestifierIndex((prev) => {
         if (step === 'next') {

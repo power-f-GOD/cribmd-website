@@ -27,6 +27,34 @@
   }
 }
 
+.after {
+  @include before-or-after($bg: transparent);
+  overflow: hidden;
+}
+
+.blurredEllipse {
+  $size: 45em;
+
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(25, 113, 245, 0.25);
+  filter: blur(15em);
+  // width: 28em;
+  // height: 28em;
+  width: $size;
+  height: $size;
+  right: 60%;
+  top: 60%;
+  background: rgba(25, 34, 245, 0.25);
+  // filter: blur(454px);
+
+  &:nth-child(2) {
+    left: 60%;
+    bottom: 60%;
+    top: unset;
+  }
+}
+
 .heroImage {
   margin-top: 1rem;
   width: 19rem;

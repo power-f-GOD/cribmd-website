@@ -9,15 +9,17 @@ import { AppWindowContext } from 'src/pages/_app';
 import { GetImage, interval, delay } from 'src/utils';
 
 let clearServiceInterval = false;
+let unmounted = false;
 
 const MainBody = (): JSX.Element => {
   const windowWidth = useContext(AppWindowContext);
   const [activeServiceIndex, setActiveServiceIndex] = useState(0);
 
   const handleCarouselInterval = useCallback(() => {
+    if (unmounted) return;
+
     interval(
       () => {
-        // console.log(clearServiceInterval);
         handleCarouselButtonClick('next')();
       },
       4000,
@@ -28,6 +30,8 @@ const MainBody = (): JSX.Element => {
 
   const handleCarouselButtonClick = useCallback(
     (step: 'next' | 'previous', clear?: boolean) => () => {
+      if (unmounted) return;
+
       setActiveServiceIndex((index) => {
         if (step === 'next') {
           return index === 3 ? 0 : index + 1;
@@ -51,12 +55,15 @@ const MainBody = (): JSX.Element => {
   );
 
   useEffect(() => {
-    handleCarouselInterval();
+    if (windowWidth < 576) {
+      handleCarouselInterval();
+    }
 
     return () => {
       clearServiceInterval = true;
+      unmounted = true;
     };
-  }, [handleCarouselInterval]);
+  }, [handleCarouselInterval, windowWidth]);
 
   return (
     <Container fluid className={`${S.servicesWrapper} text-left text-md-center`}>
@@ -81,13 +88,11 @@ const MainBody = (): JSX.Element => {
             {ourServices.map((service, i) => (
               <RevealOnScroll
                 key={service.name}
-                className={`mt-4 d-flex justify-content-${
-                  i % 2 === 1 ? 'end' : 'start'
-                } justify-content-md-start`}
+                className="mt-4 d-flex justify-content-center justify-content-md-start"
                 allowOverflow>
                 <Box
                   className={`${S.serviceCard} ${
-                    activeServiceIndex === i ? S.serviceCardActive : ''
+                    activeServiceIndex === i || windowWidth < 576 ? S.serviceCardActive : ''
                   }`}
                   data-anim="fadeInLeft"
                   data-anim_easing="ease">
@@ -103,23 +108,27 @@ const MainBody = (): JSX.Element => {
                 </Box>
               </RevealOnScroll>
             ))}
-            <Box className={S.servicesCarouselButtonsContainer}>
-              <Button _type="icon-button" onClick={handleCarouselButtonClick('previous', true)}>
-                <SVGIcon name="previous" />
-              </Button>
-              <Button _type="icon-button" onClick={handleCarouselButtonClick('next', true)}>
-                <SVGIcon name="next" />
-              </Button>
-              <Box className={S.particlesContainer}>
-                {ourServices.map((_, i) => (
-                  <Box
-                    as="span"
-                    className={`${S.particle} ${activeServiceIndex === i ? S.particleActive : ''}`}
-                    key={i}
-                  />
-                ))}
+            {windowWidth > 575 && (
+              <Box className={S.servicesCarouselButtonsContainer}>
+                <Button _type="icon-button" onClick={handleCarouselButtonClick('previous', true)}>
+                  <SVGIcon name="previous" />
+                </Button>
+                <Button _type="icon-button" onClick={handleCarouselButtonClick('next', true)}>
+                  <SVGIcon name="next" />
+                </Button>
+                <Box className={S.particlesContainer}>
+                  {ourServices.map((_, i) => (
+                    <Box
+                      as="span"
+                      className={`${S.particle} ${
+                        activeServiceIndex === i ? S.particleActive : ''
+                      }`}
+                      key={i}
+                    />
+                  ))}
+                </Box>
               </Box>
-            </Box>
+            )}
           </Col>
           {windowWidth > 767 && (
             <Col className="d-none d-md-flex align-items-center justify-content-end mt-md-5">

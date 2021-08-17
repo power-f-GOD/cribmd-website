@@ -23,15 +23,34 @@
   }
 
   &::before,
-  &::after {
+  .__after {
     @include before-or-after($bg: #f5f9ff, $br: 0 0 50% 0, $h: 150%, $w: 130vw, $l: 50%);
-    transform: translate(-50%, -33%) rotateZ(1.75deg);
+    transform: translate(-50%, -32%) rotateZ(2deg);
     min-width: 70em;
+    overflow: hidden;
   }
 
   &::before {
     background-color: $bg-lightblue;
     border-radius: 0;
     transform: translate(-50%, -31%) rotateZ(2.5deg);
+  }
+
+  .__blurred-ellipse {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(25, 113, 245, 0.2);
+    filter: blur(12em);
+    width: 35em;
+    height: 35em;
+    // left: -50%;
+    right: 75%;
+    bottom: 45%;
+
+    &:nth-child(2) {
+      left: calc(100vw - 2em);
+      top: 23em;
+      display: none;
+    }
   }
 }

@@ -56,6 +56,10 @@ const _PageHeader: FC<{
           )}
         </Row>
       </Container>
+      <Box className="__after">
+        <Box className="__blurred-ellipse" />
+        <Box className="__blurred-ellipse" />
+      </Box>
     </Container>
   );
 };

@@ -3,7 +3,7 @@ import { NextPage } from 'next';
 import { useRef, useEffect, useContext } from 'react';
 import { ScrollReveal } from 'src/utils';
 import { Container } from 'react-bootstrap';
-import { AppHead } from 'src/components';
+import { AppHead, Particles } from 'src/components';
 import { Header, Main, Footer } from 'src/components/pages/home';
 import { AppWindowContext } from './_app';
 
@@ -24,6 +24,7 @@ const Home: NextPage = () => {
       <AppHead title="Telemedicine &amp; Doctor Home Visit" />
 
       <Container as="main" fluid className="Home" ref={homeRef as any}>
+        <Particles />
         <Header />
         <Main />
         <Footer />

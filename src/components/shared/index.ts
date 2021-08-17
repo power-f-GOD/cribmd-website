@@ -14,3 +14,4 @@ export * from './RevealOnScroll';
 export * from './Avatar';
 export * from './GetMobileAppCard';
 export * from './PageHeader';
+export * from './Particles';

@@ -1,14 +1,8 @@
 import { Box, Img, Anchor, RevealOnScroll } from 'src/components/shared';
-import { SyntheticEvent, useCallback } from 'react';
 import S from 'src/styles/pages/about/our-company/index.module.scss';
 import { Col, Container, Row } from 'react-bootstrap';
 
-const Cta = (): JSX.Element => {
-  const handleImgError = useCallback((e: SyntheticEvent<HTMLImageElement, Event>): void => {
-    const target = e.target as HTMLImageElement;
-    if (/\.webp/.test(target.srcset)) target.srcset = target.srcset.replaceAll('.webp', '.png');
-  }, []);
-
+const CTA = (): JSX.Element => {
   return (
     <Container as="section" className="mt-md-5">
       <RevealOnScroll once className={S.ctaContainer}>
@@ -54,7 +48,6 @@ const Cta = (): JSX.Element => {
               <Img
                 srcSet={`/img/about/cta-laptop__500x.png 2x, /img/about/cta-laptop__250x.png 1x`}
                 alt="cta image"
-                onError={handleImgError}
                 data-anim="fadeIn"
                 data-anim_delay="1"
                 data-anim_ease="cubic-bezier(0.5, 0, .5, 1.25)"
@@ -67,4 +60,4 @@ const Cta = (): JSX.Element => {
   );
 };
 
-export default Cta;
+export default CTA;
