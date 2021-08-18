@@ -4,26 +4,26 @@ import { Container } from 'react-bootstrap';
 import { useRef, useEffect } from 'react';
 import { ScrollReveal } from 'src/utils';
 import { AppHead, Particles } from 'src/components';
-import { Header, Main } from 'src/components/pages/about/in-the-media';
+import { Header, Main } from 'src/components/pages/about/gallery';
 
 const InTheMedia: NextPage = () => {
-  const inTheMediaRef = useRef<HTMLElement | null>(null);
+  const galleryRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
-    const ourCompany = inTheMediaRef.current;
+    const gallery = galleryRef.current;
 
-    if (ourCompany) {
-      new ScrollReveal(ourCompany);
+    if (gallery) {
+      new ScrollReveal(gallery);
     }
   }, []);
 
   return (
     <>
-      <AppHead title="About Us - In the Media" />
+      <AppHead title="About Us - Gallery" />
 
       <Particles />
 
-      <Container as="main" fluid className="InTheMedia" ref={inTheMediaRef as any}>
+      <Container as="main" fluid className="Gallery" ref={galleryRef as any}>
         <Header />
         <Main />
       </Container>

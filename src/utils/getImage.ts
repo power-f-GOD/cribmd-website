@@ -64,6 +64,6 @@ export class GetImage {
   }
 
   static gallery(name: string) {
-    return `${this.baseUrl}about/in-the-media/${name}.webp`;
+    return `${this.baseUrl}about/gallery/${name}.webp`;
   }
 }

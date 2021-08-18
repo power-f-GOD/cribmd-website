@@ -1,0 +1,75 @@
+@import '../../../constants';
+
+.mediaGridWrapper {
+  overflow: hidden;
+
+  .mediaGrid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1em;
+    place-items: center;
+    transition: 0.3s;
+
+    > * {
+      display: flex;
+      justify-content: space-between;
+      flex-direction: column;
+      border-radius: 1rem;
+      height: 100%;
+      width: 100%;
+      overflow: hidden;
+    }
+  }
+
+  .toggleButton {
+    margin: 0 0.25em;
+    box-shadow: 0px 8px 16px rgba(13, 35, 68, 0.16) !important;
+  }
+
+  iframe {
+    min-height: 13em;
+  }
+
+  a {
+    color: $theme-tertiary-v2;
+  }
+
+  @media screen and (min-width: 576px) {
+    .mediaGrid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media screen and (min-width: 992px) {
+    .mediaGrid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @media screen and (min-width: 1200px) {
+    .mediaGrid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+}
+
+.mediaItemContainer {
+  border: 0.0625rem solid $theme-tertiary-v9;
+  min-width: 15rem;
+  transition: 0.3s;
+
+  &:hover {
+    box-shadow: $button-box-shadow;
+  }
+}
+
+.mediaImageContainer {
+  border-bottom: 0.0625rem solid $theme-tertiary-v9;
+  min-height: 5em;
+  overflow: hidden;
+  justify-content: center;
+}
+
+.mediaContentContainer {
+  padding: 1.5rem 0.5rem;
+}

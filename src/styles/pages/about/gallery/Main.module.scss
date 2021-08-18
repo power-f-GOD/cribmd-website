@@ -71,14 +71,20 @@
 
 @media screen and (min-width: 768px) {
   .galleryGrid {
-    grid-template-columns: repeat(4, auto);
-    gap: 1.25em;
-    margin-bottom: 1.25em;
+    grid-template-columns: repeat(3, auto);
+    gap: 0.5em;
+    margin-bottom: 0.5em !important;
   }
 }
 
 @media screen and (min-width: 992px) {
+  .galleryGrid {
+    gap: 0.75em;
+    margin-bottom: 0.75em !important;
+    grid-template-columns: repeat(6, auto);
+  }
+
   .galleryGridItem {
-    min-height: 16em;
+    min-height: 13em;
   }
 }

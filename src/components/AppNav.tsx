@@ -148,7 +148,7 @@ const AppNav = (): JSX.Element => {
                   <SVGIcon name="cribmd-logo" />
                 </Box>
 
-                <Box as="p" className="">
+                <Box as="p">
                   <Box as="span" className="h6 mt-0 mb-2">
                     Our Company
                   </Box>
@@ -158,18 +158,35 @@ const AppNav = (): JSX.Element => {
 
               <Anchor
                 routeLink
-                href="/about/in-the-media"
+                href="/about/in-the-news"
                 onClick={!isPC ? handleNavOpenClick : undefined}
                 onKeyDown={handleNavOpenClick}>
                 <Box as="span">
                   <SVGIcon name="volume" />
                 </Box>
 
-                <Box as="p" className="">
+                <Box as="p">
                   <Box as="span" className="h6 mt-0 mb-2">
-                    In the media
+                    CribMD in the News
                   </Box>
                   As seen on Spotify and Arise News, catch the latest news about us
+                </Box>
+              </Anchor>
+
+              <Anchor
+                routeLink
+                href="/about/gallery"
+                onClick={!isPC ? handleNavOpenClick : undefined}
+                onKeyDown={handleNavOpenClick}>
+                <Box as="span">
+                  <SVGIcon name="volume" />
+                </Box>
+
+                <Box as="p">
+                  <Box as="span" className="h6 mt-0 mb-2">
+                    Gallery
+                  </Box>
+                  See our achievements and picture displays!
                 </Box>
               </Anchor>
             </Box>

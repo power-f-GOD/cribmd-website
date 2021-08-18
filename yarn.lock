@@ -1044,6 +1044,13 @@
   dependencies:
     "@types/react" "*"
 
+"@types/react-image-gallery@^1.0.4":
+  version "1.0.4"
+  resolved "https://r.cnpmjs.org/@types/react-image-gallery/download/@types/react-image-gallery-1.0.4.tgz#da1fc9d85ebc223d0f5c72d7a78493be3d381398"
+  integrity sha1-2h/J2F68Ij0PXHLXp4STvj04E5g=
+  dependencies:
+    "@types/react" "*"
+
 "@types/react-test-renderer@^17.0.1":
   version "17.0.1"
   resolved "https://registry.yarnpkg.com/@types/react-test-renderer/-/react-test-renderer-17.0.1.tgz#3120f7d1c157fba9df0118dae20cb0297ee0e06b"
@@ -5601,6 +5608,11 @@ react-dom@^17.0.1:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
     scheduler "^0.20.1"
+
+react-image-gallery@^1.2.7:
+  version "1.2.7"
+  resolved "https://r.cnpmjs.org/react-image-gallery/download/react-image-gallery-1.2.7.tgz#2dfb83c52f32828a5340ca565f91bca58241fcfe"
+  integrity sha1-LfuDxS8ygopTQMpWX5G8pYJB/P4=
 
 react-is@17.0.2:
   version "17.0.2"

@@ -29,6 +29,7 @@ body {
   // font-size: 1rem !important;
   min-height: 100vh;
   // overflow: hidden;
+  color: rgba(13, 35, 68, 0.8);
   overflow-x: hidden !important;
 
   &.desktop.is-pc {
@@ -67,7 +68,7 @@ body {
   font-family: Poppins, 'Helvetica Neue', sans-serif !important;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   line-height: 1.75em;
-  color: rgba(13, 35, 68, 0.8);
+  color: inherit;
 
   &,
   &::before,
