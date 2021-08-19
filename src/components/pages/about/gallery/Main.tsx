@@ -19,13 +19,14 @@ const images: Array<{
   })
   .map((photo, i) => ({ ...photo, name: photo.name + ((i % 5) + 1) }));
 const chunk = 6;
-let clearPhotoInterval = false;
+let unmounted = false;
 
 const MainGallery = (): JSX.Element => {
   const [activePhotoIndex, setActivePhotoIndex] = useState(0);
   // const [slideIndices, setSlideIndices] = useState([0, 1, 2, 3, 4]);
 
   useEffect(() => {
+    unmounted = false;
     interval(
       () => {
         setActivePhotoIndex((index) => {
@@ -33,11 +34,11 @@ const MainGallery = (): JSX.Element => {
         });
       },
       3000,
-      () => clearPhotoInterval
+      () => unmounted
     );
 
     return () => {
-      clearPhotoInterval = true;
+      unmounted = true;
     };
   }, []);
 

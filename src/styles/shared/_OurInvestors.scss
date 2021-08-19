@@ -32,9 +32,11 @@
 
   @media screen and (min-width: 992px) {
     margin: 5em auto;
+  }
 
+  @media screen and (min-width: 1200px) {
     .__grid-item {
-      padding: 2rem 4.25rem !important;
+      padding: 2rem 4rem !important;
     }
   }
 }
