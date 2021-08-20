@@ -13,59 +13,59 @@
     }
   }
 
-  .poster img {
-    -o-object-fit: cover;
-    object-fit: cover;
-    width: 100%;
+  img {
+    //   -o-object-fit: cover;
+    //   object-fit: cover;
+    //   width: 100%;
     border-radius: 1.5rem;
-    height: 100%;
-    vertical-align: middle;
+    //   height: 100%;
+    //   vertical-align: middle;
   }
 }
 
 .missionPoster {
   position: relative;
-  margin-left: 5rem;
-  padding-left: 4rem;
-  padding-right: 3rem;
+  // margin-left: 5rem;
+  // padding-left: 4rem;
+  // padding-right: 3rem;
 
   .svgWrapper {
     bottom: -3rem;
     right: 1rem;
   }
 
-  @media (max-width: 1024px) {
-    margin-left: 2.5rem;
-    padding-left: 2rem;
-    padding-right: 1.5rem;
-  }
+  // @media (max-width: 1024px) {
+  //   margin-left: 2.5rem;
+  //   padding-left: 2rem;
+  //   padding-right: 1.5rem;
+  // }
 
-  @media (max-width: 768px) {
-    margin-left: 0px !important;
-    padding: 0;
-  }
+  // @media (max-width: 768px) {
+  //   margin-left: 0px !important;
+  //   padding: 0;
+  // }
 }
 
 .visionPoster {
   position: relative;
-  margin-right: 5rem;
-  padding-left: 3rem;
-  padding-right: 4rem;
+  // margin-right: 5rem;
+  // padding-left: 3rem;
+  // padding-right: 4rem;
 
   .svgWrapper {
     top: -2rem;
     left: 1rem;
   }
-  @media (max-width: 1024px) {
-    margin-right: 2.5rem;
-    padding-left: 1.5rem;
-    padding-right: 2rem;
-  }
+  // @media (max-width: 1024px) {
+  //   margin-right: 2.5rem;
+  //   padding-left: 1.5rem;
+  //   padding-right: 2rem;
+  // }
 
-  @media (max-width: 768px) {
-    margin-right: 0 !important;
-    padding: 0;
-  }
+  // @media (max-width: 768px) {
+  //   margin-right: 0 !important;
+  //   padding: 0;
+  // }
 }
 
 @media (max-width: 768px) {

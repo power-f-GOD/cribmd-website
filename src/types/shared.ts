@@ -134,6 +134,8 @@ export type SVGIconName =
   | 'download-cloud'
   | 'clock';
 
+export type SVGShapeName = 'wave';
+
 export type BoxAs =
   | 'address'
   | 'nav'
