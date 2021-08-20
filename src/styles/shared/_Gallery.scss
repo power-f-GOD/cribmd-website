@@ -31,37 +31,57 @@
   .image-gallery-container {
     display: grid;
     grid-template-columns: auto;
-    top: 0;
+    top: 1em;
     left: 0;
     // height: 25em;
     width: 100vw;
     background: rgba($prim-r - 80, $prim-g - 80, $prim-b - 80, 0.95) !important;
-
-    aside {
-      background: white;
-      padding: 0;
-      height: 100%;
-    }
   }
 
   .image-gallery {
-    margin-top: -9em;
+    margin-top: -8.75em;
     animation-timing-function: cubic-bezier(0, 1, 0.15, 1);
+  }
+
+  .image-gallery-content {
+    top: 1.25em;
+
+    &.fullscreen {
+      .image-gallery-swipe {
+        border: none;
+      }
+
+      .image-gallery-slide {
+        height: clamp(37.5em, 100vh - 8em, 55em);
+      }
+    }
   }
 
   .image-gallery-swipe {
     border-radius: 1.25em;
     overflow: hidden;
+    border: 0.0625em solid #eee;
+    background: black;
   }
 
   .image-gallery-slide {
-    height: 35em;
-    transition: 0.3s !important;
+    height: calc(100vh - 7em);
+    height: clamp(37.5em, 100vh - 12em, 55em);
     display: flex;
+    transform: unset !important;
+    opacity: 0;
     // border-radius: 1.5em;
     overflow: hidden;
     align-items: center;
     justify-content: center;
+
+    &.center {
+      opacity: 1;
+
+      .image-gallery-description {
+        transform: translateY(0);
+      }
+    }
 
     & > div {
       height: inherit;
@@ -73,14 +93,15 @@
     img,
     video,
     iframe {
-      // height: 75vh;
       height: 100%;
-      object-fit: cover;
+      object-fit: contain;
       object-position: center;
-      // height: clamp(50vh, 40em, 85vh);
-      max-width: 100vw;
+      max-width: 100%;
       min-width: 100%;
-      // max-height: calc(100% - 1rem) !important;
+
+      @media screen and (orientation: landscape) {
+        object-fit: cover;
+      }
     }
 
     video,
@@ -136,8 +157,12 @@
   }
 
   .image-gallery-description {
-    top: 0.5em;
-    bottom: unset;
+    bottom: 0;
+    width: 100%;
+    padding: 1.25em;
+    line-height: 1.5em;
+    transform: translateY(100%);
+    transition: 0.75s ease 0.6s;
   }
 
   .image-gallery-fullscreen-button {

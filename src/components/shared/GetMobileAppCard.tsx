@@ -13,7 +13,7 @@ const _GetMobileAppCard: FC<{ headerText?: string; bodyText?: string }> = ({
 }): JSX.Element => {
   return (
     <Container as="section" className="GetMobileAppCard shrink-max-width-xxl text-center">
-      <Row className="px-3 py-4 px-md-5 py-md-3 align-items-center">
+      <Row className="px-3 py-4 px-md-5 align-items-center">
         <Col xs={12} md={7} className="text-md-start">
           <RevealOnScroll animName="fadeInRight" easing="ease">
             <Box as="h2" className="h3 theme-white">

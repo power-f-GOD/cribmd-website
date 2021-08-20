@@ -7,7 +7,7 @@ import { Col, Container, Row } from 'react-bootstrap';
 import { teamData, teamMembersData, advisorsData } from './data';
 import { TransitionAnimName } from 'src/types';
 import Doctor from './Doctor';
-import CTA from './CTA';
+import CTA from './_CTA';
 
 const MainBody = (): JSX.Element => {
   const windowWidth = useContext(AppWindowContext);

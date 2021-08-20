@@ -217,7 +217,7 @@
 .PlaystoreButton {
   padding: 0;
   border: 0.2em solid #bbb;
-  background-color: transparent !important;
+  background-color: $theme-tertiary-v1 !important;
   // position: relative;
 
   &:hover,

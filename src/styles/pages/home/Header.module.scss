@@ -65,18 +65,23 @@
   box-shadow: 0 0.125rem 0.25rem rgba(17, 17, 17, 0.04);
   border-radius: 0.25rem;
   min-height: 3rem;
+  display: grid;
+  background-color: #e6e9ef;
+  gap: 0.0625em;
+  grid-template-columns: 1fr 1fr;
 
   > * {
     &:first-child {
       box-shadow: none;
     }
 
-    box-shadow: inset 0.0625em 0 0 #e6e9ef;
+    // box-shadow: inset 0.0625em 0 0 #e6e9ef;
     display: flex;
     align-items: center;
     overflow: hidden;
     // padding-right: 0.9em;
     // padding-left: 0.9em;
+    background-color: white;
     justify-content: center;
   }
 
@@ -93,6 +98,7 @@
   .mediaGrid {
     border-radius: 0.75em;
     min-height: 5rem;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
   }
 }
 

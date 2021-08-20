@@ -56,7 +56,7 @@ export const delay = (timeout: number, clearCallback?: () => void): Promise<numb
 export const interval = (
   callback: () => void,
   _interval: number,
-  clearCallback?: () => boolean
+  clearIntervalCallback?: () => boolean
 ): Promise<number> => {
   if (isNaN(_interval)) {
     throw Error("'interval' expects a time [number] in milliseconds as parameter.");
@@ -80,9 +80,12 @@ export const interval = (
         resolve(id);
       }
 
-      if (timeElapsed % _interval < 17 && timeElapsed > _interval) {
-        callback();
-        clear = clearCallback ? clearCallback() : false;
+      clear = clearIntervalCallback ? clearIntervalCallback() : false;
+
+      if (timeElapsed > _interval) {
+        if (timeElapsed % _interval < 17) {
+          callback();
+        }
       }
     }
   });

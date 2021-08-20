@@ -5,7 +5,7 @@
   z-index: 10;
 
   .__particle {
-    $size: 0.75em;
+    $size: 0.625em;
 
     width: $size;
     height: $size;
@@ -13,11 +13,11 @@
     position: absolute;
     top: 0;
     left: 0;
-    opacity: 0.5;
+    opacity: 0.25;
     padding: 0 !important;
     pointer-events: none;
     background-color: rgba(25, 113, 245, 0.15);
-    transform: scale(0.85);
+    transform: scale(1);
     animation: anim__blink 6s infinite; // cubic-bezier(0.35, 1, 0.35, 1.25);
   }
 

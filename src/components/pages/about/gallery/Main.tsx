@@ -1,11 +1,11 @@
 /* eslint-disable react/display-name */
-import { memo, useEffect, useState } from 'react';
+import { memo, useEffect, useState, useCallback } from 'react';
 import { Container } from 'react-bootstrap';
 import ImageGallery, { ReactImageGalleryItem } from 'react-image-gallery';
 
 import { Box, Img, RevealOnScroll, Button, SVGIcon } from 'src/components/shared';
 import S from 'src/styles/pages/about/gallery/index.module.scss';
-import { GetImage, interval } from 'src/utils';
+import { GetImage, interval, delay } from 'src/utils';
 
 const images: Array<{
   title: string;
@@ -19,30 +19,51 @@ const images: Array<{
   })
   .map((photo, i) => ({ ...photo, name: photo.name + ((i % 5) + 1) }));
 const chunk = 6;
-let clearPhotoInterval = false;
+let unmounted = false;
 
 const MainGallery = (): JSX.Element => {
   const [activePhotoIndex, setActivePhotoIndex] = useState(0);
-  // const [slideIndices, setSlideIndices] = useState([0, 1, 2, 3, 4]);
 
-  useEffect(() => {
-    interval(
-      () => {
-        setActivePhotoIndex((index) => {
-          return index === images.length - 1 ? 0 : index + 1;
-        });
-      },
-      3000,
-      () => clearPhotoInterval
-    );
+  const handleGallerySlide = useCallback((index?: number) => {
+    const slide = async (): Promise<void> => {
+      await delay(1000);
 
-    return () => {
-      clearPhotoInterval = true;
+      if (!unmounted) return;
+
+      unmounted = false;
+      interval(
+        () => {
+          setActivePhotoIndex((index) => {
+            return index === images.length - 1 ? 0 : index + 1;
+          });
+        },
+        10000,
+        () => unmounted
+      );
     };
+
+    unmounted = true;
+
+    if (index !== undefined) {
+      setActivePhotoIndex(index);
+      return slide();
+    }
+
+    delay(1000).then(() => {
+      slide();
+    });
   }, []);
 
+  useEffect(() => {
+    handleGallerySlide();
+
+    return () => {
+      unmounted = true;
+    };
+  }, [handleGallerySlide]);
+
   return (
-    <Container as="section" className={`Gallery ${S.Gallery} mt-5 shrink-max-width-xxl`}>
+    <Container as="section" className={`Gallery ${S.Gallery} mt-5 shrink-max-width-xx`}>
       <ImageGallery
         items={
           images.map(({ name, description, title }) => {
@@ -52,7 +73,14 @@ const MainGallery = (): JSX.Element => {
               description,
               thumbnail: GetImage.gallery(name),
               thumbnailHeight: 50,
-              renderItem: (props) => <Img src={props.original} />,
+              renderItem: (props) => (
+                <>
+                  <Img src={props.original} alt={props.description} />
+                  <Box as="span" className="image-gallery-description">
+                    {props.description}
+                  </Box>
+                </>
+              ),
               renderThumbInner: (props) => (
                 <Img
                   src={props.original}
@@ -69,17 +97,14 @@ const MainGallery = (): JSX.Element => {
         showPlayButton={false}
         showIndex={true}
         startIndex={activePhotoIndex || 0}
-        // additionalClass={windowWidth < 768 || !hasExtra ? 'fade-in' : 'slide-in-left'}
+        slideDuration={600}
         infinite={false}
-        // onClick={(e) => {
-        //   if (!/A|BUTTON|IMG|VIDEO/i.test((e as any).target.tagName)) {
-        //     handleClose();
-        //   }
-        // }}
-
-        onSlide={(currentIndex) => {
-          setActivePhotoIndex(currentIndex);
-        }}
+        onSlide={useCallback(
+          (currentIndex) => {
+            handleGallerySlide(currentIndex);
+          },
+          [handleGallerySlide]
+        )}
         renderLeftNav={(onClick, disabled) => (
           <Button onClick={onClick} _type="icon-button" disabled={disabled} className="previous">
             <SVGIcon name="previous" />

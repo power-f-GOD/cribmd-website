@@ -61,14 +61,14 @@ const _Particles = (): JSX.Element => {
             animationDelay: `${i * 0.2}s`,
             background:
               i % 5 === 0
-                ? 'rgba(25, 113, 245, 0.15)'
+                ? 'rgba(25, 113, 245, 0.3)' // greyey
                 : i % 4 === 0
-                ? '#dDeCe1'
+                ? 'rgb(201, 216, 205, 0.65)' //green
                 : i % 3 === 0
-                ? '#e8e5eF'
+                ? 'rgb(212, 209, 219, 0.65)' // purple
                 : i % 2
-                ? '#eFe8e0'
-                : '#79d1f5'
+                ? 'rgb(219, 212, 204, 0.6)' // orange
+                : 'rgb(101, 189, 225, 0.9)' // blue
           }}
         />
       )),

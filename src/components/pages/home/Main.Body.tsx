@@ -13,6 +13,7 @@ let unmounted = false;
 
 const MainBody = (): JSX.Element => {
   const windowWidth = useContext(AppWindowContext);
+  const isMobile = windowWidth < 768;
   const [activeServiceIndex, setActiveServiceIndex] = useState(0);
 
   const handleCarouselInterval = useCallback(() => {
@@ -55,7 +56,7 @@ const MainBody = (): JSX.Element => {
   );
 
   useEffect(() => {
-    if (windowWidth < 576) {
+    if (!isMobile) {
       handleCarouselInterval();
     }
 
@@ -63,7 +64,7 @@ const MainBody = (): JSX.Element => {
       clearServiceInterval = true;
       unmounted = true;
     };
-  }, [handleCarouselInterval, windowWidth]);
+  }, [handleCarouselInterval, isMobile]);
 
   return (
     <Container fluid className={`${S.servicesWrapper} text-left text-md-center`}>
@@ -92,9 +93,9 @@ const MainBody = (): JSX.Element => {
                 allowOverflow>
                 <Box
                   className={`${S.serviceCard} ${
-                    activeServiceIndex === i || windowWidth < 576 ? S.serviceCardActive : ''
+                    activeServiceIndex === i || isMobile ? S.serviceCardActive : ''
                   }`}
-                  data-anim="fadeInLeft"
+                  data-anim={isMobile ? (i % 2 === 0 ? 'fadeInLeft' : 'fadeInRight') : 'fadeInLeft'}
                   data-anim_easing="ease">
                   <Box>
                     <SVGIcon name={service.icon} size="medium" />
@@ -108,7 +109,7 @@ const MainBody = (): JSX.Element => {
                 </Box>
               </RevealOnScroll>
             ))}
-            {windowWidth > 575 && (
+            {!isMobile && (
               <Box className={S.servicesCarouselButtonsContainer}>
                 <Button _type="icon-button" onClick={handleCarouselButtonClick('previous', true)}>
                   <SVGIcon name="previous" />
@@ -130,8 +131,8 @@ const MainBody = (): JSX.Element => {
               </Box>
             )}
           </Col>
-          {windowWidth > 767 && (
-            <Col className="d-none d-md-flex align-items-center justify-content-end mt-md-5">
+          {!isMobile && (
+            <Col className="d-none d-md-flex align-items-center justify-content-end mt-md-5 ps-4">
               <RevealOnScroll allowOverflow>
                 <Img src={GetImage.home('phone-with-doctors-list')} />
               </RevealOnScroll>

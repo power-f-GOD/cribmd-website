@@ -81,9 +81,13 @@ const Header = (): JSX.Element => {
         </Box>
       </RevealOnScroll>
       <Box as="section">
-        <RevealOnScroll component={Row} className={`${S.mediaGrid} align-items-stretch`}>
+        <RevealOnScroll
+          component={Row}
+          className={`${S.mediaGrid} align-items-stretch`}
+          animName="fadeInRight"
+          easing="ease">
           {['techpoint', 'spotify', 'markets-insider', 'yahoo-finance'].map((medium) => (
-            <Col className="py-2 py-lg-4" xs={3} key={medium}>
+            <Col className="py-2 py-lg-4" key={medium}>
               <Img src={GetImage.mediaLogo(medium)} alt={`${medium} logo`} />
             </Col>
           ))}
