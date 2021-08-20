@@ -10,6 +10,7 @@ export * from './Link';
 export * from './Logo';
 export * from './SVG';
 export * from './SVG.Icons';
+export * from './SVG.Shapes';
 export * from './RevealOnScroll';
 export * from './Avatar';
 export * from './GetMobileAppCard';

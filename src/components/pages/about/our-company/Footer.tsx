@@ -1,17 +1,13 @@
 // Please, note that this Footer is different from the global (or app) AppFooter that is common to all pages. This is the base/exit section of this page just before the AppFooter
-import { SyntheticEvent, useCallback } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import { Box, Img, Anchor, RevealOnScroll, OurInvestors, OurPartners } from 'src/components/shared';
 import S from 'src/styles/pages/about/our-company/index.module.scss';
+import CTA from './CTA';
 
 const Footer = (): JSX.Element => {
-  const handleImgError = useCallback((e: SyntheticEvent<HTMLImageElement, Event>): void => {
-    const target = e.target as HTMLImageElement;
-    if (/\.webp/.test(target.srcset)) target.srcset = target.srcset.replaceAll('.webp', '.png');
-  }, []);
-
   return (
     <Container as="footer" className="mt-5">
+      <CTA />
       <OurInvestors />
       <OurPartners />
       <RevealOnScroll>
@@ -47,7 +43,6 @@ const Footer = (): JSX.Element => {
                 <Img
                   srcSet={`/img/about/team__500x.png 2x, /img/about/team__250x.png 1x`}
                   alt="cta image"
-                  onError={handleImgError}
                   data-anim="fadeIn"
                   data-anim_delay="1"
                   data-anim_ease="cubic-bezier(0.5, 0, .5, 1.25)"

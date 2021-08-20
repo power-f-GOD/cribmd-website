@@ -1,4 +1,4 @@
-import React, { useState, FC, SyntheticEvent, useCallback } from 'react';
+import { useState, FC, useCallback, memo } from 'react';
 
 import { Anchor, Box, SVGIcon, Img, Button } from 'src/components/shared';
 import { Modal } from 'react-bootstrap';
@@ -24,11 +24,6 @@ const TeamModal: FC<{
     setShowModal(true);
   }, []);
 
-  const handleImgError = useCallback((e: SyntheticEvent<HTMLImageElement, Event>): void => {
-    const target = e.target as HTMLImageElement;
-
-    if (/\.webp/.test(target.srcset)) target.srcset = target.srcset.replaceAll('.webp', '.png');
-  }, []);
   return (
     <Box>
       <Anchor key={content.name} onClick={handleOnOpen}>
@@ -38,11 +33,7 @@ const TeamModal: FC<{
         <Box className={`${S.teamModal}`}>
           <Box className={`${S.modalHeader} modal-header `}>
             <Box className="align-items-center d-flex ">
-              <Img
-                srcSet={`${content.imagePath}, ${content.imagePath}`}
-                alt="team image"
-                onError={handleImgError}
-              />
+              <Img srcSet={content.imagePath} alt="team image" />
               <Box className="flex-column">
                 <Box as="h6" className="mb-n3">
                   {content.name}
@@ -78,4 +69,4 @@ const TeamModal: FC<{
   );
 };
 
-export default TeamModal;
+export default memo(TeamModal);
