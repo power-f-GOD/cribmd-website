@@ -46,32 +46,7 @@
   }
 }
 
-.particlesContainer {
-  display: inline-flex;
-  align-items: center;
-  margin: 0 3em;
-
-  @media screen and (min-width: 992px) {
-    order: 0;
-  }
-}
-
 $size: 0.5em;
-
-.particle {
-  background-color: rgba(25, 113, 245, 0.1);
-  height: $size;
-  width: $size;
-  display: inline-block;
-  border-radius: 0.25em;
-  margin-right: $size;
-  transition: 0.3s;
-}
-
-.particleActive {
-  background-color: rgba(25, 113, 245, 0.3);
-  width: $size * 2;
-}
 
 .serviceCard {
   box-shadow: none;

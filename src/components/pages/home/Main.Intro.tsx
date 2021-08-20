@@ -38,7 +38,10 @@ const MainIntro = (): JSX.Element => {
 
       {/* Specializations */}
       <Container as="section">
-        <RevealOnScroll allowOverflow className={S.specializationsGrid}>
+        <RevealOnScroll
+          allowOverflow
+          className={S.specializationsGrid}
+          easing={isMobile ? 'ease' : undefined}>
           {specializations.slice(0, 4).map(({ icon, specialization }, i) => (
             <Box
               className="p-4 px-3"
@@ -49,7 +52,10 @@ const MainIntro = (): JSX.Element => {
             </Box>
           ))}
         </RevealOnScroll>
-        <RevealOnScroll allowOverflow className={S.specializationsGrid}>
+        <RevealOnScroll
+          allowOverflow
+          className={S.specializationsGrid}
+          easing={isMobile ? 'ease' : undefined}>
           {specializations.slice(4).map(({ icon, specialization }, i) => (
             <Box
               className="p-4 px-3"

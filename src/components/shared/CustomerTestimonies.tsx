@@ -77,7 +77,7 @@ export const CustomerTestimonies = (): JSX.Element => {
           <Box
             className="__avatars-grid"
             style={{
-              transform: `translateX(-${activeTIndex * 6}rem)`
+              transform: `translateX(-${activeTIndex * 6}em)`
             }}>
             {testifiers.map(({ imageName }, i) => {
               const activeI = activeTIndex;
