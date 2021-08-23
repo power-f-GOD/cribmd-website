@@ -85,7 +85,7 @@ export const news: Array<{
   {
     caption: 'MARKETS INSIDER',
     rider: 'CribMD: Bringing Affordable, Quality Healthcare to Millions in Nigeria',
-    imageName: 'markets-insider__250x.png',
+    imageName: 'markets-insider',
     anchorHref:
       'https://markets.businessinsider.com/stocks/cribmd-bringing-affordable-quality-healthcare-to-millions-in-nigeria-1030238389'
   },
@@ -108,12 +108,12 @@ export const news: Array<{
     imageName: 'hollywoodheavy',
     anchorHref: 'https://hollywoodheavy.com/cribmd-making-healthcare-in-nigeria-equal-for-everyone/'
   },
-  {
-    caption: 'ThekerPlunk',
-    rider: 'CribMD: Efficient Treatment, Better Health',
-    imageName: 'ossai_ceo',
-    anchorHref: 'https://www.thekerplunk.com/2021/03/15/cribmd-efficient-treatment-better-health/'
-  },
+  // {
+  //   caption: 'ThekerPlunk',
+  //   rider: 'CribMD: Efficient Treatment, Better Health',
+  //   imageName: 'ossai_ceo',
+  //   anchorHref: 'https://www.thekerplunk.com/2021/03/15/cribmd-efficient-treatment-better-health/'
+  // },
   {
     caption: 'THISDAYLIVE',
     rider: 'Ossai: Using CribMD for Home Patients’ Services',
@@ -140,12 +140,6 @@ export const news: Array<{
     imageName: 'techpoint',
     anchorHref:
       'https://techpoint.africa/2021/02/08/health-tech-gives-hope-as-the-pandemic-threatens-patient-safety/'
-  },
-  {
-    caption: 'AIT LIVE',
-    rider: 'COVID-19 DIGEST | AIT LIVE',
-    iframeUrl: 'https://www.youtube.com/embed/zWmjmc8F1sg?start=170',
-    anchorHref: 'https://www.youtube.com/watch?v=zWmjmc8F1sg&ab_channel=OfficialAITlive?start=170'
   },
   {
     caption: 'Business day',

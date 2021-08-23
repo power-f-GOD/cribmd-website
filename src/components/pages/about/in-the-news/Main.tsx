@@ -111,7 +111,9 @@ const MainInTheNews = (): JSX.Element => {
                 </Box>
                 <Box className={S.mediaContentContainer}>
                   <Box as="h6"> {caption}</Box>
-                  <Anchor href={anchorHref}>{rider}</Anchor>
+                  <Anchor href={anchorHref} target="_blank">
+                    {rider}
+                  </Anchor>
                 </Box>
               </Box>
             );
@@ -183,7 +185,9 @@ const MainInTheNews = (): JSX.Element => {
                 </Box>
                 <Box className={S.mediaContentContainer}>
                   <Box as="h6"> {caption}</Box>
-                  <Anchor href={anchorHref}>{rider}</Anchor>
+                  <Anchor href={anchorHref} target="_blank">
+                    {rider}
+                  </Anchor>
                 </Box>
               </Box>
             );

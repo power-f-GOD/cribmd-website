@@ -1,6 +1,6 @@
 import { memo } from 'react';
 import { Container } from 'react-bootstrap';
-import { Box, RevealOnScroll, SVGIcon } from 'src/components/shared';
+import { Box, RevealOnScroll, SVGIcon, Anchor } from 'src/components/shared';
 import S from 'src/styles/pages/health-plans/individual/Main.module.scss';
 import { moreBenefitsData } from './data';
 
@@ -32,9 +32,9 @@ const MainExit = (): JSX.Element => {
       <RevealOnScroll>
         <Box as="p" className="mt-5" data-anim="fadeInUp" data-anim_delay="1">
           Don’t see a benefit you’re looking for?
-          {/* <Box as="span" className="ms-1">
-              Ask us!
-            </Box> */}
+          <Anchor routeLink href="/faq" className="ms-1">
+            Ask us!
+          </Anchor>
         </Box>
       </RevealOnScroll>
     </Container>

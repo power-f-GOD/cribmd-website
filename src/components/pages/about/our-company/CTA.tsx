@@ -11,7 +11,7 @@ const CTA = (): JSX.Element => {
     <Row
       as="section"
       className={`${S.ctaContainer} align-items-center  px-md-4 py-md-5 mt-md-5 mx-auto container`}>
-      <RevealOnScroll component={Col} className="px-0 px-md-3" xs={12} md={7}>
+      <RevealOnScroll component={Col} className="px-0 px-md-3" xs={12} md={7} allowOverflow>
         <Box as="h2" data-anim_delay="0.3">
           Are you a doctor interested in joining our network?
         </Box>

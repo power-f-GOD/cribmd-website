@@ -26,7 +26,7 @@ const MainBody = (): JSX.Element => {
       </RevealOnScroll>
 
       <Container className="shrink-max-width-xxl">
-        {processData.map(({ heading, p1, p2, buttonText, buttonUrl, imageName, list }, i) => (
+        {processData.map(({ heading, p1, p2, buttonText, imageName, list }, i) => (
           <Row key={heading} className="my-3 my-md-5 align-items-cent py-md-4 py-3">
             <RevealOnScroll
               component={Col}
@@ -63,7 +63,10 @@ const MainBody = (): JSX.Element => {
 
               {buttonText && (
                 <Box data-anim="fadeInRight">
-                  <Anchor button href={buttonUrl} variant="outlined">
+                  <Anchor
+                    button
+                    href="http://www.cribmd.com/corporate/subscribe"
+                    variant="outlined">
                     {buttonText}
                   </Anchor>
                 </Box>

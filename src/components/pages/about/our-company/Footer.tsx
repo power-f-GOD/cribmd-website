@@ -13,7 +13,7 @@ const Footer = (): JSX.Element => {
 
       <Row
         as="section"
-        className={`${S.footerBase} align-items-center p-3 px-md-4 py-md-5 mx-auto container`}>
+        className={`${S.footerBase} align-items-center p-3  px-sm-4 px-md-5 py-md-5 mx-auto container`}>
         <RevealOnScroll component={Col} className="" xs={12} md={7} allowOverflow>
           <Box as="h2">Join our team</Box>
 

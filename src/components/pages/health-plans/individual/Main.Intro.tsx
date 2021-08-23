@@ -93,6 +93,7 @@ const MainIntro = (): JSX.Element => {
             <Box className="text-center">
               <Anchor
                 button
+                href="http://www.cribmd.com/patient/subscribe"
                 className={`flex-column align-item-center w-100 py-2`}
                 variant="outlined"
                 color="primary">
