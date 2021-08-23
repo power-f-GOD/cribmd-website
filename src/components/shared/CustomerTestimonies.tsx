@@ -54,72 +54,70 @@ export const CustomerTestimonies = (): JSX.Element => {
   }, [handleTestifierToggle]);
 
   return (
-    <Container className="CustomerTestimonies text-center mb-5">
-      <Box as="section" className="__content">
-        <RevealOnScroll as="h2" className="mt-3 mb-4" animName="fadeInLeft" easing="ease">
-          {'What our customers are saying ...'.split(' ').map((word, i) => (
-            <Box as="span" className="me-2 d-inline-block" key={i}>
-              {word}
-            </Box>
-          ))}
+    <Container as="section" className="CustomerTestimonies mb-5 text-center">
+      <RevealOnScroll as="h2" className="mt-3 mb-4" animName="fadeInLeft" easing="ease">
+        {'What our customers are saying ...'.split(' ').map((word, i) => (
+          <Box as="span" className="me-2 d-inline-block" key={i}>
+            {word}
+          </Box>
+        ))}
+      </RevealOnScroll>
+      <Box as="blockquote" className="mb-5">
+        <Box as="p" className={`theme-tertiary ${swapped ? 'active' : ''}`}>
+          &quot;{testifiers[activeTIndex].testimony}&quot;
+        </Box>
+        <Box as="p" className={`theme-tertiary ${!swapped ? 'active' : ''}`}>
+          &quot;{testifiers[activeTIndex].testimony}&quot;
+        </Box>
+      </Box>
+
+      <Box className="__avatars-grid-wrapper">
+        <SVGIcon name="caret-filled-down" />
+        <Box
+          className="__avatars-grid"
+          style={{
+            transform: `translateX(-${activeTIndex * 6}em)`
+          }}>
+          {testifiers.map(({ imageName }, i) => {
+            const activeI = activeTIndex;
+            const isActive = activeI === i;
+
+            return (
+              <Avatar
+                src={GetImage.testifier(imageName)}
+                elevation={isActive ? '3' : '1'}
+                size="small"
+                key={i}
+                style={{
+                  transform: `scale(${isActive ? '1' : '0.65'}) translateX(${
+                    isActive ? '0' : i < activeI ? '-5' : i > activeI ? '5' : '0'
+                  }rem)`
+                }}
+                className={isActive ? 'active' : ''}
+              />
+            );
+          })}
+        </Box>
+        <Box className="__testifier-name mt-2">
+          <Box as="span" className={`h4 ${swapped ? 'active' : ''}`}>
+            {testifiers[activeTIndex].name}
+          </Box>
+          <Box as="span" className={`h4 ${!swapped ? 'active' : ''}`}>
+            {testifiers[activeTIndex].name}
+          </Box>
+        </Box>
+        <RevealOnScroll allowOverflow className="mt-3 mt-md-4">
+          <Box as="span" className="d-inline-block">
+            <Button _type="icon-button" onClick={handleTestifierToggle('prev')}>
+              <SVGIcon name="previous" />
+            </Button>
+          </Box>
+          <Box as="span" className="d-inline-block">
+            <Button _type="icon-button" onClick={handleTestifierToggle('next')}>
+              <SVGIcon name="next" />
+            </Button>
+          </Box>
         </RevealOnScroll>
-        <Box as="blockquote" className="mb-5">
-          <Box as="p" className={`theme-tertiary ${swapped ? 'active' : ''}`}>
-            &quot;{testifiers[activeTIndex].testimony}&quot;
-          </Box>
-          <Box as="p" className={`theme-tertiary ${!swapped ? 'active' : ''}`}>
-            &quot;{testifiers[activeTIndex].testimony}&quot;
-          </Box>
-        </Box>
-
-        <Box className="__avatars-grid-wrapper">
-          <SVGIcon name="caret-filled-down" />
-          <Box
-            className="__avatars-grid"
-            style={{
-              transform: `translateX(-${activeTIndex * 6}em)`
-            }}>
-            {testifiers.map(({ imageName }, i) => {
-              const activeI = activeTIndex;
-              const isActive = activeI === i;
-
-              return (
-                <Avatar
-                  src={GetImage.testifier(imageName)}
-                  elevation={isActive ? '3' : '1'}
-                  size="small"
-                  key={i}
-                  style={{
-                    transform: `scale(${isActive ? '1' : '0.65'}) translateX(${
-                      isActive ? '0' : i < activeI ? '-5' : i > activeI ? '5' : '0'
-                    }rem)`
-                  }}
-                  className={isActive ? 'active' : ''}
-                />
-              );
-            })}
-          </Box>
-          <Box className="__testifier-name mt-2">
-            <Box as="span" className={`h4 ${swapped ? 'active' : ''}`}>
-              {testifiers[activeTIndex].name}
-            </Box>
-            <Box as="span" className={`h4 ${!swapped ? 'active' : ''}`}>
-              {testifiers[activeTIndex].name}
-            </Box>
-          </Box>
-          <RevealOnScroll allowOverflow className="mt-3 mt-md-4">
-            <Box as="span" className="d-inline-block">
-              <Button _type="icon-button" onClick={handleTestifierToggle('prev')}>
-                <SVGIcon name="previous" />
-              </Button>
-            </Box>
-            <Box as="span" className="d-inline-block">
-              <Button _type="icon-button" onClick={handleTestifierToggle('next')}>
-                <SVGIcon name="next" />
-              </Button>
-            </Box>
-          </RevealOnScroll>
-        </Box>
       </Box>
     </Container>
   );

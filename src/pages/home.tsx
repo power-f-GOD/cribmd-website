@@ -23,7 +23,7 @@ const Home: NextPage = () => {
     <>
       <AppHead title="Telemedicine &amp; Doctor Home Visit" />
 
-      <Container as="main" fluid className="Home" ref={homeRef as any}>
+      <Container as="main" fluid className="Home pt-1" ref={homeRef as any}>
         <Particles />
         <Header />
         <Main />

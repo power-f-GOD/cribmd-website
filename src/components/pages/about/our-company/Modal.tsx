@@ -3,7 +3,7 @@ import { useState, FC, useCallback, memo } from 'react';
 import { Anchor, Box, SVGIcon, Img, Button } from 'src/components/shared';
 import { Modal } from 'react-bootstrap';
 
-import S from 'src/styles/pages/about/our-company/Main.module.scss';
+import S from 'src/styles/pages/about/our-company/index.module.scss';
 
 const TeamModal: FC<{
   content: {

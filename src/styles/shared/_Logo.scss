@@ -1,17 +1,18 @@
 .Logo {
   position: sticky;
   top: 0;
-  display: block !important;
   z-index: 4;
   width: auto;
   pointer-events: all;
   padding: 0.75rem 0.25rem;
+  display: inline-flex;
+  align-content: center;
 
   // &.responsive {
   // }
   @media screen and (max-width: 767px) {
     a {
-      display: block;
+      // display: block;
       width: 4.85rem;
       overflow: hidden;
     }
@@ -20,6 +21,7 @@
   a {
     text-decoration: none !important;
     line-height: unset;
+    display: inline-flex;
   }
 
   img {
@@ -39,7 +41,7 @@
     align-self: center;
     max-width: 1rem;
     position: absolute;
-    margin-top: 0.7rem;
+    margin-top: 0.25em;
     box-shadow: 0 0.125rem 0.75rem rgba(0, 0, 0, 0.15);
   }
 }

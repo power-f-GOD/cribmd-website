@@ -2,10 +2,10 @@
   position: relative;
   background: #f8f5ff;
   z-index: 1;
-
-  @media (max-width: 768px) {
-    border-radius: 1.5rem;
-  }
+  margin-left: -1.25em;
+  margin-right: -1.25em;
+  padding-right: 1.25em;
+  padding-left: 1.25em;
 }
 
 .svgWrapper {
@@ -47,8 +47,8 @@
 
 .teamGrid {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 4em;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25em;
   margin-bottom: 1em;
 
   img {
@@ -69,12 +69,12 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 2.5em;
   flex-direction: column;
-  border-radius: inherit;
-  box-shadow: 4px 4px 0px rgb(13 35 68 / 8%);
-  border-radius: 2.5em;
+  box-shadow: 0.125em 0.125em 0 rgb(13 35 68 / 8%);
+  padding: 1.25em;
+  border-radius: 1.25em;
   background: #fff;
+  height: 100%;
 
   a {
     z-index: 10;
@@ -114,10 +114,9 @@
   margin-bottom: 1em;
 
   > * {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-direction: column;
+    border-bottom: 0.125em solid #e8e5ef;
+    padding-bottom: 0.5em;
+    text-align: start;
   }
 
   .teamMembersContent {
@@ -138,22 +137,31 @@
   }
 }
 
-.ourTeamContent {
-  text-align: center;
-}
-
 .wave {
   position: absolute;
   left: 0;
-  top: 99%;
+  top: 100%;
   width: 100vw;
+}
+
+@media screen and (min-width: 576px) {
 }
 
 @media screen and (min-width: 768px) {
   .teamGrid {
     grid-template-columns: repeat(3, 1fr);
+    gap: 4em;
   }
+
   .teamMembersGrid {
     grid-template-columns: repeat(5, 1fr);
+  }
+
+  .teamMemberContainer {
+    padding: 2.5em;
+    border-radius: inherit;
+    padding: 2.5em;
+    border-radius: 2.5em;
+    box-shadow: 0.25em 0.25em 0 rgb(13 35 68 / 8%);
   }
 }

@@ -1,10 +1,8 @@
 .CustomerTestimonies {
-  .__content {
-    background-color: #f8f5ff;
-    border-radius: $br * 1.5;
-    padding: $br * 1.75;
-    overflow: hidden;
-  }
+  background-color: #f8f5ff;
+  border-radius: $br * 1.5;
+  padding: $br * 1.75;
+  overflow: hidden;
 
   blockquote {
     min-height: 7rem;
@@ -69,11 +67,8 @@
   @media screen and (min-width: 768px) {
     margin-top: $br * 6;
     margin-bottom: $br * 6;
-
-    .__content {
-      border-radius: $br * 3;
-      padding: $br * 6;
-    }
+    border-radius: $br * 3;
+    padding: $br * 6;
   }
 }
 
