@@ -140,7 +140,7 @@ const MainInTheNews = (): JSX.Element => {
       </Container>
 
       <RevealOnScroll easing="ease">
-        <Container as="h2" className="text-md-center">
+        <Container as="h2" className="text-md-center" id="articles">
           Articles
         </Container>
       </RevealOnScroll>

@@ -10,7 +10,6 @@ import { Box, Logo, Anchor, Button } from '.';
 import { NavLink, SVGIcon } from './shared';
 import { useRouter } from 'next/dist/client/router';
 
-const window = globalThis;
 let scrollTimeout: NodeJS.Timeout;
 let scrollPositionTimeout: NodeJS.Timeout;
 let initialScrollPosition = 0;
@@ -30,18 +29,18 @@ const AppNav = (): JSX.Element => {
     setOpen((prev) => !prev && !isPC);
   }, [isPC]);
 
-  const handleSidebarBgClick = useCallback(
-    (e) => {
-      if (isPC || !isPC) return;
+  // const handleSidebarBgClick = useCallback(
+  //   (e) => {
+  //     if (isPC || !isPC) return;
 
-      const target = e.target as HTMLElement;
+  //     const target = e.target as HTMLElement;
 
-      if (/AppNav__nav-links-container/.test(target.className)) {
-        handleNavOpenClick();
-      }
-    },
-    [isPC, handleNavOpenClick]
-  );
+  //     if (/AppNav__nav-links-container/.test(target.className)) {
+  //       handleNavOpenClick();
+  //     }
+  //   },
+  //   [isPC, handleNavOpenClick]
+  // );
 
   const handleNavAnimationEnd = useCallback(
     (e: AnimationEvent<HTMLUListElement>) => {
@@ -134,8 +133,7 @@ const AppNav = (): JSX.Element => {
               ? 'anim__OutLeftBig anim__dur--05s'
               : 'anim__fadeInRight anim__del--025s anim__dur--05s'
           }`}
-          onAnimationEnd={handleNavAnimationEnd}
-          onClick={!isPC ? handleSidebarBgClick : undefined}>
+          onAnimationEnd={handleNavAnimationEnd}>
           <Box as="li" className="mx-lg-1">
             <NavLink
               button

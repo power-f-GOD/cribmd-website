@@ -15,7 +15,7 @@ const MainExit = (): JSX.Element => {
   return (
     <Container className="shrink-max-width-xxl">
       {servicesIllustrations.map(
-        ({ buttonText, buttonUrl, heading, imageName, p1, rider, p2, p3 }, i) => (
+        ({ buttonText, anchorHref: buttonUrl, heading, imageName, p1, rider, p2, p3 }, i) => (
           <Row key={heading} className="my-5 align-items-center pb-3 pb-md-2">
             <RevealOnScroll component={Col} xs={12} md={6} easing="ease" allowOverflow>
               <Box as="h3" className="h6 theme-tertiary mt-0">

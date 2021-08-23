@@ -357,6 +357,10 @@ a.no-shadow,
   overflow: clip !important;
 }
 
+.text-capitalize {
+  text-transform: capitalize;
+}
+
 .container,
 .container-sm {
   @media screen and (min-width: 576px) {

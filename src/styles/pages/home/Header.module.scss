@@ -100,7 +100,7 @@
   .mediaGrid {
     border-radius: 0.75em;
     min-height: 5rem;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
@@ -112,5 +112,11 @@
 
   .mediaGrid {
     min-height: 8rem;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .mediaGrid {
+    grid-template-columns: repeat(6, 1fr);
   }
 }

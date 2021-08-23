@@ -99,7 +99,7 @@ const AppFooter = (): JSX.Element => {
                 For Patients
               </Box>
               <Box>
-                <Anchor href="/patient/dashboard">Search for Doctors</Anchor>
+                <Anchor href="/patient/doctors-list">Search for Doctors</Anchor>
               </Box>
               <Box>
                 <Anchor href="/login">Login</Anchor>
@@ -108,7 +108,7 @@ const AppFooter = (): JSX.Element => {
                 <Anchor href="/signup">Register</Anchor>
               </Box>
               <Box>
-                <Anchor href="/doctor/dashboard">Booking</Anchor>
+                <Anchor href="/patient/appointments">Booking</Anchor>
               </Box>
             </Col>
 
@@ -159,9 +159,9 @@ const AppFooter = (): JSX.Element => {
               <Box as="h5" className="mb-3">
                 Legal
               </Box>
-              <Box>
+              {/* <Box>
                 <Anchor href="/legal/privacy">Privacy Policy</Anchor>
-              </Box>
+              </Box> */}
               {/* <Box>
                 <Anchor href="/legal/privacy">Terms of Service</Anchor>
               </Box> */}
