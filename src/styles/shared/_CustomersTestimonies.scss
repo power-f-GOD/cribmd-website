@@ -3,6 +3,7 @@
   border-radius: $br * 1.5;
   padding: $br * 1.75;
   overflow: hidden;
+  margin-bottom: 5em;
 
   blockquote {
     min-height: 7rem;
@@ -68,7 +69,7 @@
     margin-top: $br * 6;
     margin-bottom: $br * 6;
     border-radius: $br * 3;
-    padding: $br * 6;
+    padding: $br * 4;
   }
 }
 

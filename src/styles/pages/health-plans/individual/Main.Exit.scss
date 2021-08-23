@@ -1,14 +1,17 @@
 .moreBenefitsContainer {
   background-color: #fafbfc;
   border-radius: $br * 1.5;
-  padding: $br * 2.5;
+  padding: 1.25em;
+
   p {
     margin: 0;
   }
+
   span {
     color: $theme-primary-v4;
   }
 }
+
 .moreBenefitsGrid {
   display: grid;
   grid-template-columns: 2fr;
@@ -27,5 +30,6 @@
 
   @media screen and (min-width: 768px) {
     grid-template-columns: repeat(3, 1fr);
+    gap: 3em;
   }
 }

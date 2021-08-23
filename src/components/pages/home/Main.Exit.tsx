@@ -55,7 +55,7 @@ const MainExit = (): JSX.Element => {
               md={6}
               className="text-center text-md-end ps-md-5"
               easing="ease"
-              animName="fadeInRight"
+              animName={i % 2 === 0 ? 'fadeInRight' : 'fadeInLeft'}
               delay={isMobile ? 0 : 0.3}>
               <Img
                 src={GetImage.home(imageName)}

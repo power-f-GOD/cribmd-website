@@ -21,7 +21,7 @@ const AppFooter = (): JSX.Element => {
 
   return (
     <Container as="footer" fluid className="AppFooter p-3 py-5" ref={footerRef}>
-      <Container className="">
+      <Container>
         <hr />
         <Row className="row mx-0 text-left">
           <RevealOnScroll

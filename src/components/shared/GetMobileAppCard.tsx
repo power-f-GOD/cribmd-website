@@ -14,7 +14,7 @@ const _GetMobileAppCard: FC<{ headerText?: string; bodyText?: string }> = ({
   return (
     <Row
       as="section"
-      className="GetMobileAppCard shrink-max-width-xxl text-center px-3 py-4 px-md-5 align-items-center container">
+      className="GetMobileAppCard shrink-max-width-xxl text-center px-3 py-4 px-md-5 mx-auto align-items-center container">
       <Col xs={12} md={7} className="text-md-start">
         <RevealOnScroll animName="fadeInRight" easing="ease">
           <Box as="h2" className="h3 theme-white">
@@ -26,8 +26,8 @@ const _GetMobileAppCard: FC<{ headerText?: string; bodyText?: string }> = ({
             and have a secure chat with any of our licensed doctors.`}
           </Box>
           <Box className="d-flex flex-wrap justify-content-center justify-content-md-start">
-            <PlaystoreButton className="mx-2 me-md-3 mb-2" />
-            <AppstoreButton className="mx-2 me-md-3" />
+            <PlaystoreButton className="mx-2 mx-md-0 me-md-3 mb-2" />
+            <AppstoreButton className="mx-2 mx-md-0 me-md-3 mb-2" />
           </Box>
         </RevealOnScroll>
       </Col>

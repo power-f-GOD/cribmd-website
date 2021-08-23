@@ -68,14 +68,14 @@
   // }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .visionPoster,
   .missionPoster {
-    padding: 0px !important;
+    padding: 0 !important;
 
     img {
-      border-bottom-right-radius: 0px !important;
-      border-bottom-left-radius: 0px !important;
+      border-bottom-right-radius: 0 !important;
+      border-bottom-left-radius: 0 !important;
     }
 
     .svgWrapper {

@@ -62,10 +62,10 @@
 }
 
 .mediaGrid {
-  border: 0.0625rem solid #e6e9ef;
-  box-shadow: 0 0.125rem 0.25rem rgba(17, 17, 17, 0.04);
-  border-radius: 0.25rem;
-  min-height: 3rem;
+  border: 0.0625em solid #e6e9ef;
+  box-shadow: 0 0.125em 0.25rem rgba(17, 17, 17, 0.04);
+  border-radius: 1em;
+  min-height: 3em;
   display: grid;
   background-color: #e6e9ef;
   gap: 0.0625em;
@@ -94,6 +94,7 @@
 @media screen and (min-width: 576px) {
   .hero {
     border-radius: 2.5em;
+    margin-top: 7em;
   }
 
   .mediaGrid {

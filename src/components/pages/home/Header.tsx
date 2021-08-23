@@ -10,7 +10,7 @@ import S from 'src/styles/pages/home/Header.module.scss';
 
 const Header = (): JSX.Element => {
   return (
-    <Container as="header">
+    <Container as="header" className="px-md-0">
       <RevealOnScroll once>
         <Row
           as="section"

@@ -150,6 +150,24 @@
 @media screen and (min-width: 768px) {
   .teamGrid {
     grid-template-columns: repeat(3, 1fr);
+  }
+
+  .teamMembersGrid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+
+  .teamMemberContainer {
+    padding: 2.5em;
+    border-radius: inherit;
+    padding: 2.5em;
+    border-radius: 2.5em;
+    box-shadow: 0.25em 0.25em 0 rgb(13 35 68 / 8%);
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .teamGrid {
+    grid-template-columns: repeat(3, 1fr);
     gap: 4em;
   }
 

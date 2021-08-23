@@ -6,14 +6,14 @@ import CTA from './CTA';
 
 const Footer = (): JSX.Element => {
   return (
-    <Container as="footer" fluid className="mt-5">
+    <Container as="footer" fluid className="mt-5 px-md-0 shrink-max-width-xxl">
       <CTA />
       <OurInvestors />
       <OurPartners />
 
       <Row
         as="section"
-        className={`${S.footerBase} align-items-center p-3 px-md-4 py-md-5 container`}>
+        className={`${S.footerBase} align-items-center p-3 px-md-4 py-md-5 mx-auto container`}>
         <RevealOnScroll component={Col} className="" xs={12} md={7} allowOverflow>
           <Box as="h2">Join our team</Box>
 

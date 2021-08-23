@@ -1,1 +1,11 @@
 // This is the base/exit section of the 'main' section.
+
+.covidConcernsCard {
+  border-radius: $br;
+  padding: $br * 1.25;
+  background-color: $bg-lightblue;
+
+  h5 {
+    color: $theme-primary-v4;
+  }
+}

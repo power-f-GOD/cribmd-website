@@ -121,9 +121,7 @@ const MainBody = (): JSX.Element => {
                   {ourServices.map((_, i) => (
                     <Box
                       as="span"
-                      className={`${S.particle} ${
-                        activeServiceIndex === i ? S.particleActive : ''
-                      }`}
+                      className={`${activeServiceIndex === i ? S.particleActive : ''}`}
                       key={i}
                     />
                   ))}

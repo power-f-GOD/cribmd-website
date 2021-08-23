@@ -6,7 +6,7 @@ import MainExit from './Main.Exit';
 
 const Main = (): JSX.Element => {
   return (
-    <Container as="main" className="my-5 shrink-max-width-xxl" fluid>
+    <Container as="main" className="my-5" fluid>
       <MainIntro />
       <MainBody />
       <MainExit />

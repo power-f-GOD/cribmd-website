@@ -22,7 +22,7 @@ const AppNav = (): JSX.Element => {
   const [open, setOpen] = useState(false);
   const [renderNav, setRenderNav] = useState(isPC);
   const [isNegativeScroll, setIsNegativeScroll] = useState(isPC);
-  const [hasReachedScrollThreshold, setHasReachedScrollThreshold] = useState(false);
+  const [hasReachedScrollThreshold, setHasReachedScrollThreshold] = useState(!isPC);
   const router = useRouter();
   const onLanding = /^\/(home)?$/.test(router.pathname);
 
@@ -32,7 +32,7 @@ const AppNav = (): JSX.Element => {
 
   const handleSidebarBgClick = useCallback(
     (e) => {
-      if (isPC) return;
+      if (isPC || !isPC) return;
 
       const target = e.target as HTMLElement;
 
@@ -69,7 +69,7 @@ const AppNav = (): JSX.Element => {
       initialScrollPosition = window.scrollY || window.pageYOffset;
       scrollPositionTimeout = setTimeout(() => {
         finalScrollPosition = initialScrollPosition;
-        setHasReachedScrollThreshold(finalScrollPosition < 55);
+        setHasReachedScrollThreshold(finalScrollPosition < (isPC ? 110 : 55));
       }, 35);
 
       if (isPC) {
@@ -105,7 +105,9 @@ const AppNav = (): JSX.Element => {
       as="nav"
       className={`AppNav ${
         isPC
-          ? !onLanding && initialScrollPosition < 150
+          ? !onLanding && hasReachedScrollThreshold
+            ? 'transparentize-ul-bg'
+            : ''
           : hasReachedScrollThreshold
           ? 'transparentize-ul-bg'
           : ''
@@ -294,15 +296,17 @@ const AppNav = (): JSX.Element => {
       )}
 
       <Box as="ul" className="AppNav__ctas-container p-lg-2">
-        <Box as="li" className="d-none d-lg-block">
-          <Anchor
-            button
-            color="tertiary"
-            className="AppNav__cta--text AppNav__nav-link btn--text"
-            href="https://www.cribmd.com/login">
-            Log in
-          </Anchor>
-        </Box>
+        {isPC && (
+          <Box as="li">
+            <Anchor
+              button
+              color="tertiary"
+              className="AppNav__cta--text AppNav__nav-link btn--text"
+              href="https://www.cribmd.com/login">
+              Log in
+            </Anchor>
+          </Box>
+        )}
 
         <Box as="li">
           <Anchor
