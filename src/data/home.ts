@@ -17,7 +17,7 @@ export const servicesIllustrations: {
     p2: 'We ensure you and your loved ones are properly cared for by designing our house call services to suit your needs. Book your appointment today.',
     p3: 'Our doctors understand the dangers of the pandemic and are well equipped to visit you while taking all the required preventive measures pre, during, and post-visit.',
     buttonText: 'Get Started',
-    anchorHref: 'https://www.cribmd.com/signup',
+    anchorHref: 'https://app.cribmd.com/signup',
     imageName: 'doctor-with-child'
   },
   {
@@ -26,7 +26,7 @@ export const servicesIllustrations: {
     p1: 'The Wait for Quality Healthcare is Over!',
     p2: 'With CribMD, you can now talk to a licensed doctor online, through chat, audio call, or video conference and get instant feedback and prescriptions on the go with your mobile phone.',
     buttonText: 'Talk to a Doctor now',
-    anchorHref: 'https://www.cribmd.com/signup?rURL=patient/doctors-list',
+    anchorHref: 'https://app.cribmd.com/signup?rURL=patient/doctors-list',
     imageName: 'doctor-patient-video-call'
   },
   {
@@ -34,7 +34,7 @@ export const servicesIllustrations: {
     rider: 'Prescriptions on the go',
     p1: 'Get accurate and legal prescriptions from medical experts with an accurate track record of your past prescriptions and sound analysis of your current health.',
     buttonText: 'Get Prescriptions',
-    anchorHref: 'https://www.cribmd.com/signup?rURL=patient/prescriptions',
+    anchorHref: 'https://app.cribmd.com/signup?rURL=patient/prescriptions',
     imageName: 'doctor-patient-chat'
   }
 ];
