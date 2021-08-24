@@ -198,7 +198,7 @@ const AppNav = (): JSX.Element => {
                 onClick={!isPC ? handleNavOpenClick : undefined}
                 onKeyDown={handleNavOpenClick}>
                 <Box as="span">
-                  <SVGIcon name="volume" />
+                  <SVGIcon name="cribmd-logo" />
                 </Box>
 
                 <Box as="p">
