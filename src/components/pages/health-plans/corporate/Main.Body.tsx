@@ -65,7 +65,7 @@ const MainBody = (): JSX.Element => {
                 <Box data-anim="fadeInRight">
                   <Anchor
                     button
-                    href="http://www.cribmd.com/corporate/subscribe"
+                    href="http://app.cribmd.com/signup?rURL=corp/slot"
                     variant="outlined">
                     {buttonText}
                   </Anchor>
