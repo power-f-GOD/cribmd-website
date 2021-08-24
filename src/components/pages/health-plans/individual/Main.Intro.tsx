@@ -4,6 +4,7 @@ import { Box, SVGIcon, Anchor, RevealOnScroll } from 'src/components/shared';
 import S from 'src/styles/pages/health-plans/individual/Main.module.scss';
 // import { AppWindowContext } from 'src/pages/_app';
 import { individualBenefitsData } from '../../../../data/health-plans/individual';
+import { preventDefault } from 'src/utils';
 
 const MainIntro = (): JSX.Element => {
   // const windowWidth = useContext(AppWindowContext);
@@ -118,11 +119,15 @@ const MainIntro = (): JSX.Element => {
         <Anchor
           className="d-inline-flex align-items-center my-3"
           variant="text"
-          href="javascript:void(0)"
-          onClick={useCallback(() => {
-            window.location.href =
-              'https://drive.google.com/uc?export=download&id=1jVJ6G5QIFHumqQh1l2jNrO2QrF8L82PV';
-          }, [])}>
+          href="/"
+          onClick={useCallback(
+            (e) =>
+              preventDefault(() => {
+                window.location.href =
+                  'https://drive.google.com/uc?export=download&id=1jVJ6G5QIFHumqQh1l2jNrO2QrF8L82PV';
+              })(e),
+            []
+          )}>
           <SVGIcon name="download-cloud" className="me-2" /> Download full Coverage Document
         </Anchor>
       </RevealOnScroll>
