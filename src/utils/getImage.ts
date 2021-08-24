@@ -33,16 +33,20 @@ export class GetImage {
     return `${this.aboutUrl}${name}__${parseInt(String(size || 1)) * 400}x.webp`;
   }
 
-  static team(name: string, size?: '1x' | '2x') {
-    return `${this.teamUrl}${name}__${parseInt(String(size || 1)) * 400}x.webp`;
+  static teamMembersPrimary(name: string) {
+    return `${this.baseUrl}about/our-company/team-members-primary/${name}.webp`;
   }
 
-  static otherTeamMembers(name: string, size?: '1x' | '2x') {
-    return `${this.otherTeamMembersUrl}${name}__${parseInt(String(size || 1)) * 400}x.webp`;
+  static teamMembersSecondary(name: string) {
+    return `${this.baseUrl}about/our-company/team-members-secondary/${name}.webp`;
   }
 
-  static advisors(name: string, size?: '1x' | '2x') {
-    return `${this.advisorsUrl}${name}__${parseInt(String(size || 1)) * 400}x.webp`;
+  static advisors(name: string) {
+    return `${this.baseUrl}about/our-company/advisors/${name}.webp`;
+  }
+
+  static doctors(name: string) {
+    return `${this.baseUrl}about/our-company/doctors/${name}.webp`;
   }
 
   static healthPlans(name: string) {

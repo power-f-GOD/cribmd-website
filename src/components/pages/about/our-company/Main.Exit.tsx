@@ -1,7 +1,8 @@
-import { Box, Img, RevealOnScroll, Anchor, SVGIcon } from 'src/components/shared';
+import { Box, RevealOnScroll, Anchor, SVGIcon, Avatar } from 'src/components/shared';
 import S from 'src/styles/pages/about/our-company/index.module.scss';
-import { doctorsData } from './data';
+import { doctorsData } from 'src/data';
 import { Container } from 'react-bootstrap';
+import { GetImage } from 'src/utils';
 
 const MainExit = (): JSX.Element => {
   return (
@@ -28,21 +29,26 @@ const MainExit = (): JSX.Element => {
               delay={0.25}
               easing="ease">
               <Box data-anim="fadeInRight">
-                <Img srcSet={`${doctor.imageUrl}, ${doctor.imageUrl}`} alt="doctor image" />
+                <Avatar
+                  isJPG
+                  noFrame
+                  src={`${GetImage.doctors(doctor.imageName)}`}
+                  alt="doctor image"
+                  elevation="1"
+                  size="small"
+                />
               </Box>
 
-              {/* <Box> */}
               <Box as="span" className={`${S.doctorRole} align-self-start`} data-anim="fadeInLeft">
                 {doctor.role}
               </Box>
-              {/* </Box> */}
             </RevealOnScroll>
 
             <RevealOnScroll easing="ease">
               <Box as="h3" className="h6 mt-0 mb-0">
                 {doctor.name}
               </Box>
-              <Box as="p" className="tertiary-content my-0 mb-3">
+              <Box as="p" className="tertiary-content my-0 mb-3 mx-0">
                 {doctor.occupation}
               </Box>
               <Box as="p" className="secondary-content mb-0 mt-0">

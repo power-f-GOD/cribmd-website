@@ -7,6 +7,7 @@
   border-radius: 1rem; // for browser support
   border-radius: clamp(0.25em, 10%, 1em) !important;
   display: inline-flex;
+  max-width: 100%;
   margin-bottom: 0.125rem;
   position: relative;
   background-color: #f8f8f8;

@@ -10,3 +10,16 @@ export const preventDefault =
 
     if (callback) callback();
   };
+
+export const getHumanName = (text: string, delimiter?: string) => {
+  return text
+    ? text
+        .split(delimiter || '-')
+        .map((word) =>
+          word.length < 3
+            ? `${word[0].toUpperCase() + (word.slice(1) || '')}.`
+            : word[0].toUpperCase() + word.slice(1)
+        )
+        .join(' ')
+    : text;
+};

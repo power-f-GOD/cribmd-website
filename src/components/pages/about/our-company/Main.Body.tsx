@@ -1,9 +1,10 @@
 import { memo } from 'react';
-import { Box, Img, SVGIcon, RevealOnScroll, SVGShape } from 'src/components/shared';
+import { Box, SVGIcon, RevealOnScroll, SVGShape, Avatar } from 'src/components/shared';
 import S from 'src/styles/pages/about/our-company/index.module.scss';
 import TeamModal from './Modal';
 import { Container } from 'react-bootstrap';
-import { teamData, teamMembersData, advisorsData } from './data';
+import { teamMembersPrimary, teamMembersSecondary, advisorsData } from 'src/data';
+import { GetImage, getHumanName } from 'src/utils';
 
 const MainBody = (): JSX.Element => {
   return (
@@ -41,23 +42,38 @@ const MainBody = (): JSX.Element => {
         </RevealOnScroll>
 
         <Box className={S.teamGrid}>
-          {teamData.map((team, i) => (
+          {teamMembersPrimary.map(({ imageName, primaryBio, secondaryBio, role, skill }, i) => (
             <RevealOnScroll
-              key={team.name}
-              className={`order-${team.order} order-lg-${team.orderLg} text-center`}
+              key={imageName + i}
+              className={`${
+                i === 0 ? 'order-1 order-md-0' : i > 1 ? 'order-2' : 'order-0'
+              } text-center`}
               delay={(i % 3) * 0.125}
               easing="ease"
               allowOverflow
               animName="fadeInLeft">
               <Box className={`${S.teamMemberContainer}`}>
-                <TeamModal content={team} />
-                <Img srcSet={`${team.imagePath}, ${team.imagePath}`} alt="team image" />
+                <TeamModal
+                  primaryBio={primaryBio}
+                  secondaryBio={secondaryBio}
+                  role={role}
+                  skill={skill}
+                  imageName={imageName}
+                />
+
+                <Avatar
+                  isJPG
+                  size="medium"
+                  src={GetImage.teamMembersPrimary(imageName)}
+                  alt="team member image"
+                />
+
                 <Box className={`${S.ourTeamContent} mb-auto`}>
                   <Box as="h6" className="mt-4 mb-2">
-                    {team.name}
+                    {getHumanName(imageName)}
                   </Box>
                   <Box as="span" className="tertiary-content">
-                    {team.role}
+                    {role}
                   </Box>
                 </Box>
               </Box>
@@ -73,20 +89,26 @@ const MainBody = (): JSX.Element => {
         </RevealOnScroll>
 
         <Box className={S.teamMembersGrid}>
-          {teamMembersData.map((team, i) => (
+          {teamMembersSecondary.map(({ imageName, role }, i) => (
             <RevealOnScroll
-              key={team.name}
+              key={imageName + i}
               className="my-2"
               easing="ease"
               animName={'fadeInRight'}
               delay={(i % 5) * 0.1}>
               <Box className={`${S.teamMembersContent} ${S.ourTeamContent} text-start w-100`}>
-                <Img srcSet={`${team.imageUrl}, ${team.imageUrl}`} alt="team member image" />
+                <Avatar
+                  isJPG
+                  elevation="1"
+                  size="small"
+                  src={GetImage.teamMembersSecondary(imageName)}
+                  alt="team member image"
+                />
                 <Box className="mt-auto">
                   <Box as="span" className="h6 mt-2 mb-0">
-                    {team.name}
+                    {getHumanName(imageName)}
                   </Box>
-                  <Box as="small">{team.role} </Box>
+                  <Box as="small">{role}</Box>
                 </Box>
               </Box>
             </RevealOnScroll>
@@ -102,9 +124,19 @@ const MainBody = (): JSX.Element => {
 
         <Box className={S.teamMembersGrid}>
           {advisorsData.map((advisor, i) => (
-            <RevealOnScroll key={advisor.name} className="my-2" easing="ease" delay={(i % 5) * 0.1}>
+            <RevealOnScroll
+              key={advisor.name + i}
+              className="my-2"
+              easing="ease"
+              delay={(i % 5) * 0.1}>
               <Box className={`${S.teamMembersContent} ${S.ourTeamContent}`}>
-                <Img srcSet={`${advisor.imageUrl}, ${advisor.imageUrl}`} alt="team member image" />
+                <Avatar
+                  isJPG
+                  elevation="1"
+                  size="small"
+                  src={GetImage.advisors(advisor.imageName)}
+                  alt="team member image"
+                />
 
                 <Box as="span" className="h6 mt-2 mb-0">
                   {advisor.name}

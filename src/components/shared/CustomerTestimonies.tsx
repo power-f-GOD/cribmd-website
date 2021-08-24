@@ -3,7 +3,7 @@ import { useState, useCallback, useEffect } from 'react';
 import { Container } from 'react-bootstrap';
 
 import { Box, Avatar, SVGIcon, Button, RevealOnScroll } from 'src/components/shared';
-import { GetImage, interval, delay } from 'src/utils';
+import { GetImage, interval, delay, getHumanName } from 'src/utils';
 import { testifiers } from 'src/data';
 
 let unmounted = false;
@@ -12,10 +12,7 @@ const avatarWidthEm = 9;
 export const CustomerTestimonies = (): JSX.Element => {
   const [activeTIndex, setActiveTestifierIndex] = useState(3);
   const [swapped, setSwapped] = useState(true);
-  const activeCustomerName = testifiers[activeTIndex].imageName
-    .split('-')
-    .map((word) => (word.length < 3 ? `${word}.` : word))
-    .join(' ');
+  const activeCustomerName = getHumanName(testifiers[activeTIndex].imageName);
   const activeCustomerTestimony = testifiers[activeTIndex].testimony;
 
   const handleTestifierToggle = useCallback(

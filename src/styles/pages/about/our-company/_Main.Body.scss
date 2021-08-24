@@ -50,19 +50,6 @@
   grid-template-columns: 1fr 1fr;
   gap: 1.25em;
   margin-bottom: 1em;
-
-  img {
-    height: 7.5em;
-    width: 7.5em;
-    object-position: center;
-    object-fit: cover;
-    border-radius: 50%;
-
-    @media (max-width: 768px) {
-      height: 4rem;
-      width: 4rem;
-    }
-  }
 }
 
 .teamMemberContainer {
@@ -117,23 +104,6 @@
     border-bottom: 0.125em solid #e8e5ef;
     padding-bottom: 1em;
     text-align: start;
-  }
-
-  .teamMembersContent {
-    img {
-      height: 6rem;
-      width: 6rem;
-      object-position: center;
-      object-fit: cover;
-      border-radius: 50%;
-      border: 4px solid white;
-      filter: drop-shadow(2px 2px 0px rgba(13, 35, 68, 0.08));
-
-      @media (max-width: 768px) {
-        height: 4rem;
-        width: 4rem;
-      }
-    }
   }
 }
 
