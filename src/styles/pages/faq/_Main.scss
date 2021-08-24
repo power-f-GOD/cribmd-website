@@ -17,17 +17,14 @@
     margin: 5em 0;
   }
 
-  h2 {
-    position: sticky;
-    top: 5em;
-    background-color: white;
-    z-index: 1;
+  button {
+    box-shadow: none;
   }
 }
 
 .categoryButtonsWrapper {
   overflow-x: auto !important;
-  min-height: 3.25em;
+  min-height: 5em;
   max-width: 100%;
   position: relative;
 }

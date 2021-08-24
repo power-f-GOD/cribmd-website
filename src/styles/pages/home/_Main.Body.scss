@@ -2,8 +2,12 @@
 
 .servicesWrapper {
   background-color: #f5f9ff;
-  padding: 1rem 0 3rem 0;
-  margin: 4rem 0;
+  padding: 1em 1.25em 3em 1.25em;
+  margin: 4em 0;
+  min-height: 62.5em;
+  margin-right: -1.25em !important;
+  margin-left: -1.25em !important;
+  width: calc(100% + 2.5em);
 
   p {
     margin-top: 1em;
@@ -46,7 +50,10 @@
   }
 }
 
-$size: 0.5em;
+.serviceCardContainer {
+  transform: scale(0.9);
+  transition: 0.3s;
+}
 
 .serviceCard {
   box-shadow: none;
@@ -56,7 +63,7 @@ $size: 0.5em;
   max-width: 24em;
 
   &::before {
-    @include before-or-after($bg: transparent, $o: 0.85);
+    @include before-or-after($bg: white, $o: 0.85);
     backdrop-filter: blur(0.5em);
   }
 
@@ -73,16 +80,20 @@ $size: 0.5em;
     display: inline-block;
   }
 
-  p {
-    display: none;
-  }
+  // p {
+  //   display: none;
+  // }
 }
 
-.serviceCardActive {
-  box-shadow: 0.375em 0.75em 1.875em rgba(230, 233, 239, 0.85);
+.serviceActive {
+  transform: scale(1.05);
 
-  &::before {
-    background-color: white;
+  .serviceCard {
+    box-shadow: 0.375em 0.75em 1.875em rgba(230, 233, 239, 0.85);
+
+    &::before {
+      background-color: white;
+    }
   }
 
   p {
@@ -90,13 +101,28 @@ $size: 0.5em;
   }
 }
 
-.covidConcernsCard {
-  border-radius: $br;
-  padding: $br * 1.25;
-  background-color: $bg-lightblue;
+$size: 0.5em;
 
-  h5 {
-    color: $theme-primary-v4;
+.particlesContainer {
+  position: absolute;
+  transform: translate(-7em, -50%);
+  top: 50%;
+  display: flex;
+  justify-content: center;
+
+  span {
+    height: $size;
+    width: $size;
+    border-radius: $size / 2;
+    margin: 0 0.25em;
+    display: inline-block;
+    background-color: rgba(25, 113, 245, 0.1);
+    transition: 0.3s;
+
+    &.particleActive {
+      width: $size * 2;
+      background-color: rgba(25, 113, 245, 0.3);
+    }
   }
 }
 

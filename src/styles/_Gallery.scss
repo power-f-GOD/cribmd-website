@@ -1,0 +1,228 @@
+@import '~react-image-gallery/styles/scss/image-gallery.scss';
+// @import '../constants';
+
+.Gallery {
+  animation-duration: 0.3s;
+
+  // &.has-extra {
+  //   .close-modal-button {
+  //     right: 24.5rem;
+  //   }
+
+  //   .image-gallery-container {
+  //     display: grid;
+  //     grid-template-columns: calc(100% - 24em) 24rem;
+  //   }
+  // }
+
+  .Button {
+    position: absolute;
+    top: 50%;
+    transform: translateX(-50%);
+    z-index: 50;
+    background-color: white;
+
+    box-shadow: $button-box-shadow !important;
+
+    &.next {
+      left: 100%;
+    }
+  }
+
+  .image-gallery-container {
+    display: grid;
+    grid-template-columns: auto;
+    top: 1em;
+    left: 0;
+    // height: 25em;
+    width: 100vw;
+    background: rgba($prim-r - 80, $prim-g - 80, $prim-b - 80, 0.95) !important;
+  }
+
+  .image-gallery {
+    margin-top: -8.75em;
+    animation-timing-function: cubic-bezier(0, 1, 0.15, 1);
+  }
+
+  .image-gallery-content {
+    top: 1.25em;
+
+    &.fullscreen {
+      .image-gallery-swipe {
+        border: none;
+      }
+
+      .image-gallery-slide {
+        height: clamp(35em, 100vh - 8em, 55em);
+      }
+    }
+  }
+
+  .image-gallery-swipe {
+    border-radius: 1.25em;
+    overflow: hidden;
+    border: 0.0625em solid #eee;
+    background: black;
+  }
+
+  .image-gallery-slide {
+    height: calc(100vh - 7em);
+    height: clamp(37.5em, 100vh - 12em, 55em);
+    display: flex;
+    transform: unset !important;
+    opacity: 0;
+    // border-radius: 1.5em;
+    overflow: hidden;
+    align-items: center;
+    justify-content: center;
+
+    &.center {
+      opacity: 1;
+
+      .image-gallery-description {
+        transform: translateY(0);
+      }
+    }
+
+    & > div {
+      height: inherit;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    img,
+    video,
+    iframe {
+      height: 100%;
+      object-fit: contain;
+      object-position: center;
+      max-width: 100%;
+      min-width: 100%;
+    }
+
+    video,
+    iframe {
+      width: clamp(40em, 70%, 90vw);
+      object-fit: contain;
+      background-color: #111;
+    }
+  }
+
+  .image-gallery-slide-wrapper {
+    svg,
+    button {
+      transition: 0.25s;
+      pointer-events: unset;
+    }
+
+    svg {
+      color: white !important;
+    }
+
+    [class*='-nav'] {
+      opacity: 0;
+
+      svg {
+        width: 5vw;
+        height: 5rem;
+      }
+    }
+
+    &:hover,
+    &:focus-within {
+      [class*='-nav'] {
+        opacity: 1;
+
+        &:disabled {
+          opacity: 0.25;
+          cursor: unset;
+
+          svg {
+            transform: unset;
+          }
+        }
+      }
+    }
+  }
+
+  .image-gallery-index {
+    left: 0;
+    right: unset;
+    top: 1.25em;
+    pointer-events: none;
+  }
+
+  .image-gallery-description {
+    bottom: 0;
+    width: 100%;
+    padding: 1.25em;
+    line-height: 1.5em;
+    transform: translateY(100%);
+    transition: 0.75s ease 0.6s;
+  }
+
+  .image-gallery-fullscreen-button {
+    $size: 3.25rem;
+
+    max-height: $size;
+    max-width: $size;
+    background: rgba(255, 255, 255, 0.25);
+    color: white;
+    border: 0.125em solid transparent;
+    top: 1.25em;
+    border-radius: 50%;
+    bottom: unset;
+    padding: 0.65rem;
+    right: 1.25em;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+
+    &:hover,
+    &:focus {
+      border-color: white;
+
+      svg {
+        transform: unset;
+      }
+    }
+  }
+
+  .image-gallery-thumbnails {
+    overflow-x: auto;
+    max-width: 100vw;
+    // max-height: 3.75em;
+    // @include debugger();
+  }
+
+  .image-gallery-thumbnail {
+    height: 6em;
+    max-height: 6em;
+
+    position: relative;
+    overflow: hidden;
+
+    img {
+      object-fit: cover;
+      max-height: 100%;
+      object-position: center;
+    }
+  }
+
+  // .image-gallery-thumbnail-inner {
+  //   max-height: inherit;
+
+  //   img {
+  //     object-fit: conver;
+  //     max-height: inherit;
+  //     object-position: center;
+  //   }
+  // }
+
+  @media screen and (min-width: 768px) {
+    .image-gallery-thumbnails {
+      overflow-x: auto;
+    }
+  }
+}

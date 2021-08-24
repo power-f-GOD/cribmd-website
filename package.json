@@ -14,7 +14,8 @@
     "stash": "git stash save -m echo `date`",
     "stash:list": "git stash list --format='%gd (%cr): %gs'",
     "stash:update-ref": "git update-ref refs/stash stash@{0}",
-    "webp": "for file in *; do cwebp $file -o ${file%.*}.webp; done"
+    "webp": "for file in *; do cwebp $file -o ${file%.*}.webp; done",
+    "jpg-rename": "for file in *.jpeg; do mv $file ${file%.*}.jpg; done"
   },
   "dependencies": {
     "@types/gsap": "^3.0.0",

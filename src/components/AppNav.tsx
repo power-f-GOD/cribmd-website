@@ -21,12 +21,26 @@ const AppNav = (): JSX.Element => {
   const [open, setOpen] = useState(false);
   const [renderNav, setRenderNav] = useState(isPC);
   const [isNegativeScroll, setIsNegativeScroll] = useState(isPC);
+  const [hasReachedScrollThreshold, setHasReachedScrollThreshold] = useState(!isPC);
   const router = useRouter();
   const onLanding = /^\/(home)?$/.test(router.pathname);
 
   const handleNavOpenClick = useCallback(() => {
     setOpen((prev) => !prev && !isPC);
   }, [isPC]);
+
+  // const handleSidebarBgClick = useCallback(
+  //   (e) => {
+  //     if (isPC || !isPC) return;
+
+  //     const target = e.target as HTMLElement;
+
+  //     if (/AppNav__nav-links-container/.test(target.className)) {
+  //       handleNavOpenClick();
+  //     }
+  //   },
+  //   [isPC, handleNavOpenClick]
+  // );
 
   const handleNavAnimationEnd = useCallback(
     (e: AnimationEvent<HTMLUListElement>) => {
@@ -51,22 +65,23 @@ const AppNav = (): JSX.Element => {
     scrollTimeout = setTimeout(() => {
       clearTimeout(scrollPositionTimeout);
 
-      const window = globalThis;
-
       initialScrollPosition = window.scrollY || window.pageYOffset;
       scrollPositionTimeout = setTimeout(() => {
         finalScrollPosition = initialScrollPosition;
-      }, 50);
+        setHasReachedScrollThreshold(finalScrollPosition < (isPC ? 110 : 55));
+      }, 25);
 
-      const isNegativeScroll = initialScrollPosition - finalScrollPosition < 0;
+      if (isPC) {
+        const isNegativeScroll = initialScrollPosition - finalScrollPosition < 0;
 
-      setIsNegativeScroll(isNegativeScroll);
+        setIsNegativeScroll(isNegativeScroll);
 
-      if (isNegativeScroll) {
-        setRenderNav(true);
+        if (isNegativeScroll) {
+          setRenderNav(true);
+        }
       }
-    }, 20);
-  }, [clearScrollTimeout]);
+    }, 25);
+  }, [clearScrollTimeout, isPC]);
 
   useEffect(() => {
     if (!isPC) {
@@ -77,27 +92,31 @@ const AppNav = (): JSX.Element => {
   }, [open, isPC]);
 
   useEffect(() => {
-    if (isPC) {
-      window.addEventListener('scroll', handleWindowScroll);
+    window.addEventListener('scroll', handleWindowScroll);
 
-      return () => {
-        window.removeEventListener('scroll', handleWindowScroll);
-      };
-    }
-  }, [isPC, handleWindowScroll]);
+    return () => {
+      window.removeEventListener('scroll', handleWindowScroll);
+    };
+  }, [handleWindowScroll]);
 
   return (
     <Container
       as="nav"
       className={`AppNav ${
-        !onLanding && initialScrollPosition < 150 ? 'transparentize-ul-bg' : ''
-      } shrink-max-width-xxl px-3 py-1 py-sm-2 py-lg-3 mb-3 mb-lg-4"`}>
+        isPC
+          ? !onLanding && hasReachedScrollThreshold
+            ? 'transparentize-ul-bg'
+            : ''
+          : hasReachedScrollThreshold
+          ? 'transparentize-ul-bg'
+          : ''
+      } custom-scroll-bar shrink-max-width-xxl px-3 py-sm-2 py-lg-3 mb-3 mb-lg-4"`}>
       <Logo className={isPC ? (isNegativeScroll ? '' : 'lighten') : ''} />
 
       {!isPC && (renderNav || open) && (
         <Box
           className={`AppNav__underlay d-lg-none anim__dur--05s ${
-            open ? 'anim__fadeInDownBig' : 'anim__fadeOutDownBig'
+            !open ? 'anim__OutLeftBig' : 'anim__InRightBig'
           }`}
         />
       )}
@@ -111,8 +130,8 @@ const AppNav = (): JSX.Element => {
                 ? 'anim__fadeInDown anim__dur--025s'
                 : 'anim__fadeOutUp'
               : !open
-              ? 'anim__OutDownBig anim__dur--05s'
-              : 'anim__fadeIn anim__dur--05s'
+              ? 'anim__OutLeftBig anim__dur--05s'
+              : 'anim__fadeInRight anim__del--025s anim__dur--05s'
           }`}
           onAnimationEnd={handleNavAnimationEnd}>
           <Box as="li" className="mx-lg-1">
@@ -179,7 +198,7 @@ const AppNav = (): JSX.Element => {
                 onClick={!isPC ? handleNavOpenClick : undefined}
                 onKeyDown={handleNavOpenClick}>
                 <Box as="span">
-                  <SVGIcon name="volume" />
+                  <SVGIcon name="cribmd-logo" />
                 </Box>
 
                 <Box as="p">
@@ -274,16 +293,18 @@ const AppNav = (): JSX.Element => {
         </Box>
       )}
 
-      <Box as="ul" className="AppNav__ctas-container p-2">
-        <Box as="li" className="d-none d-lg-block">
-          <Anchor
-            button
-            color="tertiary"
-            className="AppNav__cta--text AppNav__nav-link btn--text"
-            href="https://www.cribmd.com/login">
-            Log in
-          </Anchor>
-        </Box>
+      <Box as="ul" className="AppNav__ctas-container p-lg-2">
+        {isPC && (
+          <Box as="li">
+            <Anchor
+              button
+              color="tertiary"
+              className="AppNav__cta--text AppNav__nav-link btn--text"
+              href="https://www.cribmd.com/login">
+              Log in
+            </Anchor>
+          </Box>
+        )}
 
         <Box as="li">
           <Anchor
@@ -301,8 +322,7 @@ const AppNav = (): JSX.Element => {
             aria-label="menu button"
             className="AppNav__menu-button AppNav__nav-link d-inline-flex d-lg-none btn--text ms-2 ms-sm-2 px-2"
             onClick={handleNavOpenClick}>
-            {!open ? 'Menu' : 'Close'}
-            <Box as="span" className="custom-bars-wrapper ms-1">
+            <Box as="span" className="custom-bars-wrapper mx-1">
               <Box as="span"></Box>
               <Box as="span"></Box>
               <Box as="span"></Box>

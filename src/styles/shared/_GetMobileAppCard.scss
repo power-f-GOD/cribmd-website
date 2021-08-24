@@ -1,12 +1,9 @@
 .GetMobileAppCard {
   margin-top: 5em;
   margin-bottom: 3em;
-
-  > .row {
-    background-color: #0d2344;
-    border-radius: $br * 1.75;
-    overflow: hidden;
-  }
+  background-color: #0d2344;
+  border-radius: $br * 1.75;
+  overflow: hidden;
 
   .__mobile-dashboard {
     position: relative;

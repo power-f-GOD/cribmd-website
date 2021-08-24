@@ -1,13 +1,13 @@
 $time-func: 0.75s cubic-bezier(0.5, 0, 0.25, 1.5);
 
 @mixin trans__(
-  $mode: 'fadeIn' or 'In' or 'scale' or 'scaleX' or 'scaleY',
+  $mode: 'fadeIn' or 'In' or 'Out' or 'scale' or 'scaleX' or 'scaleY',
   $direction: 'Right' or 'Left' or 'Up' or 'Down' or null,
   $magnitude: 'Small' or 'Big' or null
 ) {
   $isIn: $mode == 'fadeIn' or $mode == 'In';
   $isFade: $mode == 'fadeIn';
-  $isScale: $mode == 'scale';
+  $isScale: $mode == 'scale' or $mode == 'scaleX' or $mode == 'scaleY';
   // $isScaleX: $mode == 'scale';
   // $isScaleY: $mode == 'scale';
   $dir: $direction;
@@ -37,6 +37,7 @@ $time-func: 0.75s cubic-bezier(0.5, 0, 0.25, 1.5);
       } @else if $mode == 'scaleX' {
         transform: translate(0) scaleX(0);
       }
+    } @else {
     }
 
     transition: $time-func;
@@ -61,6 +62,15 @@ $time-func: 0.75s cubic-bezier(0.5, 0, 0.25, 1.5);
 @include trans__('In', 'Down', 'Big');
 @include trans__('In', 'Left', 'Big');
 @include trans__('In', 'Right', 'Big');
+@include trans__('Out', null, null);
+@include trans__('Out', 'Up', null);
+@include trans__('Out', 'Down', null);
+@include trans__('Out', 'Left', null);
+@include trans__('Out', 'Right', null);
+@include trans__('Out', 'Up', 'Big');
+@include trans__('Out', 'Down', 'Big');
+@include trans__('Out', 'Left', 'Big');
+@include trans__('Out', 'Right', 'Big');
 @include trans__('scale', null, null);
 @include trans__('scaleY', null, null);
 @include trans__('scaleX', null, null);

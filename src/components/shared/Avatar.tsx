@@ -4,6 +4,7 @@ import { memo, FC, useState, useCallback, CSSProperties } from 'react';
 import { Box, Img, LoadingSkeleton, Anchor } from '.';
 
 const _Avatar: FC<{
+  isJPG?: boolean;
   size?: 'tiny' | 'small' | 'medium' | 'large' | 'fill' | 'auto';
   variant?: 'square' | 'circle';
   noFrame?: boolean;
@@ -12,9 +13,21 @@ const _Avatar: FC<{
   className?: string;
   isClickable?: boolean;
   href?: string;
+  alt?: string;
   style?: CSSProperties;
   onClick?: (e: any) => void;
-}> = ({ size, variant, noFrame, elevation, className, src, href, style }): JSX.Element => {
+}> = ({
+  size,
+  variant,
+  noFrame,
+  elevation,
+  className,
+  src,
+  href,
+  style,
+  isJPG,
+  alt
+}): JSX.Element => {
   const Component = href ? Anchor : Box;
   const [hasLoaded, setHasLoaded] = useState(false);
   const [hasErred, setHasErred] = useState(false);
@@ -23,8 +36,10 @@ const _Avatar: FC<{
     setHasLoaded(true);
   }, []);
 
-  const handleImgError = useCallback(() => {
-    setHasErred(true);
+  const handleImgError = useCallback((e) => {
+    if (/\.(png|jpe?g)$/.test(e.target.src)) {
+      setHasErred(true);
+    }
   }, []);
 
   return (
@@ -37,7 +52,14 @@ const _Avatar: FC<{
       {...(href ? { href } : {})}
       {...(style ? { style } : {})}>
       {!hasErred && (
-        <Img src={src} className="Avatar__img" onLoad={handleImgLoad} onError={handleImgError} />
+        <Img
+          isJPG={isJPG}
+          src={src}
+          alt={alt || 'avatar'}
+          className="Avatar__img"
+          onLoad={handleImgLoad}
+          onError={handleImgError}
+        />
       )}
       {hasErred && <Box className="Avatar__no-image" role="img"></Box>}
       {!hasLoaded && <LoadingSkeleton erred={hasErred} />}

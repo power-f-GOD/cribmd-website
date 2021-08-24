@@ -1,19 +1,25 @@
 .benefitsGrid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1em;
+  grid-template-columns: 1fr;
+  gap: 1.25em;
   margin-bottom: 1em;
+  // place-items: end;
 
   > * {
     display: flex;
-    justify-content: space-between;
+    // justify-content: space-between;
     align-items: left;
     flex-direction: column;
+
+    > :last-child {
+      margin-top: auto;
+    }
   }
 }
+
 .benefitsContainer {
-  border: 0.0625rem solid #e6e9ef;
-  border-radius: 0.5rem;
+  border: 0.0625em solid #e6e9ef;
+  border-radius: 0.75em;
 
   .careCount {
     justify-content: center;
@@ -27,12 +33,12 @@
   }
 
   > div {
-    border-bottom: 0.0625rem solid #e6e9ef;
-    padding: 0.5rem 1rem;
-    min-height: 3rem;
+    border-bottom: 0.0625em solid #e6e9ef;
+    padding: 1em;
+    min-height: 3em;
     display: flex;
     align-items: center;
-    font-weight: 600;
+    // font-weight: 600;
     font-size: 3em * 0.3;
 
     @media (max-width: 1024px) {
@@ -49,50 +55,23 @@
     }
 
     &:last-child {
-      border-bottom: none;
-      min-height: 6rem;
+      border: none;
     }
+  }
+
+  a {
+    border-color: $theme-primary;
+    text-transform: uppercase;
 
     span {
-      color: $theme-primary;
-    }
-
-    .subscribeButton {
-      border: 0.0625rem solid $theme-primary;
-      transition: 0.5s;
-      // padding: 0.5rem 1.5rem;
-      font-style: normal;
-      border-radius: 0.5rem;
-      cursor: pointer;
-      width: 100%;
-
-      i {
-        font-style: inherit;
-        color: $theme-primary;
-
-        &:nth-child(1) {
-          font-size: 1em * 0.6;
-          letter-spacing: 0.1rem;
-        }
-        &:last-child {
-          font-size: 1em * 1.2;
-          letter-spacing: 0.1rem;
-        }
-      }
-      &:hover {
-        border: none;
-        background: $theme-primary;
-
-        i {
-          color: white;
-          font-style: inherit;
-        }
-      }
+      font-size: 1.25em;
+      font-weight: 600;
     }
   }
 }
+
 @media screen and (min-width: 768px) {
   .benefitsGrid {
-    grid-template-columns: repeat(4, 40% 19% 19% 19%);
+    grid-template-columns: 1fr 1fr 1fr;
   }
 }

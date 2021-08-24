@@ -9,9 +9,13 @@ const _Img: FC<ImgProps> = ({ isJPG, src, srcSet, onLoad, onError, ...props }): 
 
   useEffect(() => {
     if (imgRef.current && hasRendered) {
-      imgRef.current!.srcset = src || srcSet || '';
+      if (srcSet) {
+        imgRef.current!.srcset = srcSet || '';
+      } else {
+        imgRef.current!.src = src || '';
+      }
     }
-  }, [srcSet, src, hasRendered]);
+  }, [src, srcSet, hasRendered]);
 
   useEffect(() => {
     setHasRendered(true);
@@ -25,15 +29,22 @@ const _Img: FC<ImgProps> = ({ isJPG, src, srcSet, onLoad, onError, ...props }): 
       aria-hidden={props['aria-hidden'] || true}
       onError={(e) => {
         const img = e.target as HTMLImageElement;
+        const _src = img.srcset || img.src || '';
 
-        if (/\.(png|jpe?g)$/.test(img.src || img.srcset) && onError) {
-          onError(e);
+        if (/\.(png|jpe?g)/.test(_src)) {
+          if (onError) {
+            onError(e);
+          }
+
+          return;
         }
 
-        if (/\.webp/i.test(img.src)) {
-          img.src = img.src.replace(/\.webp/i, isJPG ? '.jpg' : '.png');
-        } else if (/\.webp/i.test(img.srcset)) {
-          img.srcset = img.srcset.replace(/\.webp/gi, isJPG ? '.jpg' : '.png');
+        if (/\.webp/i.test(_src)) {
+          if (srcSet) {
+            img.srcset = srcSet.replace(/\.webp/gi, isJPG ? '.jpg' : '.png');
+          } else {
+            img.src = src?.replace(/\.webp/gi, isJPG ? '.jpg' : '.png') || '';
+          }
         }
       }}
       onLoad={(e) => {

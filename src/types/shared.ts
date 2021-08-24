@@ -9,9 +9,22 @@ import {
   ImgHTMLAttributes
 } from 'react';
 
+export interface FAQDataProps {
+  generalInfo: QandAProps[];
+  pricingAndPlans: QandAProps[];
+  privacyAndSecurity: QandAProps[];
+  platformUsage: QandAProps[];
+}
+
 export interface QandAProps {
   question: string;
-  answer: string;
+  answer: Partial<{
+    paragraphs: string[];
+    orderedList1Title: string;
+    orderedList2Title: string;
+    orderedList1: string[];
+    orderedList2: string[];
+  }>;
 }
 
 export interface ImgProps
@@ -49,11 +62,13 @@ export interface BoxProps
   extends Partial<
     DetailedHTMLProps<
       HTMLAttributes<HTMLElement> & BlockquoteHTMLAttributes<HTMLElement>,
-      HTMLElement & HTMLParagraphElement & HTMLUListElement & HTMLLIElement
+      HTMLElement & HTMLParagraphElement & HTMLOListElement & HTMLUListElement & HTMLLIElement
     >
   > {
   as?: BoxAs;
-  _ref?: RefObject<HTMLElement & HTMLParagraphElement & HTMLUListElement & HTMLLIElement>;
+  _ref?: RefObject<
+    HTMLElement & HTMLParagraphElement & HTMLOListElement & HTMLUListElement & HTMLLIElement
+  >;
   'data-anim'?: TransitionAnimName;
 }
 
@@ -153,6 +168,7 @@ export type BoxAs =
   | 'span'
   | 'p'
   | 'ul'
+  | 'ol'
   | 'li'
   | 'section'
   | 'i'

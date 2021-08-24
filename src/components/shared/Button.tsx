@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import { FC, memo } from 'react';
 import { ButtonProps } from 'src/types';
-import { SVGIcon } from '.';
+import { SVGIcon, Anchor } from '.';
 
 const _Button: FC<ButtonProps> = ({
   children,
@@ -26,17 +26,25 @@ const _Button: FC<ButtonProps> = ({
 
 export const PlaystoreButton: FC<{ className?: string }> = ({ className }) => {
   return (
-    <Button className={`PlaystoreButton ${className || ''}`.trim()}>
+    <Anchor
+      button
+      target="_blank"
+      href="https://play.google.com/store/apps/details?id=cribmd.com.CribMD"
+      className={`PlaystoreButton ${className || ''}`.trim()}>
       <SVGIcon name="playstore-button" />
-    </Button>
+    </Anchor>
   );
 };
 
 export const AppstoreButton: FC<{ className?: string }> = ({ className }) => {
   return (
-    <Button className={`AppstoreButton ${className || ''}`.trim()}>
+    <Anchor
+      button
+      target="_blank"
+      href="https://apps.apple.com/us/app/id1534919330"
+      className={`AppstoreButton ${className || ''}`.trim()}>
       <SVGIcon name="appstore-button" />
-    </Button>
+    </Anchor>
   );
 };
 

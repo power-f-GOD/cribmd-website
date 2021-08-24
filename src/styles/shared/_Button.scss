@@ -3,6 +3,7 @@
   display: inline-flex;
   justify-content: center;
   align-items: center;
+  width: auto;
   min-height: 3.125rem; //2.65rem;
   padding: 0 1.25rem;
   border-radius: $br * 0.9;
@@ -48,6 +49,10 @@
     opacity: 0.75;
     cursor: not-allowed;
   }
+
+  * {
+    color: inherit;
+  }
 }
 
 .btn--contained {
@@ -85,7 +90,7 @@
 
   &:hover,
   &:focus {
-    background-color: transparent;
+    background-color: white; // transparent;
   }
 
   &-light {

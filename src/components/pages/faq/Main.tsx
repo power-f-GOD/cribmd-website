@@ -7,13 +7,15 @@ import { QandA } from './_QandA';
 import { Box, Button, RevealOnScroll } from 'src/components';
 import { useState, useCallback, SyntheticEvent } from 'react';
 import { SVGIcon } from 'src/components/shared';
+import { FAQDataProps } from 'src/types';
 
 const Main = (): JSX.Element => {
   const [openFAQId, setOpenFAQId] = useState('');
-  const [filteredCategory, setFilteredCategory] = useState({
+  const [filteredCategory, setFilteredCategory] = useState<Record<keyof FAQDataProps, boolean>>({
     generalInfo: false,
     pricingAndPlans: false,
-    medicalQuestions: false
+    platformUsage: false,
+    privacyAndSecurity: false
   });
   const noFilteredCategory = (() => {
     for (const [, value] of Object.entries(filteredCategory)) {
@@ -29,7 +31,7 @@ const Main = (): JSX.Element => {
     setFilteredCategory((prevfilter) => {
       const target = e.target as HTMLButtonElement;
       const newFilter = { ...prevfilter };
-      const { generalInfo, pricingAndPlans, medicalQuestions } = newFilter;
+      const { generalInfo, pricingAndPlans, privacyAndSecurity, platformUsage } = newFilter;
 
       switch (true) {
         case /general/i.test(target.textContent!):
@@ -40,9 +42,13 @@ const Main = (): JSX.Element => {
           target.dataset.selected = '' + !pricingAndPlans;
           newFilter.pricingAndPlans = !pricingAndPlans;
           break;
-        case /medical/i.test(target.textContent!):
-          target.dataset.selected = '' + !medicalQuestions;
-          newFilter.medicalQuestions = !medicalQuestions;
+        case /privacy/i.test(target.textContent!):
+          target.dataset.selected = '' + !privacyAndSecurity;
+          newFilter.privacyAndSecurity = !privacyAndSecurity;
+          break;
+        case /platform/i.test(target.textContent!):
+          target.dataset.selected = '' + !platformUsage;
+          newFilter.platformUsage = !platformUsage;
           break;
       }
 
@@ -58,17 +64,18 @@ const Main = (): JSX.Element => {
 
       <Box className={S.categoryButtonsWrapper}>
         <RevealOnScroll className={S.categoryButtonsContainer} animName="fadeInLeft" duration={0.5}>
-          <Button color="tertiary" variant="outlined" onClick={handleFilterCategoryClick}>
-            General Info <SVGIcon name="tick" crop />
-          </Button>
-          <Button color="tertiary" variant="outlined" onClick={handleFilterCategoryClick}>
-            Pricing and Plans
-            <SVGIcon name="tick" crop />
-          </Button>
-          <Button color="tertiary" variant="outlined" onClick={handleFilterCategoryClick}>
-            Medical Questions
-            <SVGIcon name="tick" crop />
-          </Button>
+          {['General Info ', 'Pricing and Plans', ' Privacy and Security', ' Platform Usage'].map(
+            (text) => (
+              <Button
+                color="tertiary"
+                variant="outlined"
+                onClick={handleFilterCategoryClick}
+                key={text}>
+                {text}
+                <SVGIcon name="tick" crop />
+              </Button>
+            )
+          )}
         </RevealOnScroll>
       </Box>
 
@@ -106,13 +113,30 @@ const Main = (): JSX.Element => {
         </Box>
       )}
 
-      {(noFilteredCategory || filteredCategory.medicalQuestions) && (
+      {(noFilteredCategory || filteredCategory.privacyAndSecurity) && (
         <Box as="section" className={S.category}>
           <Box as="h2" className="h4">
-            Medical Questions
+            Privacy and Security
           </Box>
 
-          {FAQs.medicalQuestions.map((data) => (
+          {FAQs.privacyAndSecurity.map((data) => (
+            <QandA
+              data={data}
+              openFAQId={openFAQId}
+              setOpenFAQId={setOpenFAQId}
+              key={data.question}
+            />
+          ))}
+        </Box>
+      )}
+
+      {(noFilteredCategory || filteredCategory.platformUsage) && (
+        <Box as="section" className={S.category}>
+          <Box as="h2" className="h4">
+            Platform Usage
+          </Box>
+
+          {FAQs.platformUsage.map((data) => (
             <QandA
               data={data}
               openFAQId={openFAQId}

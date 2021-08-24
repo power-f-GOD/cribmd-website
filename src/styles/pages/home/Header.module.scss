@@ -5,8 +5,9 @@
   border-radius: 1.5em;
   padding: 2.5em 1.25em;
   overflow: hidden;
-  min-height: 40rem; // fallback for browsers that may not support 'clamp'
-  min-height: clamp(30rem, 80vh, 40rem);
+  min-height: 40em; // fallback for browsers that may not support 'clamp'
+  margin-top: 5em;
+  min-height: clamp(30em, 80vh, 40em);
   position: relative;
 
   h1 {
@@ -61,10 +62,10 @@
 }
 
 .mediaGrid {
-  border: 0.0625rem solid #e6e9ef;
-  box-shadow: 0 0.125rem 0.25rem rgba(17, 17, 17, 0.04);
-  border-radius: 0.25rem;
-  min-height: 3rem;
+  border: 0.0625em solid #e6e9ef;
+  box-shadow: 0 0.125em 0.25rem rgba(17, 17, 17, 0.04);
+  border-radius: 1em;
+  min-height: 3em;
   display: grid;
   background-color: #e6e9ef;
   gap: 0.0625em;
@@ -93,12 +94,13 @@
 @media screen and (min-width: 576px) {
   .hero {
     border-radius: 2.5em;
+    margin-top: 7em;
   }
 
   .mediaGrid {
     border-radius: 0.75em;
     min-height: 5rem;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
@@ -110,5 +112,11 @@
 
   .mediaGrid {
     min-height: 8rem;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .mediaGrid {
+    grid-template-columns: repeat(6, 1fr);
   }
 }

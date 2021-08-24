@@ -32,6 +32,7 @@ const _OurPartners: FC<{ shrink?: boolean }> = (): JSX.Element => {
           </Box>
         ))}
       </RevealOnScroll>
+
       <RevealOnScroll
         className="__grid second mx-auto"
         animName="scale"

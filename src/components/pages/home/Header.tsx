@@ -10,7 +10,7 @@ import S from 'src/styles/pages/home/Header.module.scss';
 
 const Header = (): JSX.Element => {
   return (
-    <Container as="header">
+    <Container as="header" className="px-md-0">
       <RevealOnScroll once>
         <Row
           as="section"
@@ -53,15 +53,20 @@ const Header = (): JSX.Element => {
               </Box>
             </RevealOnScroll>
           </Col>
+
           <RevealOnScroll
             component={Col}
             xs={12}
             md={4}
             lg={5}
             xl={6}
-            className="ps-xl-5 pe-xl-0 text-center">
+            className="pe-xl-0 text-center">
             <Img
-              src={GetImage.home('header-hero-image')}
+              srcSet={`${GetImage.home('header-hero-image')} 500w, ${GetImage.home(
+                'header-hero-image',
+                '2x'
+              )} 1000w`}
+              sizes="(max-width: 1399px) 500px, 1000px"
               className={`${S.heroImage} ms-lg-4 ms-xl-5`}
               data-anim="fadeIn"
               data-anim_delay="0.9"
@@ -82,14 +87,27 @@ const Header = (): JSX.Element => {
       </RevealOnScroll>
       <Box as="section">
         <RevealOnScroll
-          component={Row}
+          as="section"
           className={`${S.mediaGrid} align-items-stretch`}
           animName="fadeInRight"
           easing="ease">
-          {['techpoint', 'spotify', 'markets-insider', 'yahoo-finance'].map((medium) => (
-            <Col className="py-2 py-lg-4" key={medium}>
+          {[
+            'the-guardian',
+            'techpoint',
+            'spotify',
+            'markets-insider',
+            'yahoo-finance',
+            'hollywoodheavy'
+          ].map((medium) => (
+            // <Col >
+            <Anchor
+              routeLink
+              href="/about/in-the-news#articles"
+              className="p-3 p-lg-4"
+              key={medium}>
               <Img src={GetImage.mediaLogo(medium)} alt={`${medium} logo`} />
-            </Col>
+            </Anchor>
+            // </Col>
           ))}
         </RevealOnScroll>
       </Box>

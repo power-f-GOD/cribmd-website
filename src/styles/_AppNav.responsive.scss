@@ -1,4 +1,22 @@
 @media screen and (max-width: 991px) {
+  .AppNav {
+    &.transparentize-ul-bg {
+      &::before {
+        transform: translateY(-100%);
+      }
+    }
+
+    &::before {
+      @include before-or-after($bg: white, $zi: 4);
+      // border-bottom: 0.0625em solid #f4f4f4;
+      box-shadow: 0 0 0 0.0625em #f4f4f4;
+      transition-timing-function: $timing-func;
+      border-radius: 0 0 1em 1em;
+      width: 110%;
+      left: -5%;
+    }
+  }
+
   body {
     overflow: hidden !important;
 
@@ -31,6 +49,7 @@
     position: fixed;
     bottom: 0;
     top: 0;
+    animation-delay: 0.125s;
   }
 
   ul.AppNav__nav-links-container {
@@ -46,10 +65,7 @@
     overflow-y: auto;
     padding-top: 7rem;
     color: white;
-
-    &::before {
-      content: unset !important;
-    }
+    animation-delay: 0.125s;
 
     li {
       text-align: center;
@@ -72,7 +88,7 @@
         }
       }
 
-      $delay: 0.03;
+      $delay: 0.05;
 
       @for $i from 1 through 6 {
         &:nth-child(#{$i}) {
@@ -94,6 +110,12 @@
     background-color: white;
     animation: anim__fadeInUp 0.5s cubic-bezier(0.125, 1, 0.5, 1) 0s;
     animation-fill-mode: both !important;
+  }
+
+  ul {
+    &::before {
+      content: unset !important;
+    }
   }
 
   div.AppNav__menu {

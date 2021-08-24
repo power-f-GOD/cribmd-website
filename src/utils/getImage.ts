@@ -9,8 +9,6 @@ export class GetImage {
   private static otherTeamMembersUrl = GetImage.baseUrl + 'about/our-company/other-team-members';
   private static advisorsUrl = GetImage.baseUrl + 'about/our-company/team';
 
-  private static individualUrl = GetImage.baseUrl + 'health-plans/individual';
-
   static mediaLogo(name: string) {
     return `${this.logoUrl}media/${name}-logo__250x.webp`;
   }
@@ -28,31 +26,31 @@ export class GetImage {
   }
 
   static home(name: string, size?: '1x' | '2x') {
-    return `${this.homeUrl}${name}__${parseInt(String(size || 1)) * 400}x.webp`;
+    return `${this.homeUrl}${name}__${parseInt(String(size || 1)) * 500}x.webp`;
   }
 
   static about(name: string, size?: '1x' | '2x') {
     return `${this.aboutUrl}${name}__${parseInt(String(size || 1)) * 400}x.webp`;
   }
 
-  static team(name: string, size?: '1x' | '2x') {
-    return `${this.teamUrl}${name}__${parseInt(String(size || 1)) * 400}x.webp`;
+  static teamMembersPrimary(name: string) {
+    return `${this.baseUrl}about/our-company/team-members-primary/${name}.webp`;
   }
 
-  static otherTeamMembers(name: string, size?: '1x' | '2x') {
-    return `${this.otherTeamMembersUrl}${name}__${parseInt(String(size || 1)) * 400}x.webp`;
+  static teamMembersSecondary(name: string) {
+    return `${this.baseUrl}about/our-company/team-members-secondary/${name}.webp`;
   }
 
-  static advisors(name: string, size?: '1x' | '2x') {
-    return `${this.advisorsUrl}${name}__${parseInt(String(size || 1)) * 400}x.webp`;
+  static advisors(name: string) {
+    return `${this.baseUrl}about/our-company/advisors/${name}.webp`;
   }
 
-  static individual(name: string, size?: '1x' | '2x') {
-    return `${this.individualUrl}${name}__${parseInt(String(size || 1)) * 400}x.webp`;
+  static doctors(name: string) {
+    return `${this.baseUrl}about/our-company/doctors/${name}.webp`;
   }
 
-  static corporate(name: string, size?: '1x' | '2x') {
-    return `${this.individualUrl}${name}__${parseInt(String(size || 1)) * 400}x.webp`;
+  static healthPlans(name: string) {
+    return `${GetImage.baseUrl}health-plans/${name}.webp`;
   }
 
   static testifier(name: string) {

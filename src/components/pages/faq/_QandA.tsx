@@ -11,7 +11,15 @@ const _QandA: FC<{
   data: QandAProps;
   openFAQId: string;
   setOpenFAQId(func: (id: string) => string): void;
-}> = ({ data: { question, answer }, openFAQId, setOpenFAQId, ...props }) => {
+}> = ({
+  data: {
+    question,
+    answer: { paragraphs, orderedList1Title, orderedList2Title, orderedList1, orderedList2 }
+  },
+  openFAQId,
+  setOpenFAQId,
+  ...props
+}) => {
   const windowWidth = useContext(AppWindowContext);
   const animFrom = useMemo(() => {
     return {
@@ -50,15 +58,55 @@ const _QandA: FC<{
 
       <AnimatePresence>
         {openFAQId === question && (
-          <motion.p
+          <motion.div
             style={animFrom}
             animate={animTo}
             exit={animFrom}
-            className="p-3 p-md-4"
+            className={`${S.answer} px-3 px-md-4 py-2 py-md-3`}
             onClick={handleFAQClick}
             transition={animDuration}>
-            <Box as="span">{answer}</Box>
-          </motion.p>
+            {paragraphs?.map((paragraph) => {
+              const embolden = paragraph.startsWith('|');
+
+              return (
+                <Box as="p" className={`${embolden ? 'fw-bold' : ''} my-2`} key={paragraph}>
+                  {embolden ? paragraph.replace(/\|/g, '') : paragraph}
+                </Box>
+              );
+            })}
+
+            {orderedList1Title && (
+              <Box as="p" className="my-2 fw-bold">
+                {orderedList1Title}
+              </Box>
+            )}
+
+            {orderedList1?.length ? (
+              <Box as="ol" className="my-2">
+                {orderedList1?.map((text) => (
+                  <Box as="li" key={text}>
+                    {text}
+                  </Box>
+                ))}
+              </Box>
+            ) : null}
+
+            {orderedList2Title && (
+              <Box as="p" className="my-2 fw-bold">
+                {orderedList2Title}
+              </Box>
+            )}
+
+            {orderedList2?.length ? (
+              <Box as="ol" className="my-2">
+                {orderedList2?.map((text) => (
+                  <Box as="li" key={text}>
+                    {text}
+                  </Box>
+                ))}
+              </Box>
+            ) : null}
+          </motion.div>
         )}
       </AnimatePresence>
     </Box>
