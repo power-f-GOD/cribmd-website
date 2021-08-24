@@ -27,7 +27,7 @@ const Footer = (): JSX.Element => {
               color="tertiary"
               className="bg-white mb-3 mt-2"
               variant="text"
-              href="https://www.cribmd.com/signup">
+              href="https://app.cribmd.com/signup">
               Join Us
             </Anchor>
           </Box>

@@ -286,7 +286,7 @@ const AppNav = (): JSX.Element => {
               button
               color="tertiary"
               className="AppNav__cta--text AppNav__nav-link btn--text"
-              href="https://www.cribmd.com/login">
+              href="https://app.cribmd.com/login">
               Log in
             </Anchor>
           </Box>
@@ -300,7 +300,7 @@ const AppNav = (): JSX.Element => {
               button
               color="tertiary"
               className="AppNav__cta--text AppNav__nav-link btn--text"
-              href="https://www.cribmd.com/login">
+              href="https://app.cribmd.com/login">
               Log in
             </Anchor>
           </Box>
@@ -312,7 +312,7 @@ const AppNav = (): JSX.Element => {
             variant="contained"
             color="primary"
             className="AppNav__nav-link ms-0 ms-lg-2"
-            href="https://www.cribmd.com/signup">
+            href="https://app.cribmd.com/signup">
             Sign up
           </Anchor>
         </Box>

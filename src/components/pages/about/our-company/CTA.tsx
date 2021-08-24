@@ -26,7 +26,7 @@ const CTA = (): JSX.Element => {
             color="tertiary"
             className={`bg-white col-12 col-md-2 ${windowWidth < 768 ? 'w-100' : ''}`}
             variant="text"
-            href="https://www.cribmd.com/signup">
+            href="https://app.cribmd.com/signup">
             Join Us
           </Anchor>
         </Box>

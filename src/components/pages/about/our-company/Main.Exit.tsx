@@ -59,7 +59,7 @@ const MainExit = (): JSX.Element => {
         ))}
 
         <Anchor
-          href="https://app.cribmd.com/patient/doctors-list"
+          href="https://app.cribmd.com/signup?rURL=patient/doctors-list"
           className={`${S.moreDoctorsLink} d-inline-flex align-items-center`}>
           See all doctors <SVGIcon name="next" color="red" className="ms-2" />
         </Anchor>
