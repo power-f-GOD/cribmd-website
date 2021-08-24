@@ -6,18 +6,8 @@ import ImageGallery, { ReactImageGalleryItem } from 'react-image-gallery';
 import { Box, Img, RevealOnScroll, Button, SVGIcon } from 'src/components/shared';
 import S from 'src/styles/pages/about/gallery/index.module.scss';
 import { GetImage, interval, delay } from 'src/utils';
+import { galleryPhotos } from 'src/data/about/gallery';
 
-const images: Array<{
-  title: string;
-  name: string;
-  description: string;
-}> = Array(18)
-  .fill({
-    title: '',
-    name: 'image',
-    description: 'A short description about the event or people in the Image.'
-  })
-  .map((photo, i) => ({ ...photo, name: photo.name + ((i % 5) + 1) }));
 const chunk = 6;
 let unmounted = false;
 
@@ -34,7 +24,7 @@ const MainGallery = (): JSX.Element => {
       interval(
         () => {
           setActivePhotoIndex((index) => {
-            return index === images.length - 1 ? 0 : index + 1;
+            return index === galleryPhotos.length - 1 ? 0 : index + 1;
           });
         },
         10000,
@@ -66,16 +56,16 @@ const MainGallery = (): JSX.Element => {
     <Container as="section" className={`Gallery ${S.Gallery} mt-5 shrink-max-width-xx`}>
       <ImageGallery
         items={
-          images.map(({ name, description, title }) => {
+          galleryPhotos.map(({ imageName, description }) => {
             return {
-              original: GetImage.gallery(name),
-              originalTitle: title,
-              description,
-              thumbnail: GetImage.gallery(name),
+              original: GetImage.gallery(imageName),
+              originalTitle: imageName,
+              description: description || imageName,
+              thumbnail: GetImage.gallery(imageName),
               thumbnailHeight: 50,
               renderItem: (props) => (
                 <>
-                  <Img src={props.original} alt={props.description} />
+                  <Img isJPG src={props.original} alt={props.description} />
                   <Box as="span" className="image-gallery-description">
                     {props.description}
                   </Box>
@@ -83,6 +73,7 @@ const MainGallery = (): JSX.Element => {
               ),
               renderThumbInner: (props) => (
                 <Img
+                  isJPG
                   src={props.original}
                   // style={{
                   //   maxHeight: 'calc(100vh - 4.5em)',
@@ -123,45 +114,51 @@ const MainGallery = (): JSX.Element => {
             className={`${S.galleryGrid} mb-3 mt-5`}
             animName="fadeInRight"
             easing="ease">
-            {images.slice(0, chunk).map(({ name, description }, i) => (
+            {galleryPhotos.slice(0, chunk).map(({ imageName, description }, i) => (
               <Box
                 className={`${S.galleryGridItem} ${
                   activePhotoIndex === i ? S.galleryGridItemActive : ''
                 }`}
                 key={i}>
-                <Img src={GetImage.gallery(name)} />
-                <Box as="p">
-                  <Box as="span">{description}</Box>
+                <Img isJPG src={GetImage.gallery(imageName)} />
+                <Box as="p" className="w-100">
+                  <Box as="span" className="w-100">
+                    {description || imageName}
+                  </Box>
                 </Box>
               </Box>
             ))}
           </RevealOnScroll>
 
           <RevealOnScroll className={`${S.galleryGrid} mb-3`} animName="fadeInLeft" easing="ease">
-            {images.slice(chunk, chunk * 2).map(({ name, description }, i) => (
+            {galleryPhotos.slice(chunk, chunk * 2).map(({ imageName, description }, i) => (
               <Box
                 className={`${S.galleryGridItem}  ${
                   activePhotoIndex === chunk + i ? S.galleryGridItemActive : ''
                 }`}
                 key={i}>
-                <Img src={GetImage.gallery(name)} />
-                <Box as="p">
-                  <Box as="span">{description}</Box>
+                <Img isJPG src={GetImage.gallery(imageName)} />
+                <Box as="p" className="w-100">
+                  <Box as="span" className="w-100">
+                    {description || imageName}
+                  </Box>
                 </Box>
               </Box>
             ))}
           </RevealOnScroll>
 
           <RevealOnScroll className={`${S.galleryGrid}`} animName="fadeInUp" easing="ease">
-            {images.slice(chunk * 2, chunk * 3).map(({ name, description }, i) => (
+            {galleryPhotos.slice(chunk * 2, chunk * 3).map(({ imageName, description }, i) => (
               <Box
                 className={`${S.galleryGridItem}  ${
                   activePhotoIndex === chunk * 2 + i ? S.galleryGridItemActive : ''
                 }`}
                 key={i}>
-                <Img src={GetImage.gallery(name)} />
-                <Box as="p">
-                  <Box as="span">{description}</Box>
+                <Img isJPG src={GetImage.gallery(imageName)} />
+                <Box as="p" className="w-100">
+                  <Box as="span" className="w-100">
+                    {description || imageName}
+                  </Box>
                 </Box>
               </Box>
             ))}

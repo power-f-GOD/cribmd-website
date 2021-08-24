@@ -54,13 +54,13 @@ const TeamModal: FC<{
               {content.contentFirst}
               <br></br>
               {content.contentSecond}
-              <a
+              {/* <a
                 className={S.linkd}
                 href="https://www.linkedin.com/in/ngiriuchechukwu"
                 target="_blank"
                 rel="noreferrer">
                 visit profile
-              </a>
+              </a> */}
             </Box>
           </Box>
         </Box>

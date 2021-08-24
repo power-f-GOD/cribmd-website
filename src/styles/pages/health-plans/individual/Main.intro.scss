@@ -54,10 +54,9 @@
       padding: 0;
     }
 
-    // &:last-child {
-    //   border-bottom: none;
-    //   min-height: 6rem;
-    // }
+    &:last-child {
+      border: none;
+    }
   }
 
   a {

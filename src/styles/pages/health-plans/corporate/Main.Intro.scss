@@ -31,18 +31,11 @@
   > div {
     border-bottom: 0.0625rem solid #e6e9ef;
     padding: 1em;
-    // min-height: 8rem;
     font-size: 3em * 0.3;
 
-    // @media (max-width: 1024px) {
-    //   min-height: 10rem;
-    // }
-
-    // @media (max-width: 767px) {
-    //   min-height: 3rem;
-    //   flex-direction: row !important;
-    //   justify-content: start;
-    // }
+    &:last-child {
+      border: none;
+    }
 
     p {
       margin: 0.5em 0 0 0;

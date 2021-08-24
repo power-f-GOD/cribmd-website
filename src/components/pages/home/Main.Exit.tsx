@@ -58,6 +58,7 @@ const MainExit = (): JSX.Element => {
               animName={i % 2 === 0 ? 'fadeInRight' : 'fadeInLeft'}
               delay={isMobile ? 0 : 0.3}>
               <Img
+                srcSet={`${GetImage.home(imageName)} 500w`}
                 src={GetImage.home(imageName)}
                 className={`mt-5 mt-md-0 ${i === 0 ? 'with-frame' : ''}`.trim()}
                 alt={`image of ${imageName.replace('-', ' ')}`}

@@ -1,6 +1,8 @@
-// @import 'Header';
-// @import 'Main';
-// @import 'Main._Intro';
-// @import 'Main.OurServices';
-// @import 'Main._Exit';
-// @import 'Footer';
+.Home {
+  main,
+  footer {
+    img {
+      width: 25em;
+    }
+  }
+}

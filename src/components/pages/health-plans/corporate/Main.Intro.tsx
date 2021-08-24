@@ -1,18 +1,20 @@
-import { memo } from 'react';
+import { memo, useCallback } from 'react';
 import { Container } from 'react-bootstrap';
-import { Box, SVGIcon, Anchor } from 'src/components/shared';
+import { Box, SVGIcon, Anchor, RevealOnScroll } from 'src/components/shared';
 import S from 'src/styles/pages/health-plans/corporate/Main.module.scss';
 // import { AppWindowContext } from 'src/pages/_app';
-import { benefitsData } from './data';
+import { corporateBenefitsData } from '../../../../data/health-plans/corporate';
 const MainIntro = (): JSX.Element => {
   // const windowWidth = useContext(AppWindowContext);
 
   return (
     <>
       <Container className="mb-5 shrink-max-width-xxl">
-        <Box as="h2" data-anim_delay="0.3">
-          Benefits
-        </Box>
+        <RevealOnScroll easing="ease">
+          <Box as="h2" data-anim_delay="0.3">
+            Benefits
+          </Box>
+        </RevealOnScroll>
 
         <Box className={`${S.benefitsGrid}`}>
           {/* {windowWidth > 767 && (
@@ -73,8 +75,8 @@ const MainIntro = (): JSX.Element => {
 
           {/* {windowWidth < 768 && ( */}
           {/* <Box> */}
-          {benefitsData.slice(1).map(({ header, list1, list, footer, monthlyFee }) => (
-            <Box key={header} className={`${S.benefitsContainer} my-3`}>
+          {corporateBenefitsData.slice(1).map(({ header, list1, list, footer, monthlyFee }, _i) => (
+            <RevealOnScroll easing="ease" key={header} className={`${S.benefitsContainer} my-3`}>
               <Box className={`d-flex justify-content-between ${S.benefitsHeader}`}>
                 <Box as="h2" className="h6">
                   {header}
@@ -118,7 +120,7 @@ const MainIntro = (): JSX.Element => {
                   button
                   href="http://www.cribmd.com/corporate/subscribe"
                   className={`flex-column align-item-center w-100 py-2`}
-                  variant="outlined"
+                  variant={_i === 0 ? 'contained' : 'outlined'}
                   color="primary">
                   <Box as="small" className="ms-2">
                     {footer}
@@ -128,11 +130,24 @@ const MainIntro = (): JSX.Element => {
                   </Box>
                 </Anchor>
               </Box>
-            </Box>
+            </RevealOnScroll>
           ))}
           {/* </Box> */}
           {/* )} */}
         </Box>
+
+        <RevealOnScroll className="text-center">
+          <Anchor
+            className="d-inline-flex align-items-center my-3"
+            variant="text"
+            href="javascript:void(0)"
+            onClick={useCallback(() => {
+              window.location.href =
+                'https://drive.google.com/u/0/uc?id=1zG9kHGyiTZ-udapiw349E_6OtG4rdcl8&export=download';
+            }, [])}>
+            <SVGIcon name="download-cloud" className="me-2" /> Download full Coverage Document
+          </Anchor>
+        </RevealOnScroll>
       </Container>
     </>
   );

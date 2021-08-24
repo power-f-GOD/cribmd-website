@@ -9,8 +9,6 @@ export class GetImage {
   private static otherTeamMembersUrl = GetImage.baseUrl + 'about/our-company/other-team-members';
   private static advisorsUrl = GetImage.baseUrl + 'about/our-company/team';
 
-  private static individualUrl = GetImage.baseUrl + 'health-plans/individual';
-
   static mediaLogo(name: string) {
     return `${this.logoUrl}media/${name}-logo__250x.webp`;
   }
@@ -28,7 +26,7 @@ export class GetImage {
   }
 
   static home(name: string, size?: '1x' | '2x') {
-    return `${this.homeUrl}${name}__${parseInt(String(size || 1)) * 400}x.webp`;
+    return `${this.homeUrl}${name}__${parseInt(String(size || 1)) * 500}x.webp`;
   }
 
   static about(name: string, size?: '1x' | '2x') {
@@ -47,12 +45,8 @@ export class GetImage {
     return `${this.advisorsUrl}${name}__${parseInt(String(size || 1)) * 400}x.webp`;
   }
 
-  static individual(name: string, size?: '1x' | '2x') {
-    return `${this.individualUrl}${name}__${parseInt(String(size || 1)) * 400}x.webp`;
-  }
-
-  static corporate(name: string, size?: '1x' | '2x') {
-    return `${this.individualUrl}${name}__${parseInt(String(size || 1)) * 400}x.webp`;
+  static healthPlans(name: string) {
+    return `${GetImage.baseUrl}health-plans/${name}.webp`;
   }
 
   static testifier(name: string) {

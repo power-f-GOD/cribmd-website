@@ -1,3 +1,5 @@
 export * from './home';
-export * from './shared';
+export * from './about';
+export * from './health-plans';
 export * from './faq';
+export * from './shared';

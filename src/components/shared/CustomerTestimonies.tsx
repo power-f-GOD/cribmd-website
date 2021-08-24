@@ -43,7 +43,7 @@ export const CustomerTestimonies = (): JSX.Element => {
   );
 
   useEffect(() => {
-    handleTestifierToggle('next')();
+    // handleTestifierToggle('next')();
 
     return () => {
       unmounted = true;
@@ -89,7 +89,7 @@ export const CustomerTestimonies = (): JSX.Element => {
                 key={i}
                 style={{
                   transform: `scale(${isActive ? '1' : '0.5'}) translateX(${
-                    isActive ? '0' : i < activeI ? '-5' : i > activeI ? '5' : '0'
+                    isActive ? '0' : i < activeI ? '-3' : i > activeI ? '3' : '0'
                   }em)`
                 }}
                 className={isActive ? 'active' : ''}

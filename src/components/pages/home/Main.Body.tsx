@@ -89,12 +89,13 @@ const MainBody = (): JSX.Element => {
             {ourServices.map((service, i) => (
               <RevealOnScroll
                 key={service.name}
-                className="mt-4 d-flex justify-content-center justify-content-md-start"
-                allowOverflow>
+                className={`${S.serviceCardContainer}  ${
+                  activeServiceIndex === i || isMobile ? S.serviceActive : ''
+                } mt-4 d-flex justify-content-center justify-content-md-start`}
+                allowOverflow
+                delay={0.5}>
                 <Box
-                  className={`${S.serviceCard} ${
-                    activeServiceIndex === i || isMobile ? S.serviceCardActive : ''
-                  }`}
+                  className={`${S.serviceCard}`}
                   data-anim={isMobile ? (i % 2 === 0 ? 'fadeInLeft' : 'fadeInRight') : 'fadeInLeft'}
                   data-anim_easing="ease">
                   <Box>

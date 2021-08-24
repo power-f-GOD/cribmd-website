@@ -69,7 +69,7 @@ const AppNav = (): JSX.Element => {
       scrollPositionTimeout = setTimeout(() => {
         finalScrollPosition = initialScrollPosition;
         setHasReachedScrollThreshold(finalScrollPosition < (isPC ? 110 : 55));
-      }, 35);
+      }, 25);
 
       if (isPC) {
         const isNegativeScroll = initialScrollPosition - finalScrollPosition < 0;
@@ -80,7 +80,7 @@ const AppNav = (): JSX.Element => {
           setRenderNav(true);
         }
       }
-    }, 35);
+    }, 25);
   }, [clearScrollTimeout, isPC]);
 
   useEffect(() => {

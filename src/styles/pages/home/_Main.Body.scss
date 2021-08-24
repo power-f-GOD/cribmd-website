@@ -50,6 +50,11 @@
   }
 }
 
+.serviceCardContainer {
+  transform: scale(0.9);
+  transition: 0.3s;
+}
+
 .serviceCard {
   box-shadow: none;
   border-radius: $br;
@@ -58,7 +63,7 @@
   max-width: 24em;
 
   &::before {
-    @include before-or-after($bg: transparent, $o: 0.85);
+    @include before-or-after($bg: white, $o: 0.85);
     backdrop-filter: blur(0.5em);
   }
 
@@ -75,16 +80,20 @@
     display: inline-block;
   }
 
-  p {
-    display: none;
-  }
+  // p {
+  //   display: none;
+  // }
 }
 
-.serviceCardActive {
-  box-shadow: 0.375em 0.75em 1.875em rgba(230, 233, 239, 0.85);
+.serviceActive {
+  transform: scale(1.05);
 
-  &::before {
-    background-color: white;
+  .serviceCard {
+    box-shadow: 0.375em 0.75em 1.875em rgba(230, 233, 239, 0.85);
+
+    &::before {
+      background-color: white;
+    }
   }
 
   p {

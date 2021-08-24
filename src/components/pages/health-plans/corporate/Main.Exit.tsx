@@ -2,7 +2,7 @@ import { memo } from 'react';
 import { Container } from 'react-bootstrap';
 import { Box, RevealOnScroll, SVGIcon, Anchor } from 'src/components/shared';
 import S from 'src/styles/pages/health-plans/individual/Main.module.scss';
-import { moreBenefitsData } from './data';
+import { corporateMoreBenefitsData } from '../../../../data/health-plans/corporate';
 
 const MainExit = (): JSX.Element => {
   return (
@@ -15,7 +15,7 @@ const MainExit = (): JSX.Element => {
       </RevealOnScroll>
 
       <Box className={`${S.moreBenefitsGrid}`}>
-        {moreBenefitsData.map(({ heading, content, svgName }) => (
+        {corporateMoreBenefitsData.map(({ heading, content, svgName }) => (
           <RevealOnScroll key={heading}>
             <Box data-anim="fadeInRight" data-anim_delay="0.3">
               <SVGIcon name={svgName} size="small" />

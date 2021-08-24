@@ -60,9 +60,13 @@ const Header = (): JSX.Element => {
             md={4}
             lg={5}
             xl={6}
-            className="ps-xl-5 pe-xl-0 text-center">
+            className="pe-xl-0 text-center">
             <Img
-              src={GetImage.home('header-hero-image')}
+              srcSet={`${GetImage.home('header-hero-image')} 500w, ${GetImage.home(
+                'header-hero-image',
+                '2x'
+              )} 1000w`}
+              sizes="(max-width: 1399px) 500px, 1000px"
               className={`${S.heroImage} ms-lg-4 ms-xl-5`}
               data-anim="fadeIn"
               data-anim_delay="0.9"

@@ -8,7 +8,7 @@ import {
   RevealOnScroll,
   SVGIcon
 } from 'src/components/shared';
-import { processData } from './data';
+import { corporateProcessData } from 'src/data';
 import { GetImage } from 'src/utils';
 import { AppWindowContext } from 'src/pages/_app';
 import S from 'src/styles/pages/health-plans/individual/Main.module.scss';
@@ -26,8 +26,8 @@ const MainBody = (): JSX.Element => {
       </RevealOnScroll>
 
       <Container className="shrink-max-width-xxl">
-        {processData.map(({ heading, p1, p2, buttonText, imageName, list }, i) => (
-          <Row key={heading} className="my-3 my-md-5 align-items-cent py-md-4 py-3">
+        {corporateProcessData.map(({ heading, p1, p2, buttonText, imageName, list }, i) => (
+          <Row key={heading} className="my-3 my-md-5 align-items-center py-md-4 py-3">
             <RevealOnScroll
               component={Col}
               xs={12}
@@ -78,13 +78,13 @@ const MainBody = (): JSX.Element => {
               xs={12}
               md={6}
               className={`text-center ${
-                i % 2 === 0 ? 'ps-md-4 text-md-end' : 'pe-md-4 text-md-start'
+                i % 2 === 0 ? 'ps-md-5 text-md-end' : 'pe-md-5 text-md-start'
               }`}
               easing="ease"
               delay={windowWidth < 768 ? 0 : 0.65}
               allowOverflow>
               <Img
-                src={GetImage.home(imageName)}
+                src={GetImage.healthPlans(imageName)}
                 className={`mt-5 mt-md-0`.trim()}
                 alt={`image of ${imageName.replace('-', ' ')}`}
               />

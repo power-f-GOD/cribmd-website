@@ -1,8 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { NextPage } from 'next';
 import { useRef, useEffect, useContext } from 'react';
-import { ScrollReveal } from 'src/utils';
 import { Container } from 'react-bootstrap';
+
+import S from 'src/styles/pages/home/index.module.scss';
+import { ScrollReveal } from 'src/utils';
 import { AppHead, Particles } from 'src/components';
 import { Header, Main, Footer } from 'src/components/pages/home';
 import { AppWindowContext } from './_app';
@@ -23,7 +25,7 @@ const Home: NextPage = () => {
     <>
       <AppHead title="Telemedicine &amp; Doctor Home Visit" />
 
-      <Container as="main" fluid className="Home pt-1" ref={homeRef as any}>
+      <Container as="main" fluid className={`${S.Home} pt-1`} ref={homeRef as any}>
         <Particles />
         <Header />
         <Main />
