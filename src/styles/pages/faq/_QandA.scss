@@ -13,12 +13,12 @@
   &:hover,
   &:focus-within {
     &,
-    p {
+    .answer {
       border-left-color: $theme-tertiary-v9 !important;
     }
 
     button,
-    p {
+    .answer {
       &::before {
         background-color: rgba($prim-r, $prim-g, $prim-b, 0.05) !important;
       }
@@ -30,7 +30,7 @@
   }
 
   button,
-  p {
+  .answer {
     background-color: white;
 
     &::before {
@@ -70,16 +70,27 @@
     }
   }
 
-  p {
+  .answer {
     position: absolute;
-    top: calc(100% - 0.5em);
+    top: calc(100% + 0.5em);
     cursor: pointer;
     box-shadow: $button-box-shadow;
     border: inherit;
+    width: 100%;
     border-radius: inherit;
+    font-size: 0.95em;
 
     &::before {
       z-index: -1;
+    }
+
+    ol {
+      padding-left: 2em;
+      margin-left: 0;
+    }
+
+    li {
+      padding-left: 1em;
     }
   }
 }
