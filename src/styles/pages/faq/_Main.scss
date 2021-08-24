@@ -1,0 +1,79 @@
+@import '../../constants';
+
+.Main {
+  @media screen and (min-width: 768px) {
+    max-width: 44em;
+  }
+
+  @media screen and (min-width: 992px) {
+    max-width: 45em;
+  }
+}
+
+.category {
+  margin: 2.5em 0;
+
+  @media screen and (min-width: 768px) {
+    margin: 5em 0;
+  }
+
+  button {
+    box-shadow: none;
+  }
+}
+
+.categoryButtonsWrapper {
+  overflow-x: auto !important;
+  min-height: 5em;
+  max-width: 100%;
+  position: relative;
+}
+
+.categoryButtonsContainer {
+  display: flex;
+  position: absolute;
+  white-space: nowrap;
+
+  button {
+    font-weight: 500;
+    float: left;
+    margin-right: 0.75em;
+    white-space: nowrap;
+    float: left;
+    margin-bottom: 0.75em;
+    min-height: 3em;
+    padding-right: 0.85em;
+    padding-left: 0.85em;
+    border-width: 0.125em;
+
+    &[data-selected='true'] {
+      border-color: $theme-primary;
+
+      i {
+        width: 1.5rem !important;
+      }
+    }
+
+    &:hover,
+    &:focus {
+      path {
+        stroke: white;
+      }
+    }
+
+    i {
+      font-size: 0.85em;
+      justify-content: flex-end;
+      width: 0 !important;
+      min-width: unset !important;
+    }
+
+    svg {
+      width: auto;
+    }
+
+    path {
+      transition: 0.3s;
+    }
+  }
+}

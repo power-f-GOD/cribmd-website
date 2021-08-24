@@ -1,0 +1,11 @@
+.ctaContainer {
+  background: rgb(158, 172, 229, 0.12) !important;
+  padding: 1.25em;
+  z-index: 100;
+  border-radius: 1.5rem;
+
+  img {
+    width: 100%;
+    object-fit: cover;
+  }
+}

@@ -1,0 +1,104 @@
+@import '../../constants';
+
+.QandA {
+  $border: 0.0625rem solid $theme-tertiary-v9;
+
+  // border-radius: $br;
+  border-radius: 0 $br $br 0;
+  border-left-color: transparent !important;
+  position: relative;
+  z-index: 0;
+  border: $border;
+
+  &:hover,
+  &:focus-within {
+    &,
+    .answer {
+      border-left-color: $theme-tertiary-v9 !important;
+    }
+
+    button,
+    .answer {
+      &::before {
+        background-color: rgba($prim-r, $prim-g, $prim-b, 0.05) !important;
+      }
+
+      span {
+        transform: translateX(0);
+      }
+    }
+  }
+
+  button,
+  .answer {
+    background-color: white;
+
+    &::before {
+      @include before-or-after();
+      background-color: white;
+    }
+
+    > * {
+      position: relative;
+      z-index: 1;
+    }
+  }
+
+  button {
+    border-radius: inherit;
+    // border-left: inherit !important;
+    font-weight: 600;
+    color: $theme-tertiary-v2 !important;
+    // padding-left: 0 !important;
+
+    &::before {
+      z-index: 0;
+    }
+
+    i {
+      font-size: 0.85em;
+    }
+
+    span {
+      transition: 0.3s;
+      transform: translateX(-1em);
+      display: inline-block;
+
+      @media screen and (min-width: 768px) {
+        transform: translateX(-1.65em);
+      }
+    }
+  }
+
+  .answer {
+    position: absolute;
+    top: calc(100% + 0.5em);
+    cursor: pointer;
+    box-shadow: $button-box-shadow;
+    border: inherit;
+    width: 100%;
+    border-radius: inherit;
+    font-size: 0.95em;
+
+    &::before {
+      z-index: -1;
+    }
+
+    ol {
+      padding-left: 2em;
+      margin-left: 0;
+    }
+
+    li {
+      padding-left: 1em;
+    }
+  }
+}
+
+.open {
+  z-index: 2;
+
+  i {
+    transform: rotateZ(180deg) scale(1);
+  }
+}

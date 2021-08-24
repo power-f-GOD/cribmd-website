@@ -1,8 +1,10 @@
 @import 'constants';
 
 @import 'global';
-@import 'shared/index';
+@import 'shared';
 @import 'AppNav';
-@import 'AppMain';
+@import 'AppNav.responsive';
+@import 'Gallery';
 @import 'AppFooter';
 @import 'animation';
+@import 'transition';

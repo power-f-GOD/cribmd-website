@@ -1,0 +1,52 @@
+.Icon {
+  display: inline-flex;
+  font-size: inherit;
+  justify-content: center;
+  position: relative;
+  transition: 0.3s;
+
+  &.size__tiny {
+    $size: 1.5rem;
+
+    width: $size;
+    min-width: $size;
+    height: $size;
+  }
+
+  &.size__small {
+    $size: 2rem;
+
+    width: $size;
+    min-width: $size;
+    height: $size;
+  }
+
+  &.size__medium {
+    $size: 3rem;
+
+    width: $size;
+    min-width: $size;
+    height: $size;
+  }
+
+  &.size__large {
+    $size: 4.5rem;
+
+    width: $size;
+    min-width: $size;
+    height: $size;
+  }
+
+  &.size__inherit {
+    $size: 1em;
+
+    width: $size;
+    min-width: $size;
+    height: $size;
+  }
+
+  > svg {
+    height: 100%;
+    width: 100%;
+  }
+}

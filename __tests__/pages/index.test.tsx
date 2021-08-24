@@ -1,5 +1,5 @@
 import renderer from 'react-test-renderer';
-import Index from 'src/pages/home';
+import Home from 'src/pages/home';
 
 describe('Index page', () => {
   it('should match the snapshot', () => {
@@ -9,7 +9,7 @@ describe('Index page', () => {
     //   site: 'Kennedy Space Center',
     //   rocket: 'Falcon 9'
     // };
-    const tree = renderer.create(<Index />).toJSON();
+    const tree = renderer.create(<Home />).toJSON();
     expect(tree).toMatchSnapshot();
   });
 });

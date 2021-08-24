@@ -1,31 +1,25 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { createContext, useState, useEffect, useMemo } from 'react';
 import { AppProps } from 'next/app';
-
-import 'bootstrap/dist/css/bootstrap-utilities.min.css';
-import 'bootstrap/dist/css/bootstrap-grid.min.css';
-import 'src/styles/app.scss';
-import { AppNav, AppFooter } from 'src/components';
 import Head from 'next/head';
 
-export const AppContext = createContext<{ windowWidth: number }>({
-  windowWidth: globalThis.innerWidth
-});
+import 'src/styles/app.scss';
+import { AppNav, AppFooter } from 'src/components';
+import { throttle } from 'src/utils';
+
+export const AppContext = createContext({});
+export const AppWindowContext = createContext<number>(globalThis.innerWidth);
 
 const App = ({ Component, pageProps }: AppProps): JSX.Element => {
   const [windowWidth, setWindowWidth] = useState(globalThis.innerWidth);
-  const appContextValue = useMemo(
-    () => ({
-      windowWidth
-    }),
-    [windowWidth]
-  );
+  const appContextValue = useMemo(() => ({}), []);
 
   useEffect(() => {
-    let throttle: NodeJS.Timeout;
+    let _throttle: NodeJS.Timeout;
 
     globalThis.onresize = () => {
-      clearTimeout(throttle);
-      throttle = setTimeout(() => {
+      clearTimeout(_throttle);
+      _throttle = throttle(() => {
         setWindowWidth(globalThis.innerWidth);
       }, 250);
     };
@@ -33,16 +27,34 @@ const App = ({ Component, pageProps }: AppProps): JSX.Element => {
 
   return (
     <AppContext.Provider value={appContextValue}>
-      <AppNav />
-      <Head>
-        <link
-          href="https://fonts.googleapis.com/css?family=Poppins:300,400,600,700,800&amp;display=swap"
-          rel="stylesheet"
-        />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <Component {...pageProps} />
-      <AppFooter />
+      <AppWindowContext.Provider value={windowWidth}>
+        <Head>
+          <meta
+            name="description"
+            content="Author: CribMD Telemedicine and Doctor Home Visit, Desc: We are a technology company that offers low cost medical services from online to door-step outreach."
+          />
+          <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+          <link
+            href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700,800&amp;display=swap"
+            rel="stylesheet"
+          />
+          <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap-grid.min.css"
+            rel="stylesheet"
+            crossOrigin="anonymous"
+          />
+          <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap-utilities.min.css"
+            rel="stylesheet"
+            crossOrigin="anonymous"
+          />
+          <link rel="icon" href="/favicon.ico" />
+        </Head>
+
+        <AppNav />
+        <Component {...pageProps} />
+        <AppFooter />
+      </AppWindowContext.Provider>
     </AppContext.Provider>
   );
 };

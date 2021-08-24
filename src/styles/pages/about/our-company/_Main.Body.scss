@@ -1,0 +1,146 @@
+.mainBody {
+  position: relative;
+  background: #f8f5ff;
+  z-index: 1;
+  margin-left: -1.25em;
+  margin-right: -1.25em;
+  padding-right: 1.25em;
+  padding-left: 1.25em;
+}
+
+.svgWrapper {
+  i {
+    width: inherit;
+    height: inherit;
+  }
+
+  svg {
+    height: unset;
+    width: unset;
+  }
+}
+
+.svgWrapper.rect {
+  z-index: -1;
+  position: absolute;
+}
+
+.svgWrapper.positionRight.outerRect {
+  top: 30rem;
+  right: 0;
+}
+
+.svgWrapper.positionRight.innerRect {
+  top: 31rem;
+  right: -8rem;
+}
+
+.svgWrapper.positionLeft.outerRect {
+  bottom: 1rem;
+  left: 0;
+}
+
+.svgWrapper.positionLeft.innerRect {
+  bottom: 0.4rem;
+  left: -8rem;
+}
+
+.teamGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25em;
+  margin-bottom: 1em;
+}
+
+.teamMemberContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  box-shadow: 0.125em 0.125em 0 rgb(13 35 68 / 8%);
+  padding: 1.25em;
+  border-radius: 1.25em;
+  background: #fff;
+  height: 100%;
+
+  a {
+    z-index: 10;
+    position: absolute;
+    cursor: pointer;
+    top: 1rem;
+    right: 1.5rem;
+    opacity: 0;
+    background: rgba(25, 113, 245, 0.1);
+    border-radius: 0.5rem;
+    padding: 0.4rem 0.7rem 0;
+    transition: visibility 0.3s linear, opacity 0.3s linear;
+
+    @media (max-width: 768px) {
+      padding: 0.4rem 0.3rem 0;
+    }
+  }
+
+  a {
+    visibility: hidden;
+  }
+
+  &:hover a {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  span {
+    text-align: center;
+  }
+}
+
+.teamMembersGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25em;
+  margin-bottom: 1em;
+
+  > * {
+    border-bottom: 0.125em solid #e8e5ef;
+    padding-bottom: 1em;
+    text-align: start;
+  }
+}
+
+.wave {
+  position: absolute;
+  left: 0;
+  top: 100%;
+  width: 100vw;
+}
+
+@media screen and (min-width: 576px) {
+}
+
+@media screen and (min-width: 768px) {
+  .teamGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .teamMembersGrid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+
+  .teamMemberContainer {
+    padding: 2.5em;
+    border-radius: inherit;
+    padding: 2.5em;
+    border-radius: 2.5em;
+    box-shadow: 0.25em 0.25em 0 rgb(13 35 68 / 8%);
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .teamGrid {
+    gap: 4em;
+  }
+
+  .teamMembersGrid {
+    gap: 2em;
+  }
+}

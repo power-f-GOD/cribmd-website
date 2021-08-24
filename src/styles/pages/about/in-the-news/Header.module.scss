@@ -1,0 +1,9 @@
+.headerContainer {
+  width: 100%;
+  background: #f5f9ff;
+  padding: 5rem 0.5rem;
+
+  @media (max-width: 768px) {
+    border-radius: 1.5rem;
+  }
+}

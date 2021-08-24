@@ -1,9 +1,5 @@
-import { MouseEvent } from 'react';
-
-export const preventDefault = <T = HTMLElement>(callback?: () => void) => (
-  e: MouseEvent<T>
-): void => {
-  e.preventDefault();
-
-  if (callback) callback();
-};
+export * from './getImage';
+export * from './misc';
+export * from './observer';
+export * from './scrollReveal';
+export * from './timers';

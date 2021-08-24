@@ -1,17 +1,33 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { NextPage } from 'next';
-
-import { AppHead } from 'src/components';
+import { useRef, useEffect } from 'react';
+import { ScrollReveal } from 'src/utils';
+import { Container } from 'react-bootstrap';
+import { AppHead, Particles } from 'src/components';
 import { Header, Main, Footer } from 'src/components/pages/about/our-company';
 
 const OurCompany: NextPage = () => {
+  const ourCompanyRef = useRef<HTMLElement | null>(null);
+
+  useEffect(() => {
+    const ourCompany = ourCompanyRef.current;
+
+    if (ourCompany) {
+      new ScrollReveal(ourCompany);
+    }
+  }, []);
   return (
-    <div className="OurCompany">
+    <>
       <AppHead title="About Us - Our Company" />
-      <h1>Welcome to the About/OurCompany page!</h1>
-      <Header />
-      <Main />
-      <Footer />
-    </div>
+
+      <Particles />
+
+      <Container as="main" fluid className="OurCompany" ref={ourCompanyRef as any}>
+        <Header />
+        <Main />
+        <Footer />
+      </Container>
+    </>
   );
 };
 

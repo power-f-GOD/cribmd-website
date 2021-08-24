@@ -1,9 +1,7 @@
+import { PageHeader } from 'src/components';
+
 const Header = (): JSX.Element => {
-  return (
-    <header>
-      <h6>This is the Header component!</h6>
-    </header>
-  );
+  return <PageHeader headerText="Hi! How can we help?" />;
 };
 
 export default Header;

@@ -1,0 +1,27 @@
+.SVG__ellipse {
+  position: absolute;
+  filter: blur(27em);
+  border-radius: 50%;
+  background-color: rgba(25, 166, 245, 0.05);
+  top: 0;
+  left: 0;
+  z-index: -1;
+  @include debugger();
+
+  &:nth-child(4),
+  &:nth-child(5) {
+    filter: blur(28em);
+  }
+
+  &:nth-child(3) {
+    background-color: rgba(25, 34, 245, 0.12);
+  }
+
+  &:nth-child(4) {
+    background-color: rgba(25, 34, 245, 0.06);
+  }
+
+  &:nth-child(5) {
+    background-color: rgba(25, 113, 245, 0.09);
+  }
+}

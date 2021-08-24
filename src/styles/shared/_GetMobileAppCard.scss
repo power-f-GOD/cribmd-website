@@ -1,0 +1,13 @@
+.GetMobileAppCard {
+  margin-top: 5em;
+  margin-bottom: 3em;
+  background-color: #0d2344;
+  border-radius: $br * 1.75;
+  overflow: hidden;
+
+  .__mobile-dashboard {
+    position: relative;
+    transform: translate(0.75em, 2.25em);
+    bottom: 0;
+  }
+}

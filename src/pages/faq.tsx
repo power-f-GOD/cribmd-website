@@ -1,17 +1,32 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { NextPage } from 'next';
 
-import { AppHead } from 'src/components';
+import { Container } from 'react-bootstrap';
+
+import { AppHead, Particles } from 'src/components';
 import { Header, Main, Footer } from 'src/components/pages/faq';
+import { ScrollReveal } from 'src/utils';
+import { useRef, useEffect } from 'react';
 
 const FAQ: NextPage = () => {
+  const faqRef = useRef<HTMLElement | null>(null);
+
+  useEffect(() => {
+    const faq = faqRef.current;
+
+    if (faq) {
+      new ScrollReveal(faq, { once: true });
+    }
+  }, []);
+
   return (
-    <div className="FAQ">
+    <Container as="main" fluid className="FAQ" ref={faqRef as any}>
       <AppHead title="FAQ" />
-      <h1>Welcome to the FAQ page!</h1>
+      <Particles />
       <Header />
       <Main />
       <Footer />
-    </div>
+    </Container>
   );
 };
 

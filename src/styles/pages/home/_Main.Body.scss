@@ -1,0 +1,134 @@
+// This is the Main 'main/body' section of the 'main' section.
+
+.servicesWrapper {
+  background-color: #f5f9ff;
+  padding: 1em 1.25em 3em 1.25em;
+  margin: 4em 0;
+  min-height: 62.5em;
+  margin-right: -1.25em !important;
+  margin-left: -1.25em !important;
+  width: calc(100% + 2.5em);
+
+  p {
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+  }
+}
+
+.servicesCarouselButtonsContainer {
+  position: relative;
+  margin-top: 3em;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  // background-color: red;
+
+  @media screen and (min-width: 992px) {
+    position: absolute;
+    left: -9em;
+    top: 7em;
+    transform: rotateZ(90deg);
+  }
+
+  button {
+    margin: 0 0.25em;
+    background-color: white;
+    box-shadow: $button-box-shadow !important;
+
+    &:hover,
+    &:focus {
+      box-shadow: $button-box-shadow-hover !important;
+    }
+
+    @media screen and (min-width: 992px) {
+      order: 1;
+    }
+  }
+
+  i {
+    font-size: 0.75em;
+  }
+}
+
+.serviceCardContainer {
+  transform: scale(0.9);
+  transition: 0.3s;
+}
+
+.serviceCard {
+  box-shadow: none;
+  border-radius: $br;
+  padding: 1.35em;
+  position: relative;
+  max-width: 24em;
+
+  &::before {
+    @include before-or-after($bg: white, $o: 0.85);
+    backdrop-filter: blur(0.5em);
+  }
+
+  > *:first-child {
+    display: flex;
+    align-items: center;
+
+    i {
+      margin-right: 1em;
+    }
+  }
+
+  h3 {
+    display: inline-block;
+  }
+
+  // p {
+  //   display: none;
+  // }
+}
+
+.serviceActive {
+  transform: scale(1.05);
+
+  .serviceCard {
+    box-shadow: 0.375em 0.75em 1.875em rgba(230, 233, 239, 0.85);
+
+    &::before {
+      background-color: white;
+    }
+  }
+
+  p {
+    display: block;
+  }
+}
+
+$size: 0.5em;
+
+.particlesContainer {
+  position: absolute;
+  transform: translate(-7em, -50%);
+  top: 50%;
+  display: flex;
+  justify-content: center;
+
+  span {
+    height: $size;
+    width: $size;
+    border-radius: $size / 2;
+    margin: 0 0.25em;
+    display: inline-block;
+    background-color: rgba(25, 113, 245, 0.1);
+    transition: 0.3s;
+
+    &.particleActive {
+      width: $size * 2;
+      background-color: rgba(25, 113, 245, 0.3);
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .servicesWrapper {
+    padding: 2rem 0 3rem 0;
+    margin: 7rem 0;
+  }
+}
