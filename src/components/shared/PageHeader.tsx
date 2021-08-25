@@ -15,7 +15,12 @@ const _PageHeader: FC<{
     <Container fluid as="header" className={`PageHeader ${ctaHref ? 'has-cta' : ''}`}>
       <Container className="text-md-center px-md-3">
         <Row className="justify-content-md-center my-3">
-          <RevealOnScroll component={Col} xs={12} className="pt-3" easing="ease" allowOverflow>
+          <RevealOnScroll
+            component={Col}
+            xs={12}
+            className="pt-3"
+            easing="ease"
+            allowOverflow={ctaHref ? true : false}>
             <Box
               as="h1"
               data-anim_delay="0.2"
