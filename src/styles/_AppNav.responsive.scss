@@ -3,6 +3,7 @@
     &.transparentize-ul-bg {
       &::before {
         transform: translateY(-100%);
+        opacity: 0.35;
       }
     }
 

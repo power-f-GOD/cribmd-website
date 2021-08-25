@@ -17,6 +17,10 @@
     padding-top: 5em;
     width: calc(100% + 2.5em);
     border-radius: 0;
+
+    .blurredEllipse {
+      opacity: 0.75;
+    }
   }
 
   h1 {

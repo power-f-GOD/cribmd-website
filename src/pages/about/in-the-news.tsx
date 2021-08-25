@@ -1,12 +1,14 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { NextPage } from 'next';
 import { Container } from 'react-bootstrap';
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useContext } from 'react';
 import { ScrollReveal, delay } from 'src/utils';
 import { AppHead, Particles } from 'src/components';
 import { Header, Main } from 'src/components/pages/about/in-the-news';
+import { AppWindowContext } from '../_app';
 
 const InTheNews: NextPage = () => {
+  const windowWidth = useContext(AppWindowContext);
   const inTheNewsRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
@@ -14,7 +16,7 @@ const InTheNews: NextPage = () => {
     const inTheNews = inTheNewsRef.current;
 
     if (inTheNews) {
-      new ScrollReveal(inTheNews);
+      new ScrollReveal(inTheNews, { once: windowWidth < 768 });
     }
 
     delay(500).then(() => {
@@ -40,7 +42,7 @@ const InTheNews: NextPage = () => {
         }
       }
     });
-  }, []);
+  }, [windowWidth]);
 
   return (
     <>
