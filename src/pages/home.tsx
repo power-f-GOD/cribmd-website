@@ -17,7 +17,7 @@ const Home: NextPage = () => {
     const home = homeRef.current;
 
     if (home) {
-      new ScrollReveal(home);
+      new ScrollReveal(home, { once: windowWidth < 768 });
     }
   }, [windowWidth]);
 
@@ -25,7 +25,7 @@ const Home: NextPage = () => {
     <>
       <AppHead title="Telemedicine &amp; Doctor Home Visit" />
 
-      <Container as="main" fluid className={`${S.Home} pt-1`} ref={homeRef as any}>
+      <Container as="main" fluid className={`${S.Home} pt-0 pt-md-1`} ref={homeRef as any}>
         <Particles />
         <Header />
         <Main />
