@@ -94,7 +94,7 @@ export const news: Array<{
     rider: 'CribMD: Bringing Affordable, Quality Healthcare to Millions in Nigeria',
     imageName: 'markets-insider',
     anchorHref:
-      'https://markets.businessinsider.com/stocks/cribmd-bringing-affordable-quality-healthcare-to-millions-in-nigeria-1030238389'
+      'https://markets.businessinsider.com/news/stocks/cribmd-bringing-affordable-quality-healthcare-to-millions-in-nigeria-1030238389'
   },
   {
     caption: 'Yahoo! Finance',

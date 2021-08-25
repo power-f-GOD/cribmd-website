@@ -13,13 +13,13 @@ const _PageHeader: FC<{
 }> = ({ ctaHref, ctaText, headerText, rider, children }): JSX.Element => {
   return (
     <Container fluid as="header" className={`PageHeader ${ctaHref ? 'has-cta' : ''}`}>
-      <Container className="text-md-center px-md-3 shrink-max-width-xxl">
+      <Container className="text-md-center px-md-3">
         <Row className="justify-content-md-center my-3">
           <RevealOnScroll component={Col} xs={12} className="pt-3" easing="ease" allowOverflow>
             <Box
               as="h1"
               data-anim_delay="0.2"
-              className="my-4"
+              className="my-4 mx-auto shrink-max-width-xxl"
               data-anim_easing="ease"
               dangerouslySetInnerHTML={{ __html: headerText }}
             />
@@ -28,7 +28,7 @@ const _PageHeader: FC<{
               <Box
                 as="p"
                 data-anim_delay={0.5}
-                className="mx-md-auto px-md-5 py-1 my-3 my-lg-4"
+                className="mx-md-auto px-md-5 py-1 my-3 my-lg-4  shrink-max-width-xxl"
                 dangerouslySetInnerHTML={{ __html: rider }}
               />
             )}
