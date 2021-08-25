@@ -4,15 +4,14 @@
   justify-content: center;
   align-items: center;
   width: auto;
-  min-height: 3.125rem; //2.65rem;
+  min-height: 3.125rem;
   padding: 0 1.25rem;
   border-radius: $br * 0.9;
-  // font-size: 0.9em;
-  box-shadow: $button-box-shadow; // 0 0.0625em 0.125em rgba(0, 0, 0, 0.1);
+  // white-space: nowrap;
+  box-shadow: $button-box-shadow;
   text-decoration: none !important;
   overflow: hidden;
   cursor: pointer;
-  // @extend .text-overflow-ellipsis;
 
   &.active {
     &:hover,
@@ -28,7 +27,7 @@
     padding-left: 2em;
     // background-color: $theme-primary ;
     font-size: 1em;
-    min-height: 3.5rem;
+    min-height: 3.5em;
     color: $heading-default;
 
     &:hover,

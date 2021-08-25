@@ -263,9 +263,9 @@ export const FAQs: FAQDataProps = {
         orderedList1: [
           'Visit Playstore on an Android device or AppStore on an Apple device.',
           'Type in CribMD on the search bar and tap the download button.',
-          ''
+          'Signup or sign in to access the app right away!'
         ],
-        orderedList2Title: 'Signup or sign in to access the app right away!',
+        orderedList2Title: '',
         orderedList2: []
       }
     }

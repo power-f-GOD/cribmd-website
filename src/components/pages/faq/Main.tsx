@@ -58,12 +58,12 @@ const Main = (): JSX.Element => {
 
   return (
     <Container as="main" className={`${S.Main} shrink-max-width-xxl`}>
-      <RevealOnScroll>
-        <Box as="p">Filter questions by category</Box>
+      <RevealOnScroll easing="ease">
+        <Box as="p">Filter questions by category:</Box>
       </RevealOnScroll>
 
-      <Box className={S.categoryButtonsWrapper}>
-        <RevealOnScroll className={S.categoryButtonsContainer} animName="fadeInLeft" duration={0.5}>
+      <RevealOnScroll className={S.categoryButtonsWrapper} easing="ease" animName="fadeIn">
+        <Box className={S.categoryButtonsContainer}>
           {['General Info ', 'Pricing and Plans', ' Privacy and Security', ' Platform Usage'].map(
             (text) => (
               <Button
@@ -76,8 +76,8 @@ const Main = (): JSX.Element => {
               </Button>
             )
           )}
-        </RevealOnScroll>
-      </Box>
+        </Box>
+      </RevealOnScroll>
 
       {(noFilteredCategory || filteredCategory.generalInfo) && (
         <Box as="section" className={S.category}>

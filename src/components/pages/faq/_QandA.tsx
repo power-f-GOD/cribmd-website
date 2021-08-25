@@ -52,7 +52,9 @@ const _QandA: FC<{
         variant="text"
         className="d-flex justify-content-between my-0 w-100 px-3 py-2 px-md-4 py-md-3"
         onClick={handleFAQClick}>
-        <Box as="span">{question}</Box>
+        <Box as="span" className="text-start">
+          {question}
+        </Box>
         <SVGIcon name="caret-down" />
       </Button>
 

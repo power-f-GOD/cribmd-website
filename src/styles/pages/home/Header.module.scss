@@ -10,6 +10,15 @@
   min-height: clamp(30em, 80vh, 40em);
   position: relative;
 
+  @media screen and (max-width: 575px) {
+    margin-left: -1.25em;
+    margin-right: -1.25em;
+    margin-top: 0;
+    padding-top: 5em;
+    width: calc(100% + 2.5em);
+    border-radius: 0;
+  }
+
   h1 {
     overflow: hidden;
 

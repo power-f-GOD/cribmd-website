@@ -1,12 +1,15 @@
-import { memo } from 'react';
+import { memo, useContext } from 'react';
 import { Box, SVGIcon, RevealOnScroll, SVGShape, Avatar } from 'src/components/shared';
 import S from 'src/styles/pages/about/our-company/index.module.scss';
 import TeamModal from './Modal';
 import { Container } from 'react-bootstrap';
 import { teamMembersPrimary, teamMembersSecondary, advisorsData } from 'src/data';
 import { GetImage, getHumanName } from 'src/utils';
+import { AppWindowContext } from 'src/pages/_app';
 
 const MainBody = (): JSX.Element => {
+  const windowWidth = useContext(AppWindowContext);
+
   return (
     <Box as="section" className={S.mainBody}>
       {/* side icons(svg) */}
@@ -63,7 +66,7 @@ const MainBody = (): JSX.Element => {
 
                 <Avatar
                   isJPG
-                  size="medium"
+                  size={windowWidth < 576 ? 'small' : 'medium'}
                   src={GetImage.teamMembersPrimary(imageName)}
                   alt="team member image"
                 />
