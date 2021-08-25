@@ -1,21 +1,23 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { NextPage } from 'next';
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useContext } from 'react';
 import { ScrollReveal } from 'src/utils';
 import { Container } from 'react-bootstrap';
 import { AppHead, Particles } from 'src/components';
 import { Header, Main, Footer } from 'src/components/pages/about/our-company';
+import { AppWindowContext } from '../_app';
 
 const OurCompany: NextPage = () => {
+  const windowWidth = useContext(AppWindowContext);
   const ourCompanyRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
     const ourCompany = ourCompanyRef.current;
 
     if (ourCompany) {
-      new ScrollReveal(ourCompany);
+      new ScrollReveal(ourCompany, { once: windowWidth < 768 });
     }
-  }, []);
+  }, [windowWidth]);
   return (
     <>
       <AppHead title="About Us - Our Company" />

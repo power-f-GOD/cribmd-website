@@ -6,18 +6,20 @@ import { Container } from 'react-bootstrap';
 import { AppHead, Particles } from 'src/components';
 import { Header, Main, Footer } from 'src/components/pages/faq';
 import { ScrollReveal } from 'src/utils';
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useContext } from 'react';
+import { AppWindowContext } from './_app';
 
 const FAQ: NextPage = () => {
+  const windowWidth = useContext(AppWindowContext);
   const faqRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
     const faq = faqRef.current;
 
     if (faq) {
-      new ScrollReveal(faq);
+      new ScrollReveal(faq, { once: windowWidth < 768 });
     }
-  }, []);
+  }, [windowWidth]);
 
   return (
     <Container as="main" fluid className="FAQ" ref={faqRef as any}>
