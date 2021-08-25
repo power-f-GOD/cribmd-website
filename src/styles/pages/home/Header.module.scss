@@ -75,12 +75,12 @@
 }
 
 .mediaGrid {
-  border: 0.0625em solid #e6e9ef;
+  border: 0.0625em solid #eee;
   box-shadow: 0 0.125em 0.25rem rgba(17, 17, 17, 0.04);
   border-radius: 1em;
   min-height: 3em;
   display: grid;
-  background-color: #e6e9ef;
+  background-color: #eee;
   gap: 0.0625em;
   grid-template-columns: 1fr 1fr;
 

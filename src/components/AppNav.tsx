@@ -60,7 +60,6 @@ const AppNav = (): JSX.Element => {
     clearScrollTimeout();
     scrollTimeout = setTimeout(
       () => {
-        console.log(111);
         clearTimeout(scrollPositionTimeout);
         initialScrollPosition = window.scrollY || window.pageYOffset;
         scrollPositionTimeout = setTimeout(

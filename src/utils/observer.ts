@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
-export const createObserver = (
+export const createIntersectionObserver = (
   root: HTMLElement | null,
   callback: IntersectionObserverCallback,
   options?: IntersectionObserverInit
@@ -19,4 +19,8 @@ export const createObserver = (
             .map((_, i) => Number((i / 100).toFixed(2)))
         }
   );
+};
+
+export const createMutationObserver = (callback: MutationCallback) => {
+  return new MutationObserver(callback);
 };
