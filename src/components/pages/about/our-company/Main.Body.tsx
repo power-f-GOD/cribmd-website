@@ -72,10 +72,10 @@ const MainBody = (): JSX.Element => {
                 />
 
                 <Box className={`${S.ourTeamContent} mb-auto`}>
-                  <Box as="h6" className="mt-4 mb-2">
+                  <Box as="h6" className="mt-2 mt-md-4 mb-2">
                     {getHumanName(imageName)}
                   </Box>
-                  <Box as="span" className="tertiary-content">
+                  <Box as="small" className="d-inline-block theme-tertiary">
                     {role}
                   </Box>
                 </Box>

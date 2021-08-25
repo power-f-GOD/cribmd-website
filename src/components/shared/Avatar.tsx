@@ -2,7 +2,7 @@
 import { memo, FC, useState, useCallback, CSSProperties, useEffect, useRef } from 'react';
 
 import { Box, Img, LoadingSkeleton, Anchor } from '.';
-import { createObserver, delay } from 'src/utils';
+import { createIntersectionObserver, delay } from 'src/utils';
 
 let observer: IntersectionObserver;
 
@@ -51,18 +51,18 @@ const _Avatar: FC<{
     delay(250).then(() => {
       const avatar = avatarRef.current;
 
-      observer = createObserver(
+      observer = createIntersectionObserver(
         null,
         (entries) => {
           entries.forEach((entry) => {
             if (entry.isIntersecting && !source) {
-              return setSource(src);
+              setSource(src);
             } else if (entry.isIntersecting && avatar) {
               observer.unobserve(avatar);
             }
           });
         },
-        { threshold: 0.75 }
+        { threshold: 0.5 }
       );
 
       if (avatar) {
