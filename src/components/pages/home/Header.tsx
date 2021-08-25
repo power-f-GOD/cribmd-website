@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-
+import { useContext } from 'react';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -7,11 +7,14 @@ import Col from 'react-bootstrap/Col';
 import { Box, Anchor, Img, RevealOnScroll } from 'src/components/shared';
 import { GetImage } from 'src/utils';
 import S from 'src/styles/pages/home/Header.module.scss';
+import { AppWindowContext } from 'src/pages/_app';
 
 const Header = (): JSX.Element => {
+  const windowWidth = useContext(AppWindowContext);
+
   return (
     <Container as="header" className="px-md-0">
-      <RevealOnScroll once>
+      <RevealOnScroll once allowOverflow>
         <Row
           as="section"
           className={`${S.hero} p-sm-5 align-items-center`}
@@ -89,7 +92,7 @@ const Header = (): JSX.Element => {
         <RevealOnScroll
           as="section"
           className={`${S.mediaGrid} align-items-stretch`}
-          animName="fadeInRight"
+          animName={windowWidth < 992 ? 'fadeInDown' : 'fadeInRight'}
           easing="ease">
           {[
             'the-guardian',
