@@ -32,7 +32,7 @@ const AppFooter = (): JSX.Element => {
             className="__about __group mb-0 order-2 order-lg-0 ps-0  pe-0 pe-md-4 pe-lg-5"
             animName="fadeInRight"
             easing="ease">
-            <Logo className="pb-0 mb-0 mt-3 mt-md-0" />
+            <Logo preserveText className="pb-0 mb-0 mt-3 mt-md-0" />
 
             <Box as="p" className="mt-2">
               We are a technology company that offers low cost medical services from online to

@@ -5,14 +5,17 @@ import { Box } from './Box';
 import { SVGIcon } from './SVG.Icons';
 import { Anchor } from './Link';
 
-const _Logo: FC<{ variant?: 'on-white' | 'on-black' | 'on-blue'; className?: string }> = ({
-  className
-}): JSX.Element => {
+const _Logo: FC<{
+  variant?: 'on-white' | 'on-black' | 'on-blue';
+  className?: string;
+  preserveText?: boolean;
+}> = ({ className, preserveText }): JSX.Element => {
   return (
-    <Box className={`Logo top px-0 ${className || ''}`.trim()}>
+    <Box
+      className={`Logo top px-0 ${className || ''} ${preserveText ? 'preserve-text' : ''}`.trim()}>
       <Anchor routeLink href="/">
-        <SVGIcon name="cribmd-logo--blue" className="me-2" />
-        <SVGIcon name="cribmd-logo-text" />
+        <SVGIcon name="cribmd-logo--blue" />
+        <SVGIcon name="cribmd-logo-text" className="m" />
 
         <SVG
           xmlns="http://www.w3.org/2000/svg"
