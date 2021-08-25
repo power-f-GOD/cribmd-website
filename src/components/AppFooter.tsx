@@ -99,16 +99,20 @@ const AppFooter = (): JSX.Element => {
                 For Patients
               </Box>
               <Box>
-                <Anchor href="/patient/doctors-list">Search for Doctors</Anchor>
+                <Anchor href="https://app.cribmd.com/login?rURL=patient/doctors-list">
+                  Search for Doctors
+                </Anchor>
               </Box>
               <Box>
-                <Anchor href="/login">Login</Anchor>
+                <Anchor href="https://app.cribmd.com/login">Login</Anchor>
               </Box>
               <Box>
-                <Anchor href="/signup">Register</Anchor>
+                <Anchor href="https://app.cribmd.com/signup">Register</Anchor>
               </Box>
               <Box>
-                <Anchor href="/patient/appointments">Booking</Anchor>
+                <Anchor href="https://app.cribmd.com/login?rURL=patient/appointments">
+                  Booking
+                </Anchor>
               </Box>
             </Col>
 
@@ -117,13 +121,15 @@ const AppFooter = (): JSX.Element => {
                 For Doctors
               </Box>
               <Box>
-                <Anchor href="/doctor/dashboard">Appointments</Anchor>
+                <Anchor href="https://app.cribmd.com/login?rURL=doctor/dashboard">
+                  Appointments
+                </Anchor>
               </Box>
               <Box>
-                <Anchor href="/login">Login</Anchor>
+                <Anchor href="https://app.cribmd.com/login">Login</Anchor>
               </Box>
               <Box>
-                <Anchor href="/signup">Register</Anchor>
+                <Anchor href="https://app.cribmd.com/signup">Register</Anchor>
               </Box>
             </Col>
 

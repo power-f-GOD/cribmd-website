@@ -50,7 +50,7 @@ const _Particles = (): JSX.Element => {
   if (!particles || unmounted) return <></>;
 
   return createPortal(
-    Array(Math.floor((isMobile ? 3 : 12) * (scrollHeight / (globalThis.innerHeight - 100 || 1000))))
+    Array(Math.floor((isMobile ? 6 : 12) * (scrollHeight / (globalThis.innerHeight - 100 || 1000))))
       .fill('')
       .map((_, i) => (
         <Box

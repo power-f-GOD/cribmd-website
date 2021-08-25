@@ -84,7 +84,18 @@
     }
   }
 
-  .__logo-container img {
-    width: 8rem;
+  .Logo {
+    a {
+      width: 15em !important;
+    }
+
+    .Icon {
+      display: inline-flex !important;
+
+      &:nth-of-type(1) {
+        margin-right: 0 !important;
+        border-right: none !important;
+      }
+    }
   }
 }

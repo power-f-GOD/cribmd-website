@@ -313,7 +313,7 @@ const AppNav = (): JSX.Element => {
             button
             variant="contained"
             color="primary"
-            className="AppNav__nav-link ms-0 ms-lg-2"
+            className="AppNav__nav-link ms-0 ms-lg-2 white-space-nowrap"
             href="https://app.cribmd.com/signup">
             Sign up
           </Anchor>

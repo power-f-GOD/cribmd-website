@@ -7,13 +7,10 @@
     }
 
     &::before {
-      @include before-or-after($bg: white, $zi: 4);
-      // border-bottom: 0.0625em solid #f4f4f4;
+      @include before-or-after($bg: white, $zi: 4, $br: 0 0 1em 1em, $o: 0.9, $w: 110%, $l: -5%);
+      backdrop-filter: blur(0.5rem);
       box-shadow: 0 0 0 0.0625em #f4f4f4;
       transition-timing-function: $timing-func;
-      border-radius: 0 0 1em 1em;
-      width: 110%;
-      left: -5%;
     }
   }
 

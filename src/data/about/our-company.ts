@@ -47,6 +47,15 @@ export const teamMembersPrimary: {
       committee member on President Obama’s National Health Care Advisory Committee. `
   },
   {
+    role: 'Chief Product Officer',
+    imageName: 'Mollie-Epstein',
+    profileLink: 'https://www.linkedin.com/in/mollieepstein/',
+    skill: 'Epidemiologist, Data Scientist',
+    primaryBio: `Mollie is a seasoned research designer, experienced in primary and secondary data analysis, and clear presentation of results.`,
+    secondaryBio: `Significant experience with grant-writing, project development, coordination and management,
+       as well as database creation, management and analysis. Proficient with STATA, R, and SAS.`
+  },
+  {
     role: 'Chief Commercial Officer',
     imageName: 'Silvia-Lambiase',
     // profileLink: 'https://www.linkedin.com/in/adedapo-adesanya-a485aa179',
@@ -75,15 +84,6 @@ export const teamMembersPrimary: {
   //   contentSecond: `Prior to this he was a marketing major in Southern California where he created and scaled small businesses and sold them as a young entrepreneur.`,
   //   orderLg: '4',
   // },
-  {
-    role: 'VP of Program Development',
-    imageName: 'Mollie-Epstein',
-    profileLink: 'https://www.linkedin.com/in/mollieepstein/',
-    skill: 'Epidemiologist, Data Scientist',
-    primaryBio: `Mollie is a seasoned research designer, experienced in primary and secondary data analysis, and clear presentation of results.`,
-    secondaryBio: `Significant experience with grant-writing, project development, coordination and management,
-       as well as database creation, management and analysis. Proficient with STATA, R, and SAS.`
-  },
   {
     role: 'Chief Medical Officer',
     imageName: 'Adedapo-Adesanya',

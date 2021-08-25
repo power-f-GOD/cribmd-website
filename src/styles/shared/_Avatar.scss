@@ -25,6 +25,7 @@
     height: 100%;
     transition: transform 0.3s, opacity 0.5s;
     object-fit: cover;
+    position: absolute;
     object-position: center;
   }
 
@@ -118,6 +119,12 @@
 
   .LoadingSkeleton {
     opacity: 0.8;
+    pointer-events: none;
     position: absolute;
+    top: 0;
+
+    &.has-loaded {
+      opacity: 0;
+    }
   }
 }

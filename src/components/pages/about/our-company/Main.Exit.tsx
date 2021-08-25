@@ -31,7 +31,6 @@ const MainExit = (): JSX.Element => {
               <Box data-anim="fadeInRight">
                 <Avatar
                   isJPG
-                  noFrame
                   src={`${GetImage.doctors(doctor.imageName)}`}
                   alt="doctor image"
                   elevation="1"
@@ -59,7 +58,7 @@ const MainExit = (): JSX.Element => {
         ))}
 
         <Anchor
-          href="https://app.cribmd.com/signup?rURL=patient/doctors-list"
+          href="https://app.cribmd.com/login?rURL=patient/doctors-list"
           className={`${S.moreDoctorsLink} d-inline-flex align-items-center`}>
           See all doctors <SVGIcon name="next" color="red" className="ms-2" />
         </Anchor>
