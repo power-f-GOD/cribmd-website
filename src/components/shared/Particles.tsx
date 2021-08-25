@@ -14,6 +14,7 @@ const _Particles = (): JSX.Element => {
     globalThis.document?.documentElement.scrollHeight || 0
   );
   const particles = globalThis.document?.createElement('div');
+  const isMobile = windowWidth < 768;
 
   useEffect(() => {
     if (particles) {
@@ -49,7 +50,7 @@ const _Particles = (): JSX.Element => {
   if (!particles || unmounted) return <></>;
 
   return createPortal(
-    Array(Math.floor(12 * (scrollHeight / (globalThis.innerHeight - 100 || 600))))
+    Array(Math.floor((isMobile ? 3 : 12) * (scrollHeight / (globalThis.innerHeight - 100 || 1000))))
       .fill('')
       .map((_, i) => (
         <Box

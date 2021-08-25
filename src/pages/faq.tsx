@@ -15,7 +15,7 @@ const FAQ: NextPage = () => {
     const faq = faqRef.current;
 
     if (faq) {
-      new ScrollReveal(faq, { once: true });
+      new ScrollReveal(faq);
     }
   }, []);
 

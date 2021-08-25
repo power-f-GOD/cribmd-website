@@ -17,7 +17,7 @@ const Home: NextPage = () => {
     const home = homeRef.current;
 
     if (home) {
-      new ScrollReveal(home, { once: windowWidth < 768 });
+      new ScrollReveal(home);
     }
   }, [windowWidth]);
 

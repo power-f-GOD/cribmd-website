@@ -58,25 +58,31 @@ const AppNav = (): JSX.Element => {
 
   const handleWindowScroll = useCallback(() => {
     clearScrollTimeout();
-    scrollTimeout = setTimeout(() => {
-      clearTimeout(scrollPositionTimeout);
+    scrollTimeout = setTimeout(
+      () => {
+        clearTimeout(scrollPositionTimeout);
 
-      initialScrollPosition = window.scrollY || window.pageYOffset;
-      scrollPositionTimeout = setTimeout(() => {
-        finalScrollPosition = initialScrollPosition;
-        setHasReachedScrollThreshold(finalScrollPosition < (isPC ? 110 : 55));
-      }, 25);
+        initialScrollPosition = window.scrollY || window.pageYOffset;
+        scrollPositionTimeout = setTimeout(
+          () => {
+            finalScrollPosition = initialScrollPosition;
+            setHasReachedScrollThreshold(finalScrollPosition < (isPC ? 110 : 55));
+          },
+          isPC ? 25 : 100
+        );
 
-      if (isPC) {
-        const isNegativeScroll = initialScrollPosition - finalScrollPosition < 0;
+        if (isPC) {
+          const isNegativeScroll = initialScrollPosition - finalScrollPosition < 0;
 
-        setIsNegativeScroll(isNegativeScroll);
+          setIsNegativeScroll(isNegativeScroll);
 
-        if (isNegativeScroll) {
-          setRenderNav(true);
+          if (isNegativeScroll) {
+            setRenderNav(true);
+          }
         }
-      }
-    }, 25);
+      },
+      isPC ? 25 : 100
+    );
   }, [clearScrollTimeout, isPC]);
 
   useEffect(() => {
@@ -106,7 +112,7 @@ const AppNav = (): JSX.Element => {
           : hasReachedScrollThreshold
           ? 'transparentize-ul-bg'
           : ''
-      } custom-scroll-bar shrink-max-width-xxl px-3 py-sm-2 py-lg-3 mb-3 mx-auto mb-lg-4 container"`}>
+      } custom-scroll-bar shrink-max-width-xxl px-3 py-sm-2 py-lg-3 mb-3 mx-auto mb-lg-4 container`}>
       <Logo className={isPC ? (isNegativeScroll ? '' : 'lighten') : ''} />
 
       {!isPC && (renderNav || open) && (
