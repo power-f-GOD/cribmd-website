@@ -84,15 +84,24 @@ export const teamMembersPrimary: {
   //   contentSecond: `Prior to this he was a marketing major in Southern California where he created and scaled small businesses and sold them as a young entrepreneur.`,
   //   orderLg: '4',
   // },
+  // {
+  //   role: 'Chief Medical Officer',
+  //   imageName: 'Adedapo-Adesanya',
+  //   profileLink: 'https://www.linkedin.com/in/adedapo-adesanya-a485aa179',
+  //   skill: 'Medical Professional, Product foresight',
+  //   primaryBio: `Experienced Medical Doctor with a demonstrated history of working in the Medical Practice industry.
+  //      Skilled in Regional Anesthesia, Prevention, Healthcare, Medical Office, Patient Safety, Customer Service and Public Relations.`,
+  //   secondaryBio: `Strong healthcare services professional with a Bachelor of Medicine, Bachelor of Surgery - MBBS focused in Medicine and Surgery.
+  //     (MB;BS) from College of medicine; University of Lagos. ACLS and BLS Certified by the American Heart Association.`
+  // },
   {
+    imageName: 'Dr-Charles-Umeh',
     role: 'Chief Medical Officer',
-    imageName: 'Adedapo-Adesanya',
-    profileLink: 'https://www.linkedin.com/in/adedapo-adesanya-a485aa179',
-    skill: 'Medical Professional, Product foresight',
-    primaryBio: `Experienced Medical Doctor with a demonstrated history of working in the Medical Practice industry.
-       Skilled in Regional Anesthesia, Prevention, Healthcare, Medical Office, Patient Safety, Customer Service and Public Relations.`,
-    secondaryBio: `Strong healthcare services professional with a Bachelor of Medicine, Bachelor of Surgery - MBBS focused in Medicine and Surgery. 
-      (MB;BS) from College of medicine; University of Lagos. ACLS and BLS Certified by the American Heart Association.`
+    // profileLink: 'https://www.linkedin.com/in/adedapo-adesanya-a485aa179',
+    primaryBio: ``,
+    secondaryBio: ``,
+    profileLink: '',
+    skill: ''
   }
 ];
 
@@ -207,8 +216,8 @@ export const teamMembersSecondary: {
     role: 'Medical Doctor'
   },
   {
-    imageName: 'Dr-Charles-Umeh',
-    role: 'Medical Officer'
+    role: 'Medical Officer',
+    imageName: 'Dr-Adedapo-Adesanya'
   }
   // {
   //   imageName: '',
