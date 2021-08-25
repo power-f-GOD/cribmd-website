@@ -1,7 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { memo, FC, useState, useCallback, CSSProperties } from 'react';
+import { memo, FC, useState, useCallback, CSSProperties, useEffect, useRef } from 'react';
 
 import { Box, Img, LoadingSkeleton, Anchor } from '.';
+import { createObserver, delay } from 'src/utils';
+
+let observer: IntersectionObserver;
 
 const _Avatar: FC<{
   isJPG?: boolean;
@@ -31,6 +34,8 @@ const _Avatar: FC<{
   const Component = href ? Anchor : Box;
   const [hasLoaded, setHasLoaded] = useState(false);
   const [hasErred, setHasErred] = useState(false);
+  const [source, setSource] = useState('');
+  const avatarRef = useRef<Element | null>();
 
   const handleImgLoad = useCallback(() => {
     setHasLoaded(true);
@@ -42,6 +47,30 @@ const _Avatar: FC<{
     }
   }, []);
 
+  useEffect(() => {
+    delay(250).then(() => {
+      const avatar = avatarRef.current;
+
+      observer = createObserver(
+        null,
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting && !source) {
+              return setSource(src);
+            } else if (entry.isIntersecting && avatar) {
+              observer.unobserve(avatar);
+            }
+          });
+        },
+        { threshold: 0.75 }
+      );
+
+      if (avatar) {
+        observer.observe(avatar);
+      }
+    });
+  }, [src, source]);
+
   return (
     <Component
       className={`Avatar elevation--${elevation || 0} ${className || ''} variant--${
@@ -50,8 +79,9 @@ const _Avatar: FC<{
         href ? 'is-anchor' : ''
       }`.replace(/\s+/gi, ' ')}
       {...(href ? { href } : {})}
-      {...(style ? { style } : {})}>
-      {!hasErred && (
+      {...(style ? { style } : {})}
+      _ref={avatarRef as any}>
+      {source && !hasErred && (
         <Img
           isJPG={isJPG}
           src={src}
@@ -62,7 +92,7 @@ const _Avatar: FC<{
         />
       )}
       {hasErred && <Box className="Avatar__no-image" role="img"></Box>}
-      {!hasLoaded && <LoadingSkeleton erred={hasErred} />}
+      {<LoadingSkeleton erred={hasErred} className={hasLoaded ? 'has-loaded' : ''} />}
     </Component>
   );
 };

@@ -3,18 +3,6 @@
   display: grid;
   grid-gap: 1.25em;
   grid-template-columns: 1fr;
-
-  img {
-    $size: 6.375em;
-
-    height: $size;
-    width: $size;
-    object-position: center;
-    object-fit: cover;
-    border-radius: 50%;
-    border: 0.25em solid white;
-    box-shadow: 0.125em 0.125em 0 rgba(13, 35, 68, 0.08);
-  }
 }
 
 .doctorGridItem {

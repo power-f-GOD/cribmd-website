@@ -32,7 +32,7 @@ export class ScrollReveal {
       { threshold: width < 768 ? 0.5 : 0.25 }
     );
     // throttle for a few millisec to ascertain anchors have mounted in the DOM
-    throttle(() => this.register(), 1000);
+    throttle(() => this.register(), 750);
   }
 
   register() {
