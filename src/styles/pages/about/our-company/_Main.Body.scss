@@ -58,7 +58,7 @@
   align-items: center;
   flex-direction: column;
   box-shadow: 0.125em 0.125em 0 rgb(13 35 68 / 8%);
-  padding: 1.25em;
+  padding: 1.25em 1em;
   border-radius: 1.25em;
   background: #fff;
   height: 100%;
@@ -89,8 +89,8 @@
     opacity: 1;
   }
 
-  span {
-    text-align: center;
+  small {
+    font-size: 0.75em;
   }
 }
 

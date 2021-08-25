@@ -31,6 +31,7 @@ const _GetMobileAppCard: FC<{ headerText?: string; bodyText?: string }> = ({
           </Box>
         </RevealOnScroll>
       </Col>
+
       <RevealOnScroll
         component={Col}
         xs={12}

@@ -1,11 +1,11 @@
 import { useState, FC, useCallback, memo } from 'react';
 
-import { Anchor, Box, SVGIcon, Img, Button } from 'src/components/shared';
+import { Anchor, Box, SVGIcon, Button, Avatar } from 'src/components/shared';
 import { Modal } from 'react-bootstrap';
 
 import S from 'src/styles/pages/about/our-company/index.module.scss';
 import { teamMembersPrimary } from 'src/data';
-import { getHumanName } from 'src/utils';
+import { getHumanName, GetImage } from 'src/utils';
 
 const TeamModal: FC<
   Pick<typeof teamMembersPrimary[0], 'primaryBio' | 'secondaryBio' | 'imageName' | 'role' | 'skill'>
@@ -30,7 +30,12 @@ const TeamModal: FC<
         <Box className={`${S.teamModal}`}>
           <Box className={`${S.modalHeader} modal-header `}>
             <Box className="align-items-center d-flex">
-              <Img srcSet={imageName} alt="team image" />
+              <Avatar
+                noFrame
+                size="tiny"
+                src={GetImage.teamMembersPrimary(imageName)}
+                alt={imageName}
+              />
               <Box className="flex-column ms-2">
                 <Box as="h6" className="mb-0">
                   {getHumanName(imageName)}
