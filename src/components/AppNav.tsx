@@ -1,7 +1,7 @@
 import { useState, useCallback, useContext, useEffect, memo, AnimationEvent } from 'react';
 
 import { AppWindowContext } from 'src/pages/_app';
-import { preventDefault } from 'src/utils';
+import { preventDefault, addEventListenerOnce } from 'src/utils';
 import { Box, Logo, Anchor, Button } from '.';
 import { NavLink, SVGIcon } from './shared';
 import { useRouter } from 'next/dist/client/router';
@@ -60,15 +60,15 @@ const AppNav = (): JSX.Element => {
     clearScrollTimeout();
     scrollTimeout = setTimeout(
       () => {
+        console.log(111);
         clearTimeout(scrollPositionTimeout);
-
         initialScrollPosition = window.scrollY || window.pageYOffset;
         scrollPositionTimeout = setTimeout(
           () => {
             finalScrollPosition = initialScrollPosition;
             setHasReachedScrollThreshold(finalScrollPosition < (isPC ? 110 : 55));
           },
-          isPC ? 25 : 100
+          isPC ? 25 : 50
         );
 
         if (isPC) {
@@ -81,7 +81,7 @@ const AppNav = (): JSX.Element => {
           }
         }
       },
-      isPC ? 25 : 100
+      isPC ? 50 : 100
     );
   }, [clearScrollTimeout, isPC]);
 
@@ -94,7 +94,10 @@ const AppNav = (): JSX.Element => {
   }, [open, isPC]);
 
   useEffect(() => {
-    window.addEventListener('scroll', handleWindowScroll);
+    addEventListenerOnce(window, handleWindowScroll, 'scroll', {
+      passive: true,
+      once: false
+    });
 
     return () => {
       window.removeEventListener('scroll', handleWindowScroll);
@@ -118,7 +121,7 @@ const AppNav = (): JSX.Element => {
       {!isPC && (renderNav || open) && (
         <Box
           className={`AppNav__underlay d-lg-none anim__dur--05s ${
-            !open ? 'anim__OutLeftBig' : 'anim__InRightBig'
+            !open ? 'anim__OutRightBig' : 'anim__InRightBig'
           }`}
         />
       )}
@@ -132,8 +135,8 @@ const AppNav = (): JSX.Element => {
                 ? 'anim__fadeInDown anim__dur--025s'
                 : 'anim__fadeOutUp'
               : !open
-              ? 'anim__OutLeftBig anim__dur--05s'
-              : 'anim__fadeInRight anim__del--025s anim__dur--05s'
+              ? 'anim__fadeOut anim__dur--025s'
+              : 'anim__fadeIn anim__del--025s anim__dur--05s'
           }`}
           onAnimationEnd={handleNavAnimationEnd}>
           <Box as="li" className="mx-lg-1">

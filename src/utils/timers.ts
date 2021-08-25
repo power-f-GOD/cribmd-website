@@ -27,7 +27,11 @@ const _requestAnimationFrameWrapper = () => {
 const _requestAnimationFrame = _requestAnimationFrameWrapper();
 // const _cancelAnimationFrame = _cancelAnimationFrameWrapper();
 
-export const delay = (timeout: number, clearCallback?: () => void): Promise<number> => {
+export const delay = (
+  timeout: number,
+  callback?: () => void,
+  clearDelayCallback?: () => boolean
+): Promise<number> => {
   if (isNaN(timeout)) {
     throw Error("'delay' expects a time [number] in milliseconds as parameter.");
   }
@@ -35,7 +39,7 @@ export const delay = (timeout: number, clearCallback?: () => void): Promise<numb
   return new Promise((resolve: (timeoutId: any) => void) => {
     let start = 0;
     let id = _requestAnimationFrame(animate);
-    const clear = clearCallback ? clearCallback() : false;
+    let clear = false;
 
     function animate(timestamp: number) {
       if (!start) {
@@ -48,6 +52,16 @@ export const delay = (timeout: number, clearCallback?: () => void): Promise<numb
         id = _requestAnimationFrame(animate);
       } else {
         resolve(id);
+      }
+
+      clear = clearDelayCallback ? clearDelayCallback() : false;
+
+      if (timeElapsed > timeout && !clear) {
+        clear = true;
+
+        if (timeElapsed % timeout < 17 && callback) {
+          callback();
+        }
       }
     }
   });

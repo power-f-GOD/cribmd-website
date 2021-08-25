@@ -4,56 +4,94 @@
   z-index: 4;
   width: auto;
   pointer-events: all;
-  padding: 0.75rem 0.25rem;
+  padding: 0.5em 0.25em;
   display: inline-flex;
   align-content: center;
 
+  &.preserve-text {
+    .Icon {
+      &.name__cribmd-logo--blue {
+        width: 2em !important;
+        margin-right: 0.25em !important;
+      }
+
+      &.name__cribmd-logo-text {
+        width: 7em;
+      }
+    }
+
+    .flag-icon {
+      margin-left: -0.45em;
+      transform: scale(0.45, 0.3);
+    }
+  }
+
   a {
+    height: 3em;
+    width: 6em;
     text-decoration: none !important;
     line-height: unset;
+    align-items: center;
     display: inline-flex !important;
   }
 
   .Icon {
-    width: auto !important;
-    height: 2em !important;
+    height: 100% !important;
+    max-height: 3em;
+
+    &.name__cribmd-logo--blue {
+      width: 12em;
+      padding-right: 0;
+      border-right: 0.0625em solid rgba(0, 0, 0, 0.1);
+      margin-right: 0.4em;
+    }
+
+    &.name__cribmd-logo-text {
+      display: none;
+      width: 7em;
+      margin-right: 0.25em !important;
+      align-self: center;
+      padding-right: 0.5em;
+      border-right: 0.0625em solid rgba(0, 0, 0, 0.1);
+    }
   }
 
   .flag-icon {
-    transform: scale(1.25, 0.8);
-    margin-left: 0.75em;
+    transform: scale(1, 0.75);
+    margin-left: 0.5em;
     margin-right: 0.75em;
+    max-width: 100%;
     align-self: center;
-    max-width: 1rem;
+    width: 3.5em;
     position: relative;
+    transition: 0.5s;
     box-shadow: 0 0.125rem 0.75rem rgba(0, 0, 0, 0.15);
   }
 
-  .Icon.name__cribmd-logo-text {
-    height: 100%;
-    max-height: 1.35em;
-    align-self: center;
-    padding-right: 0.5em;
-    border-right: 0.0625em solid rgba(0, 0, 0, 0.1);
-  }
-
-  @media screen and (max-width: 767px) {
+  @media screen and (min-width: 768px) {
     a {
-      height: 2.75em;
-      width: 7em;
+      height: 3em;
+      width: 10em;
     }
 
     .Icon {
-      height: 100% !important;
+      max-height: 2em;
+
+      &.name__cribmd-logo--blue {
+        margin-right: 0;
+        padding-right: 0.25em;
+        width: 6em;
+        border-right: none;
+      }
 
       &.name__cribmd-logo-text {
-        display: none;
+        display: block;
+        width: 20em;
       }
     }
 
-    i:first-child {
-      padding-right: 0.5em;
-      border-right: 0.0625em solid rgba(0, 0, 0, 0.1);
+    .flag-icon {
+      transform: scale(1.25, 0.8);
     }
   }
 }

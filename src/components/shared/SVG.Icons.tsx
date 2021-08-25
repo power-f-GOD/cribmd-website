@@ -26,12 +26,7 @@ export const SVGIcon: FC<
           );
         case 'cribmd-logo--blue':
           return (
-            <SVG
-              width="26"
-              height="28"
-              viewBox="0 0 26 28"
-              fill="none"
-              xmlns="http://www.w3.org/2000/SVG">
+            <SVG viewBox="0 0 26 28" fill="none" xmlns="http://www.w3.org/2000/SVG">
               <path
                 d="M20.0091 6.68264L11.6504 3.13774C8.84043 1.94604 5.75595 3.09839 4.76103 5.71159L1.80147 13.4849C0.806547 16.0981 2.27793 19.1826 5.0879 20.3743L13.4466 23.9192C16.2566 25.1109 19.341 23.9585 20.336 21.3454L23.2955 13.572C24.2904 10.9588 22.8191 7.87433 20.0091 6.68264Z"
                 fill="#1863CC"

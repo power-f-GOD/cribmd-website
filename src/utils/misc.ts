@@ -23,3 +23,28 @@ export const getHumanName = (text: string, delimiter?: string) => {
         .join(' ')
     : text;
 };
+
+export const addEventListenerOnce = (
+  target: HTMLElement | any,
+  callback: () => void,
+  event?: string,
+  options?: { capture?: boolean; once?: boolean; passive?: boolean }
+) => {
+  event = event ? event : 'transitionend';
+
+  try {
+    target.addEventListener(
+      event,
+      callback,
+      options
+        ? {
+            ...(options ?? {}),
+            once: options.once !== undefined ? options.once : true
+          }
+        : { once: true }
+    );
+  } catch (err) {
+    target.removeEventListener(event, callback, options?.capture ? true : false);
+    target.addEventListener(event, callback, options?.capture ? true : false);
+  }
+};
