@@ -34,6 +34,226 @@ export const news: Array<{
   imageName?: string;
 }> = [
   {
+    caption: 'The Guardian',
+    rider: 'Nigerian health startup CribMD nominated for TTI Global Impact Award',
+    imageName: 'the-guardian',
+    anchorHref:
+      'https://guardian.ng/news/nigerian-health-startup-cribmd-nominated-for-tti-global-impact-award/'
+  },
+  {
+    caption: 'The Guardian',
+    rider: '‘CribMD committed to making a difference in health of Nigerians’',
+    imageName: 'the-guardian',
+    anchorHref:
+      'https://guardian.ng/interview/cribmd-committed-to-making-a-difference-in-health-of-nigerians/'
+  },
+  {
+    caption: 'AFRICA INC.',
+    rider: 'Healthtech startup CribMD acquires Charisland Pharmaceuticals',
+    imageName: 'africa-inc',
+    anchorHref:
+      'https://africaincmag.com/healthtech-startup-cribmd-acquires-charisland-pharmaceuticals/'
+  },
+  {
+    caption: 'next billion',
+    rider:
+      'Nigerian Healthtech Startup, CribMD, Closes $2.6 Million Seed Round for Product Growth and Team Expansion',
+    imageName: 'next-billion',
+    anchorHref:
+      'https://nextbillion.net/news/nigerian-healthtech-startup-cribmd-closes-2-6-million-seed-round-for-product-growth-and-team-expansion/'
+  },
+  {
+    caption: 'Wee Tracker',
+    rider: 'Healthtech Startup CribMD Acquires Charisland Pharmaceuticals',
+    imageName: 'wt',
+    anchorHref:
+      'https://weetracker.com/2021/07/19/healthtech-startup-cribmd-acquires-charisland-pharmaceuticals/'
+  },
+  {
+    caption: 'Flipboard',
+    rider:
+      'Nigerian e-health startup CribMD raises $2.6m seed funding for expansion - Disrupt Africa',
+    imageName: 'flipboard',
+    anchorHref:
+      'https://flipboard.com/@edidi/nigerian-e-health-startup-cribmd-raises-2-6m-seed-funding-for-expansion---disru/a-GOHjKLkfSZOmjP-4QDFkEg%3Aa%3A13880649-6e63e588cd%2Fdisrupt-africa.com'
+  },
+  {
+    caption: 'HEALTH TECH INSIDER',
+    rider: 'African Telehealth Company Provides Affordable Healthcare',
+    imageName: 'health-tech-insider',
+    anchorHref:
+      'https://healthtechinsider.com/2021/06/18/african-telehealth-company-provides-affordable-healthcare/'
+  },
+  {
+    caption: 'BUSINESS INSIDER AFRICA',
+    rider:
+      'Exclusive: How one digital healthtech startup in Nigeria is bringing care online in a moment of pandemic-fueled crisis.',
+    imageName: 'business-insider',
+    anchorHref:
+      'https://africa.businessinsider.com/local/lifestyle/exclusive-how-one-digital-healthtech-startup-in-nigeria-is-bringing-care-online-in-a/zqez0mh'
+  },
+  {
+    caption: 'THE CAPITAL QUEST',
+    rider: 'African startups Akiba, Strove, Ada Animation get funding; Brmaja, CribMD ink M&As',
+    imageName: 'the-capital-quest',
+    anchorHref:
+      'https://thecapitalquest.com/2021/07/16/african-startups-strove-ada-animation-get-funding-brmaja-cribmd-ink-mas/'
+  },
+  {
+    caption: 'Healthcare Africa',
+    rider: 'CribMD acquires Charisland Pharmaceuticals to facilitate enhanced drug deliveries',
+    imageName: 'healthcare-africa',
+    anchorHref:
+      'https://www.healthcareafrica.info/2021/07/14/cribmd-acquires-charisland-pharmaceuticals-to-facilitate-enhanced-drug-deliveries/'
+  },
+  {
+    caption: 'DISRUPT Africa',
+    rider: 'Nigerian e-health startup CridMD acquires pharmaceutical company to ease scaling',
+    imageName: 'disrupt-africa',
+    anchorHref:
+      'https://disrupt-africa.com/2021/07/16/nigerian-e-health-startup-cridmd-acquires-pharmaceutical-company-to-ease-scaling/'
+  },
+  {
+    caption: 'PitchBook',
+    rider: 'Charisland Pharmaceuticals Overview',
+    imageName: 'pitchbook',
+    anchorHref: 'https://pitchbook.com/profiles/company/469853-65'
+  },
+  {
+    caption: 'CB INSIGHTS',
+    rider: 'CribMD - Investments & Acquisitions',
+    imageName: 'cb-insights',
+    anchorHref: 'https://www.cbinsights.com/investor/cribmd-investments'
+  },
+  {
+    caption: 'headlines.ng',
+    rider:
+      'Nigeria’s CribMD acquires Charisland Pharmaceuticals to facilitate quick drug deliveries to patients',
+    imageName: 'headlines',
+    anchorHref:
+      'https://headlines.ng/nigerias-cribmd-acquires-charisland-pharmaceuticals-to-facilitate-quick-drug-deliveries-to-patients/'
+  },
+  {
+    caption: 'crunchbase',
+    rider: 'Charisland Pharmaceuticals Group acquired by CribMD',
+    imageName: 'crunchbase',
+    anchorHref:
+      'https://www.crunchbase.com/acquisition/cribmd-acquires-charisland-pharmaceuticals-group--79435aa7'
+  },
+  {
+    caption: 'Brand Spur',
+    rider: 'CribMD Acquires Charisland Pharmaceuticals Ltd.',
+    imageName: 'brand-spur',
+    anchorHref: 'https://brandspurng.com/2021/07/15/cribmd-acquires-charisland/'
+  },
+  {
+    caption: 'Business Post',
+    rider: 'CribMD Acquires Charisland for Better Drug Deliveries',
+    imageName: 'business-post',
+    anchorHref:
+      'https://businesspost.ng/health/cribmd-acquires-charisland-for-better-drug-deliveries/'
+  },
+  {
+    caption: 'Global Business Outlook',
+    rider: 'Nigeria’s CribMD raises $2.6 mn for product development and team expansion',
+    imageName: 'global-business-outlook',
+    anchorHref:
+      'https://www.globalbusinessoutlook.com/nigerias-cribmd-raises-product-development-expansion/'
+  },
+  {
+    caption: 'Techpoint.africa',
+    rider:
+      'Nigeria’s CribMD acquires Charisland Pharmaceuticals to facilitate quick drug deliveries to patients',
+    imageName: 'techpoint',
+    anchorHref: 'https://techpoint.africa/2021/07/12/cribmd-acquires-charisland-pharmaceuticals/'
+  },
+  {
+    caption: 'Techpoint.africa',
+    rider: 'M-KOPA’s new management, YouTube Shorts in Nigeria, CribMD’s latest acquisition',
+    imageName: 'techpoint',
+    anchorHref: 'https://techpoint.africa/2021/07/13/techpoint-digest-123/'
+  },
+  {
+    caption: 'Techgist Africa',
+    rider:
+      'CribMD, a Nigerian healthtech startup, has raised $2.6 million in a seed round to boost product development and expansion',
+    imageName: 'techgistafrica',
+    anchorHref:
+      'https://www.techgistafrica.com/healthcare/cribmd-a-nigerian-healthtech-startup-has-raised-2-6-million-in-a-seed-round-to-boost-product-development-and-expansion/'
+  },
+  {
+    caption: 'African Heroes',
+    rider: 'CridMD Acquires Pharmaceutical Company to Ease Scaling in Nigeria',
+    imageName: 'africa-heroes',
+    anchorHref: 'https://afrikanheroes.com/tag/ifeanyi-ossai/'
+  },
+  {
+    caption: '',
+    rider: 'CribMD: Leaders in Providing Medical Care in Nigeria',
+    imageName: 'flipboard',
+    anchorHref:
+      'https://flipboard.com/article/cribmd-leaders-in-providing-medical-care-in-nigeria/f-dad8230c1f%2Finfluencive.com'
+  },
+  {
+    caption: 'The Capital Quest',
+    rider: 'Nigerian health-tech startup CribMD snags seed funding',
+    imageName: 'the-capital-quest',
+    anchorHref:
+      'https://thecapitalquest.com/2021/06/01/nigerian-health-tech-startup-cribmd-snags-seed-funding/'
+  },
+  {
+    caption: 'Techpoint.africa',
+    rider: 'Africa’s next unicorn?, Upskilling African developers, CribMD raises $2.6m',
+    imageName: 'techpoint',
+    anchorHref: 'https://techpoint.africa/2021/05/27/techpoint-digest-90/'
+  },
+  {
+    caption: 'Daily Herald',
+    rider: 'CribMD – Taking the Nigerian Health Space to the Next Level',
+    imageName: 'dh',
+    anchorHref: 'http://finance.dailyherald.com/dailyherald/news/read/41396507/'
+  },
+  {
+    caption: 'digestafrica',
+    rider: 'CribMD',
+    imageName: 'digestafrica',
+    anchorHref: 'https://digestafrica.com/companies/cribmd'
+  },
+  {
+    caption: 'bATX',
+    rider: 'In Quest to Foster Homegrown Startups, Sputnik ATX Announces 2021 Cohort',
+    imageName: 'b-atx',
+    anchorHref:
+      'https://www.builtinaustin.com/2021/02/05/sputnik-atx-accelerator-winter-2021-cohort'
+  },
+  {
+    caption: 'IMDb',
+    rider: 'Ifeanyi Ossai - Biography',
+    imageName: 'imdb',
+    anchorHref: 'https://www.imdb.com/name/nm12546142/bio'
+  },
+  {
+    caption: 'Digital Journal',
+    rider: 'CribMD – Changing the Narrative of Healthcare in Nigeria',
+    imageName: 'digital-journal',
+    anchorHref:
+      'https://www.digitaljournal.com/pr/cribmd-changing-the-narrative-of-healthcare-in-nigeria'
+  },
+  {
+    caption: 'USA Today',
+    rider: 'Imperium Group and The Kerplunk announces list of top entrepreneurs of 2021',
+    imageName: 'usa-today',
+    anchorHref:
+      'https://www.usatoday.com/story/sponsor-story/imperium-group/2021/05/14/imperium-group-and-kerplunk-announces-list-top-entrepreneurs-2021/5057202001/'
+  },
+  {
+    caption: 'Built in Africa',
+    rider: 'CribMD: Nigerian-founded telemedicine health tech startup',
+    imageName: 'built-in-africa',
+    anchorHref:
+      'https://builtin.africa/podcast/cribmd-nigerian-founded-telemedicine-health-tech-startup/'
+  },
+  {
     caption: 'CribMD',
     rider: 'CribMD v2 long tail cut 2',
     iframeUrl: 'https://www.youtube.com/embed/UWTrVIdUSss',

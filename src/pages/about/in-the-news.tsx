@@ -29,7 +29,7 @@ const InTheNews: NextPage = () => {
         if (id && element) {
           const { top } = element?.getBoundingClientRect() || {};
           const offset = (top || 0) - 200;
-          console.log(offset, top);
+
           try {
             window.scrollTo({
               top: pageYOffset + offset,

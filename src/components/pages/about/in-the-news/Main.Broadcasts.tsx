@@ -56,7 +56,8 @@ const MainBroadcasts: FC<{ carouselChunkSize: number; windowWidth?: number }> = 
                   })`,
                   opacity: inActiveRange ? 1 : 0.5,
                   transitionDelay: inActiveRange ? `${(i % carouselChunkSize) * 0.1}s` : undefined
-                }}>
+                }}
+                aria-hidden={!inActiveRange}>
                 <Box className={`${S.mediaImageContainer} __grid-item d-flex align-items-center`}>
                   {imageName ? (
                     <Img src={GetImage.mediaLogo(imageName)} />
@@ -72,7 +73,10 @@ const MainBroadcasts: FC<{ carouselChunkSize: number; windowWidth?: number }> = 
                 </Box>
                 <Box className={S.mediaContentContainer}>
                   <Box as="h6"> {caption}</Box>
-                  <Anchor href={anchorHref} target="_blank">
+                  <Anchor
+                    {...(inActiveRange ? { href: anchorHref } : {})}
+                    target="_blank"
+                    tabIndex={inActiveRange ? 0 : -1}>
                     {rider}
                   </Anchor>
                 </Box>
