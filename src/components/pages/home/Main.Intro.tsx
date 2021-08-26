@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
-import { useContext, useCallback, memo } from 'react';
+import { useContext, useCallback, memo, useMemo } from 'react';
 import { Container } from 'react-bootstrap';
 
 import S from 'src/styles/pages/home/Main.module.scss';
@@ -42,29 +42,39 @@ const MainIntro = (): JSX.Element => {
           allowOverflow
           className={S.specializationsGrid}
           easing={isMobile ? 'ease' : undefined}>
-          {specializations.slice(0, 4).map(({ icon, specialization }, i) => (
-            <Box
-              className="p-4 px-3"
-              data-anim={specializationsAnim(i % 2 === 0)}
-              key={specialization}>
-              <SVGIcon name={icon} size="medium" />
-              <Box as="span">{specialization}</Box>
-            </Box>
-          ))}
+          {useMemo(() => specializations.slice(0, 4), []).map(
+            useCallback(
+              ({ icon, specialization }, i) => (
+                <Box
+                  className="p-4 px-3"
+                  data-anim={specializationsAnim(i % 2 === 0)}
+                  key={specialization}>
+                  <SVGIcon name={icon} size="medium" />
+                  <Box as="span">{specialization}</Box>
+                </Box>
+              ),
+              [specializationsAnim]
+            )
+          )}
         </RevealOnScroll>
         <RevealOnScroll
           allowOverflow
           className={S.specializationsGrid}
           easing={isMobile ? 'ease' : undefined}>
-          {specializations.slice(4).map(({ icon, specialization }, i) => (
-            <Box
-              className="p-4 px-3"
-              data-anim={specializationsAnim(i % 2 === 0)}
-              key={specialization}>
-              <SVGIcon name={icon} size="medium" />
-              <Box as="span">{specialization}</Box>
-            </Box>
-          ))}
+          {useMemo(() => specializations.slice(4), []).map(
+            useCallback(
+              ({ icon, specialization }, i) => (
+                <Box
+                  className="p-4 px-3"
+                  data-anim={specializationsAnim(i % 2 === 0)}
+                  key={specialization}>
+                  <SVGIcon name={icon} size="medium" />
+                  <Box as="span">{specialization}</Box>
+                </Box>
+              ),
+              [specializationsAnim]
+            )
+          )}
         </RevealOnScroll>
       </Container>
     </>

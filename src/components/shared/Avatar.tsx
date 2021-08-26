@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { memo, FC, useState, useCallback, CSSProperties, useEffect, useRef } from 'react';
+import { memo, FC, useState, useCallback, CSSProperties, useEffect, useRef, useMemo } from 'react';
 
 import { Box, Img, LoadingSkeleton, Anchor } from '.';
 import { createIntersectionObserver, delay } from 'src/utils';
@@ -62,7 +62,7 @@ const _Avatar: FC<{
             }
           });
         },
-        { threshold: 0.5 }
+        { threshold: 0.25 }
       );
 
       if (avatar) {
@@ -78,8 +78,8 @@ const _Avatar: FC<{
       } ${!noFrame ? 'has-frame' : ''} size--${size || 'medium'} ${
         href ? 'is-anchor' : ''
       }`.replace(/\s+/gi, ' ')}
-      {...(href ? { href } : {})}
-      {...(style ? { style } : {})}
+      {...useMemo(() => (href ? { href } : {}), [href])}
+      {...useMemo(() => (style ? { style } : {}), [style])}
       _ref={avatarRef as any}>
       {source && !hasErred && (
         <Img

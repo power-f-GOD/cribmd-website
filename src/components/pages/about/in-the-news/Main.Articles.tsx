@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
-import { memo, useState, useCallback, FC, useEffect } from 'react';
+import { memo, useState, useCallback, FC, useEffect, useMemo } from 'react';
 import { Container } from 'react-bootstrap';
 
 import { Box, Img, RevealOnScroll, Anchor, Button, SVGIcon } from 'src/components';
@@ -16,7 +16,7 @@ const MainArticles: FC<{ carouselChunkSize: number; windowWidth?: number }> = ({
   const [activeArticlesIndex, setActiveArticlesIndex] = useState(0);
 
   const handleArticlesIndexToggle = useCallback(
-    (step: 'next' | 'prev') => async () => {
+    (step: 'next' | 'previous') => async () => {
       const slide = () => {
         if (unmounted) return;
 
@@ -38,8 +38,19 @@ const MainArticles: FC<{ carouselChunkSize: number; windowWidth?: number }> = ({
     [carouselChunkSize]
   );
 
-  useEffect(() => {
+  const handleNextArticleToggle = useCallback(() => {
     handleArticlesIndexToggle('next')();
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const handlePreviousArticleToggle = useCallback(() => {
+    handleArticlesIndexToggle('previous')();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    handleNextArticleToggle();
 
     return () => {
       unmounted = true;
@@ -58,54 +69,64 @@ const MainArticles: FC<{ carouselChunkSize: number; windowWidth?: number }> = ({
       <Container as="section" className={`${S.mediaGridWrapper} text-center`}>
         <Box
           className={`${S.mediaGrid} mb-3`}
-          style={{
-            transform: `translateX(calc(${-activeArticlesIndex * 100}%))`
-          }}>
-          {articles.map(({ caption, rider, imageName, iframeUrl, anchorHref }, i) => {
-            const inActiveRange = !(
-              i >= (activeArticlesIndex + 1) * carouselChunkSize ||
-              i < activeArticlesIndex * carouselChunkSize
-            );
+          style={useMemo(
+            () => ({
+              transform: `translateX(calc(${-activeArticlesIndex * 100}%))`
+            }),
+            [activeArticlesIndex]
+          )}>
+          {useMemo(() => articles, []).map(
+            useCallback(
+              ({ caption, rider, imageName, iframeUrl, anchorHref }, i) => {
+                const inActiveRange = !(
+                  i >= (activeArticlesIndex + 1) * carouselChunkSize ||
+                  i < activeArticlesIndex * carouselChunkSize
+                );
 
-            return (
-              <Box
-                key={i}
-                className={`${S.mediaItemContainer}`}
-                style={{
-                  transform: `translateY(${inActiveRange ? 0 : '3em'}) scale(${
-                    !inActiveRange ? '0.75' : '1'
-                  })`,
-                  opacity: inActiveRange ? 1 : 0.5,
-                  transitionDelay: inActiveRange ? `${(i % carouselChunkSize) * 0.1}s` : undefined
-                }}
-                aria-hidden={!inActiveRange}>
-                <Box
-                  className={`${S.mediaImageContainer} __grid-item d-flex align-items-center`}
-                  style={{ height: '6em' }}>
-                  {imageName ? (
-                    <Img src={GetImage.mediaLogo(imageName)} />
-                  ) : (
-                    <iframe
-                      src={iframeUrl}
-                      title={rider}
-                      frameBorder="0"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                      allowFullScreen
-                    />
-                  )}
-                </Box>
-                <Box className={S.mediaContentContainer}>
-                  <Box as="h6"> {caption}</Box>
-                  <Anchor
-                    {...(inActiveRange ? { href: anchorHref } : {})}
-                    target="_blank"
-                    tabIndex={inActiveRange ? 0 : -1}>
-                    {rider}
-                  </Anchor>
-                </Box>
-              </Box>
-            );
-          })}
+                return (
+                  <Box
+                    key={i}
+                    className={`${S.mediaItemContainer}`}
+                    style={{
+                      transform: `translateY(${inActiveRange ? 0 : '3em'}) scale(${
+                        !inActiveRange ? '0.75' : '1'
+                      })`,
+                      opacity: inActiveRange ? 1 : 0.5,
+                      transitionDelay: inActiveRange
+                        ? `${(i % carouselChunkSize) * 0.1}s`
+                        : undefined
+                    }}
+                    aria-hidden={!inActiveRange}>
+                    <Box
+                      className={`${S.mediaImageContainer} __grid-item d-flex align-items-center`}
+                      style={{ height: '6em' }}>
+                      {imageName ? (
+                        <Img src={GetImage.mediaLogo(imageName)} />
+                      ) : (
+                        <iframe
+                          src={iframeUrl}
+                          title={rider}
+                          frameBorder="0"
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                          allowFullScreen
+                        />
+                      )}
+                    </Box>
+                    <Box className={S.mediaContentContainer}>
+                      <Box as="h6"> {caption}</Box>
+                      <Anchor
+                        {...(inActiveRange ? { href: anchorHref } : {})}
+                        target="_blank"
+                        tabIndex={inActiveRange ? 0 : -1}>
+                        {rider}
+                      </Anchor>
+                    </Box>
+                  </Box>
+                );
+              },
+              [activeArticlesIndex, carouselChunkSize]
+            )
+          )}
         </Box>
 
         <RevealOnScroll allowOverflow className="mt-3 mt-md-4 justify-content-center p-3 mb-5">
@@ -113,7 +134,7 @@ const MainArticles: FC<{ carouselChunkSize: number; windowWidth?: number }> = ({
             <Button
               _type="icon-button"
               className={S.toggleButton}
-              onClick={handleArticlesIndexToggle('prev')}>
+              onClick={handlePreviousArticleToggle}>
               <SVGIcon name="previous" />
             </Button>
           </Box>
@@ -122,7 +143,7 @@ const MainArticles: FC<{ carouselChunkSize: number; windowWidth?: number }> = ({
               _type="icon-button"
               color="primary"
               className={S.toggleButton}
-              onClick={handleArticlesIndexToggle('next')}>
+              onClick={handleNextArticleToggle}>
               <SVGIcon name="next" />
             </Button>
           </Box>

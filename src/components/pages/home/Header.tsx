@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useContext } from 'react';
+import { useContext, useMemo, useCallback } from 'react';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -94,24 +94,30 @@ const Header = (): JSX.Element => {
           className={`${S.mediaGrid} align-items-stretch`}
           animName={windowWidth < 992 ? 'fadeInDown' : 'fadeInRight'}
           easing="ease">
-          {[
-            'the-guardian',
-            'techpoint',
-            'spotify',
-            'markets-insider',
-            'yahoo-finance',
-            'hollywoodheavy'
-          ].map((medium) => (
-            // <Col >
-            <Anchor
-              routeLink
-              href="/about/in-the-news#articles"
-              className="p-3 p-lg-4"
-              key={medium}>
-              <Img src={GetImage.mediaLogo(medium)} alt={`${medium} logo`} />
-            </Anchor>
-            // </Col>
-          ))}
+          {useMemo(
+            () => [
+              'the-guardian',
+              'techpoint',
+              'spotify',
+              'markets-insider',
+              'yahoo-finance',
+              'hollywoodheavy'
+            ],
+            []
+          ).map(
+            useCallback(
+              (medium) => (
+                <Anchor
+                  routeLink
+                  href="/about/in-the-news#articles"
+                  className="p-3 p-lg-4"
+                  key={medium}>
+                  <Img src={GetImage.mediaLogo(medium)} alt={`${medium} logo`} />
+                </Anchor>
+              ),
+              []
+            )
+          )}
         </RevealOnScroll>
       </Box>
     </Container>

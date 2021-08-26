@@ -55,6 +55,21 @@ const MainBody = (): JSX.Element => {
     []
   );
 
+  const handleNextCarouselClick = useCallback(() => {
+    handleCarouselButtonClick('next')();
+  }, [handleCarouselButtonClick]);
+
+  const handlePreviousCarouselClick = useCallback(() => {
+    handleCarouselButtonClick('previous')();
+  }, [handleCarouselButtonClick]);
+
+  const handleRenderParticles = useCallback(
+    (_, i) => (
+      <Box as="span" className={`${activeServiceIndex === i ? S.particleActive : ''}`} key={i} />
+    ),
+    [activeServiceIndex]
+  );
+
   useEffect(() => {
     if (!isMobile) {
       handleCarouselInterval();
@@ -86,47 +101,46 @@ const MainBody = (): JSX.Element => {
       <Container className="shrink-max-width-xxl px-lg-5">
         <Row className="">
           <Col className="d-flex flex-column px-0 ps-0 ps-lg-5 text-start mt-0 mt-md-5">
-            {ourServices.map((service, i) => (
-              <RevealOnScroll
-                key={service.name}
-                className={`${S.serviceCardContainer}  ${
-                  activeServiceIndex === i || isMobile ? S.serviceActive : ''
-                } mt-4 d-flex justify-content-center justify-content-md-start`}
-                allowOverflow
-                delay={0.5}>
-                <Box
-                  className={`${S.serviceCard}`}
-                  data-anim={isMobile ? (i % 2 === 0 ? 'fadeInLeft' : 'fadeInRight') : 'fadeInLeft'}
-                  data-anim_easing="ease">
-                  <Box>
-                    <SVGIcon name={service.icon} size="medium" />
-                    <Box as="h4" className="my-2 h5">
-                      {service.name}
+            {ourServices.map(
+              useCallback(
+                (service, i) => (
+                  <RevealOnScroll
+                    key={service.name}
+                    className={`${S.serviceCardContainer}  ${
+                      activeServiceIndex === i || isMobile ? S.serviceActive : ''
+                    } mt-4 d-flex justify-content-center justify-content-md-start`}
+                    allowOverflow
+                    delay={0.5}>
+                    <Box
+                      className={`${S.serviceCard}`}
+                      data-anim={
+                        isMobile ? (i % 2 === 0 ? 'fadeInLeft' : 'fadeInRight') : 'fadeInLeft'
+                      }
+                      data-anim_easing="ease">
+                      <Box>
+                        <SVGIcon name={service.icon} size="medium" />
+                        <Box as="h4" className="my-2 h5">
+                          {service.name}
+                        </Box>
+                      </Box>
+                      <Box as="p" className="anim__fadeIn">
+                        {service.description}
+                      </Box>
                     </Box>
-                  </Box>
-                  <Box as="p" className="anim__fadeIn">
-                    {service.description}
-                  </Box>
-                </Box>
-              </RevealOnScroll>
-            ))}
+                  </RevealOnScroll>
+                ),
+                [activeServiceIndex, isMobile]
+              )
+            )}
             {!isMobile && (
               <Box className={S.servicesCarouselButtonsContainer}>
-                <Button _type="icon-button" onClick={handleCarouselButtonClick('previous', true)}>
+                <Button _type="icon-button" onClick={handlePreviousCarouselClick}>
                   <SVGIcon name="previous" />
                 </Button>
-                <Button _type="icon-button" onClick={handleCarouselButtonClick('next', true)}>
+                <Button _type="icon-button" onClick={handleNextCarouselClick}>
                   <SVGIcon name="next" />
                 </Button>
-                <Box className={S.particlesContainer}>
-                  {ourServices.map((_, i) => (
-                    <Box
-                      as="span"
-                      className={`${activeServiceIndex === i ? S.particleActive : ''}`}
-                      key={i}
-                    />
-                  ))}
-                </Box>
+                <Box className={S.particlesContainer}>{ourServices.map(handleRenderParticles)}</Box>
               </Box>
             )}
           </Col>

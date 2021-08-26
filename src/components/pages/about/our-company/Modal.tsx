@@ -47,7 +47,10 @@ const TeamModal: FC<
               </Box>
             </Box>
 
-            <Button className="close " onClick={() => setShowModal(false)} aria-label="Close">
+            <Button
+              className="close "
+              onClick={useCallback(() => setShowModal(false), [])}
+              aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </Button>
           </Box>
