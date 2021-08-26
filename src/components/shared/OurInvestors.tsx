@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
-import { memo } from 'react';
+import { memo, useCallback, useMemo } from 'react';
 import { Container } from 'react-bootstrap';
 
 import { Box, Img, Anchor } from '.';
@@ -16,8 +16,11 @@ const _OurInvestors = (): JSX.Element => {
       </RevealOnScroll>
 
       <RevealOnScroll className="__grid mx-auto" animName="scale" easing="ease-out" duration={0.5}>
-        {['sputnik|sputnikatx.com', 'norrsken|norrsken.org', 'the-guardian|guardian.ng'].map(
-          (investor) => {
+        {useMemo(
+          () => ['sputnik|sputnikatx.com', 'norrsken|norrsken.org', 'the-guardian|guardian.ng'],
+          []
+        ).map(
+          useCallback((investor) => {
             const [imageName, url] = investor.split('|');
 
             return (
@@ -30,7 +33,7 @@ const _OurInvestors = (): JSX.Element => {
                 <Img src={GetImage.investorLogo(imageName)} />
               </Anchor>
             );
-          }
+          }, [])
         )}
       </RevealOnScroll>
     </Container>

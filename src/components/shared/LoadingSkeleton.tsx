@@ -1,8 +1,8 @@
-import { FC } from 'react';
+import { FC, memo, useMemo, useCallback } from 'react';
 
 import { Box } from '.';
 
-export const LoadingSkeleton: FC<{
+const _LoadingSkeleton: FC<{
   type?: 'circle' | 'box';
   variant?: 'grey' | 'white';
   count?: string | number;
@@ -23,23 +23,35 @@ export const LoadingSkeleton: FC<{
   variant,
   erred
 }): JSX.Element => {
+  const style = useMemo(
+    () => ({
+      width: size ? size : width,
+      height: size ? size : height,
+      borderRadius: type === 'circle' ? '50%' : borderRadius
+    }),
+    [borderRadius, size, width, height, type]
+  );
+
   return (
     <>
       {Array(count || 1)
         .fill('')
-        .map((_, i) => (
-          <Box
-            className={`LoadingSkeleton ${className || ''} ${variant || ''} ${
-              erred ? 'erred' : ''
-            }`.replace(/\s+/g, ' ')}
-            style={{
-              width: size ? size : width,
-              height: size ? size : height,
-              borderRadius: type === 'circle' ? '50%' : borderRadius
-            }}
-            key={i}
-          />
-        ))}
+        .map(
+          useCallback(
+            (_, i) => (
+              <Box
+                className={`LoadingSkeleton ${className || ''} ${variant || ''} ${
+                  erred ? 'erred' : ''
+                }`.replace(/\s+/g, ' ')}
+                style={style}
+                key={i}
+              />
+            ),
+            [style, className, variant, erred]
+          )
+        )}
     </>
   );
 };
+
+export const LoadingSkeleton = memo(_LoadingSkeleton);

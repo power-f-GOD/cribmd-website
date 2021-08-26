@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useState, useEffect, memo, useContext } from 'react';
+import { useState, useEffect, memo, useContext, useCallback } from 'react';
 import { createPortal } from 'react-dom';
 
 import { Box } from 'src/components';
@@ -15,6 +15,31 @@ const _Particles = (): JSX.Element => {
   );
   const particles = globalThis.document?.createElement('div');
   const isMobile = windowWidth < 768;
+
+  const handleRenderParticles = useCallback(
+    (_, i) => (
+      <Box
+        className="__particle"
+        key={i}
+        style={{
+          top: `${Math.floor(Math.random() * ((scrollHeight || 6000) * 0.95))}px`,
+          left: `${Math.floor(Math.random() * (windowWidth - 20))}px`,
+          animationDelay: `${i * 0.2}s`,
+          background:
+            i % 5 === 0
+              ? 'rgba(25, 113, 245, 0.3)' // greyey
+              : i % 4 === 0
+              ? 'rgb(201, 216, 205, 0.65)' //green
+              : i % 3 === 0
+              ? 'rgb(212, 209, 219, 0.65)' // purple
+              : i % 2
+              ? 'rgb(219, 212, 204, 0.6)' // orange
+              : 'rgb(101, 189, 225, 0.9)' // blue
+        }}
+      />
+    ),
+    [scrollHeight, windowWidth]
+  );
 
   useEffect(() => {
     if (particles) {
@@ -52,27 +77,7 @@ const _Particles = (): JSX.Element => {
   return createPortal(
     Array(Math.floor((isMobile ? 6 : 12) * (scrollHeight / (globalThis.innerHeight - 100 || 1000))))
       .fill('')
-      .map((_, i) => (
-        <Box
-          className="__particle"
-          key={i}
-          style={{
-            top: `${Math.floor(Math.random() * ((scrollHeight || 6000) * 0.95))}px`,
-            left: `${Math.floor(Math.random() * (windowWidth - 20))}px`,
-            animationDelay: `${i * 0.2}s`,
-            background:
-              i % 5 === 0
-                ? 'rgba(25, 113, 245, 0.3)' // greyey
-                : i % 4 === 0
-                ? 'rgb(201, 216, 205, 0.65)' //green
-                : i % 3 === 0
-                ? 'rgb(212, 209, 219, 0.65)' // purple
-                : i % 2
-                ? 'rgb(219, 212, 204, 0.6)' // orange
-                : 'rgb(101, 189, 225, 0.9)' // blue
-          }}
-        />
-      )),
+      .map(handleRenderParticles),
     particles
   );
 };

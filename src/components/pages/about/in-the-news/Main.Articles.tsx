@@ -40,7 +40,6 @@ const MainArticles: FC<{ carouselChunkSize: number; windowWidth?: number }> = ({
 
   const handleNextArticleToggle = useCallback(() => {
     handleArticlesIndexToggle('next')();
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

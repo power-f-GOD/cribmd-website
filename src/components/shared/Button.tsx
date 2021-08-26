@@ -24,7 +24,7 @@ const _Button: FC<ButtonProps> = ({
   );
 };
 
-export const PlaystoreButton: FC<{ className?: string }> = ({ className }) => {
+const _PlaystoreButton: FC<{ className?: string }> = ({ className }) => {
   return (
     <Anchor
       button
@@ -36,7 +36,7 @@ export const PlaystoreButton: FC<{ className?: string }> = ({ className }) => {
   );
 };
 
-export const AppstoreButton: FC<{ className?: string }> = ({ className }) => {
+const _AppstoreButton: FC<{ className?: string }> = ({ className }) => {
   return (
     <Anchor
       button
@@ -48,4 +48,6 @@ export const AppstoreButton: FC<{ className?: string }> = ({ className }) => {
   );
 };
 
+export const PlaystoreButton = memo(_PlaystoreButton);
+export const AppstoreButton = memo(_AppstoreButton);
 export const Button = memo(_Button);
