@@ -1,11 +1,11 @@
 // Add/Update SVG icons (from the design/Figma) here
 
-import { FC, SVGProps, DetailedHTMLProps } from 'react';
+import { FC, SVGProps, DetailedHTMLProps, memo } from 'react';
 
 import { Icon, SVG } from '.';
 import { SVGIconName, IconProps } from 'src/types';
 
-export const SVGIcon: FC<
+const _SVGIcon: FC<
   { name: SVGIconName } & IconProps & DetailedHTMLProps<SVGProps<SVGSVGElement>, SVGSVGElement>
 > = ({ name, size, ...props }): JSX.Element => (
   <Icon {...props} name={name} size={size}>
@@ -1310,3 +1310,5 @@ export const SVGIcon: FC<
     })()}
   </Icon>
 );
+
+export const SVGIcon = memo(_SVGIcon);

@@ -1,5 +1,6 @@
-import { memo, useCallback } from 'react';
+import { memo, useCallback, useMemo } from 'react';
 import { Container } from 'react-bootstrap';
+
 import { Box, SVGIcon, Anchor, RevealOnScroll } from 'src/components/shared';
 import S from 'src/styles/pages/health-plans/individual/Main.module.scss';
 // import { AppWindowContext } from 'src/pages/_app';
@@ -8,6 +9,23 @@ import { preventDefault } from 'src/utils';
 
 const MainIntro = (): JSX.Element => {
   // const windowWidth = useContext(AppWindowContext);
+
+  const handleRenderList = useCallback(
+    ({ content, header }) =>
+      content ? (
+        <Box key={header}>
+          <Box as="span" className="me-3">
+            {content === 'checked' ? (
+              <SVGIcon name="check(blue)" size="inherit" />
+            ) : (
+              <SVGIcon name="check(grey)" size="inherit" />
+            )}
+          </Box>
+          {header}
+        </Box>
+      ) : null,
+    []
+  );
 
   return (
     <Container className="mb-5">
@@ -66,53 +84,45 @@ const MainIntro = (): JSX.Element => {
           </Box>
         )} */}
 
-        {individualBenefitsData.slice(1).map(({ header, list, list1, footer, price }, i) => (
-          <RevealOnScroll
-            easing="ease"
-            key={header}
-            className={`${S.benefitsContainer} secondary-content`}>
-            <Box className={`justify-content-between flex-wrap`}>
-              <Box as="h2" className="h6">
-                {header}
-              </Box>
-              <Box className={`${S.careCount}`}>
-                <Box as="p">
-                  {list1 === 'checked' ? <SVGIcon name="check(blue)" size="inherit" /> : list1}
-                </Box>
-              </Box>
-            </Box>
-            {list.map(({ content, header }) =>
-              content ? (
-                <Box key={header}>
-                  <Box as="span" className="me-3">
-                    {content === 'checked' ? (
-                      <SVGIcon name="check(blue)" size="inherit" />
-                    ) : (
-                      <SVGIcon name="check(grey)" size="inherit" />
-                    )}
+        {useMemo(() => individualBenefitsData.slice(1), []).map(
+          useCallback(
+            ({ header, list, list1, footer, price }, i) => (
+              <RevealOnScroll
+                easing="ease"
+                key={header}
+                className={`${S.benefitsContainer} secondary-content`}>
+                <Box className={`justify-content-between flex-wrap`}>
+                  <Box as="h2" className="h6">
+                    {header}
                   </Box>
-                  {header}
+                  <Box className={`${S.careCount}`}>
+                    <Box as="p">
+                      {list1 === 'checked' ? <SVGIcon name="check(blue)" size="inherit" /> : list1}
+                    </Box>
+                  </Box>
                 </Box>
-              ) : null
-            )}
+                {list.map(handleRenderList)}
 
-            <Box className="text-center">
-              <Anchor
-                button
-                href="http://app.cribmd.com/signup?rURL=patient/subscribe"
-                className={`flex-column align-item-center w-100 py-2`}
-                variant={i === 1 ? 'contained' : 'outlined'}
-                color="primary">
-                <Box as="small" className="ms-2">
-                  {footer}
+                <Box className="text-center">
+                  <Anchor
+                    button
+                    href="http://app.cribmd.com/signup?rURL=patient/subscribe"
+                    className={`flex-column align-item-center w-100 py-2`}
+                    variant={i === 1 ? 'contained' : 'outlined'}
+                    color="primary">
+                    <Box as="small" className="ms-2">
+                      {footer}
+                    </Box>
+                    <Box as="span" className="ms-2">
+                      {price}
+                    </Box>
+                  </Anchor>
                 </Box>
-                <Box as="span" className="ms-2">
-                  {price}
-                </Box>
-              </Anchor>
-            </Box>
-          </RevealOnScroll>
-        ))}
+              </RevealOnScroll>
+            ),
+            [handleRenderList]
+          )
+        )}
       </Box>
 
       <RevealOnScroll className="text-center">

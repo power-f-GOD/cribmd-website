@@ -18,11 +18,13 @@
   &:hover,
   &:focus {
     img {
+      transition-delay: 0s !important;
       transform: scale(1.125);
     }
 
     p {
       opacity: 1;
+      transition-delay: 0s !important;
 
       span {
         transform: translateY(0);

@@ -19,7 +19,7 @@ export const corporateProcessData: {
       'Create an account using the name of your company and relevant details.',
       'You will automatically become the Administrator of the organization. You will be able to designate new administrators later.'
     ],
-    p2: 'If you already have an account with CribMD, you can do bla bla bla',
+    // p2: 'If you already have an account with CribMD, you can do bla bla bla',
     imageName: 'create-org',
     contentOrder: '0'
   },

@@ -1,11 +1,12 @@
-import { SVGProps, DetailedHTMLProps, FC } from 'react';
+import { SVGProps, DetailedHTMLProps, FC, memo } from 'react';
 
-export const SVG: FC<DetailedHTMLProps<SVGProps<SVGSVGElement>, SVGSVGElement>> = ({
+const _SVG: FC<DetailedHTMLProps<SVGProps<SVGSVGElement>, SVGSVGElement>> = ({
   children,
   ...props
 }): JSX.Element => {
   return <svg {...props}>{children}</svg>;
 };
+export const SVG = memo(_SVG);
 
 export const SVGEllipse: FC<{ type?: '1' | '2' | '3' | '4' | '5' }> = ({ type }): JSX.Element => {
   switch (type) {

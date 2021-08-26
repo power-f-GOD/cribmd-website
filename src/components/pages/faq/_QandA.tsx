@@ -14,7 +14,13 @@ const _QandA: FC<{
 }> = ({
   data: {
     question,
-    answer: { paragraphs, orderedList1Title, orderedList2Title, orderedList1, orderedList2 }
+    answer: {
+      paragraphs: _paragraphs,
+      orderedList1Title,
+      orderedList2Title,
+      orderedList1,
+      orderedList2
+    }
   },
   openFAQId,
   setOpenFAQId,
@@ -36,14 +42,34 @@ const _QandA: FC<{
   const animDuration = useMemo(() => {
     return { duration: 0.3 };
   }, []);
+  const paragraphs = useMemo(() => _paragraphs, [_paragraphs]);
 
   const handleFAQClick = useCallback(() => {
     setOpenFAQId((id) => (id === question ? '' : question));
   }, [question, setOpenFAQId]);
 
+  const handleRenderParagraphs = useCallback((paragraph) => {
+    const embolden = paragraph.startsWith('|');
+
+    return (
+      <Box as="p" className={`${embolden ? 'fw-bold' : ''} my-2`} key={paragraph}>
+        {embolden ? paragraph.replace(/\|/g, '') : paragraph}
+      </Box>
+    );
+  }, []);
+
+  const handleRenderOrderedList = useCallback(
+    (text) => (
+      <Box as="li" key={text}>
+        {text}
+      </Box>
+    ),
+    []
+  );
+
   return (
     <Box
-      {...props}
+      {...useMemo(() => props, [props])}
       as="div"
       className={`${S.QandA} mb-3 mb-md-4 ${openFAQId === question ? S.open : ''} ${
         (props as any).className
@@ -67,15 +93,7 @@ const _QandA: FC<{
             className={`${S.answer} px-3 px-md-4 py-2 py-md-3`}
             onClick={handleFAQClick}
             transition={animDuration}>
-            {paragraphs?.map((paragraph) => {
-              const embolden = paragraph.startsWith('|');
-
-              return (
-                <Box as="p" className={`${embolden ? 'fw-bold' : ''} my-2`} key={paragraph}>
-                  {embolden ? paragraph.replace(/\|/g, '') : paragraph}
-                </Box>
-              );
-            })}
+            {paragraphs?.map(handleRenderParagraphs)}
 
             {orderedList1Title && (
               <Box as="p" className="my-2 fw-bold">
@@ -85,11 +103,7 @@ const _QandA: FC<{
 
             {orderedList1?.length ? (
               <Box as="ol" className="my-2">
-                {orderedList1?.map((text) => (
-                  <Box as="li" key={text}>
-                    {text}
-                  </Box>
-                ))}
+                {orderedList1?.map(handleRenderOrderedList)}
               </Box>
             ) : null}
 
@@ -101,11 +115,7 @@ const _QandA: FC<{
 
             {orderedList2?.length ? (
               <Box as="ol" className="my-2">
-                {orderedList2?.map((text) => (
-                  <Box as="li" key={text}>
-                    {text}
-                  </Box>
-                ))}
+                {orderedList2?.map(handleRenderOrderedList)}
               </Box>
             ) : null}
           </motion.div>

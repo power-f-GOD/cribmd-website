@@ -140,7 +140,7 @@ export const teamMembersSecondary: {
   },
   {
     imageName: 'Rita-Ojieh',
-    role: 'Front-end Engineer'
+    role: 'Programs and Development Officer'
   },
   {
     imageName: 'Ofoegbu-Valentine',

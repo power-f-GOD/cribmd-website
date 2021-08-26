@@ -1,4 +1,4 @@
-import { memo } from 'react';
+import { memo, useCallback } from 'react';
 import { Container } from 'react-bootstrap';
 import { Box, RevealOnScroll, SVGIcon, Anchor } from 'src/components/shared';
 import S from 'src/styles/pages/health-plans/individual/Main.module.scss';
@@ -14,19 +14,24 @@ const MainExit = (): JSX.Element => {
       </RevealOnScroll>
 
       <Box className={`${S.moreBenefitsGrid}`}>
-        {individualMoreBenefitsData.map(({ heading, content, svgName }) => (
-          <RevealOnScroll key={heading}>
-            <Box data-anim="fadeInRight" data-anim_delay="0.3">
-              <SVGIcon name={svgName} size="small" />
-            </Box>
-            <Box as="h4" className="h5" data-anim_delay="0.6">
-              {heading}
-            </Box>
-            <Box as="p" data-anim_delay="0.9">
-              {content}
-            </Box>
-          </RevealOnScroll>
-        ))}
+        {individualMoreBenefitsData.map(
+          useCallback(
+            ({ heading, content, svgName }) => (
+              <RevealOnScroll key={heading}>
+                <Box data-anim="fadeInRight" data-anim_delay="0.3">
+                  <SVGIcon name={svgName} size="small" />
+                </Box>
+                <Box as="h4" className="h5" data-anim_delay="0.6">
+                  {heading}
+                </Box>
+                <Box as="p" data-anim_delay="0.9">
+                  {content}
+                </Box>
+              </RevealOnScroll>
+            ),
+            []
+          )
+        )}
       </Box>
 
       <RevealOnScroll>
