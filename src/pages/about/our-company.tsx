@@ -15,7 +15,11 @@ const OurCompany: NextPage = () => {
     const ourCompany = ourCompanyRef.current;
 
     if (ourCompany) {
-      new ScrollReveal(ourCompany, { once: windowWidth < 768 });
+      const scrollReveal = new ScrollReveal(ourCompany, { once: windowWidth < 768 });
+
+      return () => {
+        scrollReveal.unregister();
+      };
     }
   }, [windowWidth]);
   return (

@@ -17,7 +17,11 @@ const FAQ: NextPage = () => {
     const faq = faqRef.current;
 
     if (faq) {
-      new ScrollReveal(faq, { once: windowWidth < 768 });
+      const scrollReveal = new ScrollReveal(faq, { once: true });
+
+      return () => {
+        scrollReveal.unregister();
+      };
     }
   }, [windowWidth]);
 
