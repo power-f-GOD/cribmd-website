@@ -15,7 +15,11 @@ const Individual: NextPage = () => {
     const individual = indvidualRef.current;
 
     if (individual) {
-      new ScrollReveal(individual, { once: windowWidth < 768 });
+      const scrollReveal = new ScrollReveal(individual, { once: true });
+
+      return () => {
+        scrollReveal.unregister();
+      };
     }
   }, [windowWidth]);
 

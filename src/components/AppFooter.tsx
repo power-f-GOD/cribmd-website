@@ -15,7 +15,11 @@ const AppFooter = (): JSX.Element => {
     const footer = footerRef.current;
 
     if (footer) {
-      new ScrollReveal(footer);
+      const scrollReveal = new ScrollReveal(footer, { once: true });
+
+      return () => {
+        scrollReveal.unregister();
+      };
     }
   }, [windowWidth]);
 

@@ -24,7 +24,7 @@ export class ScrollReveal {
 
           animAnchor.dataset.animate_targets = entry.isIntersecting ? 'true' : 'false';
 
-          if (animAnchor.dataset.anim_once || options?.once || width < 768) {
+          if (animAnchor.dataset.anim_once || options?.once) {
             if (isIntersecting) {
               delete animAnchor.dataset.anim_anchor;
               this.intersectionObserver?.unobserve(animAnchor);

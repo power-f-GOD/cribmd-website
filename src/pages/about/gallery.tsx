@@ -15,7 +15,11 @@ const InTheMedia: NextPage = () => {
     const gallery = galleryRef.current;
 
     if (gallery) {
-      new ScrollReveal(gallery, { once: windowWidth < 768 });
+      const scrollReveal = new ScrollReveal(gallery, { once: true });
+
+      return () => {
+        scrollReveal.unregister();
+      };
     }
   }, [windowWidth]);
 
