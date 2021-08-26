@@ -15,10 +15,6 @@ const InTheNews: NextPage = () => {
     const window = globalThis;
     const inTheNews = inTheNewsRef.current;
 
-    if (inTheNews) {
-      new ScrollReveal(inTheNews, { once: windowWidth < 768 });
-    }
-
     delay(500).then(() => {
       const path = window.location.hash;
 
@@ -42,6 +38,14 @@ const InTheNews: NextPage = () => {
         }
       }
     });
+
+    if (inTheNews) {
+      const scrollReveal = new ScrollReveal(inTheNews, { once: true });
+
+      return () => {
+        scrollReveal.unregister();
+      };
+    }
   }, [windowWidth]);
 
   return (
