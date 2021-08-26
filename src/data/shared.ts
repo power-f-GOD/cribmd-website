@@ -1,21 +1,22 @@
-export const partnerImageNames = [
-  'algrowithm',
-  'andaman',
-  'atlanta-fire-rescue',
-  'bora',
-  'ihs',
-  'launchpad',
-  'longenesis',
-  'lorna',
-  'mepro',
-  'oncore',
-  'pioneer-pharma',
-  'stella-technology',
-  'the-guardian',
-  'transahel',
-  'ucla',
-  'usc'
-];
+export const partners = Array(23).fill('');
+//   [
+//   'algrowithm',
+//   'andaman',
+//   'atlanta-fire-rescue',
+//   'bora',
+//   'ihs',
+//   'launchpad',
+//   'longenesis',
+//   'lorna',
+//   'mepro',
+//   'oncore',
+//   'pioneer-pharma',
+//   'stella-technology',
+//   'the-guardian',
+//   'transahel',
+//   'ucla',
+//   'usc'
+// ];
 
 export const testifiers: Array<{ imageName: string; testimony: string }> = [
   {

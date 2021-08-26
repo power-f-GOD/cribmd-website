@@ -12,9 +12,9 @@ const _PageHeader: FC<{
   children?: ReactNode;
 }> = ({ ctaHref, ctaText, headerText, rider, children }): JSX.Element => {
   return (
-    <Container fluid as="header" className={`PageHeader ${ctaHref ? 'has-cta' : ''}`}>
+    <Container fluid as="header" className={`PageHeader ${ctaHref || rider ? 'has-cta' : ''}`}>
       <Container className="text-md-center px-md-3">
-        <Row className="justify-content-md-center my-3">
+        <Row className="justify-content-md-center my-3 my-md-5">
           <RevealOnScroll
             component={Col}
             xs={12}

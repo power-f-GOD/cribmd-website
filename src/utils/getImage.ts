@@ -14,7 +14,7 @@ export class GetImage {
   }
 
   static partnerLogo(name: string) {
-    return `${this.logoUrl}partners/${name}-logo__250x.webp`;
+    return `${this.logoUrl}partners/${name}.webp`;
   }
 
   static investorLogo(name: string) {

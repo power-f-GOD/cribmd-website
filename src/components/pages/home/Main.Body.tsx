@@ -1,89 +1,19 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
-import { memo, useContext, useEffect, useState, useCallback } from 'react';
+import { memo, useContext } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 
 import S from 'src/styles/pages/home/Main.module.scss';
-import { Box, SVGIcon, RevealOnScroll, Img, Button } from 'src/components/shared';
-import { ourServices } from 'src/data/home';
+import { Box, RevealOnScroll, Img } from 'src/components/shared';
 import { AppWindowContext } from 'src/pages/_app';
-import { GetImage, interval, delay } from 'src/utils';
-
-let clearServiceInterval = false;
-let unmounted = false;
+import { GetImage } from 'src/utils';
+import MainBodyCarousel from './Main.Body.Carousel';
 
 const MainBody = (): JSX.Element => {
   const windowWidth = useContext(AppWindowContext);
   const isMobile = windowWidth < 768;
-  const [activeServiceIndex, setActiveServiceIndex] = useState(0);
-
-  const handleCarouselInterval = useCallback(() => {
-    if (unmounted) return;
-
-    interval(
-      () => {
-        handleCarouselButtonClick('next')();
-      },
-      4000,
-      () => clearServiceInterval
-    );
-    // eslint-disable-next-line
-  }, []);
-
-  const handleCarouselButtonClick = useCallback(
-    (step: 'next' | 'previous', clear?: boolean) => () => {
-      if (unmounted) return;
-
-      setActiveServiceIndex((index) => {
-        if (step === 'next') {
-          return index === 3 ? 0 : index + 1;
-        }
-
-        return index === 0 ? 3 : index - 1;
-      });
-
-      if (clear) {
-        clearServiceInterval = true;
-        delay(4500).then(() => {
-          if (clearServiceInterval) {
-            clearServiceInterval = false;
-            handleCarouselInterval();
-          }
-        });
-      }
-    },
-    // eslint-disable-next-line
-    []
-  );
-
-  const handleNextCarouselClick = useCallback(() => {
-    handleCarouselButtonClick('next')();
-  }, [handleCarouselButtonClick]);
-
-  const handlePreviousCarouselClick = useCallback(() => {
-    handleCarouselButtonClick('previous')();
-  }, [handleCarouselButtonClick]);
-
-  const handleRenderParticles = useCallback(
-    (_, i) => (
-      <Box as="span" className={`${activeServiceIndex === i ? S.particleActive : ''}`} key={i} />
-    ),
-    [activeServiceIndex]
-  );
-
-  useEffect(() => {
-    if (!isMobile) {
-      handleCarouselInterval();
-    }
-
-    return () => {
-      clearServiceInterval = true;
-      unmounted = true;
-    };
-  }, [handleCarouselInterval, isMobile]);
 
   return (
     <Container fluid className={`${S.servicesWrapper} text-left text-md-center`}>
-      {/* Our Services */}
       <RevealOnScroll>
         <Container as="h2" className="pt-4 mb-3">
           Our Services
@@ -101,48 +31,7 @@ const MainBody = (): JSX.Element => {
       <Container className="shrink-max-width-xxl px-lg-5">
         <Row className="">
           <Col className="d-flex flex-column px-0 ps-0 ps-lg-5 text-start mt-0 mt-md-5">
-            {ourServices.map(
-              useCallback(
-                (service, i) => (
-                  <RevealOnScroll
-                    key={service.name}
-                    className={`${S.serviceCardContainer}  ${
-                      activeServiceIndex === i || isMobile ? S.serviceActive : ''
-                    } mt-4 d-flex justify-content-center justify-content-md-start`}
-                    allowOverflow
-                    delay={0.5}>
-                    <Box
-                      className={`${S.serviceCard}`}
-                      data-anim={
-                        isMobile ? (i % 2 === 0 ? 'fadeInLeft' : 'fadeInRight') : 'fadeInLeft'
-                      }
-                      data-anim_easing="ease">
-                      <Box>
-                        <SVGIcon name={service.icon} size="medium" />
-                        <Box as="h4" className="my-2 h5">
-                          {service.name}
-                        </Box>
-                      </Box>
-                      <Box as="p" className="anim__fadeIn">
-                        {service.description}
-                      </Box>
-                    </Box>
-                  </RevealOnScroll>
-                ),
-                [activeServiceIndex, isMobile]
-              )
-            )}
-            {!isMobile && (
-              <Box className={S.servicesCarouselButtonsContainer}>
-                <Button _type="icon-button" onClick={handlePreviousCarouselClick}>
-                  <SVGIcon name="previous" />
-                </Button>
-                <Button _type="icon-button" onClick={handleNextCarouselClick}>
-                  <SVGIcon name="next" />
-                </Button>
-                <Box className={S.particlesContainer}>{ourServices.map(handleRenderParticles)}</Box>
-              </Box>
-            )}
+            <MainBodyCarousel />
           </Col>
           {!isMobile && (
             <Col className="d-none d-md-flex align-items-center justify-content-end mt-md-5 ps-4">

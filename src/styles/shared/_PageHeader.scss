@@ -10,7 +10,7 @@
   justify-content: center;
 
   &.has-cta {
-    min-height: 30em;
+    min-height: 20em;
   }
 
   &::before,
@@ -23,7 +23,7 @@
       $w: clamp(100em, 160vw, 220vw),
       $l: 50%
     );
-    transform: translate(-50%, -32%) rotateZ(3deg);
+    transform: translate(-50%, -32%) rotateZ(4deg);
     min-width: 70em;
     overflow: hidden;
   }
@@ -33,6 +33,10 @@
     border-radius: 50% 0 0 0;
     top: calc(145% + 0.5em);
     box-shadow: 0 -20em 0 0 $bg-lightblue;
+  }
+
+  small {
+    display: inline-flex;
   }
 
   .__blurred-ellipse {
@@ -59,11 +63,23 @@
     margin-bottom: 6em;
 
     &.has-cta {
-      min-height: 35em;
+      min-height: 27em;
     }
   }
 
   @media screen and (min-width: 992px) {
     padding-top: 6em;
+
+    &.has-cta {
+      &::before,
+      .__after {
+        width: clamp(100em, 180vw, 300vw);
+      }
+    }
+
+    &::before,
+    .__after {
+      width: clamp(100em, 150vw, 200vw);
+    }
   }
 }

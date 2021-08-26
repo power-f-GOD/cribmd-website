@@ -1,11 +1,11 @@
 // Add/Update SVG icons (from the design/Figma) here
 
-import { FC, SVGProps, DetailedHTMLProps } from 'react';
+import { FC, SVGProps, DetailedHTMLProps, memo } from 'react';
 
 import { SVG } from './';
 import { SVGShapeName } from 'src/types';
 
-export const SVGShape: FC<
+const _SVGShape: FC<
   { name: SVGShapeName } & DetailedHTMLProps<SVGProps<SVGSVGElement>, SVGSVGElement>
 > = ({ name, ...props }): JSX.Element => {
   switch (name) {
@@ -22,3 +22,5 @@ export const SVGShape: FC<
       return <></>;
   }
 };
+
+export const SVGShape = memo(_SVGShape);

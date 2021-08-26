@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
-import { useState, useCallback, useEffect } from 'react';
+import { useState, useCallback, useEffect, useMemo, memo } from 'react';
 import { Container } from 'react-bootstrap';
 
 import { Box, Avatar, SVGIcon, Button, RevealOnScroll } from 'src/components/shared';
@@ -9,14 +9,14 @@ import { testifiers } from 'src/data';
 let unmounted = false;
 const avatarWidthEm = 9;
 
-export const CustomerTestimonies = (): JSX.Element => {
+const _CustomerTestimonies = (): JSX.Element => {
   const [activeTIndex, setActiveTestifierIndex] = useState(3);
   const [swapped, setSwapped] = useState(true);
   const activeCustomerName = getHumanName(testifiers[activeTIndex].imageName);
   const activeCustomerTestimony = testifiers[activeTIndex].testimony;
 
   const handleTestifierToggle = useCallback(
-    (step: 'next' | 'prev') => async () => {
+    (step: 'next' | 'previous') => async () => {
       const slide = () => {
         if (unmounted) return;
 
@@ -39,24 +39,37 @@ export const CustomerTestimonies = (): JSX.Element => {
     []
   );
 
-  useEffect(() => {
-    // handleTestifierToggle('next')();
+  const handleNextTestifierToggle = useCallback(
+    () => handleTestifierToggle('next')(),
+    [handleTestifierToggle]
+  );
 
+  const handlePreviousTestifierToggle = useCallback(
+    () => handleTestifierToggle('previous')(),
+    [handleTestifierToggle]
+  );
+
+  useEffect(() => {
     return () => {
       unmounted = true;
     };
-    //eslint-disable-next-line
   }, []);
 
   return (
     <Container as="section" className="CustomerTestimonies text-center">
       <RevealOnScroll as="h2" className="mt-3 mb-4" animName="fadeInLeft" easing="ease">
-        {'What our customers are saying ...'.split(' ').map((word, i) => (
-          <Box as="span" className="me-2 d-inline-block" key={i}>
-            {word}
-          </Box>
-        ))}
+        {useMemo(() => 'What our customers are saying ...'.split(' '), []).map(
+          useCallback(
+            (word, i) => (
+              <Box as="span" className="me-2 d-inline-block" key={i}>
+                {word}
+              </Box>
+            ),
+            []
+          )
+        )}
       </RevealOnScroll>
+
       <Box as="blockquote" className="mb-5">
         <Box as="p" className={`theme-tertiary ${swapped ? 'active' : ''}`}>
           &quot;{activeCustomerTestimony}&quot;
@@ -70,29 +83,37 @@ export const CustomerTestimonies = (): JSX.Element => {
         <SVGIcon name="caret-filled-down" />
         <Box
           className="__avatars-grid"
-          style={{
-            width: `calc(${avatarWidthEm}em * ${testifiers.length})`,
-            transform: `translateX(-${activeTIndex * avatarWidthEm}em)`
-          }}>
-          {testifiers.map(({ imageName }, i) => {
-            const activeI = activeTIndex;
-            const isActive = activeI === i;
+          style={useMemo(
+            () => ({
+              width: `calc(${avatarWidthEm}em * ${testifiers.length})`,
+              transform: `translateX(-${activeTIndex * avatarWidthEm}em)`
+            }),
+            [activeTIndex]
+          )}>
+          {testifiers.map(
+            useCallback(
+              ({ imageName }, i) => {
+                const activeI = activeTIndex;
+                const isActive = activeI === i;
 
-            return (
-              <Avatar
-                src={GetImage.testifier(imageName)}
-                elevation={isActive ? '3' : '1'}
-                size="medium"
-                key={i}
-                style={{
-                  transform: `scale(${isActive ? '1' : '0.5'}) translateX(${
-                    isActive ? '0' : i < activeI ? '-3' : i > activeI ? '3' : '0'
-                  }em)`
-                }}
-                className={isActive ? 'active' : ''}
-              />
-            );
-          })}
+                return (
+                  <Avatar
+                    src={GetImage.testifier(imageName)}
+                    elevation={isActive ? '3' : '1'}
+                    size="medium"
+                    key={i}
+                    style={{
+                      transform: `scale(${isActive ? '1' : '0.5'}) translateX(${
+                        isActive ? '0' : i < activeI ? '-3' : i > activeI ? '3' : '0'
+                      }em)`
+                    }}
+                    className={isActive ? 'active' : ''}
+                  />
+                );
+              },
+              [activeTIndex]
+            )
+          )}
         </Box>
         <Box className="__testifier-name mt-2 text-capitalize">
           <Box as="span" className={`h4 ${swapped ? 'active' : ''}`}>
@@ -104,12 +125,12 @@ export const CustomerTestimonies = (): JSX.Element => {
         </Box>
         <RevealOnScroll allowOverflow className="mt-3 mt-md-4">
           <Box as="span" className="d-inline-block">
-            <Button _type="icon-button" onClick={handleTestifierToggle('prev')}>
+            <Button _type="icon-button" onClick={handlePreviousTestifierToggle}>
               <SVGIcon name="previous" />
             </Button>
           </Box>
           <Box as="span" className="d-inline-block">
-            <Button _type="icon-button" onClick={handleTestifierToggle('next')}>
+            <Button _type="icon-button" onClick={handleNextTestifierToggle}>
               <SVGIcon name="next" />
             </Button>
           </Box>
@@ -118,3 +139,5 @@ export const CustomerTestimonies = (): JSX.Element => {
     </Container>
   );
 };
+
+export const CustomerTestimonies = memo(_CustomerTestimonies);

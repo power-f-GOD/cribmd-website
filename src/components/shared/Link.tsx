@@ -1,4 +1,4 @@
-import { FC, cloneElement, memo } from 'react';
+import { FC, cloneElement, memo, useMemo } from 'react';
 import { useRouter } from 'next/dist/client/router';
 import Link from 'next/link';
 
@@ -18,7 +18,7 @@ const _Anchor: FC<Omit<AnchorProps, 'exact'>> = ({
 }): JSX.Element => {
   const anchor = (
     <a
-      {...props}
+      {...useMemo(() => props, [props])}
       className={
         button
           ? `Button ${_type || 'flat-button'} btn--${variant || 'text'} ${
@@ -51,7 +51,7 @@ const _NavLink: FC<Omit<AnchorProps, 'routeLink'>> = ({
   return (
     <Link href={href as string}>
       <a
-        {...props}
+        {...useMemo(() => props, [props])}
         className={(button
           ? `Button ${_type || 'flat-button'} btn--${variant || 'text'} ${
               color || 'primary'

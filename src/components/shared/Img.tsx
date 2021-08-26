@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { FC, memo, useState, useEffect, useRef } from 'react';
+import { FC, memo, useState, useEffect, useRef, useCallback } from 'react';
 import { ImgProps } from 'src/types';
 
 const _Img: FC<ImgProps> = ({ isJPG, src, srcSet, onLoad, onError, ...props }): JSX.Element => {
@@ -27,33 +27,39 @@ const _Img: FC<ImgProps> = ({ isJPG, src, srcSet, onLoad, onError, ...props }): 
       ref={imgRef as any}
       alt={props.alt || 'image'}
       aria-hidden={props['aria-hidden'] || true}
-      onError={(e) => {
-        const img = e.target as HTMLImageElement;
-        const _src = img.srcset || img.src || '';
+      onError={useCallback(
+        (e) => {
+          const img = e.target as HTMLImageElement;
+          const _src = img.srcset || img.src || '';
 
-        if (/\.(png|jpe?g)/.test(_src)) {
-          if (onError) {
-            onError(e);
+          if (/\.(png|jpe?g)/.test(_src)) {
+            if (onError) {
+              onError(e);
+            }
+
+            return;
           }
 
-          return;
-        }
-
-        if (/\.webp/i.test(_src)) {
-          if (srcSet) {
-            img.srcset = srcSet.replace(/\.webp/gi, isJPG ? '.jpg' : '.png');
-          } else {
-            img.src = src?.replace(/\.webp/gi, isJPG ? '.jpg' : '.png') || '';
+          if (/\.webp/i.test(_src)) {
+            if (srcSet) {
+              img.srcset = srcSet.replace(/\.webp/gi, isJPG ? '.jpg' : '.png');
+            } else {
+              img.src = src?.replace(/\.webp/gi, isJPG ? '.jpg' : '.png') || '';
+            }
           }
-        }
-      }}
-      onLoad={(e) => {
-        (e.target as any).ariaHidden = false;
+        },
+        [isJPG, src, srcSet, onError]
+      )}
+      onLoad={useCallback(
+        (e) => {
+          (e.target as any).ariaHidden = false;
 
-        if (onLoad) {
-          onLoad(e);
-        }
-      }}
+          if (onLoad) {
+            onLoad(e);
+          }
+        },
+        [onLoad]
+      )}
     />
   );
 };
