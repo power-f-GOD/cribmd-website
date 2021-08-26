@@ -5,19 +5,24 @@ import S from 'src/styles/pages/faq/index.module.scss';
 import { FAQs } from 'src/data/faq';
 import { QandA } from './_QandA';
 import { Box, Button, RevealOnScroll } from 'src/components';
-import { useState, useCallback, SyntheticEvent } from 'react';
+import { useState, useCallback, SyntheticEvent, useMemo } from 'react';
 import { SVGIcon } from 'src/components/shared';
 import { FAQDataProps } from 'src/types';
 
 const Main = (): JSX.Element => {
   const [openFAQId, setOpenFAQId] = useState('');
-  const [filteredCategory, setFilteredCategory] = useState<Record<keyof FAQDataProps, boolean>>({
-    generalInfo: false,
-    pricingAndPlans: false,
-    platformUsage: false,
-    privacyAndSecurity: false
-  });
-  const noFilteredCategory = (() => {
+  const [filteredCategory, setFilteredCategory] = useState<Record<keyof FAQDataProps, boolean>>(
+    useMemo(
+      () => ({
+        generalInfo: false,
+        pricingAndPlans: false,
+        platformUsage: false,
+        privacyAndSecurity: false
+      }),
+      []
+    )
+  );
+  const noFilteredCategory = useCallback(() => {
     for (const [, value] of Object.entries(filteredCategory)) {
       if (value) {
         return false;
@@ -25,7 +30,7 @@ const Main = (): JSX.Element => {
     }
 
     return true;
-  })();
+  }, [filteredCategory])();
 
   const handleFilterCategoryClick = useCallback((e: SyntheticEvent<HTMLButtonElement>) => {
     setFilteredCategory((prevfilter) => {
@@ -56,6 +61,13 @@ const Main = (): JSX.Element => {
     });
   }, []);
 
+  const handleRenderFAQs = useCallback(
+    (data) => (
+      <QandA data={data} openFAQId={openFAQId} setOpenFAQId={setOpenFAQId} key={data.question} />
+    ),
+    [openFAQId]
+  );
+
   return (
     <Container as="main" className={`${S.Main} shrink-max-width-xxl`}>
       <RevealOnScroll easing="ease">
@@ -64,16 +76,27 @@ const Main = (): JSX.Element => {
 
       <RevealOnScroll className={S.categoryButtonsWrapper} easing="ease" animName="fadeIn">
         <Box className={S.categoryButtonsContainer}>
-          {['General Info ', 'Pricing and Plans', ' Privacy and Security', ' Platform Usage'].map(
-            (text) => (
-              <Button
-                color="tertiary"
-                variant="outlined"
-                onClick={handleFilterCategoryClick}
-                key={text}>
-                {text}
-                <SVGIcon name="tick" crop />
-              </Button>
+          {useMemo(
+            () => [
+              'General Info ',
+              'Pricing and Plans',
+              ' Privacy and Security',
+              ' Platform Usage'
+            ],
+            []
+          ).map(
+            useCallback(
+              (text) => (
+                <Button
+                  color="tertiary"
+                  variant="outlined"
+                  onClick={handleFilterCategoryClick}
+                  key={text}>
+                  {text}
+                  <SVGIcon name="tick" crop />
+                </Button>
+              ),
+              [handleFilterCategoryClick]
             )
           )}
         </Box>
@@ -85,14 +108,7 @@ const Main = (): JSX.Element => {
             General Info
           </Box>
 
-          {FAQs.generalInfo.map((data) => (
-            <QandA
-              data={data}
-              openFAQId={openFAQId}
-              setOpenFAQId={setOpenFAQId}
-              key={data.question}
-            />
-          ))}
+          {FAQs.generalInfo.map(handleRenderFAQs)}
         </Box>
       )}
 
@@ -102,14 +118,7 @@ const Main = (): JSX.Element => {
             Pricing and Plans
           </Box>
 
-          {FAQs.pricingAndPlans.map((data) => (
-            <QandA
-              data={data}
-              openFAQId={openFAQId}
-              setOpenFAQId={setOpenFAQId}
-              key={data.question}
-            />
-          ))}
+          {FAQs.pricingAndPlans.map(handleRenderFAQs)}
         </Box>
       )}
 
@@ -119,14 +128,7 @@ const Main = (): JSX.Element => {
             Privacy and Security
           </Box>
 
-          {FAQs.privacyAndSecurity.map((data) => (
-            <QandA
-              data={data}
-              openFAQId={openFAQId}
-              setOpenFAQId={setOpenFAQId}
-              key={data.question}
-            />
-          ))}
+          {FAQs.privacyAndSecurity.map(handleRenderFAQs)}
         </Box>
       )}
 
@@ -136,14 +138,7 @@ const Main = (): JSX.Element => {
             Platform Usage
           </Box>
 
-          {FAQs.platformUsage.map((data) => (
-            <QandA
-              data={data}
-              openFAQId={openFAQId}
-              setOpenFAQId={setOpenFAQId}
-              key={data.question}
-            />
-          ))}
+          {FAQs.platformUsage.map(handleRenderFAQs)}
         </Box>
       )}
     </Container>

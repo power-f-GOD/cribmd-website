@@ -1,4 +1,4 @@
-import { memo, useContext } from 'react';
+import { memo, useContext, useMemo, useCallback } from 'react';
 import { Box, SVGIcon, RevealOnScroll, SVGShape, Avatar } from 'src/components/shared';
 import S from 'src/styles/pages/about/our-company/index.module.scss';
 import TeamModal from './Modal';
@@ -45,43 +45,48 @@ const MainBody = (): JSX.Element => {
         </RevealOnScroll>
 
         <Box className={S.teamGrid}>
-          {teamMembersPrimary.map(({ imageName, primaryBio, secondaryBio, role, skill }, i) => (
-            <RevealOnScroll
-              key={imageName + i}
-              className={`${
-                i === 0 ? 'order-1 order-md-0' : i > 1 ? 'order-2' : 'order-0'
-              } text-center`}
-              delay={(i % 3) * 0.125}
-              easing="ease"
-              allowOverflow
-              animName="fadeInLeft">
-              <Box className={`${S.teamMemberContainer}`}>
-                <TeamModal
-                  primaryBio={primaryBio}
-                  secondaryBio={secondaryBio}
-                  role={role}
-                  skill={skill}
-                  imageName={imageName}
-                />
+          {useMemo(() => teamMembersPrimary, []).map(
+            useCallback(
+              ({ imageName, primaryBio, secondaryBio, role, skill }, i) => (
+                <RevealOnScroll
+                  key={imageName + i}
+                  className={`${
+                    i === 0 ? 'order-1 order-md-0' : i > 1 ? 'order-2' : 'order-0'
+                  } text-center`}
+                  delay={(i % 3) * 0.125}
+                  easing="ease"
+                  allowOverflow
+                  animName="fadeInLeft">
+                  <Box className={`${S.teamMemberContainer}`}>
+                    <TeamModal
+                      primaryBio={primaryBio}
+                      secondaryBio={secondaryBio}
+                      role={role}
+                      skill={skill}
+                      imageName={imageName}
+                    />
 
-                <Avatar
-                  isJPG
-                  size={windowWidth < 576 ? 'small' : 'medium'}
-                  src={GetImage.teamMembersPrimary(imageName)}
-                  alt="team member image"
-                />
+                    <Avatar
+                      isJPG
+                      size={windowWidth < 576 ? 'small' : 'medium'}
+                      src={GetImage.teamMembersPrimary(imageName)}
+                      alt="team member image"
+                    />
 
-                <Box className={`${S.ourTeamContent} mb-auto`}>
-                  <Box as="h6" className="mt-2 mt-md-4 mb-2">
-                    {getHumanName(imageName)}
+                    <Box className={`${S.ourTeamContent} mb-auto`}>
+                      <Box as="h6" className="mt-2 mt-md-4 mb-2">
+                        {getHumanName(imageName)}
+                      </Box>
+                      <Box as="small" className="d-inline-block theme-tertiary">
+                        {role}
+                      </Box>
+                    </Box>
                   </Box>
-                  <Box as="small" className="d-inline-block theme-tertiary">
-                    {role}
-                  </Box>
-                </Box>
-              </Box>
-            </RevealOnScroll>
-          ))}
+                </RevealOnScroll>
+              ),
+              [windowWidth]
+            )
+          )}
         </Box>
 
         {/* other team members */}
@@ -92,30 +97,35 @@ const MainBody = (): JSX.Element => {
         </RevealOnScroll>
 
         <Box className={S.teamMembersGrid}>
-          {teamMembersSecondary.map(({ imageName, role }, i) => (
-            <RevealOnScroll
-              key={imageName + i}
-              className="my-2"
-              easing="ease"
-              animName={'fadeInRight'}
-              delay={(i % 5) * 0.1}>
-              <Box className={`${S.teamMembersContent} ${S.ourTeamContent} text-start w-100`}>
-                <Avatar
-                  isJPG
-                  elevation="1"
-                  size="small"
-                  src={GetImage.teamMembersSecondary(imageName)}
-                  alt="team member image"
-                />
-                <Box className="mt-auto">
-                  <Box as="span" className="h6 mt-2 mb-0">
-                    {getHumanName(imageName)}
+          {useMemo(() => teamMembersSecondary, []).map(
+            useCallback(
+              ({ imageName, role }, i) => (
+                <RevealOnScroll
+                  key={imageName + i}
+                  className="my-2"
+                  easing="ease"
+                  animName={'fadeInRight'}
+                  delay={(i % 5) * 0.1}>
+                  <Box className={`${S.teamMembersContent} ${S.ourTeamContent} text-start w-100`}>
+                    <Avatar
+                      isJPG
+                      elevation="1"
+                      size="small"
+                      src={GetImage.teamMembersSecondary(imageName)}
+                      alt="team member image"
+                    />
+                    <Box className="mt-auto">
+                      <Box as="span" className="h6 mt-2 mb-0">
+                        {getHumanName(imageName)}
+                      </Box>
+                      <Box as="small">{role}</Box>
+                    </Box>
                   </Box>
-                  <Box as="small">{role}</Box>
-                </Box>
-              </Box>
-            </RevealOnScroll>
-          ))}
+                </RevealOnScroll>
+              ),
+              []
+            )
+          )}
         </Box>
 
         {/* advisors */}
@@ -126,27 +136,32 @@ const MainBody = (): JSX.Element => {
         </RevealOnScroll>
 
         <Box className={S.teamMembersGrid}>
-          {advisorsData.map((advisor, i) => (
-            <RevealOnScroll
-              key={advisor.name + i}
-              className="my-2"
-              easing="ease"
-              delay={(i % 5) * 0.1}>
-              <Box className={`${S.teamMembersContent} ${S.ourTeamContent}`}>
-                <Avatar
-                  isJPG
-                  elevation="1"
-                  size="small"
-                  src={GetImage.advisors(advisor.imageName)}
-                  alt="team member image"
-                />
+          {useMemo(() => advisorsData, []).map(
+            useCallback(
+              (advisor, i) => (
+                <RevealOnScroll
+                  key={advisor.name + i}
+                  className="my-2"
+                  easing="ease"
+                  delay={(i % 5) * 0.1}>
+                  <Box className={`${S.teamMembersContent} ${S.ourTeamContent}`}>
+                    <Avatar
+                      isJPG
+                      elevation="1"
+                      size="small"
+                      src={GetImage.advisors(advisor.imageName)}
+                      alt="team member image"
+                    />
 
-                <Box as="span" className="h6 mt-2 mb-0">
-                  {advisor.name}
-                </Box>
-              </Box>
-            </RevealOnScroll>
-          ))}
+                    <Box as="span" className="h6 mt-2 mb-0">
+                      {advisor.name}
+                    </Box>
+                  </Box>
+                </RevealOnScroll>
+              ),
+              []
+            )
+          )}
         </Box>
 
         <SVGShape name="wave" className={S.wave} />
