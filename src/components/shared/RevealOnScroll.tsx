@@ -73,7 +73,9 @@ const _RevealOnScroll: FC<
             }
 
             if (!childProps['data-anim_easing']) {
-              style.transitionTimingFunction = `${easing || 'cubic-bezier(0.5, 0, .25, 1.5)'}`;
+              style.transitionTimingFunction = `${
+                easing || 'cubic-bezier(0.5, -0.25, .25, 1.125)'
+              }`;
             } else {
               style.transitionTimingFunction = `${childProps['data-anim_easing']}`;
               delete childProps['data-anim_easing'];
