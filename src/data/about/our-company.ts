@@ -254,7 +254,7 @@ export const advisorsData: {
   { imageName: '7', name: 'Binyha Kesselly' },
   { imageName: '8', name: 'Makeshoane Seeiso' },
   { imageName: '9', name: 'Sudesh Arora Adediwura' },
-  { imageName: '10', name: 'Sen. ObieOmo-Agege' },
+  { imageName: '10', name: 'Sen. OvieOmo-Agege' },
   { imageName: '11', name: 'Adeoloye Olanrewaju' },
   { imageName: '12', name: 'Moses Awolowo' }
 ];
