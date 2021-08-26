@@ -47,7 +47,9 @@ export class ScrollReveal {
 
   register() {
     this.animAnchors = this.root?.querySelectorAll('[data-anim_anchor]');
-    this.animAnchors?.forEach((animAnchor) => this.intersectionObserver?.observe(animAnchor));
+    this.animAnchors?.forEach((animAnchor) => {
+      this.intersectionObserver?.observe(animAnchor);
+    });
   }
 
   unregister() {

@@ -3,13 +3,13 @@ import { memo, useEffect, useState, useCallback, useMemo } from 'react';
 import { Container } from 'react-bootstrap';
 import ImageGallery, { ReactImageGalleryItem } from 'react-image-gallery';
 
-import { Box, Img, RevealOnScroll, Button, SVGIcon } from 'src/components/shared';
+import { Box, Img, Button, SVGIcon } from 'src/components/shared';
 import S from 'src/styles/pages/about/gallery/index.module.scss';
 import { GetImage, interval, delay } from 'src/utils';
 import { galleryPhotos } from 'src/data/about/gallery';
+import MainGalleryGrids from './Main.GalleryGrid';
 
 let unmounted = false;
-const chunk = 6;
 
 const MainGallery = (): JSX.Element => {
   const [activePhotoIndex, setActivePhotoIndex] = useState(0);
@@ -105,37 +105,7 @@ const MainGallery = (): JSX.Element => {
           []
         )}
       />
-
-      <Box as="section" className={`${S.galleryGrid} mb-3 mt-5`}>
-        {useMemo(() => galleryPhotos, []).map(
-          useCallback(
-            ({ imageName, description }, i) => (
-              <RevealOnScroll
-                delay={(i % 6) * 0.125}
-                className={`${S.galleryGridItem} ${
-                  activePhotoIndex === i ? S.galleryGridItemActive : ''
-                }`}
-                key={i}
-                animName={
-                  Math.floor((i / chunk) % 3) === 0
-                    ? 'fadeInRight'
-                    : Math.floor((i / chunk) % 3) === 1
-                    ? 'fadeInLeft'
-                    : 'fadeInUp'
-                }
-                easing="ease">
-                <Img isJPG src={GetImage.gallery(imageName)} />
-                <Box as="p" className="w-100" data-anim="fadeIn">
-                  <Box as="span" className="w-100">
-                    {description || imageName}
-                  </Box>
-                </Box>
-              </RevealOnScroll>
-            ),
-            [activePhotoIndex]
-          )
-        )}
-      </Box>
+      <MainGalleryGrids />
     </Container>
   );
 };

@@ -3,10 +3,17 @@
 
   .__grid {
     max-width: unset;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 50%);
+    border-radius: $br * 1.5 !important;
 
     @media screen and (min-width: 576px) {
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(4, 25%);
+    }
+
+    .__grid-item {
+      &:nth-child(11) {
+        grid-column: span 2;
+      }
     }
   }
 }

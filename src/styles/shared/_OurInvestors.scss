@@ -28,6 +28,11 @@
     background-color: white;
     box-shadow: 0 0 0 0.0625em $theme-tertiary-v9;
     min-height: 5em;
+    justify-content: center;
+  }
+
+  img {
+    width: auto !important;
   }
 
   @media screen and (min-width: 992px) {

@@ -88,11 +88,10 @@
         }
       }
 
-      &:focus-within {
-        .AppNav__menu {
-          display: list-item;
-          transition: 0.3s cubic-bezier(0.125, 1, 0.5, 1) 0.1s;
-        }
+      &:focus-within .AppNav__menu,
+      > a:focus + .AppNav__menu {
+        display: list-item;
+        transition: 0.3s cubic-bezier(0.125, 1, 0.5, 1) 0.1s;
       }
 
       $delay: 0.05;
