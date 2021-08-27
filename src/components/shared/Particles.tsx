@@ -19,6 +19,7 @@ const _Particles = (): JSX.Element => {
   const handleRenderParticles = useCallback(
     (_, i) => (
       <Box
+        as="span"
         className="__particle"
         key={i}
         style={{
@@ -72,7 +73,7 @@ const _Particles = (): JSX.Element => {
     };
   }, []);
 
-  if (!particles || unmounted) return <></>;
+  if (!particles || unmounted || isMobile) return <></>;
 
   return createPortal(
     Array(Math.floor((isMobile ? 6 : 12) * (scrollHeight / (globalThis.innerHeight - 100 || 1000))))

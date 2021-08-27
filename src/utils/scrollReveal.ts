@@ -22,7 +22,9 @@ export class ScrollReveal {
           const animAnchor = entry.target as HTMLElement;
           const isIntersecting = entry.isIntersecting;
 
-          animAnchor.dataset.animate_targets = entry.isIntersecting ? 'true' : 'false';
+          if (animAnchor.dataset.animate_targets !== '' + entry.isIntersecting) {
+            animAnchor.dataset.animate_targets = entry.isIntersecting ? 'true' : 'false';
+          }
 
           if (animAnchor.dataset.anim_once || options?.once) {
             if (isIntersecting) {
