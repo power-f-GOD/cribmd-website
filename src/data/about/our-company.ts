@@ -139,10 +139,6 @@ export const teamMembersSecondary: {
     role: 'Front-end Engineer'
   },
   {
-    imageName: 'Rita-Ojieh',
-    role: 'Programs and Development Officer'
-  },
-  {
     imageName: 'Ofoegbu-Valentine',
     role: 'Team Lead, Mobile Dev.'
   },
@@ -181,6 +177,10 @@ export const teamMembersSecondary: {
   {
     imageName: 'Habibat-Umar',
     role: 'Customer Support'
+  },
+  {
+    imageName: 'Rita-Ojieh',
+    role: 'Programs and Development Officer'
   },
   {
     imageName: 'Kester-Alumona',

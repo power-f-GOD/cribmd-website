@@ -42,7 +42,7 @@ export class ScrollReveal {
       mutationTimeout = setTimeout(() => {
         this.register();
         this.mutationObserver?.disconnect();
-      }, 250);
+      }, 350);
     });
     this.mutationObserver.observe(this.root, { subtree: true, childList: true });
   }
