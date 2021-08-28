@@ -5,14 +5,16 @@ import Head from 'next/head';
 
 import 'src/styles/app.scss';
 import { AppNav, AppFooter } from 'src/components';
-import { throttle } from 'src/utils';
+import { throttle, delay } from 'src/utils';
 
 export const AppContext = createContext({});
 export const AppWindowContext = createContext<number>(globalThis.innerWidth);
 
 const App = ({ Component, pageProps }: AppProps): JSX.Element => {
-  const [windowWidth, setWindowWidth] = useState(globalThis.innerWidth);
+  const _window = globalThis || window;
+  const [windowWidth, setWindowWidth] = useState(_window.innerWidth);
   const appContextValue = useMemo(() => ({}), []);
+  const pathname = _window.location?.pathname;
 
   useEffect(() => {
     let _throttle: NodeJS.Timeout;
@@ -24,6 +26,21 @@ const App = ({ Component, pageProps }: AppProps): JSX.Element => {
       }, 250);
     };
   }, []);
+
+  if (/^\/(patient|doctor|corp)/.test(pathname)) {
+    delay(50).then(() => {
+      const div = document.querySelector('#__next > div');
+      const text = 'Redirecting you to the Web App @ app.cribmd.com ...';
+
+      if (div) {
+        div.innerHTML = `<div style="display: flex;color: royalblue; align-items: center; padding: 2em; justify-content: center">${text}</div>`;
+      } else {
+        document.body.innerHTML = text;
+      }
+
+      delay(1000).then(() => (_window.location.href = `https://app.cribmd.com${pathname}`));
+    });
+  }
 
   return (
     <AppContext.Provider value={appContextValue}>
@@ -50,8 +67,8 @@ const App = ({ Component, pageProps }: AppProps): JSX.Element => {
           />
           <link rel="icon" href="/favicon.ico" />
         </Head>
-
         <AppNav />
+
         <Component {...pageProps} />
         <AppFooter />
       </AppWindowContext.Provider>
