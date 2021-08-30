@@ -63,7 +63,7 @@
   max-width: 24em;
 
   &::before {
-    @include before-or-after($bg: white, $o: 0.85);
+    @include before-or-after($bg: white, $o: 0.5);
     backdrop-filter: blur(0.5em);
   }
 
@@ -93,6 +93,7 @@
 
     &::before {
       background-color: white;
+      opacity: 1;
     }
   }
 

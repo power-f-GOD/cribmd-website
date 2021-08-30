@@ -47,6 +47,15 @@ export const teamMembersPrimary: {
       committee member on President Obama’s National Health Care Advisory Committee. `
   },
   {
+    role: 'Executive Assistant to the CEO',
+    imageName: 'Linda-Ezeani',
+    // profileLink: 'https://www.linkedin.com/in/adedapo-adesanya-a485aa179',
+    primaryBio: ``,
+    secondaryBio: ``,
+    profileLink: '',
+    skill: ''
+  },
+  {
     role: 'Chief Product Officer',
     imageName: 'Mollie-Epstein',
     profileLink: 'https://www.linkedin.com/in/mollieepstein/',
@@ -64,15 +73,7 @@ export const teamMembersPrimary: {
     profileLink: '',
     skill: ''
   },
-  {
-    role: 'Executive Assistant to the CEO',
-    imageName: 'Linda-Ezeani',
-    // profileLink: 'https://www.linkedin.com/in/adedapo-adesanya-a485aa179',
-    primaryBio: ``,
-    secondaryBio: ``,
-    profileLink: '',
-    skill: ''
-  },
+
   // {
   //   order: '4',
   //   role: 'Chief Creative Office',
@@ -119,6 +120,10 @@ export const teamMembersSecondary: {
   },
   {
     imageName: 'Praise-Fabilola',
+    role: 'Product Designer'
+  },
+  {
+    imageName: 'Sonya-Cirlos',
     role: 'Product Designer'
   },
   { imageName: 'Mobi-Chukwunalu', role: 'Lead Technical Project and Business Process manager' },
@@ -205,6 +210,10 @@ export const teamMembersSecondary: {
   {
     imageName: 'Esumei-Moses',
     role: 'Head Business development'
+  },
+  {
+    imageName: 'Carlos-Campos',
+    role: 'Growth Executive'
   },
   { imageName: 'Rita-Akalue', role: 'V. P. Growth' },
   {

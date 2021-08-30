@@ -77,6 +77,8 @@ const MainGallery = (): JSX.Element => {
             }, [])
           ) as ReactImageGalleryItem[]
         }
+        showThumbnails={true}
+        lazyLoad={true}
         showPlayButton={false}
         showIndex={true}
         startIndex={activePhotoIndex || 0}
