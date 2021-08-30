@@ -27,8 +27,8 @@ const App = ({ Component, pageProps }: AppProps): JSX.Element => {
     };
   }, []);
 
-  if (/^\/(patient|doctor|corp)/.test(pathname)) {
-    delay(50).then(() => {
+  if (/^\/(patient|doctor|corp|dashboard)/.test(pathname)) {
+    delay(25).then(() => {
       const div = document.querySelector('#__next > div');
       const text = 'Redirecting you to the Web App @ app.cribmd.com ...';
 
@@ -49,6 +49,10 @@ const App = ({ Component, pageProps }: AppProps): JSX.Element => {
           <meta
             name="description"
             content="Author: CribMD Telemedicine and Doctor Home Visit, Desc: We are a technology company that offers low cost medical services from online to door-step outreach."
+          />
+          <meta
+            name="keywords"
+            content="Telemedicine, Doctor, Home Visit, Technology, Medical services, door-step outreach, video call, Pharmacy, prescriptions, Consultation, Healthcare, health, medication, health plan, COVID"
           />
           <meta name="viewport" content="width=device-width, initial-scale=1.0" />
           <link
