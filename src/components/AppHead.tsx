@@ -2,25 +2,13 @@
 
 import Head from 'next/head';
 import { useEffect } from 'react';
-// import TagManager from 'react-gtm-module';
 import ReactGA from 'react-ga';
-
-// const tagManagerArgs = {
-//   gtmId: 'UA-205113192-1',
-//   dataLayer: {
-//     js: new Date(),
-//     config: 'UA-205113192-1'
-//   }
-// };
-
-// TagManager.initialize(tagManagerArgs);
 
 const AppHead = ({ title }: { title?: string }): JSX.Element => {
   useEffect(() => {
     ReactGA.initialize('UA-205113192-1');
     ReactGA.pageview(window.location.pathname + window.location.search);
   }, []);
-
   return (
     <Head>
       <title>CribMD | {title || 'Home'}</title>
