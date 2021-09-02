@@ -2,7 +2,8 @@
 
 import Head from 'next/head';
 import { useEffect } from 'react';
-import TagManager from 'react-gtm-module';
+// import TagManager from 'react-gtm-module';
+import ReactGA from 'react-ga';
 
 // const tagManagerArgs = {
 //   gtmId: 'UA-205113192-1',
@@ -16,7 +17,8 @@ import TagManager from 'react-gtm-module';
 
 const AppHead = ({ title }: { title?: string }): JSX.Element => {
   useEffect(() => {
-    TagManager.initialize({ gtmId: 'UA-205113192-1' });
+    ReactGA.initialize('UA-205113192-1');
+    ReactGA.pageview(window.location.pathname + window.location.search);
   }, []);
   return (
     <Head>
