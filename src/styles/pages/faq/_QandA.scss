@@ -49,6 +49,7 @@
     // border-left: inherit !important;
     font-weight: 600;
     z-index: 1;
+    border: none !important;
     box-shadow: none !important;
     color: $theme-tertiary-v2 !important;
     // padding-left: 0 !important;
@@ -78,14 +79,14 @@
     cursor: pointer;
     box-shadow: $button-box-shadow;
     border: inherit;
-    width: calc(100% + 0.1875em);
+    width: calc(100% + 0.125em);
     left: -0.0625em;
     z-index: 0;
     border-radius: 0 0 $br $br;
-    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0, 0 0);
     font-size: 0.95em;
     animation-duration: 0.5s;
-    transition: 0.5s;
+    opacity: 0;
+    transition: transform 0.5s cubic-bezier(1, 0, 0, 1), opacity 0.5s;
 
     &::before {
       z-index: -1;
@@ -107,7 +108,7 @@
   border-radius: $br $br 0 0;
 
   .answer {
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 0 0);
+    opacity: 1;
   }
 
   i {

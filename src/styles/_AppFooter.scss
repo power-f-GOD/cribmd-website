@@ -50,7 +50,7 @@
     font-weight: 300;
     display: inline-block;
     overflow: hidden;
-    transition: 0.25s;
+    transition: color 0.25s;
 
     &[href*='tel'],
     &[href*='mail'] {

@@ -85,6 +85,7 @@ const MainBody = (): JSX.Element => {
                   <Img
                     src={GetImage.individual(imageName)}
                     width="450"
+                    height="420"
                     className={`mt-5 mt-md-0`.trim()}
                     alt={`image of ${imageName.replace('-', ' ')}`}
                   />

@@ -5,7 +5,7 @@ export class GetImage {
   private static logoUrl = GetImage.baseUrl + '_logo/';
   private static homeUrl = GetImage.baseUrl + 'home/';
   private static healthPlansUrl = GetImage.baseUrl + 'health-plans/';
-  private static aboutCompanyUrl = GetImage.baseUrl + 'about/our-company/';
+  private static ourCompanyUrl = GetImage.baseUrl + 'about/our-company/';
 
   static mediaLogo(name: string) {
     return `${this.logoUrl}media/${name}-logo__125x.webp`;
@@ -39,8 +39,8 @@ export class GetImage {
   //   return `${this.aboutCompanyUrl}${name}__${parseInt(String(size || 1)) * 400}x.webp`;
   // }
 
-  static about_company(name: string, size?: '1x' | '2x') {
-    return `${this.aboutCompanyUrl}${name}__${parseInt(String(size || 1)) * 500}x.webp`;
+  static ourCompany(name: string, size?: '1x' | '2x') {
+    return `${this.ourCompanyUrl}${name}__${parseInt(String(size || 1)) * 400}x.webp`;
   }
 
   static teamMembersPrimary(name: string) {

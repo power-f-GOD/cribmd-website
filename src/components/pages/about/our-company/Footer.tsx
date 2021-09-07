@@ -3,6 +3,7 @@ import { Col, Container, Row } from 'react-bootstrap';
 import { Box, Img, Anchor, RevealOnScroll, OurInvestors, OurPartners } from 'src/components/shared';
 import S from 'src/styles/pages/about/our-company/index.module.scss';
 import CTA from './CTA';
+import { GetImage } from 'src/utils';
 
 const Footer = (): JSX.Element => {
   return (
@@ -36,7 +37,9 @@ const Footer = (): JSX.Element => {
         <Col xs={12} md={5}>
           <RevealOnScroll>
             <Img
-              srcSet={`/img/about/team__500x.png 2x, /img/about/team__250x.png 1x`}
+              src={GetImage.ourCompany('team')}
+              width="400"
+              height="300"
               alt="cta image"
               data-anim="fadeIn"
               data-anim_delay="1"

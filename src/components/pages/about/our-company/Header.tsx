@@ -16,7 +16,7 @@ const Header = (): JSX.Element => {
           <Box as="p" className="h6">
             Certified Doctors
           </Box>
-          <Box as="small" className="theme-tertiary">
+          <Box as="small" className="theme-tertiary-darker">
             and Health Practitioners across all medical fields
           </Box>
         </Col>
@@ -27,7 +27,7 @@ const Header = (): JSX.Element => {
           <Box as="p" className="h6">
             Active Users
           </Box>
-          <Box as="small" className="theme-tertiary">
+          <Box as="small" className="theme-tertiary-darker">
             have been onboarded and also successfully treated
           </Box>
         </Col>
@@ -38,7 +38,7 @@ const Header = (): JSX.Element => {
           <Box as="p" className="h6">
             Monthly Recurrent Revenue
           </Box>
-          <Box as="small" className="theme-tertiary">
+          <Box as="small" className="theme-tertiary-darker">
             has been generated since the initial launch
           </Box>
         </Col>
@@ -49,7 +49,7 @@ const Header = (): JSX.Element => {
           <Box as="p" className="h6">
             Homes
           </Box>
-          <Box as="small" className="theme-tertiary lh-xs">
+          <Box as="small" className="theme-tertiary-darker lh-xs">
             visited across the globe since the initial launch
           </Box>
         </Col>

@@ -15,7 +15,7 @@
     "stash:list": "git stash list --format='%gd (%cr): %gs'",
     "stash:update-ref": "git update-ref refs/stash stash@{0}",
     "webp": "for file in *; do cwebp -q 100 $file -o ${file%.*}.webp; done",
-    "remove-files": "$match=.webp; for file in *\"$match\"; do rm $file; done",
+    "remove-files": "for file in *.webp; do rm $file; done",
     "jpg-rename": "for file in *.jpeg; do mv $file ${file%.*}.jpg; done",
     "size-rename:400": "for file in *__500x.webp; do mv $file ${file%__*}__400x.webp; done",
     "size-rename:800": "for file in *__1000x.webp; do mv $file ${file%__*}__800x.webp; done",

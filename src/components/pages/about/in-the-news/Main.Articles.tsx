@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import { memo, useState, useCallback, FC, useEffect, useMemo } from 'react';
 import { Container } from 'react-bootstrap';
@@ -76,7 +77,7 @@ const MainArticles: FC<{ carouselChunkSize: number; windowWidth?: number }> = ({
           )}>
           {useMemo(() => articles, []).map(
             useCallback(
-              ({ caption, rider, imageName, iframeUrl, anchorHref }, i) => {
+              ({ caption, rider, imageName, anchorHref }, i) => {
                 const inActiveRange = !(
                   i >= (activeArticlesIndex + 1) * carouselChunkSize ||
                   i < activeArticlesIndex * carouselChunkSize
@@ -87,10 +88,11 @@ const MainArticles: FC<{ carouselChunkSize: number; windowWidth?: number }> = ({
                     key={i}
                     className={`${S.mediaItemContainer}`}
                     style={{
-                      transform: `translateY(${inActiveRange ? 0 : '3em'}) scale(${
+                      transform: `translateY(${inActiveRange ? 0 : '2.5em'}) scale(${
                         !inActiveRange ? '0.75' : '1'
                       })`,
-                      opacity: inActiveRange ? 1 : 0.5,
+                      pointerEvents: inActiveRange ? 'unset' : 'none',
+                      opacity: inActiveRange ? 1 : 0,
                       transitionDelay: inActiveRange
                         ? `${(i % carouselChunkSize) * 0.1}s`
                         : undefined
@@ -99,25 +101,19 @@ const MainArticles: FC<{ carouselChunkSize: number; windowWidth?: number }> = ({
                     <Box
                       className={`${S.mediaImageContainer} __grid-item d-flex align-items-center`}
                       style={{ height: '6em' }}>
-                      {imageName ? (
-                        <Img src={GetImage.mediaLogo(imageName)} />
-                      ) : (
-                        <iframe
-                          src={iframeUrl}
-                          title={rider}
-                          frameBorder="0"
-                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                          allowFullScreen
-                        />
-                      )}
+                      <Img width="125" height="70" src={GetImage.mediaLogo(imageName!)} />
                     </Box>
                     <Box className={S.mediaContentContainer}>
-                      <Box as="h6"> {caption}</Box>
+                      <Box as="strong" className="h6">
+                        {' '}
+                        {caption}
+                      </Box>
                       <Anchor
-                        {...(inActiveRange ? { href: anchorHref } : {})}
+                        href={anchorHref}
                         target="_blank"
                         tabIndex={inActiveRange ? 0 : -1}
-                        rel="noopener">
+                        rel="noopener"
+                        aria-hidden={!inActiveRange}>
                         {rider}
                       </Anchor>
                     </Box>

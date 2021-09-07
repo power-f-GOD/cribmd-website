@@ -155,6 +155,7 @@ export type SVGIconName =
 export type SVGShapeName = 'wave';
 
 export type BoxAs =
+  | 'strong'
   | 'address'
   | 'nav'
   | 'header'

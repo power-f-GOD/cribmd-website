@@ -27,21 +27,24 @@ const MainIntro = (): JSX.Element => {
       {data.map(
         useCallback(
           ({ h2, p, imageName }, i) => (
-            <Row className="pb-5 align-items-center">
+            <Row className={`${i === 0 ? 'pb-5' : 'pt-5 pb-5'} align-items-center`} key={h2}>
               <RevealOnScroll
                 component={Col}
-                className={`${S.poster} order-1 text-center text-md-end`}
+                className={`${S.poster} ${
+                  i === 0 ? 'order-1 text-center text-md-end' : 'order-0 text-center text-md-start'
+                }`}
                 xs={12}
                 md={5}
                 easing="ease"
                 allowOverflow>
-                <Box className={`${S.imageWrapper}`}>
+                <Box className={`${S.imageWrapper}`} data-anim="fadeInLeft">
                   <Img
-                    srcSet={`${GetImage.about_company(imageName)} 500w`}
-                    src={GetImage.about_company(imageName)}
+                    srcSet={`${GetImage.ourCompany(imageName)} 400w`}
+                    width="400"
+                    height="470"
+                    src={GetImage.ourCompany(imageName)}
                     alt={imageName}
                     className={S.posterImg}
-                    data-anim="fadeInLeft"
                   />
                   <SVGIcon
                     name="curved-square(blue)"

@@ -27,8 +27,8 @@ const MainGalleryGrid = (): JSX.Element => {
               }
               easing="ease">
               <Img isJPG src={GetImage.gallery(imageName)} />
-              <Box as="p" className="w-100" data-anim="fadeIn">
-                <Box as="span" className="w-100">
+              <Box as="h2" className="w-100 h6" data-anim="fadeIn">
+                <Box as="span" className="w-100 fw-normal lh-base">
                   {description || imageName}
                 </Box>
               </Box>

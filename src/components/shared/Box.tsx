@@ -70,6 +70,8 @@ const _Box: FC<BoxProps> = ({ as, children, ...props }): JSX.Element => {
       return <blockquote {...props}>{children}</blockquote>;
     case 'address':
       return <address {...props}>{children}</address>;
+    case 'strong':
+      return <strong {...props}>{children}</strong>;
     default:
       return <div {...props}>{children}</div>;
   }

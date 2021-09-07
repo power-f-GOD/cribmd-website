@@ -40,7 +40,7 @@ const MainBodyTeamMembersPrimary = (): JSX.Element => {
                 />
 
                 <Box className={`${S.ourTeamContent} mb-auto`}>
-                  <Box as="h6" className="mt-2 mt-md-4 mb-2">
+                  <Box as="strong" className="mt-2 mt-md-4 mb-2 h6">
                     {getHumanName(imageName)}
                   </Box>
                   <Box as="small" className="d-inline-block theme-tertiary">

@@ -3,6 +3,7 @@ import S from 'src/styles/pages/about/our-company/index.module.scss';
 import { Col, Row } from 'react-bootstrap';
 import { useContext } from 'react';
 import { AppWindowContext } from 'src/pages/_app';
+import { GetImage } from 'src/utils';
 
 const CTA = (): JSX.Element => {
   const windowWidth = useContext(AppWindowContext);
@@ -35,7 +36,9 @@ const CTA = (): JSX.Element => {
       <Col xs={12} md={5}>
         <RevealOnScroll>
           <Img
-            srcSet={`/img/about/cta-laptop__500x.png 2x, /img/about/cta-laptop__250x.png 1x`}
+            src={GetImage.ourCompany('cta-laptop')}
+            width="400"
+            height="290"
             alt="cta image"
             data-anim="fadeIn"
             data-anim_delay="1"

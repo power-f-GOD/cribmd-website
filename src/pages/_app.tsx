@@ -75,7 +75,7 @@ const App = ({ Component, pageProps }: AppProps): JSX.Element => {
           />
           <meta
             name="keywords"
-            content="Telemedicine, Doctor, Home Visit, Technology, Medical services, door-step outreach, video call, Pharmacy, prescriptions, Consultation, Healthcare, health, medication, health plan, COVID"
+            content="telemedicine, doctor home visit, technology in health, medical services, door-step outreach, video call,pharmacy in nigeria, health prescriptions, health consultation, healthcare in nigeria, healthcare assistant, medication, health plan, COVID, telemedicine in nigeria, doctors in nigeria, telemedicine app, cribmd website, cribmd app, cribmd plans, cribmd login, cribmd reviews,reliance hmo plans, reliance hmo app, reliance hmo login, reliance hmo reviews, dermatology, pediatrics, general practice, gynecology, optometry, family medicine, endocrinology, cardiology"
           />
           <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 

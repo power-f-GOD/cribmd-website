@@ -166,7 +166,7 @@ h6 {
 }
 
 a {
-  color: $theme-primary;
+  color: $theme-primary-v4;
   text-decoration: none;
 
   // &:not(.Button) {
@@ -219,7 +219,7 @@ img,
 iframe {
   max-width: 100%;
   vertical-align: middle;
-  transition: 1s;
+  transition: transform 1s, opacity 1s;
   height: auto;
   // animation: fadeIn 1.5s;
 
