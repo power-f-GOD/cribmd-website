@@ -50,6 +50,7 @@ const Header = (): JSX.Element => {
                 </Box>
                 <Img
                   width="125"
+                  height="36"
                   src={GetImage.investorLogo('the-guardian')}
                   alt="the guardian logo"
                 />
@@ -70,6 +71,8 @@ const Header = (): JSX.Element => {
                 '2x'
               )} 1000w`}
               sizes="(max-width: 1399px) 500px, 1000px"
+              width="500"
+              height="700"
               className={`${S.heroImage} ms-lg-4 ms-xl-5`}
               data-anim="fadeIn"
               data-anim_delay="0.9"
@@ -112,7 +115,12 @@ const Header = (): JSX.Element => {
                   href="/about/in-the-news#articles"
                   className="p-3 p-lg-4"
                   key={medium}>
-                  <Img src={GetImage.mediaLogo(medium)} alt={`${medium} logo`} />
+                  <Img
+                    src={GetImage.mediaLogo(medium)}
+                    alt={`${medium} logo`}
+                    width="125"
+                    height="40"
+                  />
                 </Anchor>
               ),
               []

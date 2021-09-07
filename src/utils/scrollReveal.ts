@@ -34,7 +34,7 @@ export class ScrollReveal {
           }
         });
       },
-      { threshold: width < 768 ? 0.5 : 0.25 }
+      { threshold: width < 768 ? 0.5 : 0.3 }
     );
     // this block is used to throttle ScrollReveal registration till all children nodes of root have mounted in the DOM
     this.mutationObserver = createMutationObserver(() => {
@@ -42,7 +42,7 @@ export class ScrollReveal {
       mutationTimeout = setTimeout(() => {
         this.register();
         this.mutationObserver?.disconnect();
-      }, 350);
+      }, 500);
     });
     this.mutationObserver.observe(this.root, { subtree: true, childList: true });
   }

@@ -32,7 +32,7 @@ const _OurPartners: FC<{ shrink?: boolean }> = (): JSX.Element => {
                 key={i}
                 duration={0.5}
                 className={gridItemClassName}>
-                <Img src={GetImage.partnerLogo(`partner_${i}`)} />
+                <Img src={GetImage.partnerLogo(`partner_${i}`)} width="125" />
               </RevealOnScroll>
             ),
             []

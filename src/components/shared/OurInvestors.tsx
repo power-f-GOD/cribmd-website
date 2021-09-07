@@ -29,8 +29,9 @@ const _OurInvestors = (): JSX.Element => {
                 key={investor}
                 title={url}
                 target="_blank"
-                className="__grid-item d-flex align-items-center p-3 px-md-5 py-md-4">
-                <Img src={GetImage.investorLogo(imageName)} />
+                className="__grid-item d-flex align-items-center p-3 px-md-5 py-md-4"
+                rel="noopener">
+                <Img src={GetImage.investorLogo(imageName)} width="125" />
               </Anchor>
             );
           }, [])

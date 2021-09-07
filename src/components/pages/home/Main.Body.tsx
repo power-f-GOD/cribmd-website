@@ -36,7 +36,7 @@ const MainBody = (): JSX.Element => {
           {!isMobile && (
             <Col className="d-none d-md-flex align-items-center justify-content-end mt-md-5 ps-4">
               <RevealOnScroll allowOverflow>
-                <Img src={GetImage.home('phone-with-doctors-list')} />
+                <Img width="400" height="570" src={GetImage.home('phone-with-doctors-list')} />
               </RevealOnScroll>
             </Col>
           )}

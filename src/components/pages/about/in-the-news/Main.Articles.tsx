@@ -116,7 +116,8 @@ const MainArticles: FC<{ carouselChunkSize: number; windowWidth?: number }> = ({
                       <Anchor
                         {...(inActiveRange ? { href: anchorHref } : {})}
                         target="_blank"
-                        tabIndex={inActiveRange ? 0 : -1}>
+                        tabIndex={inActiveRange ? 0 : -1}
+                        rel="noopener">
                         {rider}
                       </Anchor>
                     </Box>

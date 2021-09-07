@@ -33,7 +33,7 @@ const AppFooter = (): JSX.Element => {
             sm={6}
             md={5}
             lg={3}
-            className="__about __group mb-0 order-2 order-lg-0 ps-0  pe-0 pe-md-4 pe-lg-5"
+            className="__about __group mb-0 order-2 order-lg-0 ps-0 pe-0 pe-md-4 pe-lg-5"
             animName="fadeInRight"
             easing="ease">
             <Logo preserveText className="pb-0 mb-0 mt-3 mt-md-0" />
@@ -44,31 +44,44 @@ const AppFooter = (): JSX.Element => {
             </Box>
 
             <Box className="__social-links d-flex my-3">
-              <Anchor button _type="icon-button" href="https://facebook.com/cribmd" target="_blank">
+              <Anchor
+                button
+                _type="icon-button"
+                href="https://facebook.com/cribmd"
+                target="_blank"
+                rel="noopener">
                 <SVGIcon name="facebook" />
               </Anchor>
-              <Anchor button _type="icon-button" href="https://twitter.com/crib_md" target="_blank">
+              <Anchor
+                button
+                _type="icon-button"
+                href="https://twitter.com/crib_md"
+                target="_blank"
+                rel="noopener">
                 <SVGIcon name="twitter" />
               </Anchor>
               {/* <Anchor
                 button
                 _type="icon-button"
                 href="https://www.linkedin.com/company/cribmd"
-                target="_blank">
+                target="_blank"
+                rel="noopener">
                 <SVGIcon name="facebook" />
               </Anchor> */}
               <Anchor
                 button
                 _type="icon-button"
                 href="https://www.instagram.com/cribmd/"
-                target="_blank">
+                target="_blank"
+                rel="noopener">
                 <SVGIcon name="instagram" />
               </Anchor>
               <Anchor
                 button
                 _type="icon-button"
                 href="https://www.youtube.com/channel/UCMiVsvcvj-ru54-gwwH3d7g"
-                target="_blank">
+                target="_blank"
+                rel="noopener">
                 <SVGIcon name="youtube" />
               </Anchor>
             </Box>
@@ -76,12 +89,16 @@ const AppFooter = (): JSX.Element => {
             <hr className="my-4" />
 
             <Box as="p">
-              <Anchor href="mailto:ossai@cribmd.com" className="d-inline-flex align-items-center">
+              <Anchor
+                href="mailto:ossai@cribmd.com"
+                className="d-inline-flex align-items-center mb-2">
                 <SVGIcon name="mail" className="me-2" />
                 ossai@cribmd.com
               </Anchor>
               <br />
-              <Anchor href="mailto:support@cribmd.com" className="d-inline-flex align-items-center">
+              <Anchor
+                href="mailto:support@cribmd.com"
+                className="d-inline-flex align-items-center mb-2">
                 <SVGIcon name="mail" className="me-2" />
                 support@cribmd.com
               </Anchor>
@@ -99,7 +116,7 @@ const AppFooter = (): JSX.Element => {
             className="row mx-0 px-0 order-0 order-lg-1 col-sm-8 col-lg-7"
             easing="ease">
             <Col xs={6} md={3} className="__for-patients __group">
-              <Box as="h5" className="mb-3">
+              <Box as="h3" className="mb-3">
                 For Patients
               </Box>
               <Box>
@@ -121,7 +138,7 @@ const AppFooter = (): JSX.Element => {
             </Col>
 
             <Col xs={6} md={3} className="__for-doctors __group mb-4 pe-0">
-              <Box as="h5" className="mb-3">
+              <Box as="h3" className="mb-3">
                 For Doctors
               </Box>
               <Box>
@@ -138,7 +155,7 @@ const AppFooter = (): JSX.Element => {
             </Col>
 
             <Col xs={6} md={3} className="__company __group mb-4 ps-0">
-              <Box as="h5" className="mb-3">
+              <Box as="h3" className="mb-3">
                 Company
               </Box>
               <Box>
@@ -166,7 +183,7 @@ const AppFooter = (): JSX.Element => {
             </Col>
 
             <Col xs={6} md={3} className="__legal __group mb-4 ps-md-0">
-              <Box as="h5" className="mb-3">
+              <Box as="h3" className="mb-3">
                 Legal
               </Box>
               {/* <Box>
@@ -185,7 +202,7 @@ const AppFooter = (): JSX.Element => {
             animName="fadeInLeft"
             className="__contact __group mb-4 order-1 order-lg-2 px-0"
             easing="ease">
-            <Box as="h5" className="mb-3">
+            <Box as="h3" className="mb-3">
               Contact
             </Box>
             <Box className="d-flex">

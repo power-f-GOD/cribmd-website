@@ -19,27 +19,25 @@ const _PageHeader: FC<{
             component={Col}
             xs={12}
             className="pt-3"
-            easing="ease"
-            allowOverflow={ctaHref ? true : false}>
+            allowOverflow={ctaHref ? true : false}
+            easing="ease">
             <Box
               as="h1"
-              data-anim_delay="0.2"
               className="my-4 mx-auto shrink-max-width-xxl"
-              data-anim_easing="ease"
               dangerouslySetInnerHTML={{ __html: headerText }}
             />
 
             {rider && (
               <Box
                 as="p"
-                data-anim_delay={0.5}
+                data-anim_delay={0.3}
                 className="mx-md-auto px-md-5 py-1 my-3 my-lg-4  shrink-max-width-xxl"
                 dangerouslySetInnerHTML={{ __html: rider }}
               />
             )}
 
             {ctaHref && (
-              <Box data-anim_delay={0.8}>
+              <Box data-anim_delay={0.6}>
                 <Anchor
                   button
                   cta

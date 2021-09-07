@@ -27,7 +27,7 @@ const MainIntro = (): JSX.Element => {
             <Box as="p" className="theme-tertiary">
               {headerContent}
             </Box>
-            <Box as="p" className="theme-primary-darker">
+            <Box as="p" className="fw-bold theme-tertiary">
               {content}
             </Box>
           </Box>
@@ -152,6 +152,7 @@ const MainIntro = (): JSX.Element => {
           <Anchor
             className="d-inline-flex align-items-center my-3"
             variant="text"
+            href="/#"
             onClick={useCallback(
               (e) =>
                 preventDefault(() => {

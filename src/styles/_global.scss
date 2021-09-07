@@ -179,7 +179,7 @@ a {
   &:hover,
   &:active,
   &:focus {
-    color: $theme-secondary-v2;
+    color: $theme-primary-v3;
     text-decoration: underline;
 
     // &:not(.Button) {
@@ -220,6 +220,7 @@ iframe {
   max-width: 100%;
   vertical-align: middle;
   transition: 1s;
+  height: auto;
   // animation: fadeIn 1.5s;
 
   &[aria-hidden='true'],

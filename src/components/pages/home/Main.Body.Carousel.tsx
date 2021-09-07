@@ -91,14 +91,13 @@ const MainBodyCarousel = (): JSX.Element => {
                 activeServiceIndex === i || isMobile ? S.serviceActive : ''
               } mt-4 d-flex justify-content-center justify-content-md-start`}
               allowOverflow
-              delay={0.5}>
+              delay={0.25}>
               <Box
                 className={`${S.serviceCard}`}
-                data-anim={isMobile ? (i % 2 === 0 ? 'fadeInLeft' : 'fadeInRight') : 'fadeInLeft'}
-                data-anim_easing="ease">
+                data-anim={isMobile ? (i % 2 === 0 ? 'fadeInLeft' : 'fadeInRight') : 'fadeInLeft'}>
                 <Box>
                   <SVGIcon name={service.icon} size="medium" />
-                  <Box as="h4" className="my-2 h5">
+                  <Box as="h3" className="my-2 h5">
                     {service.name}
                   </Box>
                 </Box>

@@ -76,7 +76,7 @@ const MainBroadcasts: FC<{ carouselChunkSize: number; windowWidth?: number }> = 
                     <Box
                       className={`${S.mediaImageContainer} __grid-item d-flex align-items-center`}>
                       {imageName ? (
-                        <Img src={GetImage.mediaLogo(imageName)} />
+                        <Img src={GetImage.mediaLogo(imageName)} width="125" />
                       ) : (
                         <iframe
                           src={iframeUrl}
@@ -92,7 +92,8 @@ const MainBroadcasts: FC<{ carouselChunkSize: number; windowWidth?: number }> = 
                       <Anchor
                         {...(inActiveRange ? { href: anchorHref } : {})}
                         target="_blank"
-                        tabIndex={inActiveRange ? 0 : -1}>
+                        tabIndex={inActiveRange ? 0 : -1}
+                        rel="noopener">
                         {rider}
                       </Anchor>
                     </Box>

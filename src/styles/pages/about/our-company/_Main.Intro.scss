@@ -85,16 +85,19 @@
       margin-bottom: 2rem;
       bottom: -5rem;
     }
+
     .bottomLayer svg {
       width: 100% !important;
       border-radius: 0 0 1.5em 1.5em;
     }
+
     .topLayer i {
       bottom: 4.5rem;
 
       @media (max-width: 375px) {
         bottom: 3.5rem;
       }
+
       @media (max-width: 320px) {
         bottom: 2.5rem !important;
       }
@@ -111,6 +114,7 @@
       @media (max-width: 375px) {
         bottom: -7.5rem;
       }
+
       @media (max-width: 320px) {
         bottom: -7rem;
       }

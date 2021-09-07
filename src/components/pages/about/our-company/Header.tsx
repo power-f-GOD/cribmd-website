@@ -11,7 +11,7 @@ const Header = (): JSX.Element => {
       <RevealOnScroll component={Row} className="justify-content-center text-start" easing="ease">
         <Col className="mb-3 pe-3 pe-lg-5" xs={6} md={3}>
           <Box as="p" className="h2">
-            5K+
+            5k+
           </Box>
           <Box as="p" className="h6">
             Certified Doctors

@@ -30,7 +30,7 @@ const MainBody = (): JSX.Element => {
       <Container>
         {individualProcessData.map(
           useCallback(
-            ({ heading, list, p1, p2, p3, p4, buttonText, imageName }, i) => (
+            ({ heading, list, p1, p2, p3, p4, buttonText, buttonURL, imageName }, i) => (
               <Row key={heading} className="my-3 my-md-5 align-items-center py-md-4 py-3">
                 <RevealOnScroll
                   component={Col}
@@ -63,12 +63,9 @@ const MainBody = (): JSX.Element => {
 
                   {p4 && <Box as="p">{p4}</Box>}
 
-                  {buttonText && (
+                  {buttonURL && (
                     <Box data-anim="fadeInRight">
-                      <Anchor
-                        button
-                        href="https://app.cribmd.com/signup?rURL=patient/subscribe"
-                        variant="outlined">
+                      <Anchor button href={buttonURL} variant="outlined">
                         {buttonText}
                       </Anchor>
                     </Box>
@@ -86,7 +83,8 @@ const MainBody = (): JSX.Element => {
                   delay={windowWidth < 768 ? 0 : 0.65}
                   allowOverflow>
                   <Img
-                    src={GetImage.healthPlans(imageName)}
+                    src={GetImage.individual(imageName)}
+                    width="450"
                     className={`mt-5 mt-md-0`.trim()}
                     alt={`image of ${imageName.replace('-', ' ')}`}
                   />

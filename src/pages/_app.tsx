@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { createContext, useState, useEffect, useMemo } from 'react';
 import { AppProps } from 'next/app';
@@ -25,6 +26,28 @@ const App = ({ Component, pageProps }: AppProps): JSX.Element => {
         setWindowWidth(globalThis.innerWidth);
       }, 250);
     };
+    globalThis.document.querySelector('html')!.lang = 'en-UK';
+    delay(100).then(() =>
+      globalThis.document.querySelector('head')!.insertAdjacentHTML(
+        'afterbegin',
+        `
+      <link
+        href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700,800&amp;display=swap"
+        rel="stylesheet"
+      />
+      <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap-grid.min.css"
+        rel="stylesheet"
+        crossOrigin="anonymous"
+      />
+      <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap-utilities.min.css"
+        rel="stylesheet"
+        crossOrigin="anonymous"
+      />
+    `
+      )
+    );
   }, []);
 
   if (/^\/(patient|doctor|corp|dashboard)/.test(pathname)) {
@@ -55,20 +78,7 @@ const App = ({ Component, pageProps }: AppProps): JSX.Element => {
             content="Telemedicine, Doctor, Home Visit, Technology, Medical services, door-step outreach, video call, Pharmacy, prescriptions, Consultation, Healthcare, health, medication, health plan, COVID"
           />
           <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-          <link
-            href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700,800&amp;display=swap"
-            rel="stylesheet"
-          />
-          <link
-            href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap-grid.min.css"
-            rel="stylesheet"
-            crossOrigin="anonymous"
-          />
-          <link
-            href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap-utilities.min.css"
-            rel="stylesheet"
-            crossOrigin="anonymous"
-          />
+
           <link rel="icon" href="/favicon.ico" />
         </Head>
         <AppNav />

@@ -16,10 +16,6 @@
   @media screen and (min-width: 768px) {
     margin: 5em 0;
   }
-
-  button {
-    box-shadow: none;
-  }
 }
 
 .categoryButtonsWrapper {
@@ -45,6 +41,7 @@
     padding-right: 0.85em;
     padding-left: 0.85em;
     border-width: 0.125em;
+    box-shadow: none !important;
 
     &[data-selected='true'] {
       border-color: $theme-primary;
@@ -54,12 +51,12 @@
       }
     }
 
-    &:hover,
-    &:focus {
-      path {
-        stroke: white;
-      }
-    }
+    // &:hover,
+    // &:focus {
+    //   path {
+    //     stroke: $theme-tertiary-v3;
+    //   }
+    // }
 
     i {
       font-size: 0.85em;

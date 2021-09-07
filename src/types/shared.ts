@@ -96,6 +96,7 @@ export type TransitionAnimName =
   | 'scaleY';
 
 export type SVGIconName =
+  | 'picture'
   | 'cribmd-logo-text'
   | 'cribmd-logo--blue'
   | 'mail'

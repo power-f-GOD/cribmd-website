@@ -57,8 +57,8 @@ const _CustomerTestimonies = (): JSX.Element => {
 
   return (
     <Container as="section" className="CustomerTestimonies text-center">
-      <RevealOnScroll as="h2" className="mt-3 mb-4" animName="fadeInLeft" easing="ease">
-        {useMemo(() => 'What our customers are saying ...'.split(' '), []).map(
+      <RevealOnScroll as="h2" className="mt-3 mb-3" animName="fadeInLeft" easing="ease">
+        {useMemo(() => 'What our customers are saying'.split(' '), []).map(
           useCallback(
             (word, i) => (
               <Box as="span" className="me-2 d-inline-block" key={i}>
@@ -71,10 +71,10 @@ const _CustomerTestimonies = (): JSX.Element => {
       </RevealOnScroll>
 
       <Box as="blockquote" className="mb-5">
-        <Box as="p" className={`theme-tertiary ${swapped ? 'active' : ''}`}>
+        <Box as="p" className={`theme-tertiary-darker ${swapped ? 'active' : ''}`}>
           &quot;{activeCustomerTestimony}&quot;
         </Box>
-        <Box as="p" className={`theme-tertiary ${!swapped ? 'active' : ''}`}>
+        <Box as="p" className={`theme-tertiary-darker ${!swapped ? 'active' : ''}`}>
           &quot;{activeCustomerTestimony}&quot;
         </Box>
       </Box>

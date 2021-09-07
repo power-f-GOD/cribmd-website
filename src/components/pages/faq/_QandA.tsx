@@ -1,11 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { FC, memo, useCallback, useMemo, useContext } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { FC, memo, useCallback, useMemo, useState } from 'react';
 
 import S from 'src/styles/pages/faq/index.module.scss';
 import { Box, SVGIcon, Button } from 'src/components';
 import { QandAProps } from 'src/types';
-import { AppWindowContext } from 'src/pages/_app';
 
 const _QandA: FC<{
   data: QandAProps;
@@ -26,23 +24,19 @@ const _QandA: FC<{
   setOpenFAQId,
   ...props
 }) => {
-  const windowWidth = useContext(AppWindowContext);
-  const animFrom = useMemo(() => {
-    return {
-      transform: windowWidth < 576 ? 'rotateZ(-45deg) scale(0)' : 'scale(0.9)',
-      clipPath: 'ellipse(0% 0%)'
-    };
-  }, [windowWidth]);
-  const animTo = useMemo(() => {
-    return {
-      transform: windowWidth < 576 ? 'rotateZ(0) scale(1)' : 'scale(1)',
-      clipPath: 'ellipse(120% 120%)'
-    };
-  }, [windowWidth]);
-  const animDuration = useMemo(() => {
-    return { duration: 0.3 };
-  }, []);
+  const [displayAnswer, setDisplayAnswer] = useState(false);
   const paragraphs = useMemo(() => _paragraphs, [_paragraphs]);
+
+  const handleAnswerAnimationEnd = useCallback(
+    (e) => {
+      const target = e.target as HTMLElement;
+
+      if (target.className === e.currentTarget.className) {
+        setDisplayAnswer(openFAQId === question);
+      }
+    },
+    [openFAQId, question]
+  );
 
   const handleFAQClick = useCallback(() => {
     setOpenFAQId((id) => (id === question ? '' : question));
@@ -72,7 +66,7 @@ const _QandA: FC<{
       {...useMemo(() => props, [props])}
       as="div"
       className={`${S.QandA} mb-3 mb-md-4 ${openFAQId === question ? S.open : ''} ${
-        (props as any).className
+        (props as any).className || ''
       }`.trim()}>
       <Button
         variant="text"
@@ -84,43 +78,42 @@ const _QandA: FC<{
         <SVGIcon name="caret-down" />
       </Button>
 
-      <AnimatePresence>
-        {openFAQId === question && (
-          <motion.div
-            style={animFrom}
-            animate={animTo}
-            exit={animFrom}
-            className={`${S.answer} px-3 px-md-4 py-2 py-md-3`}
-            onClick={handleFAQClick}
-            transition={animDuration}>
-            {paragraphs?.map(handleRenderParagraphs)}
+      {/* <hr /> */}
 
-            {orderedList1Title && (
-              <Box as="p" className="my-2 fw-bold">
-                {orderedList1Title}
-              </Box>
-            )}
+      {(displayAnswer || openFAQId === question) && (
+        <Box
+          className={`${S.answer} anim__${
+            openFAQId === question ? 'InDown' : 'OutUp'
+          } px-3 px-md-4 py-2 py-md-3`}
+          onClick={handleFAQClick}
+          onAnimationEnd={handleAnswerAnimationEnd}>
+          {paragraphs?.map(handleRenderParagraphs)}
 
-            {orderedList1?.length ? (
-              <Box as="ol" className="my-2">
-                {orderedList1?.map(handleRenderOrderedList)}
-              </Box>
-            ) : null}
+          {orderedList1Title && (
+            <Box as="p" className="my-2 fw-bold">
+              {orderedList1Title}
+            </Box>
+          )}
 
-            {orderedList2Title && (
-              <Box as="p" className="my-2 fw-bold">
-                {orderedList2Title}
-              </Box>
-            )}
+          {orderedList1?.length ? (
+            <Box as="ol" className="my-2">
+              {orderedList1?.map(handleRenderOrderedList)}
+            </Box>
+          ) : null}
 
-            {orderedList2?.length ? (
-              <Box as="ol" className="my-2">
-                {orderedList2?.map(handleRenderOrderedList)}
-              </Box>
-            ) : null}
-          </motion.div>
-        )}
-      </AnimatePresence>
+          {orderedList2Title && (
+            <Box as="p" className="my-2 fw-bold">
+              {orderedList2Title}
+            </Box>
+          )}
+
+          {orderedList2?.length ? (
+            <Box as="ol" className="my-2">
+              {orderedList2?.map(handleRenderOrderedList)}
+            </Box>
+          ) : null}
+        </Box>
+      )}
     </Box>
   );
 };

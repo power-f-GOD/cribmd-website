@@ -4,13 +4,11 @@ export class GetImage {
   private static baseUrl = '/img/';
   private static logoUrl = GetImage.baseUrl + '_logo/';
   private static homeUrl = GetImage.baseUrl + 'home/';
-  private static aboutUrl = GetImage.baseUrl + 'about/our-company';
-  private static teamUrl = GetImage.baseUrl + 'about/our-company/team';
-  private static otherTeamMembersUrl = GetImage.baseUrl + 'about/our-company/other-team-members';
-  private static advisorsUrl = GetImage.baseUrl + 'about/our-company/team';
+  private static healthPlansUrl = GetImage.baseUrl + 'health-plans/';
+  private static aboutCompanyUrl = GetImage.baseUrl + 'about/our-company/';
 
   static mediaLogo(name: string) {
-    return `${this.logoUrl}media/${name}-logo__250x.webp`;
+    return `${this.logoUrl}media/${name}-logo__125x.webp`;
   }
 
   static partnerLogo(name: string) {
@@ -18,7 +16,7 @@ export class GetImage {
   }
 
   static investorLogo(name: string) {
-    return `${this.logoUrl}investors/${name}-logo__250x.webp`;
+    return `${this.logoUrl}investors/${name}-logo__125x.webp`;
   }
 
   static cribmdLogo(name: string) {
@@ -26,11 +24,23 @@ export class GetImage {
   }
 
   static home(name: string, size?: '1x' | '2x') {
-    return `${this.homeUrl}${name}__${parseInt(String(size || 1)) * 500}x.webp`;
+    return `${this.homeUrl}${name}__${parseInt(String(size || 1)) * 400}x.webp`;
   }
 
-  static about(name: string, size?: '1x' | '2x') {
-    return `${this.aboutUrl}${name}__${parseInt(String(size || 1)) * 400}x.webp`;
+  static corporate(name: string, size?: '1x' | '2x') {
+    return `${this.healthPlansUrl}corporate/${name}__${parseInt(String(size || 1)) * 450}x.webp`;
+  }
+
+  static individual(name: string, size?: '1x' | '2x') {
+    return `${this.healthPlansUrl}individual/${name}__${parseInt(String(size || 1)) * 450}x.webp`;
+  }
+
+  // static about(name: string, size?: '1x' | '2x') {
+  //   return `${this.aboutCompanyUrl}${name}__${parseInt(String(size || 1)) * 400}x.webp`;
+  // }
+
+  static about_company(name: string, size?: '1x' | '2x') {
+    return `${this.aboutCompanyUrl}${name}__${parseInt(String(size || 1)) * 500}x.webp`;
   }
 
   static teamMembersPrimary(name: string) {

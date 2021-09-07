@@ -11,6 +11,32 @@ const _SVGIcon: FC<
   <Icon {...props} name={name} size={size}>
     {(() => {
       switch (name) {
+        case 'picture':
+          return (
+            <SVG viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/SVG">
+              <path
+                d="M19.8262 3.38306H5.82617C4.7216 3.38306 3.82617 4.27849 3.82617 5.38306V19.3831C3.82617 20.4876 4.7216 21.3831 5.82617 21.3831H19.8262C20.9307 21.3831 21.8262 20.4876 21.8262 19.3831V5.38306C21.8262 4.27849 20.9307 3.38306 19.8262 3.38306Z"
+                stroke="#651CBF"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <path
+                d="M9.32617 10.3831C10.1546 10.3831 10.8262 9.71148 10.8262 8.88306C10.8262 8.05463 10.1546 7.38306 9.32617 7.38306C8.49774 7.38306 7.82617 8.05463 7.82617 8.88306C7.82617 9.71148 8.49774 10.3831 9.32617 10.3831Z"
+                stroke="#651CBF"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <path
+                d="M21.8262 15.3831L16.8262 10.3831L5.82617 21.3831"
+                stroke="#651CBF"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </SVG>
+          );
         case 'cribmd-logo-text':
           return (
             <SVG viewBox="0 0 84 19" fill="none" xmlns="http://www.w3.org/2000/SVG">
