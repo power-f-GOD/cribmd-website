@@ -24,10 +24,10 @@ const App = ({ Component, pageProps }: AppProps): JSX.Element => {
       clearTimeout(_throttle);
       _throttle = throttle(() => {
         setWindowWidth(globalThis.innerWidth);
-      }, 250);
+      }, 200);
     };
     globalThis.document.querySelector('html')!.lang = 'en-UK';
-    delay(100).then(() =>
+    delay(100).then(() => {
       globalThis.document.querySelector('head')!.insertAdjacentHTML(
         'afterbegin',
         `
@@ -46,8 +46,8 @@ const App = ({ Component, pageProps }: AppProps): JSX.Element => {
         crossOrigin="anonymous"
       />
     `
-      )
-    );
+      );
+    });
   }, []);
 
   if (/^\/(patient|doctor|corp|dashboard)/.test(pathname)) {
@@ -78,12 +78,12 @@ const App = ({ Component, pageProps }: AppProps): JSX.Element => {
             content="telemedicine, doctor home visit, technology in health, medical services, door-step outreach, video call,pharmacy in nigeria, health prescriptions, health consultation, healthcare in nigeria, healthcare assistant, medication, health plan, COVID, telemedicine in nigeria, doctors in nigeria, telemedicine app, cribmd website, cribmd app, cribmd plans, cribmd login, cribmd reviews,reliance hmo plans, reliance hmo app, reliance hmo login, reliance hmo reviews, dermatology, pediatrics, general practice, gynecology, optometry, family medicine, endocrinology, cardiology"
           />
           <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
           <link rel="icon" href="/favicon.ico" />
         </Head>
         <AppNav />
 
         <Component {...pageProps} />
+
         <AppFooter />
       </AppWindowContext.Provider>
     </AppContext.Provider>

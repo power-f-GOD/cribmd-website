@@ -1,20 +1,24 @@
 /* eslint-disable react/display-name */
-import { memo, useCallback, useMemo } from 'react';
+import { memo, useCallback, useMemo, useContext } from 'react';
 
 import { Box, Img, RevealOnScroll } from 'src/components/shared';
 import S from 'src/styles/pages/about/gallery/index.module.scss';
 import { GetImage } from 'src/utils';
 import { galleryPhotos } from 'src/data/about/gallery';
+import { AppWindowContext } from 'src/pages/_app';
 
 const chunk = 6;
 
 const MainGalleryGrid = (): JSX.Element => {
+  const windowWidth = useContext(AppWindowContext);
+
   return (
-    <Box as="section" className={`${S.galleryGrid} mb-3 mt-5`}>
+    <Box lazy as="section" className={`${S.galleryGrid} mb-3 mt-5`}>
       {useMemo(() => galleryPhotos, []).map(
         useCallback(
           ({ imageName, description }, i) => (
             <RevealOnScroll
+              lazy={windowWidth < 768}
               delay={(i % 6) * 0.125}
               className={`${S.galleryGridItem}`}
               key={i}
@@ -34,7 +38,7 @@ const MainGalleryGrid = (): JSX.Element => {
               </Box>
             </RevealOnScroll>
           ),
-          []
+          [windowWidth]
         )
       )}
     </Box>

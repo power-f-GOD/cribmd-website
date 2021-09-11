@@ -22,7 +22,10 @@ const MainIntro = (): JSX.Element => {
 
   const handleRenderSpecializations = useCallback(
     ({ icon, specialization }, i) => (
-      <Box className="p-4 px-3" data-anim={specializationsAnim(i % 2 === 0)} key={specialization}>
+      <Box
+        className={`${S.specialization} p-4 px-3`}
+        data-anim={specializationsAnim(i % 2 === 0)}
+        key={specialization}>
         <SVGIcon name={icon} size="medium" />
         <Box as="span">{specialization}</Box>
       </Box>
@@ -32,13 +35,13 @@ const MainIntro = (): JSX.Element => {
 
   return (
     <>
-      <RevealOnScroll component={Container} className="text-wrapper">
+      <RevealOnScroll as="section" component={Container} className="text-wrapper">
         <Box as="h2" className="text-md-center pt-5">
           Thousands of doctors at your beck and call
         </Box>
       </RevealOnScroll>
 
-      <RevealOnScroll component={Container} className="text-wrapper">
+      <RevealOnScroll as="section" component={Container} className="text-wrapper">
         <Box as="p" className="text-md-center mb-md-5">
           Get access to highly qualified doctors on CribMD!
           <br />
@@ -47,14 +50,14 @@ const MainIntro = (): JSX.Element => {
       </RevealOnScroll>
 
       {/* Specializations */}
-      <Container as="section">
+      <Box lazy as="section" className="container">
         <RevealOnScroll allowOverflow className={S.specializationsGrid}>
           {useMemo(() => specializations.slice(0, 4), []).map(handleRenderSpecializations)}
         </RevealOnScroll>
         <RevealOnScroll allowOverflow className={S.specializationsGrid}>
           {useMemo(() => specializations.slice(4), []).map(handleRenderSpecializations)}
         </RevealOnScroll>
-      </Container>
+      </Box>
     </>
   );
 };

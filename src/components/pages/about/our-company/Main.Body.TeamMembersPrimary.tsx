@@ -10,7 +10,7 @@ const MainBodyTeamMembersPrimary = (): JSX.Element => {
   const windowWidth = useContext(AppWindowContext);
 
   return (
-    <Box className={S.teamGrid}>
+    <Box lazy className={S.teamGrid}>
       {useMemo(() => teamMembersPrimary, []).map(
         useCallback(
           ({ imageName, primaryBio, secondaryBio, role, skill }, i) => (

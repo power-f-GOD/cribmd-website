@@ -25,6 +25,10 @@ const Home: NextPage = () => {
     }
   }, [windowWidth]);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <>
       <AppHead title="Telemedicine &amp; Doctor Home Visit" />

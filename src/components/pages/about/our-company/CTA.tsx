@@ -1,6 +1,6 @@
 import { Box, Img, Anchor, RevealOnScroll } from 'src/components/shared';
 import S from 'src/styles/pages/about/our-company/index.module.scss';
-import { Col, Row } from 'react-bootstrap';
+import { Col } from 'react-bootstrap';
 import { useContext } from 'react';
 import { AppWindowContext } from 'src/pages/_app';
 import { GetImage } from 'src/utils';
@@ -9,9 +9,10 @@ const CTA = (): JSX.Element => {
   const windowWidth = useContext(AppWindowContext);
 
   return (
-    <Row
+    <Box
+      lazy
       as="section"
-      className={`${S.ctaContainer} align-items-center  px-md-4 py-md-5 mt-md-5 mx-auto container`}>
+      className={`${S.ctaContainer} align-items-center  px-md-4 py-md-5 mt-md-5 mx-auto container row`}>
       <RevealOnScroll component={Col} className="px-0 px-md-3" xs={12} md={7} allowOverflow>
         <Box as="h2" data-anim_delay="0.3">
           Are you a doctor interested in joining our network?
@@ -46,7 +47,7 @@ const CTA = (): JSX.Element => {
           />
         </RevealOnScroll>
       </Col>
-    </Row>
+    </Box>
   );
 };
 

@@ -13,7 +13,7 @@ const MainBody = (): JSX.Element => {
   const isMobile = windowWidth < 768;
 
   return (
-    <Container fluid className={`${S.servicesWrapper} text-left text-md-center`}>
+    <Box as="section" lazy className={`${S.servicesWrapper} text-left text-md-center`}>
       <RevealOnScroll>
         <Container as="h2" className="pt-4 mb-3">
           Our Services
@@ -28,7 +28,7 @@ const MainBody = (): JSX.Element => {
         </Box>
       </RevealOnScroll>
 
-      <Container className="shrink-max-width-xxl px-lg-5">
+      <Box className="shrink-max-width-xxl px-lg-5 container">
         <Row className="">
           <Col className="d-flex flex-column px-0 ps-0 ps-lg-5 text-start mt-0 mt-md-5">
             <MainBodyCarousel />
@@ -41,8 +41,8 @@ const MainBody = (): JSX.Element => {
             </Col>
           )}
         </Row>
-      </Container>
-    </Container>
+      </Box>
+    </Box>
   );
 };
 

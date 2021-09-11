@@ -1,7 +1,7 @@
 import { memo, useContext, useCallback } from 'react';
 import { Box, Img, RevealOnScroll, SVGIcon } from 'src/components/shared';
 import S from 'src/styles/pages/about/our-company/index.module.scss';
-import { Col, Container, Row } from 'react-bootstrap';
+import { Col, Container } from 'react-bootstrap';
 import { AppWindowContext } from 'src/pages/_app';
 import { GetImage } from 'src/utils';
 
@@ -27,11 +27,16 @@ const MainIntro = (): JSX.Element => {
       {data.map(
         useCallback(
           ({ h2, p, imageName }, i) => (
-            <Row className={`${i === 0 ? 'pb-5' : 'pt-5 pb-5'} align-items-center`} key={h2}>
+            <Box
+              lazy
+              className={`${i === 0 ? 'pb-5' : 'pt-0 pt-md-5 pb-5'} align-items-center row`}
+              key={h2}>
               <RevealOnScroll
                 component={Col}
                 className={`${S.poster} ${
-                  i === 0 ? 'order-1 text-center text-md-end' : 'order-0 text-center text-md-start'
+                  i === 0
+                    ? 'order-1 text-center text-md-end'
+                    : 'order-1 order-md-0 text-center text-md-start'
                 }`}
                 xs={12}
                 md={5}
@@ -51,28 +56,12 @@ const MainIntro = (): JSX.Element => {
                     className={`${S.svgWrapper}`}
                     data-anim_delay={isMobile ? 0.5 : 0.75}
                   />
-                  {/* </Box> */}
-                  {/* <Box
-                    className={`${S.svgWrapper} ${S.bottomLayer}  d-block d-md-none`}
-                    data-anim_delay={isMobile ? 0 : 1}>
-                    <SVGIcon name="wide-rectangle(blue)" />
-                  </Box> */}
                 </Box>
-
-                {/* <Box
-           
-            > */}
-
-                {/* <Box
-            className={`${S.svgWrapper} ${S.topLayer} d-block d-md-none `}
-            data-anim_delay={isMobile ? 1 : 1.25}>
-            <SVGIcon name="doctors-briefcase" />
-          </Box> */}
               </RevealOnScroll>
 
               <RevealOnScroll
                 component={Col}
-                className={i === 0 ? 'order-0 pe-0 pe-md-5' : 'order-md-1 ps-0 ps-md-5'}
+                className={i === 0 ? 'order-0 pe-0 pe-md-5' : 'order-0 order-md-1 ps-0 ps-md-5'}
                 xs={12}
                 md={7}
                 easing="ease">
@@ -82,55 +71,20 @@ const MainIntro = (): JSX.Element => {
                   {p}
                 </Box>
               </RevealOnScroll>
-            </Row>
+            </Box>
           ),
           [isMobile]
         )
       )}
 
-      {2 > 3 && (
-        <Row className="pt-5 pb-5 align-items-center ">
-          <RevealOnScroll
-            component={Col}
-            className="order-md-1 ps-0 ps-md-5"
-            xs={12}
-            md={7}
-            easing="ease">
-            <Box as="h2">Our Vision</Box>
-
-            <Box className="pb-4 pb-md-0" data-anim_delay="0.6"></Box>
-          </RevealOnScroll>
-
-          <RevealOnScroll
-            component={Col}
-            className={`${S.visionPoster} ${S.poster} order-0 text-center text-md-start`}
-            xs={12}
-            md={5}
-            easing="ease"
-            allowOverflow>
-            <Img
-              srcSet={`/img/about/nurse-with-mask__500x.png 2x, /img/about/nurse-with-mask__250x.png 1x`}
-              alt="boy on sofa"
-              data-anim="fadeInRight"
-            />
-            <Box
-              className={`${S.svgWrapper} d-none d-lg-block`}
-              data-anim_delay={isMobile ? 0.5 : 0.75}>
-              <SVGIcon name="curved-square(purple)" />
-            </Box>
-            <Box
-              className={`${S.svgWrapper} ${S.bottomLayer} ${S.visionSvg}  d-block d-md-none`}
-              data-anim_delay={isMobile ? 0 : 1.25}>
-              <SVGIcon name="wide-rectangle(purple)" />
-            </Box>
-            {/* <Box
-            className={`${S.svgWrapper} ${S.topLayer}  ${S.visionSvg} d-block d-md-none `}
-            data-anim_delay={isMobile ? 1.25 : 1.75}>
-            <SVGIcon name="flower" />
-          </Box> */}
-          </RevealOnScroll>
-        </Row>
-      )}
+      {/* <Box className={`${S.svgWrapper} d-none d-lg-block`} data-anim_delay={isMobile ? 0.5 : 0.75}>
+        <SVGIcon name="curved-square(purple)" />
+      </Box>
+      <Box
+        className={`${S.svgWrapper} ${S.bottomLayer} ${S.visionSvg}  d-block d-md-none`}
+        data-anim_delay={isMobile ? 0 : 1.25}>
+        <SVGIcon name="wide-rectangle(purple)" />
+      </Box> */}
     </Container>
   );
 };

@@ -22,6 +22,7 @@ const MainExit = (): JSX.Element => {
           useCallback(
             (doctor, i) => (
               <Box
+                lazy
                 key={doctor.name}
                 className={`${S.doctorGridItem} ${S[`box${i + 1}`]} ${
                   S['bg' + doctor.backgroundColor]

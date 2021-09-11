@@ -69,6 +69,7 @@ export interface BoxProps
   _ref?: RefObject<
     HTMLElement & HTMLParagraphElement & HTMLOListElement & HTMLUListElement & HTMLLIElement
   >;
+  lazy?: boolean;
   'data-anim'?: TransitionAnimName;
 }
 

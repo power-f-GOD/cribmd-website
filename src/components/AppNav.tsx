@@ -1,10 +1,10 @@
 import { useState, useCallback, useContext, useEffect, memo, AnimationEvent } from 'react';
+import { useRouter } from 'next/dist/client/router';
 
 import { AppWindowContext } from 'src/pages/_app';
 import { preventDefault, addEventListenerOnce } from 'src/utils';
 import { Box, Logo, Anchor, Button } from '.';
 import { NavLink, SVGIcon } from './shared';
-import { useRouter } from 'next/dist/client/router';
 
 let scrollTimeout: NodeJS.Timeout;
 let scrollPositionTimeout: NodeJS.Timeout;
@@ -13,7 +13,7 @@ let finalScrollPosition = 0;
 
 const AppNav = (): JSX.Element => {
   const windowWidth = useContext(AppWindowContext);
-  const isPC = windowWidth > 991;
+  const isPC = windowWidth > 991 && typeof window !== 'undefined';
   const [open, setOpen] = useState(false);
   const [renderNav, setRenderNav] = useState(isPC);
   const [isNegativeScroll, setIsNegativeScroll] = useState(isPC);
@@ -109,6 +109,10 @@ const AppNav = (): JSX.Element => {
       window.removeEventListener('scroll', handleWindowScroll);
     };
   }, [handleWindowScroll]);
+
+  // if (typeof window === 'undefined') {
+  //   return <></>;
+  // }
 
   return (
     <Box

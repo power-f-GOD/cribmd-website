@@ -9,72 +9,121 @@
  */
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { FC, useState, useEffect, memo } from 'react';
+import {
+  FC,
+  useState,
+  useEffect,
+  memo,
+  useRef,
+  useCallback,
+  useContext,
+  createElement
+} from 'react';
 import { BoxProps } from 'src/types';
+import { createIntersectionObserver, delay } from 'src/utils';
+import { AppWindowContext } from 'src/pages/_app';
 
-const _Box: FC<BoxProps> = ({ as, children, ...props }): JSX.Element => {
-  const [render, setRender] = useState(false);
+let observer: IntersectionObserver;
+
+const _Box: FC<BoxProps> = ({ as, children, lazy, ...props }): JSX.Element => {
+  const windowWidth = useContext(AppWindowContext);
+  // const [rendered, setRendered] = useState(false);
+  const [shouldRecalculate, setShouldRecalculate] = useState(true);
+  const [renderChildren, setRenderChildren] = useState(true);
+  const mustRenderChildren = !lazy || (lazy && renderChildren);
+  let elementRef = useRef<HTMLElement | null>(null);
+  // const observerRef = useRef<IntersectionObserver | null>(null);
+
+  const recalculate = useCallback(
+    (element: HTMLElement) => {
+      if (element.children.length || renderChildren) {
+        element.style.height = 'auto';
+        delay(500).then(() => {
+          if (element.children.length && element) {
+            element.style.height = `${element.offsetHeight}px`;
+            setShouldRecalculate(false);
+            // console.log(
+            //   'DDDD',
+            //   element.children.length,
+            //   element?.className,
+            //   element?.style.height,
+            //   '...',
+            //   elementRef.current?.style.height,
+            //   renderChildren
+            // );
+          }
+        });
+      }
+    },
+    [renderChildren]
+  );
+
+  // useEffect(() => {
+  //   setRendered(true);
+  // }, []);
 
   useEffect(() => {
-    setRender(true);
-  }, []);
+    if (lazy) {
+      setShouldRecalculate(!!windowWidth);
+    }
+  }, [windowWidth, lazy]);
+
+  useEffect(() => {
+    if (lazy) {
+      const element = elementRef.current;
+
+      if (element && (shouldRecalculate || !element.style.height) && renderChildren) {
+        recalculate(element);
+      }
+    }
+  }, [lazy, renderChildren, shouldRecalculate, recalculate]);
+
+  useEffect(() => {
+    if (lazy) {
+      delay(25).then(() => {
+        const element = elementRef.current;
+
+        observer = createIntersectionObserver(
+          null,
+          (entries) => {
+            entries.forEach((entry) => {
+              setRenderChildren(entry.isIntersecting);
+            });
+          },
+          { threshold: 0 }
+        );
+
+        if (element) {
+          observer.observe(element);
+        }
+      });
+    }
+  }, [lazy]);
 
   if (props._ref) {
-    props.ref = props._ref;
+    props.ref = elementRef = props._ref;
     delete props._ref;
+  } else if (lazy && !props.ref) {
+    props.ref = elementRef as any;
+  }
+
+  if (lazy && !props.style?.minHeight) {
+    props.style = {
+      ...(props.style || {}),
+      minHeight: 75,
+      opacity: renderChildren ? 1 : 0,
+      transitionProperty: 'opacity, transform',
+      transitionDuration: '0.5s'
+    };
   }
 
   //Fix for SSR error: 'Warning: Expected server HTML to contain a matching <div> in <nav>'
-  if (!render) return <></>;
+  // if (typeof window !== 'undefined') return <></>;
 
-  switch (as) {
-    case 'h1':
-      return <h1 {...props}>{children}</h1>;
-    case 'h2':
-      return <h2 {...props}>{children}</h2>;
-    case 'h3':
-      return <h3 {...props}>{children}</h3>;
-    case 'h4':
-      return <h4 {...props}>{children}</h4>;
-    case 'h5':
-      return <h5 {...props}>{children}</h5>;
-    case 'h6':
-      return <h6 {...props}>{children}</h6>;
-    case 'nav':
-      return <nav {...props}>{children}</nav>;
-    case 'header':
-      return <header {...props}>{children}</header>;
-    case 'main':
-      return <main {...props}>{children}</main>;
-    case 'aside':
-      return <aside {...props}>{children}</aside>;
-    case 'footer':
-      return <footer {...props}>{children}</footer>;
-    case 'i':
-      return <i {...props}>{children}</i>;
-    case 'small':
-      return <small {...props}>{children}</small>;
-    case 'span':
-      return <span {...props}>{children}</span>;
-    case 'p':
-      return <p {...props}>{children}</p>;
-    case 'ul':
-      return <ul {...props}>{children}</ul>;
-    case 'ol':
-      return <ol {...props}>{children}</ol>;
-    case 'li':
-      return <li {...props}>{children}</li>;
-    case 'section':
-      return <section {...props}>{children}</section>;
-    case 'blockquote':
-      return <blockquote {...props}>{children}</blockquote>;
-    case 'address':
-      return <address {...props}>{children}</address>;
-    case 'strong':
-      return <strong {...props}>{children}</strong>;
-    default:
-      return <div {...props}>{children}</div>;
-  }
+  return createElement(as || 'div', {
+    ...props,
+    children: mustRenderChildren && children
+  });
 };
 
 export const Box = memo(_Box);

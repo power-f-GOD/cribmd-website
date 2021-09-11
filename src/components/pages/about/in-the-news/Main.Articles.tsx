@@ -66,7 +66,7 @@ const MainArticles: FC<{ carouselChunkSize: number; windowWidth?: number }> = ({
         </Container>
       </RevealOnScroll>
 
-      <Container as="section" className={`${S.mediaGridWrapper} text-center`}>
+      <Box lazy as="section" className={`${S.mediaGridWrapper} text-center container`}>
         <Box
           className={`${S.mediaGrid} mb-3`}
           style={useMemo(
@@ -86,6 +86,10 @@ const MainArticles: FC<{ carouselChunkSize: number; windowWidth?: number }> = ({
                 return (
                   <Box
                     key={i}
+                    lazy={
+                      i > activeArticlesIndex * carouselChunkSize * 2 ||
+                      i < activeArticlesIndex * carouselChunkSize * 2
+                    }
                     className={`${S.mediaItemContainer}`}
                     style={{
                       transform: `translateY(${inActiveRange ? 0 : '2.5em'}) scale(${
@@ -144,7 +148,7 @@ const MainArticles: FC<{ carouselChunkSize: number; windowWidth?: number }> = ({
             </Button>
           </Box>
         </RevealOnScroll>
-      </Container>
+      </Box>
     </>
   );
 };

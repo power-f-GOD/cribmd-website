@@ -1,18 +1,4 @@
 .mainIntroSection {
-  .svgWrapper {
-    z-index: -1;
-    position: absolute;
-
-    i {
-      width: inherit;
-      height: inherit;
-    }
-    svg {
-      height: unset;
-      width: unset;
-    }
-  }
-
   img {
     //   -o-object-fit: cover;
     //   object-fit: cover;
@@ -44,6 +30,20 @@
   //   margin-left: 0px !important;
   //   padding: 0;
   // }
+}
+
+.svgWrapper {
+  z-index: -1;
+  position: absolute;
+
+  i {
+    width: inherit;
+    height: inherit;
+  }
+  svg {
+    height: unset;
+    width: unset;
+  }
 }
 
 .visionPoster {

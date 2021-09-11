@@ -71,8 +71,8 @@ const Header = (): JSX.Element => {
                 '2x'
               )} 1000w`}
               sizes="(max-width: 1399px) 500px, 1000px"
-              width="500"
-              height="700"
+              width="420"
+              height="500"
               className={`${S.heroImage} ms-lg-4 ms-xl-5`}
               data-anim="fadeIn"
               data-anim_delay="0.9"
@@ -82,7 +82,7 @@ const Header = (): JSX.Element => {
 
           <Box className={S.after}>
             <Box className={S.blurredEllipse} />
-            <Box className={S.blurredEllipse} />
+            <Box className={`${S.blurredEllipse} ${S.second}`} />
           </Box>
         </Row>
       </RevealOnScroll>
@@ -91,11 +91,12 @@ const Header = (): JSX.Element => {
           CribMD in the Media
         </Box>
       </RevealOnScroll>
-      <Box as="section">
+      <Box lazy as="section">
         <RevealOnScroll
           as="section"
           className={`${S.mediaGrid} align-items-stretch`}
           animName={windowWidth < 992 ? 'fadeInDown' : 'fadeInRight'}
+          duration={windowWidth < 992 ? 0.75 : undefined}
           easing="ease">
           {useMemo(
             () => [
@@ -113,7 +114,7 @@ const Header = (): JSX.Element => {
                 <Anchor
                   routeLink
                   href="/about/in-the-news#articles"
-                  className="p-3 p-lg-4"
+                  className={`${S.medium} p-3 p-lg-4`}
                   key={medium}>
                   <Img
                     src={GetImage.mediaLogo(medium)}

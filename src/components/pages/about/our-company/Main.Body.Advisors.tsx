@@ -6,13 +6,13 @@ import { GetImage } from 'src/utils';
 
 const MainBodyAdvisors = (): JSX.Element => {
   return (
-    <Box className={S.teamMembersGrid}>
+    <Box lazy className={S.teamMembersGrid}>
       {useMemo(() => advisorsData, []).map(
         useCallback(
           (advisor, i) => (
             <RevealOnScroll
               key={advisor.name + i}
-              className="my-2"
+              className={`${S.teamMember} my-2`}
               easing="ease"
               delay={(i % 5) * 0.1}>
               <Box className={`${S.teamMembersContent} ${S.ourTeamContent}`}>

@@ -23,6 +23,10 @@ const Individual: NextPage = () => {
     }
   }, [windowWidth]);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <>
       <AppHead title="Plans - Individual" />

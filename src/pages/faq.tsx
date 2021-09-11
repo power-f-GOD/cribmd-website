@@ -25,6 +25,10 @@ const FAQ: NextPage = () => {
     }
   }, [windowWidth]);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <Container as="main" fluid className="FAQ" ref={faqRef as any}>
       <AppHead title="FAQ" />

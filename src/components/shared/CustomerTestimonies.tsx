@@ -1,7 +1,5 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import { useState, useCallback, useEffect, useMemo, memo } from 'react';
-import { Container } from 'react-bootstrap';
-
 import { Box, Avatar, SVGIcon, Button, RevealOnScroll } from 'src/components/shared';
 import { GetImage, interval, delay, getHumanName } from 'src/utils';
 import { testifiers } from 'src/data';
@@ -56,7 +54,7 @@ const _CustomerTestimonies = (): JSX.Element => {
   }, []);
 
   return (
-    <Container as="section" className="CustomerTestimonies text-center">
+    <Box lazy as="section" className="CustomerTestimonies text-center container">
       <RevealOnScroll as="h2" className="mt-3 mb-3" animName="fadeInLeft" easing="ease">
         {useMemo(() => 'What our customers are saying'.split(' '), []).map(
           useCallback(
@@ -136,7 +134,7 @@ const _CustomerTestimonies = (): JSX.Element => {
           </Box>
         </RevealOnScroll>
       </Box>
-    </Container>
+    </Box>
   );
 };
 

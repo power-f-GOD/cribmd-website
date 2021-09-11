@@ -95,11 +95,8 @@ const MainBodyCarousel = (): JSX.Element => {
               <Box
                 className={`${S.serviceCard}`}
                 data-anim={isMobile ? (i % 2 === 0 ? 'fadeInLeft' : 'fadeInRight') : 'fadeInLeft'}>
-                <Box>
-                  <SVGIcon name={service.icon} size="medium" />
-                  <Box as="h3" className="my-2 h5">
-                    {service.name}
-                  </Box>
+                <Box as="h3" className="my-2 h5 d-inline-flex align-items-center">
+                  <SVGIcon name={service.icon} size="medium" className="me-3" /> {service.name}
                 </Box>
                 <Box as="p" className="anim__fadeIn">
                   {service.description}

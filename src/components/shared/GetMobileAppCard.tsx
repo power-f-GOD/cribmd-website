@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import { memo, FC } from 'react';
-import { Col, Row } from 'react-bootstrap';
+import { Col } from 'react-bootstrap';
 
 import { Box, Img } from '.';
 import { GetImage } from 'src/utils';
@@ -12,9 +12,10 @@ const _GetMobileAppCard: FC<{ headerText?: string; bodyText?: string }> = ({
   bodyText
 }): JSX.Element => {
   return (
-    <Row
+    <Box
+      lazy
       as="section"
-      className="GetMobileAppCard shrink-max-width-xxl text-center px-3 pt-4 px-md-5 mx-auto align-items-center container">
+      className="GetMobileAppCard shrink-max-width-xxl text-center px-3 pt-4 px-md-5 mx-auto align-items-center container row">
       <Col xs={12} md={7} className="text-md-start">
         <RevealOnScroll animName="fadeInRight" easing="ease">
           <Box as="h2" className="h3 theme-white">
@@ -49,7 +50,7 @@ const _GetMobileAppCard: FC<{ headerText?: string; bodyText?: string }> = ({
           />
         </Box>
       </RevealOnScroll>
-    </Row>
+    </Box>
   );
 };
 

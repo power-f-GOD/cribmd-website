@@ -41,7 +41,7 @@ const MainBroadcasts: FC<{ carouselChunkSize: number; windowWidth?: number }> = 
         </Container>
       </RevealOnScroll>
 
-      <Container as="section" className={`${S.mediaGridWrapper} text-center`}>
+      <Box lazy as="section" className={`${S.mediaGridWrapper} text-center container mb-5`}>
         <Box
           className={`${S.mediaGrid} mb-3`}
           style={useMemo(
@@ -124,7 +124,7 @@ const MainBroadcasts: FC<{ carouselChunkSize: number; windowWidth?: number }> = 
             </Button>
           </Box>
         </RevealOnScroll>
-      </Container>
+      </Box>
     </>
   );
 };

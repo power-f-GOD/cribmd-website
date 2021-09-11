@@ -6,13 +6,13 @@ import { GetImage, getHumanName } from 'src/utils';
 
 const MainBodyTeamMembersSecondary = (): JSX.Element => {
   return (
-    <Box className={S.teamMembersGrid}>
+    <Box lazy className={S.teamMembersGrid}>
       {useMemo(() => teamMembersSecondary, []).map(
         useCallback(
           ({ imageName, role }, i) => (
             <RevealOnScroll
               key={imageName + i}
-              className="my-2"
+              className={`${S.teamMember} my-2`}
               easing="ease"
               animName={'fadeInRight'}
               delay={(i % 5) * 0.1}>

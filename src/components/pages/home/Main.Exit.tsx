@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
-import { useContext, useMemo, useCallback } from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
+import { useContext, useMemo, useCallback, memo } from 'react';
+import { Row, Col } from 'react-bootstrap';
 
 import S from 'src/styles/pages/home/Main.module.scss';
 import { Box, Img, Anchor, RevealOnScroll } from 'src/components/shared';
@@ -13,7 +13,7 @@ const MainExit = (): JSX.Element => {
   const isMobile = windowWidth < 768;
 
   return (
-    <Container className="shrink-max-width-xxl">
+    <Box lazy className="shrink-max-width-xxl container">
       {useMemo(() => servicesIllustrations, []).map(
         useCallback(
           ({ buttonText, anchorHref: buttonUrl, heading, imageName, p1, rider, p2, p3 }, i) => (
@@ -61,7 +61,7 @@ const MainExit = (): JSX.Element => {
                 <Img
                   srcSet={`${GetImage.home(imageName)} 400w`}
                   width="400"
-                  height="450"
+                  height="470"
                   src={GetImage.home(imageName)}
                   className={`mt-5 mt-md-0 ${i === 0 ? 'with-frame' : ''}`.trim()}
                   alt={`image of ${imageName.replace('-', ' ')}`}
@@ -72,8 +72,8 @@ const MainExit = (): JSX.Element => {
           [isMobile]
         )
       )}
-    </Container>
+    </Box>
   );
 };
 
-export default MainExit;
+export default memo(MainExit);
