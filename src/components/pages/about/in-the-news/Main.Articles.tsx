@@ -7,6 +7,7 @@ import { Box, Img, RevealOnScroll, Anchor, Button, SVGIcon } from 'src/component
 import { GetImage, interval, delay } from 'src/utils';
 import S from 'src/styles/pages/about/in-the-news/Main.module.scss';
 import { news } from 'src/data/about/in-the-news';
+import { LazyBox } from 'src/components/shared';
 
 const articles = news.filter((story) => !story.iframeUrl);
 let unmounted = false;
@@ -66,7 +67,7 @@ const MainArticles: FC<{ carouselChunkSize: number; windowWidth?: number }> = ({
         </Container>
       </RevealOnScroll>
 
-      <Box lazy as="section" className={`${S.mediaGridWrapper} text-center container`}>
+      <LazyBox as="section" className={`${S.mediaGridWrapper} text-center container`}>
         <Box
           className={`${S.mediaGrid} mb-3`}
           style={useMemo(
@@ -86,9 +87,11 @@ const MainArticles: FC<{ carouselChunkSize: number; windowWidth?: number }> = ({
                 return (
                   <Box
                     key={i}
-                    lazy={
+                    component={
                       i > activeArticlesIndex * carouselChunkSize * 2 ||
                       i < activeArticlesIndex * carouselChunkSize * 2
+                        ? LazyBox
+                        : undefined
                     }
                     className={`${S.mediaItemContainer}`}
                     style={{
@@ -148,7 +151,7 @@ const MainArticles: FC<{ carouselChunkSize: number; windowWidth?: number }> = ({
             </Button>
           </Box>
         </RevealOnScroll>
-      </Box>
+      </LazyBox>
     </>
   );
 };

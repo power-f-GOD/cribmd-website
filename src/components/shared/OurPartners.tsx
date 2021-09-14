@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import { memo, FC, useCallback } from 'react';
 
-import { Box, Img, RevealOnScroll } from '.';
+import { Box, Img, RevealOnScroll, LazyBox } from '.';
 import { GetImage } from 'src/utils';
 import { partners } from 'src/data';
 
@@ -9,7 +9,7 @@ const _OurPartners: FC<{ shrink?: boolean }> = (): JSX.Element => {
   const gridItemClassName = '__grid-item d-flex align-items-center py-3 px-4 px-lg-5 py-sm-4';
 
   return (
-    <Box lazy as="section" className={`OurPartners shrink-max-width-xxl text-md-center container`}>
+    <LazyBox as="section" className={`OurPartners shrink-max-width-xxl text-md-center container`}>
       <RevealOnScroll easing="ease">
         <Box as="h2" className="mb-0">
           Our Partners
@@ -50,7 +50,7 @@ const _OurPartners: FC<{ shrink?: boolean }> = (): JSX.Element => {
           </Box>
         ))}
       </RevealOnScroll> */}
-    </Box>
+    </LazyBox>
   );
 };
 

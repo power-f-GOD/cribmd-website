@@ -1,5 +1,5 @@
 import { memo, useContext, useMemo, useCallback } from 'react';
-import { Box, RevealOnScroll, Avatar } from 'src/components/shared';
+import { Box, RevealOnScroll, Avatar, LazyBox } from 'src/components/shared';
 import S from 'src/styles/pages/about/our-company/index.module.scss';
 import TeamModal from './Modal';
 import { teamMembersPrimary } from 'src/data';
@@ -10,7 +10,7 @@ const MainBodyTeamMembersPrimary = (): JSX.Element => {
   const windowWidth = useContext(AppWindowContext);
 
   return (
-    <Box lazy className={S.teamGrid}>
+    <LazyBox className={S.teamGrid}>
       {useMemo(() => teamMembersPrimary, []).map(
         useCallback(
           ({ imageName, primaryBio, secondaryBio, role, skill }, i) => (
@@ -53,7 +53,7 @@ const MainBodyTeamMembersPrimary = (): JSX.Element => {
           [windowWidth]
         )
       )}
-    </Box>
+    </LazyBox>
   );
 };
 

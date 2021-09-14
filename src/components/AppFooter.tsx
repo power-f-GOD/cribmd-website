@@ -3,7 +3,7 @@
 import { Container, Row, Col } from 'react-bootstrap';
 import { memo, useRef, useContext, useEffect } from 'react';
 
-import { Box, Anchor, Logo, RevealOnScroll, SVGIcon } from '.';
+import { Box, Anchor, Logo, RevealOnScroll, SVGIcon, LazyBox } from '.';
 import { AppWindowContext } from 'src/pages/_app';
 import { ScrollReveal } from 'src/utils';
 
@@ -25,7 +25,7 @@ const AppFooter = (): JSX.Element => {
 
   return (
     <Container as="footer" fluid className="AppFooter p-3 py-5" ref={footerRef}>
-      <Box lazy className="container">
+      <LazyBox className="container">
         <hr />
         <Row className="row mx-0 text-left">
           <RevealOnScroll
@@ -34,8 +34,7 @@ const AppFooter = (): JSX.Element => {
             md={5}
             lg={3}
             className="__about __group mb-0 order-2 order-lg-0 ps-0 pe-0 pe-md-4 pe-lg-5"
-            animName="fadeInRight"
-            easing="ease">
+            animName="fadeInRight">
             <Logo preserveText className="pb-0 mb-0 mt-3 mt-md-0" />
 
             <Box as="p" className="mt-2">
@@ -113,8 +112,7 @@ const AppFooter = (): JSX.Element => {
 
           <RevealOnScroll
             component={Row}
-            className="row mx-0 px-0 order-0 order-lg-1 col-sm-8 col-lg-7"
-            easing="ease">
+            className="row mx-0 px-0 order-0 order-lg-1 col-sm-8 col-lg-7">
             <Col xs={6} md={3} className="__for-patients __group">
               <Box as="h3" className="mb-3">
                 For Patients
@@ -200,8 +198,7 @@ const AppFooter = (): JSX.Element => {
             sm={4}
             lg={2}
             animName="fadeInLeft"
-            className="__contact __group mb-4 order-1 order-lg-2 px-0"
-            easing="ease">
+            className="__contact __group mb-4 order-1 order-lg-2 px-0">
             <Box as="h3" className="mb-3">
               Contact
             </Box>
@@ -240,7 +237,7 @@ const AppFooter = (): JSX.Element => {
             </Box>
           </RevealOnScroll>
         </Row>
-      </Box>
+      </LazyBox>
     </Container>
   );
 };

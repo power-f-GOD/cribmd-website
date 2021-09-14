@@ -3,7 +3,7 @@ import { useContext, useMemo, useCallback, memo } from 'react';
 import { Row, Col } from 'react-bootstrap';
 
 import S from 'src/styles/pages/home/Main.module.scss';
-import { Box, Img, Anchor, RevealOnScroll } from 'src/components/shared';
+import { Box, Img, Anchor, RevealOnScroll, LazyBox } from 'src/components/shared';
 import { servicesIllustrations } from 'src/data/home';
 import { GetImage } from 'src/utils';
 import { AppWindowContext } from 'src/pages/_app';
@@ -13,12 +13,12 @@ const MainExit = (): JSX.Element => {
   const isMobile = windowWidth < 768;
 
   return (
-    <Box lazy className="shrink-max-width-xxl container">
+    <LazyBox className="shrink-max-width-xxl container">
       {useMemo(() => servicesIllustrations, []).map(
         useCallback(
           ({ buttonText, anchorHref: buttonUrl, heading, imageName, p1, rider, p2, p3 }, i) => (
             <Row key={heading} className="my-5 align-items-center pb-3 pb-md-2">
-              <RevealOnScroll component={Col} xs={12} md={6} allowOverflow easing="ease">
+              <RevealOnScroll component={Col} xs={12} md={6} allowOverflow>
                 <Box as="h3" className="h6 theme-tertiary mt-0">
                   {heading}
                 </Box>
@@ -72,7 +72,7 @@ const MainExit = (): JSX.Element => {
           [isMobile]
         )
       )}
-    </Box>
+    </LazyBox>
   );
 };
 

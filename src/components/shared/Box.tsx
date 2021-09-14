@@ -23,22 +23,51 @@ import { BoxProps } from 'src/types';
 import { createIntersectionObserver, delay } from 'src/utils';
 import { AppWindowContext } from 'src/pages/_app';
 
+const _Box: FC<BoxProps> = ({ as, children, component, ...props }): JSX.Element => {
+  const Component = component;
+  const [rendered, setRendered] = useState(false);
+
+  useEffect(() => {
+    setRendered(true);
+
+    return () => setRendered(false);
+  }, []);
+
+  if (props._ref) {
+    props.ref = props._ref;
+    delete props._ref;
+  }
+
+  //Fix for SSR error: 'Warning: Expected server HTML to contain a matching <div> in <nav>'
+  if (typeof window === 'undefined' || !rendered) return <></>;
+
+  if (Component) {
+    return <Component {...props}>{children}</Component>;
+  }
+
+  return createElement(as || 'div', {
+    ...props,
+    children
+  });
+};
+
 let observer: IntersectionObserver;
 
-const _Box: FC<BoxProps> = ({ as, children, lazy, ...props }): JSX.Element => {
+const _LazyBox: FC<BoxProps> = ({ as, children, component, ...props }): JSX.Element => {
+  const Component = component;
   const windowWidth = useContext(AppWindowContext);
-  // const [rendered, setRendered] = useState(false);
+  const [rendered, setRendered] = useState(false);
   const [shouldRecalculate, setShouldRecalculate] = useState(true);
   const [renderChildren, setRenderChildren] = useState(true);
-  const mustRenderChildren = !lazy || (lazy && renderChildren);
   let elementRef = useRef<HTMLElement | null>(null);
-  // const observerRef = useRef<IntersectionObserver | null>(null);
 
   const recalculate = useCallback(
     (element: HTMLElement) => {
-      if (element.children.length || renderChildren) {
+      const numChildren = element.children.length;
+
+      if (numChildren || renderChildren) {
         element.style.height = 'auto';
-        delay(500).then(() => {
+        delay(windowWidth < 768 ? 150 : 50).then(() => {
           if (element.children.length && element) {
             element.style.height = `${element.offsetHeight}px`;
             setShouldRecalculate(false);
@@ -55,62 +84,58 @@ const _Box: FC<BoxProps> = ({ as, children, lazy, ...props }): JSX.Element => {
         });
       }
     },
-    [renderChildren]
+    [renderChildren, windowWidth]
   );
 
-  // useEffect(() => {
-  //   setRendered(true);
-  // }, []);
+  useEffect(() => {
+    setRendered(true);
+    delay(25).then(() => {
+      const element = elementRef.current;
+
+      observer = createIntersectionObserver(
+        null,
+        (entries) => {
+          entries.forEach((entry) => {
+            setRenderChildren(entry.isIntersecting);
+          });
+        },
+        { threshold: 0 }
+      );
+
+      if (element) {
+        observer.observe(element);
+      }
+    });
+
+    return () => setRendered(false);
+  }, []);
 
   useEffect(() => {
-    if (lazy) {
-      setShouldRecalculate(!!windowWidth);
+    if (windowWidth) {
+      setShouldRecalculate(true);
     }
-  }, [windowWidth, lazy]);
+  }, [windowWidth]);
 
   useEffect(() => {
-    if (lazy) {
+    delay(25).then(() => {
       const element = elementRef.current;
 
       if (element && (shouldRecalculate || !element.style.height) && renderChildren) {
         recalculate(element);
       }
-    }
-  }, [lazy, renderChildren, shouldRecalculate, recalculate]);
-
-  useEffect(() => {
-    if (lazy) {
-      delay(25).then(() => {
-        const element = elementRef.current;
-
-        observer = createIntersectionObserver(
-          null,
-          (entries) => {
-            entries.forEach((entry) => {
-              setRenderChildren(entry.isIntersecting);
-            });
-          },
-          { threshold: 0 }
-        );
-
-        if (element) {
-          observer.observe(element);
-        }
-      });
-    }
-  }, [lazy]);
+    });
+  }, [renderChildren, shouldRecalculate, recalculate]);
 
   if (props._ref) {
     props.ref = elementRef = props._ref;
     delete props._ref;
-  } else if (lazy && !props.ref) {
+  } else if (!props.ref) {
     props.ref = elementRef as any;
   }
 
-  if (lazy && !props.style?.minHeight) {
+  if (!props.style?.minHeight && rendered) {
     props.style = {
       ...(props.style || {}),
-      minHeight: 75,
       opacity: renderChildren ? 1 : 0,
       transitionProperty: 'opacity, transform',
       transitionDuration: '0.5s'
@@ -118,12 +143,17 @@ const _Box: FC<BoxProps> = ({ as, children, lazy, ...props }): JSX.Element => {
   }
 
   //Fix for SSR error: 'Warning: Expected server HTML to contain a matching <div> in <nav>'
-  // if (typeof window !== 'undefined') return <></>;
+  if (typeof window === 'undefined' || !rendered) return <></>;
+
+  if (Component) {
+    return <Component {...props}>{renderChildren && children}</Component>;
+  }
 
   return createElement(as || 'div', {
     ...props,
-    children: mustRenderChildren && children
+    children: renderChildren && children
   });
 };
 
 export const Box = memo(_Box);
+export const LazyBox = memo(_LazyBox);

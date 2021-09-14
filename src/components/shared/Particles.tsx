@@ -73,10 +73,10 @@ const _Particles = (): JSX.Element => {
     };
   }, []);
 
-  if (!particles || unmounted || isMobile || typeof window === 'undefined') return <></>;
+  if (!particles || unmounted || typeof window === 'undefined') return <></>;
 
   return createPortal(
-    Array(Math.floor((isMobile ? 4 : 8) * (scrollHeight / (globalThis.innerHeight - 100 || 1000))))
+    Array(Math.floor((isMobile ? 4 : 16) * (scrollHeight / (globalThis.innerHeight - 100 || 1000))))
       .fill('')
       .map(handleRenderParticles),
     particles

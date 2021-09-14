@@ -3,13 +3,10 @@ import { Container } from 'react-bootstrap';
 
 import { Box, SVGIcon, Anchor, RevealOnScroll } from 'src/components/shared';
 import S from 'src/styles/pages/health-plans/corporate/Main.module.scss';
-// import { AppWindowContext } from 'src/pages/_app';
 import { corporateBenefitsData } from '../../../../data/health-plans/corporate';
 import { preventDefault } from 'src/utils';
 
 const MainIntro = (): JSX.Element => {
-  // const windowWidth = useContext(AppWindowContext);
-
   const handleRenderList = useCallback(
     ({ title, content, header, headerContent }, i) =>
       title && (
@@ -39,7 +36,7 @@ const MainIntro = (): JSX.Element => {
   return (
     <>
       <Container className="mb-5 shrink-max-width-xxl">
-        <RevealOnScroll easing="ease">
+        <RevealOnScroll>
           <Box as="h2" data-anim_delay="0.3">
             Benefits
           </Box>
@@ -105,10 +102,7 @@ const MainIntro = (): JSX.Element => {
           {useMemo(() => corporateBenefitsData.slice(1), []).map(
             useCallback(
               ({ header, list1, list, footer, monthlyFee }, _i) => (
-                <RevealOnScroll
-                  easing="ease"
-                  key={header}
-                  className={`${S.benefitsContainer} my-3`}>
+                <RevealOnScroll key={header} className={`${S.benefitsContainer} my-3`}>
                   <Box className={`d-flex justify-content-between ${S.benefitsHeader}`}>
                     <Box as="h2" className="h6">
                       {header}

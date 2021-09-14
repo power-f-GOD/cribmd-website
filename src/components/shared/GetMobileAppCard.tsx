@@ -2,7 +2,7 @@
 import { memo, FC } from 'react';
 import { Col } from 'react-bootstrap';
 
-import { Box, Img } from '.';
+import { Box, Img, LazyBox } from '.';
 import { GetImage } from 'src/utils';
 import { AppstoreButton, PlaystoreButton } from './Button';
 import { RevealOnScroll } from './RevealOnScroll';
@@ -12,8 +12,7 @@ const _GetMobileAppCard: FC<{ headerText?: string; bodyText?: string }> = ({
   bodyText
 }): JSX.Element => {
   return (
-    <Box
-      lazy
+    <LazyBox
       as="section"
       className="GetMobileAppCard shrink-max-width-xxl text-center px-3 pt-4 px-md-5 mx-auto align-items-center container row">
       <Col xs={12} md={7} className="text-md-start">
@@ -26,7 +25,9 @@ const _GetMobileAppCard: FC<{ headerText?: string; bodyText?: string }> = ({
               `Book a same day appointment at your convenience either from our mobile app or web app
             and have a secure chat with any of our licensed doctors.`}
           </Box>
-          <Box className="d-flex flex-wrap justify-content-center justify-content-md-start mb-3 mt-4">
+          <Box
+            className="d-flex flex-wrap justify-content-center justify-content-md-start mb-3 mt-4"
+            data-anim="fadeIn">
             <PlaystoreButton className="mx-2 mx-md-0 me-md-3 mb-2" />
             <AppstoreButton className="mx-2 mx-md-0 me-md-3 mb-2" />
           </Box>
@@ -50,7 +51,7 @@ const _GetMobileAppCard: FC<{ headerText?: string; bodyText?: string }> = ({
           />
         </Box>
       </RevealOnScroll>
-    </Box>
+    </LazyBox>
   );
 };
 

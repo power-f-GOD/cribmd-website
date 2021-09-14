@@ -34,7 +34,7 @@ export class ScrollReveal {
           }
         });
       },
-      { threshold: width < 768 ? 0.5 : 0.6 }
+      { threshold: width < 768 ? 0.6 : 0.5 }
     );
     // this block is used to throttle ScrollReveal registration till all children nodes of root have mounted in the DOM
     this.mutationObserver = createMutationObserver(() => {

@@ -1,7 +1,7 @@
 import { memo, useState, useCallback, FC, useMemo } from 'react';
 import { Container } from 'react-bootstrap';
 
-import { Box, RevealOnScroll, Anchor, Button, SVGIcon } from 'src/components';
+import { Box, RevealOnScroll, Anchor, Button, SVGIcon, LazyBox } from 'src/components';
 import S from 'src/styles/pages/about/in-the-news/Main.module.scss';
 import { news } from 'src/data/about/in-the-news';
 
@@ -41,7 +41,7 @@ const MainBroadcasts: FC<{ carouselChunkSize: number; windowWidth?: number }> = 
         </Container>
       </RevealOnScroll>
 
-      <Box lazy as="section" className={`${S.mediaGridWrapper} text-center container mb-5`}>
+      <LazyBox as="section" className={`${S.mediaGridWrapper} text-center container mb-5`}>
         <Box
           className={`${S.mediaGrid} mb-3`}
           style={useMemo(
@@ -124,7 +124,7 @@ const MainBroadcasts: FC<{ carouselChunkSize: number; windowWidth?: number }> = 
             </Button>
           </Box>
         </RevealOnScroll>
-      </Box>
+      </LazyBox>
     </>
   );
 };

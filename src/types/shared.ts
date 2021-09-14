@@ -6,7 +6,8 @@ import {
   HTMLAttributes,
   RefObject,
   BlockquoteHTMLAttributes,
-  ImgHTMLAttributes
+  ImgHTMLAttributes,
+  FC
 } from 'react';
 
 export interface FAQDataProps {
@@ -66,10 +67,10 @@ export interface BoxProps
     >
   > {
   as?: BoxAs;
+  component?: FC<any>;
   _ref?: RefObject<
     HTMLElement & HTMLParagraphElement & HTMLOListElement & HTMLUListElement & HTMLLIElement
   >;
-  lazy?: boolean;
   'data-anim'?: TransitionAnimName;
 }
 

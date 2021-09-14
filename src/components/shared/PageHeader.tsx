@@ -1,8 +1,8 @@
 import { memo, FC, ReactNode } from 'react';
 
-import { Col, Container, Row } from 'react-bootstrap';
+import { Col, Container } from 'react-bootstrap';
 
-import { Anchor, Box, RevealOnScroll } from 'src/components/shared';
+import { Anchor, Box, RevealOnScroll, LazyBox } from 'src/components/shared';
 
 const _PageHeader: FC<{
   ctaHref?: string;
@@ -14,7 +14,7 @@ const _PageHeader: FC<{
   return (
     <Container fluid as="header" className={`PageHeader ${ctaHref || rider ? 'has-cta' : ''}`}>
       <Container className="text-md-center px-md-3">
-        <Row className="justify-content-md-center my-3 my-md-5">
+        <LazyBox className="justify-content-md-center my-3 my-md-5 row">
           <RevealOnScroll
             component={Col}
             xs={12}
@@ -56,7 +56,7 @@ const _PageHeader: FC<{
               <RevealOnScroll className="pt-3">{children}</RevealOnScroll>
             </Col>
           )}
-        </Row>
+        </LazyBox>
       </Container>
       <Box className="__after">
         <Box className="__blurred-ellipse" />

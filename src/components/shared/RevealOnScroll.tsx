@@ -30,7 +30,6 @@ const _RevealOnScroll: FC<
   ...props
 }): JSX.Element => {
   const Component = component || Box;
-
   return (
     <Component
       {...useMemo(() => props, [props])}
@@ -59,14 +58,14 @@ const _RevealOnScroll: FC<
             delete childProps['data-anim'];
 
             if (!childProps['data-anim_delay']) {
-              style.transitionDelay = `${delay ?? (i * 0.1).toFixed(2)}s`;
+              style.transitionDelay = `${delay ?? (i * 0.15).toFixed(2)}s`;
             } else {
               style.transitionDelay = `${childProps['data-anim_delay']}s`;
               delete childProps['data-anim_delay'];
             }
 
             if (!childProps['data-anim_duration']) {
-              style.transitionDuration = `${duration || 0.85}s`;
+              style.transitionDuration = `${duration || 0.75}s`;
             } else {
               style.transitionDuration = `${childProps['data-anim_duration']}s`;
               delete childProps['data-anim_duration'];

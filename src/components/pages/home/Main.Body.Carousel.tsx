@@ -42,7 +42,7 @@ const MainBodyCarousel = (): JSX.Element => {
 
       if (clear) {
         clearServiceInterval = true;
-        delay(4500).then(() => {
+        delay(4000).then(() => {
           if (clearServiceInterval) {
             clearServiceInterval = false;
             handleCarouselInterval();
@@ -71,6 +71,8 @@ const MainBodyCarousel = (): JSX.Element => {
 
   useEffect(() => {
     if (!isMobile) {
+      clearServiceInterval = !true;
+      unmounted = !true;
       handleNextCarouselClick();
     }
 

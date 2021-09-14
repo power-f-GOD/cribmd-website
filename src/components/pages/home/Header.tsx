@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useContext, useMemo, useCallback } from 'react';
+
 import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
-import { Box, Anchor, Img, RevealOnScroll } from 'src/components/shared';
+import { Box, Anchor, Img, RevealOnScroll, LazyBox } from 'src/components/shared';
 import { GetImage } from 'src/utils';
 import S from 'src/styles/pages/home/Header.module.scss';
 import { AppWindowContext } from 'src/pages/_app';
@@ -15,9 +15,9 @@ const Header = (): JSX.Element => {
   return (
     <Container as="header" className="px-md-0">
       <RevealOnScroll once allowOverflow>
-        <Row
+        <LazyBox
           as="section"
-          className={`${S.hero} p-sm-5 align-items-center`}
+          className={`${S.hero} p-sm-5 align-items-center row`}
           data-anim_delay="0.2"
           data-anim="fadeInUp">
           <Col
@@ -84,20 +84,19 @@ const Header = (): JSX.Element => {
             <Box className={S.blurredEllipse} />
             <Box className={`${S.blurredEllipse} ${S.second}`} />
           </Box>
-        </Row>
+        </LazyBox>
       </RevealOnScroll>
       <RevealOnScroll>
         <Box as="h2" className="mt-5 mb-4 pt-2 pt-md-4 text-md-center">
           CribMD in the Media
         </Box>
       </RevealOnScroll>
-      <Box lazy as="section">
+      <LazyBox as="section">
         <RevealOnScroll
           as="section"
           className={`${S.mediaGrid} align-items-stretch`}
           animName={windowWidth < 992 ? 'fadeInDown' : 'fadeInRight'}
-          duration={windowWidth < 992 ? 0.75 : undefined}
-          easing="ease">
+          duration={windowWidth < 992 ? 0.75 : undefined}>
           {useMemo(
             () => [
               'the-guardian',
@@ -128,7 +127,7 @@ const Header = (): JSX.Element => {
             )
           )}
         </RevealOnScroll>
-      </Box>
+      </LazyBox>
     </Container>
   );
 };

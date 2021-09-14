@@ -1,6 +1,14 @@
 // Please, note that this Footer is different from the global (or app) AppFooter that is common to all pages. This is the base/exit section of this page just before the AppFooter
 import { Col, Container } from 'react-bootstrap';
-import { Box, Img, Anchor, RevealOnScroll, OurInvestors, OurPartners } from 'src/components/shared';
+import {
+  Box,
+  Img,
+  Anchor,
+  RevealOnScroll,
+  OurInvestors,
+  OurPartners,
+  LazyBox
+} from 'src/components/shared';
 import S from 'src/styles/pages/about/our-company/index.module.scss';
 import CTA from './CTA';
 import { GetImage } from 'src/utils';
@@ -12,8 +20,7 @@ const Footer = (): JSX.Element => {
       <OurInvestors />
       <OurPartners />
 
-      <Box
-        lazy
+      <LazyBox
         as="section"
         className={`${S.footerBase} align-items-center p-3  px-sm-4 px-md-5 py-md-5 mx-auto container row`}>
         <RevealOnScroll component={Col} className="" xs={12} md={7} allowOverflow>
@@ -48,7 +55,7 @@ const Footer = (): JSX.Element => {
             />
           </RevealOnScroll>
         </Col>
-      </Box>
+      </LazyBox>
     </Container>
   );
 };

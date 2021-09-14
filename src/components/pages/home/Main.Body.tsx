@@ -3,7 +3,7 @@ import { memo, useContext } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 
 import S from 'src/styles/pages/home/Main.module.scss';
-import { Box, RevealOnScroll, Img } from 'src/components/shared';
+import { Box, RevealOnScroll, Img, LazyBox } from 'src/components/shared';
 import { AppWindowContext } from 'src/pages/_app';
 import { GetImage } from 'src/utils';
 import MainBodyCarousel from './Main.Body.Carousel';
@@ -13,7 +13,7 @@ const MainBody = (): JSX.Element => {
   const isMobile = windowWidth < 768;
 
   return (
-    <Box as="section" lazy className={`${S.servicesWrapper} text-left text-md-center`}>
+    <LazyBox as="section" className={`${S.servicesWrapper} text-left text-md-center`}>
       <RevealOnScroll>
         <Container as="h2" className="pt-4 mb-3">
           Our Services
@@ -42,7 +42,7 @@ const MainBody = (): JSX.Element => {
           )}
         </Row>
       </Box>
-    </Box>
+    </LazyBox>
   );
 };
 

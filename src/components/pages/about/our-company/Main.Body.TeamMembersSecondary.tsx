@@ -1,12 +1,12 @@
 import { memo, useMemo, useCallback } from 'react';
-import { Box, RevealOnScroll, Avatar } from 'src/components/shared';
+import { Box, RevealOnScroll, Avatar, LazyBox } from 'src/components/shared';
 import S from 'src/styles/pages/about/our-company/index.module.scss';
 import { teamMembersSecondary } from 'src/data';
 import { GetImage, getHumanName } from 'src/utils';
 
 const MainBodyTeamMembersSecondary = (): JSX.Element => {
   return (
-    <Box lazy className={S.teamMembersGrid}>
+    <LazyBox className={S.teamMembersGrid}>
       {useMemo(() => teamMembersSecondary, []).map(
         useCallback(
           ({ imageName, role }, i) => (
@@ -36,7 +36,7 @@ const MainBodyTeamMembersSecondary = (): JSX.Element => {
           []
         )
       )}
-    </Box>
+    </LazyBox>
   );
 };
 

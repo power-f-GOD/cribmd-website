@@ -54,65 +54,59 @@ const MainGallery = (): JSX.Element => {
 
   return (
     <Container as="section" className={`Gallery ${S.Gallery} mt-5 shrink-max-width-xx`}>
-      <Box lazy>
-        <ImageGallery
-          items={
-            useMemo(() => galleryPhotos, []).map(
-              useCallback(({ imageName, description }) => {
-                return {
-                  original: GetImage.gallery(imageName),
-                  originalTitle: imageName,
-                  description: description || imageName,
-                  thumbnail: GetImage.gallery(imageName),
-                  thumbnailHeight: 50,
-                  renderItem: (props) => (
-                    <>
-                      <Img isJPG src={props.original} alt={props.description} />
-                      <Box as="span" className="image-gallery-description">
-                        {props.description}
-                      </Box>
-                    </>
-                  ),
-                  renderThumbInner: (props) => <Img isJPG src={props.original} />
-                };
-              }, [])
-            ) as ReactImageGalleryItem[]
-          }
-          showThumbnails={true}
-          lazyLoad={true}
-          showPlayButton={false}
-          showIndex={true}
-          startIndex={activePhotoIndex || 0}
-          slideDuration={600}
-          infinite={false}
-          onSlide={useCallback(
-            (currentIndex) => {
-              handleGallerySlide(currentIndex);
-            },
-            [handleGallerySlide]
-          )}
-          renderLeftNav={useCallback(
-            (onClick, disabled) => (
-              <Button
-                onClick={onClick}
-                _type="icon-button"
-                disabled={disabled}
-                className="previous">
-                <SVGIcon name="previous" />
-              </Button>
-            ),
-            []
-          )}
-          renderRightNav={useCallback(
-            (onClick, disabled) => (
-              <Button onClick={onClick} _type="icon-button" disabled={disabled} className="next">
-                <SVGIcon name="next" />
-              </Button>
-            ),
-            []
-          )}
-        />
-      </Box>
+      <ImageGallery
+        items={
+          useMemo(() => galleryPhotos, []).map(
+            useCallback(({ imageName, description }) => {
+              return {
+                original: GetImage.gallery(imageName),
+                originalTitle: imageName,
+                description: description || imageName,
+                thumbnail: GetImage.gallery(imageName),
+                thumbnailHeight: 50,
+                renderItem: (props) => (
+                  <>
+                    <Img isJPG src={props.original} alt={props.description} />
+                    <Box as="span" className="image-gallery-description">
+                      {props.description}
+                    </Box>
+                  </>
+                ),
+                renderThumbInner: (props) => <Img height="80" isJPG src={props.original} />
+              };
+            }, [])
+          ) as ReactImageGalleryItem[]
+        }
+        showThumbnails={true}
+        lazyLoad={true}
+        showPlayButton={false}
+        showIndex={true}
+        startIndex={activePhotoIndex || 0}
+        slideDuration={600}
+        infinite={false}
+        onSlide={useCallback(
+          (currentIndex) => {
+            handleGallerySlide(currentIndex);
+          },
+          [handleGallerySlide]
+        )}
+        renderLeftNav={useCallback(
+          (onClick, disabled) => (
+            <Button onClick={onClick} _type="icon-button" disabled={disabled} className="previous">
+              <SVGIcon name="previous" />
+            </Button>
+          ),
+          []
+        )}
+        renderRightNav={useCallback(
+          (onClick, disabled) => (
+            <Button onClick={onClick} _type="icon-button" disabled={disabled} className="next">
+              <SVGIcon name="next" />
+            </Button>
+          ),
+          []
+        )}
+      />
 
       <MainGalleryGrids />
     </Container>

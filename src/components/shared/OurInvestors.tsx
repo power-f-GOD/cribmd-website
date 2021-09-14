@@ -1,13 +1,13 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import { memo, useCallback, useMemo } from 'react';
 
-import { Box, Img, Anchor } from '.';
+import { Box, Img, Anchor, LazyBox } from '.';
 import { GetImage } from 'src/utils';
 import { RevealOnScroll } from './RevealOnScroll';
 
 const _OurInvestors = (): JSX.Element => {
   return (
-    <Box lazy as="section" className="OurInvestors container">
+    <LazyBox as="section" className="OurInvestors container">
       <RevealOnScroll easing="ease">
         <Box as="h2" className="text-md-center">
           Our Investors
@@ -36,7 +36,7 @@ const _OurInvestors = (): JSX.Element => {
           }, [])
         )}
       </RevealOnScroll>
-    </Box>
+    </LazyBox>
   );
 };
 

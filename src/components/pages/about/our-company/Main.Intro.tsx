@@ -1,9 +1,10 @@
 import { memo, useContext, useCallback } from 'react';
-import { Box, Img, RevealOnScroll, SVGIcon } from 'src/components/shared';
+import { Box, Img, RevealOnScroll, SVGIcon, LazyBox } from 'src/components/shared';
 import S from 'src/styles/pages/about/our-company/index.module.scss';
 import { Col, Container } from 'react-bootstrap';
 import { AppWindowContext } from 'src/pages/_app';
 import { GetImage } from 'src/utils';
+import { TransitionAnimName } from 'src/types';
 
 const data = [
   {
@@ -27,8 +28,7 @@ const MainIntro = (): JSX.Element => {
       {data.map(
         useCallback(
           ({ h2, p, imageName }, i) => (
-            <Box
-              lazy
+            <LazyBox
               className={`${i === 0 ? 'pb-5' : 'pt-0 pt-md-5 pb-5'} align-items-center row`}
               key={h2}>
               <RevealOnScroll
@@ -42,7 +42,11 @@ const MainIntro = (): JSX.Element => {
                 md={5}
                 easing="ease"
                 allowOverflow>
-                <Box className={`${S.imageWrapper}`} data-anim="fadeInLeft">
+                <Box
+                  className={`${S.imageWrapper}`}
+                  data-anim={
+                    `fadeIn${isMobile && i === 0 ? 'Left' : 'Right'}` as TransitionAnimName
+                  }>
                   <Img
                     srcSet={`${GetImage.ourCompany(imageName)} 400w`}
                     width="400"
@@ -71,7 +75,7 @@ const MainIntro = (): JSX.Element => {
                   {p}
                 </Box>
               </RevealOnScroll>
-            </Box>
+            </LazyBox>
           ),
           [isMobile]
         )

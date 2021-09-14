@@ -29,7 +29,7 @@ const MainIntro = (): JSX.Element => {
 
   return (
     <Container className="mb-5">
-      <RevealOnScroll easing="ease">
+      <RevealOnScroll>
         <Box as="h2">Benefits</Box>
       </RevealOnScroll>
 
@@ -87,10 +87,7 @@ const MainIntro = (): JSX.Element => {
         {useMemo(() => individualBenefitsData.slice(1), []).map(
           useCallback(
             ({ header, list, list1, footer, price }, i) => (
-              <RevealOnScroll
-                easing="ease"
-                key={header}
-                className={`${S.benefitsContainer} secondary-content`}>
+              <RevealOnScroll key={header} className={`${S.benefitsContainer} secondary-content`}>
                 <Box className={`justify-content-between flex-wrap`}>
                   <Box as="h2" className="h6">
                     {header}

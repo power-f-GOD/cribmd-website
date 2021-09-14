@@ -1,4 +1,4 @@
-import { Box, Img, Anchor, RevealOnScroll } from 'src/components/shared';
+import { Box, Img, Anchor, RevealOnScroll, LazyBox } from 'src/components/shared';
 import S from 'src/styles/pages/about/our-company/index.module.scss';
 import { Col } from 'react-bootstrap';
 import { useContext } from 'react';
@@ -9,8 +9,7 @@ const CTA = (): JSX.Element => {
   const windowWidth = useContext(AppWindowContext);
 
   return (
-    <Box
-      lazy
+    <LazyBox
       as="section"
       className={`${S.ctaContainer} align-items-center  px-md-4 py-md-5 mt-md-5 mx-auto container row`}>
       <RevealOnScroll component={Col} className="px-0 px-md-3" xs={12} md={7} allowOverflow>
@@ -47,7 +46,7 @@ const CTA = (): JSX.Element => {
           />
         </RevealOnScroll>
       </Col>
-    </Box>
+    </LazyBox>
   );
 };
 

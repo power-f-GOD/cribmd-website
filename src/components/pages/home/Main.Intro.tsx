@@ -8,7 +8,7 @@ import { AppWindowContext } from 'src/pages/_app';
 import { TransitionAnimName } from 'src/types';
 import { specializations } from '../../../data/home';
 
-import { Box, SVGIcon, RevealOnScroll } from 'src/components/shared';
+import { Box, SVGIcon, RevealOnScroll, LazyBox } from 'src/components/shared';
 
 const MainIntro = (): JSX.Element => {
   const windowWidth = useContext(AppWindowContext);
@@ -50,14 +50,14 @@ const MainIntro = (): JSX.Element => {
       </RevealOnScroll>
 
       {/* Specializations */}
-      <Box lazy as="section" className="container">
+      <LazyBox as="section" className="container">
         <RevealOnScroll allowOverflow className={S.specializationsGrid}>
           {useMemo(() => specializations.slice(0, 4), []).map(handleRenderSpecializations)}
         </RevealOnScroll>
         <RevealOnScroll allowOverflow className={S.specializationsGrid}>
           {useMemo(() => specializations.slice(4), []).map(handleRenderSpecializations)}
         </RevealOnScroll>
-      </Box>
+      </LazyBox>
     </>
   );
 };
