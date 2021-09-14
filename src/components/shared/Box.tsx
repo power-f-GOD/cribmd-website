@@ -67,19 +67,10 @@ const _LazyBox: FC<BoxProps> = ({ as, children, component, ...props }): JSX.Elem
 
       if (numChildren || renderChildren) {
         element.style.height = 'auto';
-        delay(windowWidth < 768 ? 150 : 50).then(() => {
+        delay(windowWidth < 768 ? 200 : 100).then(() => {
           if (element.children.length && element) {
             element.style.height = `${element.offsetHeight}px`;
             setShouldRecalculate(false);
-            // console.log(
-            //   'DDDD',
-            //   element.children.length,
-            //   element?.className,
-            //   element?.style.height,
-            //   '...',
-            //   elementRef.current?.style.height,
-            //   renderChildren
-            // );
           }
         });
       }

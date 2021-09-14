@@ -297,7 +297,7 @@ const AppNav = (): JSX.Element => {
             </Anchor>
           </Box>
 
-          <Box as="li" className="d-block d-lg-none mt-5 pt-3 mx-lg-1">
+          <Box as="li" className="d-block d-lg-none mt-4 pt-3 mx-lg-1">
             <Anchor
               button
               color="tertiary"
@@ -325,7 +325,7 @@ const AppNav = (): JSX.Element => {
         <Box as="li">
           <Anchor
             button
-            variant="contained"
+            variant={windowWidth < 768 ? 'outlined' : 'contained'}
             color="primary"
             className="AppNav__nav-link ms-0 ms-lg-2 white-space-nowrap"
             href="https://app.cribmd.com/signup">

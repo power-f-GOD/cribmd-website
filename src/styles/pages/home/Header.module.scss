@@ -33,7 +33,9 @@
   }
 
   a {
-    background-color: white;
+    background-color: rgb(91, 18, 181); // rgba(128, 0, 128, 0.85);
+    color: white !important;
+    box-shadow: 0 0.375em 2em rgba(81, 8, 171, 0.125);
   }
 
   svg {
@@ -51,7 +53,6 @@
 
   position: absolute;
   border-radius: 50%;
-  background: rgba(25, 113, 245, 0.25);
   filter: blur(15em);
   // width: 28em;
   // height: 28em;

@@ -39,7 +39,12 @@ const Header = (): JSX.Element => {
             </RevealOnScroll>
             <RevealOnScroll allowOverflow className="d-flex justify-content-between py-4" delay={1}>
               <Box data-anim="fadeInRight">
-                <Anchor button color="primary" variant="text" href="https://app.cribmd.com/signup">
+                <Anchor
+                  button
+                  color="primary"
+                  className="px-4"
+                  variant="text"
+                  href="https://app.cribmd.com/signup">
                   Get Started
                 </Anchor>
               </Box>
