@@ -72,7 +72,7 @@ const MainGallery = (): JSX.Element => {
                     </Box>
                   </>
                 ),
-                renderThumbInner: (props) => <Img isJPG src={props.original} />
+                renderThumbInner: (props) => <Img height="80" isJPG src={props.original} />
               };
             }, [])
           ) as ReactImageGalleryItem[]
@@ -107,6 +107,7 @@ const MainGallery = (): JSX.Element => {
           []
         )}
       />
+
       <MainGalleryGrids />
     </Container>
   );

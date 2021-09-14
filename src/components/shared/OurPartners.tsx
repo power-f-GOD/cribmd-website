@@ -1,8 +1,7 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import { memo, FC, useCallback } from 'react';
-import { Container } from 'react-bootstrap';
 
-import { Box, Img, RevealOnScroll } from '.';
+import { Box, Img, RevealOnScroll, LazyBox } from '.';
 import { GetImage } from 'src/utils';
 import { partners } from 'src/data';
 
@@ -10,7 +9,7 @@ const _OurPartners: FC<{ shrink?: boolean }> = (): JSX.Element => {
   const gridItemClassName = '__grid-item d-flex align-items-center py-3 px-4 px-lg-5 py-sm-4';
 
   return (
-    <Container as="section" className={`OurPartners shrink-max-width-xxl text-md-center`}>
+    <LazyBox as="section" className={`OurPartners shrink-max-width-xxl text-md-center container`}>
       <RevealOnScroll easing="ease">
         <Box as="h2" className="mb-0">
           Our Partners
@@ -31,8 +30,8 @@ const _OurPartners: FC<{ shrink?: boolean }> = (): JSX.Element => {
                 easing="ease-out"
                 key={i}
                 duration={0.5}
-                className={gridItemClassName}>
-                <Img src={GetImage.partnerLogo(`partner_${i}`)} />
+                className={`${gridItemClassName} ${i === 10 ? 'eleventh' : ''}`}>
+                <Img src={GetImage.partnerLogo(`partner_${i}`)} width="125" height="65" />
               </RevealOnScroll>
             ),
             []
@@ -51,7 +50,7 @@ const _OurPartners: FC<{ shrink?: boolean }> = (): JSX.Element => {
           </Box>
         ))}
       </RevealOnScroll> */}
-    </Container>
+    </LazyBox>
   );
 };
 

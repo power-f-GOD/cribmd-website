@@ -1,4 +1,4 @@
-$time-func: 0.5s cubic-bezier(0.5, 0, 0.25, 1.5);
+$time-func: 0.5s cubic-bezier(0.5, -0.25, 0.25, 1.125);
 
 @mixin trans__(
   $mode: 'fadeIn' or 'In' or 'Out' or 'scale' or 'scaleX' or 'scaleY',
@@ -37,48 +37,50 @@ $time-func: 0.5s cubic-bezier(0.5, 0, 0.25, 1.5);
       } @else if $mode == 'scaleX' {
         transform: translate(0) scaleX(0);
       }
-    } @else {
     }
 
-    transition: $time-func;
+    transition: transform $time-func, opacity $time-func;
+    transition-property: opacity, transform;
   }
 }
 
-@include trans__('fadeIn', null, null);
-@include trans__('fadeIn', 'Up', null);
-@include trans__('fadeIn', 'Down', null);
-@include trans__('fadeIn', 'Left', null);
-@include trans__('fadeIn', 'Right', null);
-@include trans__('fadeIn', 'Up', 'Big');
-@include trans__('fadeIn', 'Down', 'Big');
-@include trans__('fadeIn', 'Left', 'Big');
-@include trans__('fadeIn', 'Right', 'Big');
-@include trans__('In', null, null);
-@include trans__('In', 'Up', null);
-@include trans__('In', 'Down', null);
-@include trans__('In', 'Left', null);
-@include trans__('In', 'Right', null);
-@include trans__('In', 'Up', 'Big');
-@include trans__('In', 'Down', 'Big');
-@include trans__('In', 'Left', 'Big');
-@include trans__('In', 'Right', 'Big');
-@include trans__('Out', null, null);
-@include trans__('Out', 'Up', null);
-@include trans__('Out', 'Down', null);
-@include trans__('Out', 'Left', null);
-@include trans__('Out', 'Right', null);
-@include trans__('Out', 'Up', 'Big');
-@include trans__('Out', 'Down', 'Big');
-@include trans__('Out', 'Left', 'Big');
-@include trans__('Out', 'Right', 'Big');
-@include trans__('scale', null, null);
-@include trans__('scaleY', null, null);
-@include trans__('scaleX', null, null);
+[data-anim_anchor='true'] {
+  @include trans__('fadeIn', null, null);
+  @include trans__('fadeIn', 'Up', null);
+  @include trans__('fadeIn', 'Down', null);
+  @include trans__('fadeIn', 'Left', null);
+  @include trans__('fadeIn', 'Right', null);
+  @include trans__('fadeIn', 'Up', 'Big');
+  @include trans__('fadeIn', 'Down', 'Big');
+  @include trans__('fadeIn', 'Left', 'Big');
+  @include trans__('fadeIn', 'Right', 'Big');
+  @include trans__('In', null, null);
+  @include trans__('In', 'Up', null);
+  @include trans__('In', 'Down', null);
+  @include trans__('In', 'Left', null);
+  @include trans__('In', 'Right', null);
+  @include trans__('In', 'Up', 'Big');
+  @include trans__('In', 'Down', 'Big');
+  @include trans__('In', 'Left', 'Big');
+  @include trans__('In', 'Right', 'Big');
+  @include trans__('Out', null, null);
+  @include trans__('Out', 'Up', null);
+  @include trans__('Out', 'Down', null);
+  @include trans__('Out', 'Left', null);
+  @include trans__('Out', 'Right', null);
+  @include trans__('Out', 'Up', 'Big');
+  @include trans__('Out', 'Down', 'Big');
+  @include trans__('Out', 'Left', 'Big');
+  @include trans__('Out', 'Right', 'Big');
+  @include trans__('scale', null, null);
+  @include trans__('scaleY', null, null);
+  @include trans__('scaleX', null, null);
+}
 
 [data-animate_targets='true'] {
-  > [class*='trans__'] {
+  [class*='trans__'] {
     transform: translate(0, 0) scale(1);
-    opacity: 1;
+    opacity: 1 !important;
   }
 }
 
@@ -88,3 +90,7 @@ $time-func: 0.5s cubic-bezier(0.5, 0, 0.25, 1.5);
 //     opacity: 1;
 //   }
 // }
+
+[class*='trans__'] {
+  will-change: transform;
+}

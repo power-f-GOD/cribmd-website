@@ -48,6 +48,10 @@ const InTheNews: NextPage = () => {
     }
   }, [windowWidth]);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <>
       <AppHead title="About Us - In the News" />

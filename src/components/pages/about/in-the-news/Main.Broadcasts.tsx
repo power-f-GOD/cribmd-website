@@ -1,8 +1,7 @@
 import { memo, useState, useCallback, FC, useMemo } from 'react';
 import { Container } from 'react-bootstrap';
 
-import { Box, Img, RevealOnScroll, Anchor, Button, SVGIcon } from 'src/components';
-import { GetImage } from 'src/utils';
+import { Box, RevealOnScroll, Anchor, Button, SVGIcon, LazyBox } from 'src/components';
 import S from 'src/styles/pages/about/in-the-news/Main.module.scss';
 import { news } from 'src/data/about/in-the-news';
 
@@ -42,7 +41,7 @@ const MainBroadcasts: FC<{ carouselChunkSize: number; windowWidth?: number }> = 
         </Container>
       </RevealOnScroll>
 
-      <Container as="section" className={`${S.mediaGridWrapper} text-center`}>
+      <LazyBox as="section" className={`${S.mediaGridWrapper} text-center container mb-5`}>
         <Box
           className={`${S.mediaGrid} mb-3`}
           style={useMemo(
@@ -53,7 +52,7 @@ const MainBroadcasts: FC<{ carouselChunkSize: number; windowWidth?: number }> = 
           )}>
           {useMemo(() => videos, []).map(
             useCallback(
-              ({ caption, rider, imageName, iframeUrl, anchorHref }, i) => {
+              ({ caption, rider, iframeUrl, anchorHref }, i) => {
                 const inActiveRange = !(
                   i >= (activeVideosIndex + 1) * carouselChunkSize ||
                   i < activeVideosIndex * carouselChunkSize
@@ -67,7 +66,8 @@ const MainBroadcasts: FC<{ carouselChunkSize: number; windowWidth?: number }> = 
                       transform: `translateY(${inActiveRange ? 0 : '3em'}) scale(${
                         !inActiveRange ? '0.75' : '1'
                       })`,
-                      opacity: inActiveRange ? 1 : 0.5,
+                      opacity: inActiveRange ? 1 : 0,
+                      pointerEvents: inActiveRange ? 'unset' : 'none',
                       transitionDelay: inActiveRange
                         ? `${(i % carouselChunkSize) * 0.1}s`
                         : undefined
@@ -75,24 +75,25 @@ const MainBroadcasts: FC<{ carouselChunkSize: number; windowWidth?: number }> = 
                     aria-hidden={!inActiveRange}>
                     <Box
                       className={`${S.mediaImageContainer} __grid-item d-flex align-items-center`}>
-                      {imageName ? (
-                        <Img src={GetImage.mediaLogo(imageName)} />
-                      ) : (
-                        <iframe
-                          src={iframeUrl}
-                          title={rider}
-                          frameBorder="0"
-                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                          allowFullScreen
-                        />
-                      )}
+                      <iframe
+                        src={iframeUrl}
+                        title={rider}
+                        frameBorder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                      />
                     </Box>
                     <Box className={S.mediaContentContainer}>
-                      <Box as="h6"> {caption}</Box>
+                      <Box as="strong" className="h6">
+                        {' '}
+                        {caption}
+                      </Box>
                       <Anchor
-                        {...(inActiveRange ? { href: anchorHref } : {})}
+                        href={anchorHref}
                         target="_blank"
-                        tabIndex={inActiveRange ? 0 : -1}>
+                        tabIndex={inActiveRange ? 0 : -1}
+                        rel="noopener"
+                        aria-hidden={!inActiveRange}>
                         {rider}
                       </Anchor>
                     </Box>
@@ -123,7 +124,7 @@ const MainBroadcasts: FC<{ carouselChunkSize: number; windowWidth?: number }> = 
             </Button>
           </Box>
         </RevealOnScroll>
-      </Container>
+      </LazyBox>
     </>
   );
 };

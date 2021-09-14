@@ -1,16 +1,17 @@
-import { Box, Img, Anchor, RevealOnScroll } from 'src/components/shared';
+import { Box, Img, Anchor, RevealOnScroll, LazyBox } from 'src/components/shared';
 import S from 'src/styles/pages/about/our-company/index.module.scss';
-import { Col, Row } from 'react-bootstrap';
+import { Col } from 'react-bootstrap';
 import { useContext } from 'react';
 import { AppWindowContext } from 'src/pages/_app';
+import { GetImage } from 'src/utils';
 
 const CTA = (): JSX.Element => {
   const windowWidth = useContext(AppWindowContext);
 
   return (
-    <Row
+    <LazyBox
       as="section"
-      className={`${S.ctaContainer} align-items-center  px-md-4 py-md-5 mt-md-5 mx-auto container`}>
+      className={`${S.ctaContainer} align-items-center  px-md-4 py-md-5 mt-md-5 mx-auto container row`}>
       <RevealOnScroll component={Col} className="px-0 px-md-3" xs={12} md={7} allowOverflow>
         <Box as="h2" data-anim_delay="0.3">
           Are you a doctor interested in joining our network?
@@ -35,7 +36,9 @@ const CTA = (): JSX.Element => {
       <Col xs={12} md={5}>
         <RevealOnScroll>
           <Img
-            srcSet={`/img/about/cta-laptop__500x.png 2x, /img/about/cta-laptop__250x.png 1x`}
+            src={GetImage.ourCompany('cta-laptop')}
+            width="400"
+            height="290"
             alt="cta image"
             data-anim="fadeIn"
             data-anim_delay="1"
@@ -43,7 +46,7 @@ const CTA = (): JSX.Element => {
           />
         </RevealOnScroll>
       </Col>
-    </Row>
+    </LazyBox>
   );
 };
 

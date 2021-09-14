@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useContext, useMemo, useCallback } from 'react';
+
 import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
-import { Box, Anchor, Img, RevealOnScroll } from 'src/components/shared';
+import { Box, Anchor, Img, RevealOnScroll, LazyBox } from 'src/components/shared';
 import { GetImage } from 'src/utils';
 import S from 'src/styles/pages/home/Header.module.scss';
 import { AppWindowContext } from 'src/pages/_app';
@@ -15,9 +15,9 @@ const Header = (): JSX.Element => {
   return (
     <Container as="header" className="px-md-0">
       <RevealOnScroll once allowOverflow>
-        <Row
+        <LazyBox
           as="section"
-          className={`${S.hero} p-sm-5 align-items-center`}
+          className={`${S.hero} p-sm-5 align-items-center row`}
           data-anim_delay="0.2"
           data-anim="fadeInUp">
           <Col
@@ -39,7 +39,12 @@ const Header = (): JSX.Element => {
             </RevealOnScroll>
             <RevealOnScroll allowOverflow className="d-flex justify-content-between py-4" delay={1}>
               <Box data-anim="fadeInRight">
-                <Anchor button color="primary" variant="text" href="https://app.cribmd.com/signup">
+                <Anchor
+                  button
+                  color="primary"
+                  className="px-4"
+                  variant="text"
+                  href="https://app.cribmd.com/signup">
                   Get Started
                 </Anchor>
               </Box>
@@ -50,6 +55,7 @@ const Header = (): JSX.Element => {
                 </Box>
                 <Img
                   width="125"
+                  height="36"
                   src={GetImage.investorLogo('the-guardian')}
                   alt="the guardian logo"
                 />
@@ -70,6 +76,8 @@ const Header = (): JSX.Element => {
                 '2x'
               )} 1000w`}
               sizes="(max-width: 1399px) 500px, 1000px"
+              width="420"
+              height="500"
               className={`${S.heroImage} ms-lg-4 ms-xl-5`}
               data-anim="fadeIn"
               data-anim_delay="0.9"
@@ -79,21 +87,21 @@ const Header = (): JSX.Element => {
 
           <Box className={S.after}>
             <Box className={S.blurredEllipse} />
-            <Box className={S.blurredEllipse} />
+            <Box className={`${S.blurredEllipse} ${S.second}`} />
           </Box>
-        </Row>
+        </LazyBox>
       </RevealOnScroll>
       <RevealOnScroll>
         <Box as="h2" className="mt-5 mb-4 pt-2 pt-md-4 text-md-center">
           CribMD in the Media
         </Box>
       </RevealOnScroll>
-      <Box as="section">
+      <LazyBox as="section">
         <RevealOnScroll
           as="section"
           className={`${S.mediaGrid} align-items-stretch`}
           animName={windowWidth < 992 ? 'fadeInDown' : 'fadeInRight'}
-          easing="ease">
+          duration={windowWidth < 992 ? 0.75 : undefined}>
           {useMemo(
             () => [
               'the-guardian',
@@ -110,16 +118,21 @@ const Header = (): JSX.Element => {
                 <Anchor
                   routeLink
                   href="/about/in-the-news#articles"
-                  className="p-3 p-lg-4"
+                  className={`${S.medium} p-3 p-lg-4`}
                   key={medium}>
-                  <Img src={GetImage.mediaLogo(medium)} alt={`${medium} logo`} />
+                  <Img
+                    src={GetImage.mediaLogo(medium)}
+                    alt={`${medium} logo`}
+                    width="125"
+                    height="40"
+                  />
                 </Anchor>
               ),
               []
             )
           )}
         </RevealOnScroll>
-      </Box>
+      </LazyBox>
     </Container>
   );
 };

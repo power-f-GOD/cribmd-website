@@ -8,7 +8,7 @@ export const individualProcessData: {
   p3?: string;
   p4?: string;
   buttonText?: string;
-  buttonUrl?: string;
+  buttonURL?: string;
   imageName: string;
 }[] = [
   {
@@ -37,8 +37,8 @@ export const individualProcessData: {
     p1: "Book an appointment or urgent request with a doctor at your leisure and enjoy all the benefits of CribMD's services in your own home.",
     p4: 'CribMD has made it super easy for you to go to hospitals to receive care and submit your bills to request reimbursement for expenses incurred.',
     imageName: 'features',
-    buttonUrl: '',
-    buttonText: ''
+    buttonURL: 'https://app.cribmd.com/signup?rURL=patient/subscribe',
+    buttonText: 'Get Started'
   }
 ];
 

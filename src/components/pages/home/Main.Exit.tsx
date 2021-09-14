@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
-import { useContext, useMemo, useCallback } from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
+import { useContext, useMemo, useCallback, memo } from 'react';
+import { Row, Col } from 'react-bootstrap';
 
 import S from 'src/styles/pages/home/Main.module.scss';
-import { Box, Img, Anchor, RevealOnScroll } from 'src/components/shared';
+import { Box, Img, Anchor, RevealOnScroll, LazyBox } from 'src/components/shared';
 import { servicesIllustrations } from 'src/data/home';
 import { GetImage } from 'src/utils';
 import { AppWindowContext } from 'src/pages/_app';
@@ -13,12 +13,12 @@ const MainExit = (): JSX.Element => {
   const isMobile = windowWidth < 768;
 
   return (
-    <Container className="shrink-max-width-xxl">
+    <LazyBox className="shrink-max-width-xxl container">
       {useMemo(() => servicesIllustrations, []).map(
         useCallback(
           ({ buttonText, anchorHref: buttonUrl, heading, imageName, p1, rider, p2, p3 }, i) => (
             <Row key={heading} className="my-5 align-items-center pb-3 pb-md-2">
-              <RevealOnScroll component={Col} xs={12} md={6} easing="ease" allowOverflow>
+              <RevealOnScroll component={Col} xs={12} md={6} allowOverflow>
                 <Box as="h3" className="h6 theme-tertiary mt-0">
                   {heading}
                 </Box>
@@ -43,7 +43,7 @@ const MainExit = (): JSX.Element => {
                   )}
                 </Box>
 
-                <Box data-anim_delay={isMobile ? 0.75 : 1.25} data-anim="fadeIn">
+                <Box data-anim_delay={isMobile ? 0.75 : 1} data-anim="fadeIn">
                   <Anchor button href={buttonUrl} variant="outlined">
                     {buttonText}
                   </Anchor>
@@ -55,11 +55,13 @@ const MainExit = (): JSX.Element => {
                 xs={12}
                 md={6}
                 className="text-center text-md-end ps-md-5"
-                easing="ease"
                 animName={i % 2 === 0 ? 'fadeInRight' : 'fadeInLeft'}
-                delay={isMobile ? 0 : 0.3}>
+                delay={isMobile ? 0 : 0.5}
+                easing="ease">
                 <Img
-                  srcSet={`${GetImage.home(imageName)} 500w`}
+                  srcSet={`${GetImage.home(imageName)} 400w`}
+                  width="400"
+                  height="470"
                   src={GetImage.home(imageName)}
                   className={`mt-5 mt-md-0 ${i === 0 ? 'with-frame' : ''}`.trim()}
                   alt={`image of ${imageName.replace('-', ' ')}`}
@@ -70,8 +72,8 @@ const MainExit = (): JSX.Element => {
           [isMobile]
         )
       )}
-    </Container>
+    </LazyBox>
   );
 };
 
-export default MainExit;
+export default memo(MainExit);

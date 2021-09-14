@@ -132,7 +132,10 @@ $theme-tertiary-v9: rgb($tert-r + (25 * 4), $tert-g + (25 * 4), $tert-b + (25 * 
   $w: 100%,
   $h: 100%,
   $br: inherit,
-  $tr: 0.3s,
+  $tr: (
+    transform 0.3s,
+    opacity 0.3s
+  ),
   $t: 0,
   $l: 0,
   $r: 0,

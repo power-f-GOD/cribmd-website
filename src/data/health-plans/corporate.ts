@@ -8,7 +8,7 @@ export const corporateProcessData: {
   p2?: string;
   list?: string[];
   buttonText?: string;
-  buttonUrl?: string;
+  buttonURL?: string;
   imageName: string;
   contentOrder: string;
 }[] = [
@@ -37,7 +37,7 @@ export const corporateProcessData: {
     heading: 'Add Members to start using the Plan',
     p1: 'Add the team members that you want to enjoy your Corporate Plan to the purchased slots and voila! You’re good to start enjoying all the benefits of their plans. Once members have accepted your invitation to CribMD, you can add them as administrators.',
     imageName: 'org-members',
-    buttonUrl: '',
+    buttonURL: 'http://app.cribmd.com/signup?rURL=corp/slot',
     buttonText: 'Get started',
     contentOrder: '0'
   }

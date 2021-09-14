@@ -99,12 +99,12 @@
   grid-template-columns: 1fr 1fr;
   gap: 1.25em;
   margin-bottom: 1em;
+}
 
-  > * {
-    border-bottom: 0.125em solid #e8e5ef;
-    padding-bottom: 1em;
-    text-align: start;
-  }
+.teamMember {
+  border-bottom: 0.125em solid #e8e5ef;
+  padding-bottom: 1em;
+  text-align: start;
 }
 
 .wave {

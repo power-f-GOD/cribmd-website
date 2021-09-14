@@ -42,7 +42,7 @@ const MainBodyCarousel = (): JSX.Element => {
 
       if (clear) {
         clearServiceInterval = true;
-        delay(4500).then(() => {
+        delay(4000).then(() => {
           if (clearServiceInterval) {
             clearServiceInterval = false;
             handleCarouselInterval();
@@ -71,6 +71,8 @@ const MainBodyCarousel = (): JSX.Element => {
 
   useEffect(() => {
     if (!isMobile) {
+      clearServiceInterval = !true;
+      unmounted = !true;
       handleNextCarouselClick();
     }
 
@@ -91,16 +93,12 @@ const MainBodyCarousel = (): JSX.Element => {
                 activeServiceIndex === i || isMobile ? S.serviceActive : ''
               } mt-4 d-flex justify-content-center justify-content-md-start`}
               allowOverflow
-              delay={0.5}>
+              delay={0.25}>
               <Box
                 className={`${S.serviceCard}`}
-                data-anim={isMobile ? (i % 2 === 0 ? 'fadeInLeft' : 'fadeInRight') : 'fadeInLeft'}
-                data-anim_easing="ease">
-                <Box>
-                  <SVGIcon name={service.icon} size="medium" />
-                  <Box as="h4" className="my-2 h5">
-                    {service.name}
-                  </Box>
+                data-anim={isMobile ? (i % 2 === 0 ? 'fadeInLeft' : 'fadeInRight') : 'fadeInLeft'}>
+                <Box as="h3" className="my-2 h5 d-inline-flex align-items-center">
+                  <SVGIcon name={service.icon} size="medium" className="me-3" /> {service.name}
                 </Box>
                 <Box as="p" className="anim__fadeIn">
                   {service.description}

@@ -1,4 +1,4 @@
-import { Box, RevealOnScroll, Anchor, SVGIcon, Avatar } from 'src/components/shared';
+import { Box, RevealOnScroll, Anchor, SVGIcon, Avatar, LazyBox } from 'src/components/shared';
 import S from 'src/styles/pages/about/our-company/index.module.scss';
 import { doctorsData } from 'src/data';
 import { Container } from 'react-bootstrap';
@@ -21,13 +21,12 @@ const MainExit = (): JSX.Element => {
         {useMemo(() => doctorsData, []).map(
           useCallback(
             (doctor, i) => (
-              <Box
+              <LazyBox
                 key={doctor.name}
                 className={`${S.doctorGridItem} ${S[`box${i + 1}`]} ${
                   S['bg' + doctor.backgroundColor]
                 }`}>
                 <RevealOnScroll
-                  allowOverflow
                   className="d-flex justify-content-between pb-3"
                   delay={0.25}
                   easing="ease">
@@ -60,7 +59,7 @@ const MainExit = (): JSX.Element => {
                     {doctor.content}
                   </Box>
                 </RevealOnScroll>
-              </Box>
+              </LazyBox>
             ),
             []
           )

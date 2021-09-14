@@ -25,7 +25,7 @@ const _Particles = (): JSX.Element => {
         style={{
           top: `${Math.floor(Math.random() * ((scrollHeight || 6000) * 0.95))}px`,
           left: `${Math.floor(Math.random() * (windowWidth - 20))}px`,
-          animationDelay: `${i * 0.2}s`,
+          animationDelay: `${i * 0.15}s`,
           background:
             i % 5 === 0
               ? 'rgba(25, 113, 245, 0.3)' // greyey
@@ -73,10 +73,10 @@ const _Particles = (): JSX.Element => {
     };
   }, []);
 
-  if (!particles || unmounted || isMobile) return <></>;
+  if (!particles || unmounted || typeof window === 'undefined') return <></>;
 
   return createPortal(
-    Array(Math.floor((isMobile ? 6 : 12) * (scrollHeight / (globalThis.innerHeight - 100 || 1000))))
+    Array(Math.floor((isMobile ? 4 : 16) * (scrollHeight / (globalThis.innerHeight - 100 || 1000))))
       .fill('')
       .map(handleRenderParticles),
     particles

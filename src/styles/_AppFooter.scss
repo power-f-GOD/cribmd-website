@@ -4,6 +4,7 @@
   // background-color: #fafafa;
   display: block;
   margin-bottom: 4em;
+  color: $theme-tertiary-v2;
 
   * {
     color: inherit;
@@ -13,19 +14,32 @@
     font-size: 0.875rem;
   }
 
-  h4 {
-    font-size: 1.875rem;
-    line-height: 150%;
+  // h4 {
+  //   font-size: 1.875rem;
+  //   line-height: 150%;
 
-    + p {
-      line-height: 160%;
-    }
-  }
+  //   + p {
+  //     line-height: 160%;
+  //   }
+  // }
 
-  h5 {
+  h3 {
     font-size: inherit;
     text-transform: uppercase;
-    color: $theme-tertiary-v6;
+    color: $theme-tertiary;
+    display: inline-block;
+    position: relative;
+
+    &::before {
+      @extend .before-or-after;
+      background-color: $theme-tertiary-v9;
+      opacity: 1;
+      border-radius: $br;
+      width: 50%;
+      height: 0.125em;
+      top: 120%;
+      backdrop-filter: unset;
+    }
   }
 
   p {
@@ -36,7 +50,6 @@
     font-weight: 300;
     display: inline-block;
     overflow: hidden;
-    transition: 0.25s;
 
     &[href*='tel'],
     &[href*='mail'] {
