@@ -1,8 +1,8 @@
 import { memo, FC, ReactNode } from 'react';
 
-import { Col, Container, Row } from 'react-bootstrap';
+import { Col, Container } from 'react-bootstrap';
 
-import { Anchor, Box, RevealOnScroll } from 'src/components/shared';
+import { Anchor, Box, RevealOnScroll, LazyBox } from 'src/components/shared';
 
 const _PageHeader: FC<{
   ctaHref?: string;
@@ -14,32 +14,30 @@ const _PageHeader: FC<{
   return (
     <Container fluid as="header" className={`PageHeader ${ctaHref || rider ? 'has-cta' : ''}`}>
       <Container className="text-md-center px-md-3">
-        <Row className="justify-content-md-center my-3 my-md-5">
+        <LazyBox className="justify-content-md-center my-3 my-md-5 row">
           <RevealOnScroll
             component={Col}
             xs={12}
             className="pt-3"
-            easing="ease"
-            allowOverflow={ctaHref ? true : false}>
+            allowOverflow={ctaHref ? true : false}
+            easing="ease">
             <Box
               as="h1"
-              data-anim_delay="0.2"
               className="my-4 mx-auto shrink-max-width-xxl"
-              data-anim_easing="ease"
               dangerouslySetInnerHTML={{ __html: headerText }}
             />
 
             {rider && (
               <Box
                 as="p"
-                data-anim_delay={0.5}
+                data-anim_delay={0.3}
                 className="mx-md-auto px-md-5 py-1 my-3 my-lg-4  shrink-max-width-xxl"
                 dangerouslySetInnerHTML={{ __html: rider }}
               />
             )}
 
             {ctaHref && (
-              <Box data-anim_delay={0.8}>
+              <Box data-anim_delay={0.6}>
                 <Anchor
                   button
                   cta
@@ -58,7 +56,7 @@ const _PageHeader: FC<{
               <RevealOnScroll className="pt-3">{children}</RevealOnScroll>
             </Col>
           )}
-        </Row>
+        </LazyBox>
       </Container>
       <Box className="__after">
         <Box className="__blurred-ellipse" />

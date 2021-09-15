@@ -34,21 +34,20 @@ export class ScrollReveal {
           }
         });
       },
-      { threshold: width < 768 ? 0.5 : 0.25 }
+      { threshold: width < 768 ? 0.6 : 0.5 }
     );
     // this block is used to throttle ScrollReveal registration till all children nodes of root have mounted in the DOM
     this.mutationObserver = createMutationObserver(() => {
       clearTimeout(mutationTimeout);
       mutationTimeout = setTimeout(() => {
         this.register();
-        this.mutationObserver?.disconnect();
-      }, 350);
+      }, 100);
     });
     this.mutationObserver.observe(this.root, { subtree: true, childList: true });
   }
 
   register() {
-    this.animAnchors = this.root?.querySelectorAll('[data-anim_anchor]');
+    this.animAnchors = this.root?.querySelectorAll(':scope [data-anim_anchor]');
     this.animAnchors?.forEach((animAnchor) => {
       this.intersectionObserver?.observe(animAnchor);
     });
@@ -56,5 +55,6 @@ export class ScrollReveal {
 
   unregister() {
     this.animAnchors?.forEach((animAnchor) => this.intersectionObserver?.unobserve(animAnchor));
+    this.mutationObserver?.disconnect();
   }
 }

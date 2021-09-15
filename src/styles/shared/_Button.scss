@@ -8,6 +8,7 @@
   min-height: 3.125rem;
   padding: 0 1.25rem;
   border-radius: $br * 0.9;
+  position: relative;
   // white-space: nowrap;
   box-shadow: $button-box-shadow;
   text-decoration: none !important;
@@ -151,12 +152,12 @@
   }
 
   &.tertiary {
-    color: $theme-tertiary-v5;
+    color: $theme-tertiary-v2 !important;
     // border-color: $theme-tertiary;
 
     &:hover,
     &:focus {
-      background-color: $theme-tertiary-v3;
+      background-color: rgba(0, 0, 0, 0.075);
     }
   }
 

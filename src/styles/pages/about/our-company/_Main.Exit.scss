@@ -32,20 +32,12 @@
 }
 
 .moreDoctorsLink {
-  &:hover,
-  &:focus {
-    path {
-      stroke: $theme-secondary-v3;
-    }
-  }
-
   i {
     font-size: 0.75em;
   }
 
   path {
     stroke: $theme-primary;
-    transition: 0.3s;
   }
 }
 

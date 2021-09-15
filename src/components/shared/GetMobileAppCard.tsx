@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import { memo, FC } from 'react';
-import { Col, Row } from 'react-bootstrap';
+import { Col } from 'react-bootstrap';
 
-import { Box, Img } from '.';
+import { Box, Img, LazyBox } from '.';
 import { GetImage } from 'src/utils';
 import { AppstoreButton, PlaystoreButton } from './Button';
 import { RevealOnScroll } from './RevealOnScroll';
@@ -12,9 +12,9 @@ const _GetMobileAppCard: FC<{ headerText?: string; bodyText?: string }> = ({
   bodyText
 }): JSX.Element => {
   return (
-    <Row
+    <LazyBox
       as="section"
-      className="GetMobileAppCard shrink-max-width-xxl text-center px-3 py-4 px-md-5 mx-auto align-items-center container">
+      className="GetMobileAppCard shrink-max-width-xxl text-center px-3 pt-4 px-md-5 mx-auto align-items-center container row">
       <Col xs={12} md={7} className="text-md-start">
         <RevealOnScroll animName="fadeInRight" easing="ease">
           <Box as="h2" className="h3 theme-white">
@@ -25,7 +25,9 @@ const _GetMobileAppCard: FC<{ headerText?: string; bodyText?: string }> = ({
               `Book a same day appointment at your convenience either from our mobile app or web app
             and have a secure chat with any of our licensed doctors.`}
           </Box>
-          <Box className="d-flex flex-wrap justify-content-center justify-content-md-start">
+          <Box
+            className="d-flex flex-wrap justify-content-center justify-content-md-start mb-3 mt-4"
+            data-anim="fadeIn">
             <PlaystoreButton className="mx-2 mx-md-0 me-md-3 mb-2" />
             <AppstoreButton className="mx-2 mx-md-0 me-md-3 mb-2" />
           </Box>
@@ -41,10 +43,15 @@ const _GetMobileAppCard: FC<{ headerText?: string; bodyText?: string }> = ({
         delay={0.5}
         allowOverflow>
         <Box>
-          <Img className="__mobile-dashboard" src={GetImage.shared('mobile-dashboard')} />
+          <Img
+            width="350"
+            height="350"
+            className="__mobile-dashboard mt-0 mt-md-5"
+            src={GetImage.shared('mobile-dashboard')}
+          />
         </Box>
       </RevealOnScroll>
-    </Row>
+    </LazyBox>
   );
 };
 

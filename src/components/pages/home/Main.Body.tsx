@@ -3,7 +3,7 @@ import { memo, useContext } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 
 import S from 'src/styles/pages/home/Main.module.scss';
-import { Box, RevealOnScroll, Img } from 'src/components/shared';
+import { Box, RevealOnScroll, Img, LazyBox } from 'src/components/shared';
 import { AppWindowContext } from 'src/pages/_app';
 import { GetImage } from 'src/utils';
 import MainBodyCarousel from './Main.Body.Carousel';
@@ -13,7 +13,7 @@ const MainBody = (): JSX.Element => {
   const isMobile = windowWidth < 768;
 
   return (
-    <Container fluid className={`${S.servicesWrapper} text-left text-md-center`}>
+    <LazyBox as="section" className={`${S.servicesWrapper} text-left text-md-center`}>
       <RevealOnScroll>
         <Container as="h2" className="pt-4 mb-3">
           Our Services
@@ -28,7 +28,7 @@ const MainBody = (): JSX.Element => {
         </Box>
       </RevealOnScroll>
 
-      <Container className="shrink-max-width-xxl px-lg-5">
+      <Box className="shrink-max-width-xxl px-lg-5 container">
         <Row className="">
           <Col className="d-flex flex-column px-0 ps-0 ps-lg-5 text-start mt-0 mt-md-5">
             <MainBodyCarousel />
@@ -36,13 +36,13 @@ const MainBody = (): JSX.Element => {
           {!isMobile && (
             <Col className="d-none d-md-flex align-items-center justify-content-end mt-md-5 ps-4">
               <RevealOnScroll allowOverflow>
-                <Img src={GetImage.home('phone-with-doctors-list')} />
+                <Img width="400" height="570" src={GetImage.home('phone-with-doctors-list')} />
               </RevealOnScroll>
             </Col>
           )}
         </Row>
-      </Container>
-    </Container>
+      </Box>
+    </LazyBox>
   );
 };
 

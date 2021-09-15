@@ -7,6 +7,7 @@
   padding: 0.5em 0.25em;
   display: inline-flex;
   align-content: center;
+  transition: opacity 0.3s;
 
   &.preserve-text {
     .Icon {

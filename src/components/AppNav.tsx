@@ -1,10 +1,10 @@
 import { useState, useCallback, useContext, useEffect, memo, AnimationEvent } from 'react';
+import { useRouter } from 'next/dist/client/router';
 
 import { AppWindowContext } from 'src/pages/_app';
 import { preventDefault, addEventListenerOnce } from 'src/utils';
 import { Box, Logo, Anchor, Button } from '.';
 import { NavLink, SVGIcon } from './shared';
-import { useRouter } from 'next/dist/client/router';
 
 let scrollTimeout: NodeJS.Timeout;
 let scrollPositionTimeout: NodeJS.Timeout;
@@ -13,7 +13,7 @@ let finalScrollPosition = 0;
 
 const AppNav = (): JSX.Element => {
   const windowWidth = useContext(AppWindowContext);
-  const isPC = windowWidth > 991;
+  const isPC = windowWidth > 991 && typeof window !== 'undefined';
   const [open, setOpen] = useState(false);
   const [renderNav, setRenderNav] = useState(isPC);
   const [isNegativeScroll, setIsNegativeScroll] = useState(isPC);
@@ -21,9 +21,16 @@ const AppNav = (): JSX.Element => {
   const router = useRouter();
   const onLanding = /^\/(home)?$/.test(router.pathname);
 
-  const handleNavOpenClick = useCallback(() => {
-    setOpen((prev) => !prev && !isPC);
-  }, [isPC]);
+  const handleNavLinkClick = useCallback(
+    (e) => {
+      if (!isPC) {
+        return setOpen((prev) => !prev);
+      }
+
+      e.currentTarget.blur();
+    },
+    [isPC]
+  );
 
   // const handleSidebarBgClick = useCallback(
   //   (e) => {
@@ -80,7 +87,7 @@ const AppNav = (): JSX.Element => {
           }
         }
       },
-      isPC ? 50 : 100
+      isPC ? 25 : 100
     );
   }, [clearScrollTimeout, isPC]);
 
@@ -102,6 +109,10 @@ const AppNav = (): JSX.Element => {
       window.removeEventListener('scroll', handleWindowScroll);
     };
   }, [handleWindowScroll]);
+
+  // if (typeof window === 'undefined') {
+  //   return <></>;
+  // }
 
   return (
     <Box
@@ -145,8 +156,8 @@ const AppNav = (): JSX.Element => {
               href="/"
               color="tertiary"
               className="AppNav__nav-link"
-              onClick={!isPC ? handleNavOpenClick : undefined}
-              onKeyDown={handleNavOpenClick}>
+              onClick={!isPC ? handleNavLinkClick : undefined}
+              onKeyDown={handleNavLinkClick}>
               Home
             </NavLink>
           </Box>
@@ -165,8 +176,8 @@ const AppNav = (): JSX.Element => {
               <Anchor
                 routeLink
                 href="/about/our-company"
-                onClick={!isPC ? handleNavOpenClick : undefined}
-                onKeyDown={handleNavOpenClick}>
+                onClick={handleNavLinkClick}
+                onKeyDown={handleNavLinkClick}>
                 <Box as="span">
                   <SVGIcon name="cribmd-logo" />
                 </Box>
@@ -182,8 +193,8 @@ const AppNav = (): JSX.Element => {
               <Anchor
                 routeLink
                 href="/about/in-the-news"
-                onClick={!isPC ? handleNavOpenClick : undefined}
-                onKeyDown={handleNavOpenClick}>
+                onClick={handleNavLinkClick}
+                onKeyDown={handleNavLinkClick}>
                 <Box as="span">
                   <SVGIcon name="volume" />
                 </Box>
@@ -199,10 +210,10 @@ const AppNav = (): JSX.Element => {
               <Anchor
                 routeLink
                 href="/about/gallery"
-                onClick={!isPC ? handleNavOpenClick : undefined}
-                onKeyDown={handleNavOpenClick}>
+                onClick={handleNavLinkClick}
+                onKeyDown={handleNavLinkClick}>
                 <Box as="span">
-                  <SVGIcon name="cribmd-logo" />
+                  <SVGIcon name="picture" />
                 </Box>
 
                 <Box as="p">
@@ -229,8 +240,8 @@ const AppNav = (): JSX.Element => {
               <Anchor
                 routeLink
                 href="/health-plans/individual"
-                onClick={!isPC ? handleNavOpenClick : undefined}
-                onKeyDown={handleNavOpenClick}>
+                onClick={handleNavLinkClick}
+                onKeyDown={handleNavLinkClick}>
                 <Box as="span">
                   <SVGIcon name="credit-card-individual" />
                 </Box>
@@ -246,8 +257,8 @@ const AppNav = (): JSX.Element => {
               <Anchor
                 routeLink
                 href="/health-plans/corporate"
-                onClick={!isPC ? handleNavOpenClick : undefined}
-                onKeyDown={handleNavOpenClick}>
+                onClick={handleNavLinkClick}
+                onKeyDown={handleNavLinkClick}>
                 <Box as="span">
                   <SVGIcon name="credit-card-corporate" />
                 </Box>
@@ -268,7 +279,7 @@ const AppNav = (): JSX.Element => {
               href="/faq"
               color="tertiary"
               className="AppNav__nav-link"
-              onClick={!isPC ? handleNavOpenClick : undefined}>
+              onClick={handleNavLinkClick}>
               FAQ
             </NavLink>
           </Box>
@@ -279,13 +290,14 @@ const AppNav = (): JSX.Element => {
               color="tertiary"
               href="https://blog.cribmd.com"
               className="AppNav__nav-link"
-              onClick={!isPC ? handleNavOpenClick : undefined}
-              onKeyDown={handleNavOpenClick}>
+              onClick={handleNavLinkClick}
+              onKeyDown={handleNavLinkClick}
+              rel="noopener">
               Blog
             </Anchor>
           </Box>
 
-          <Box as="li" className="d-block d-lg-none mt-5 pt-3 mx-lg-1">
+          <Box as="li" className="d-block d-lg-none mt-4 pt-3 mx-lg-1">
             <Anchor
               button
               color="tertiary"
@@ -313,7 +325,7 @@ const AppNav = (): JSX.Element => {
         <Box as="li">
           <Anchor
             button
-            variant="contained"
+            variant={windowWidth < 768 ? 'outlined' : 'contained'}
             color="primary"
             className="AppNav__nav-link ms-0 ms-lg-2 white-space-nowrap"
             href="https://app.cribmd.com/signup">
@@ -325,7 +337,7 @@ const AppNav = (): JSX.Element => {
           <Button
             aria-label="menu button"
             className="AppNav__menu-button AppNav__nav-link d-inline-flex d-lg-none btn--text ms-2 ms-sm-2 px-2"
-            onClick={handleNavOpenClick}>
+            onClick={handleNavLinkClick}>
             <Box as="span" className="custom-bars-wrapper mx-1">
               <Box as="span"></Box>
               <Box as="span"></Box>

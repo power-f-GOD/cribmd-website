@@ -23,20 +23,19 @@ const MainBody = (): JSX.Element => {
   return (
     <>
       {/* how it works section */}
-      <RevealOnScroll easing="ease" component={Container} className="my-md-5">
+      <RevealOnScroll component={Container} className="my-md-5">
         <Box as="h2">How it works</Box>
       </RevealOnScroll>
 
       <Container>
         {individualProcessData.map(
           useCallback(
-            ({ heading, list, p1, p2, p3, p4, buttonText, imageName }, i) => (
+            ({ heading, list, p1, p2, p3, p4, buttonText, buttonURL, imageName }, i) => (
               <Row key={heading} className="my-3 my-md-5 align-items-center py-md-4 py-3">
                 <RevealOnScroll
                   component={Col}
                   xs={12}
                   md={6}
-                  easing="ease"
                   allowOverflow
                   className={`${i % 2 === 0 ? '' : 'order-md-1'}`}>
                   <Box as="h3" className="h5">
@@ -63,12 +62,9 @@ const MainBody = (): JSX.Element => {
 
                   {p4 && <Box as="p">{p4}</Box>}
 
-                  {buttonText && (
+                  {buttonURL && (
                     <Box data-anim="fadeInRight">
-                      <Anchor
-                        button
-                        href="https://app.cribmd.com/signup?rURL=patient/subscribe"
-                        variant="outlined">
+                      <Anchor button href={buttonURL} variant="outlined">
                         {buttonText}
                       </Anchor>
                     </Box>
@@ -82,11 +78,12 @@ const MainBody = (): JSX.Element => {
                   className={`text-center ${
                     i % 2 === 0 ? 'ps-md-5 text-md-end' : 'pe-md-5 text-md-start'
                   }`}
-                  easing="ease"
                   delay={windowWidth < 768 ? 0 : 0.65}
                   allowOverflow>
                   <Img
-                    src={GetImage.healthPlans(imageName)}
+                    src={GetImage.individual(imageName)}
+                    width="450"
+                    height="420"
                     className={`mt-5 mt-md-0`.trim()}
                     alt={`image of ${imageName.replace('-', ' ')}`}
                   />

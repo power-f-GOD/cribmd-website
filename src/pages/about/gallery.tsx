@@ -23,6 +23,10 @@ const InTheMedia: NextPage = () => {
     }
   }, [windowWidth]);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <>
       <AppHead title="About Us - Gallery" />

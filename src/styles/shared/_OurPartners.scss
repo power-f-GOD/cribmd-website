@@ -11,7 +11,7 @@
     }
 
     .__grid-item {
-      &:nth-child(11) {
+      &.eleventh {
         grid-column: span 2;
       }
     }

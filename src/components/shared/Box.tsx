@@ -9,14 +9,28 @@
  */
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { FC, useState, useEffect, memo } from 'react';
+import {
+  FC,
+  useState,
+  useEffect,
+  memo,
+  useRef,
+  useCallback,
+  useContext,
+  createElement
+} from 'react';
 import { BoxProps } from 'src/types';
+import { createIntersectionObserver, delay } from 'src/utils';
+import { AppWindowContext } from 'src/pages/_app';
 
-const _Box: FC<BoxProps> = ({ as, children, ...props }): JSX.Element => {
-  const [render, setRender] = useState(false);
+const _Box: FC<BoxProps> = ({ as, children, component, ...props }): JSX.Element => {
+  const Component = component;
+  const [rendered, setRendered] = useState(false);
 
   useEffect(() => {
-    setRender(true);
+    setRendered(true);
+
+    return () => setRendered(false);
   }, []);
 
   if (props._ref) {
@@ -25,54 +39,112 @@ const _Box: FC<BoxProps> = ({ as, children, ...props }): JSX.Element => {
   }
 
   //Fix for SSR error: 'Warning: Expected server HTML to contain a matching <div> in <nav>'
-  if (!render) return <></>;
+  if (typeof window === 'undefined' || !rendered) return <></>;
 
-  switch (as) {
-    case 'h1':
-      return <h1 {...props}>{children}</h1>;
-    case 'h2':
-      return <h2 {...props}>{children}</h2>;
-    case 'h3':
-      return <h3 {...props}>{children}</h3>;
-    case 'h4':
-      return <h4 {...props}>{children}</h4>;
-    case 'h5':
-      return <h5 {...props}>{children}</h5>;
-    case 'h6':
-      return <h6 {...props}>{children}</h6>;
-    case 'nav':
-      return <nav {...props}>{children}</nav>;
-    case 'header':
-      return <header {...props}>{children}</header>;
-    case 'main':
-      return <main {...props}>{children}</main>;
-    case 'aside':
-      return <aside {...props}>{children}</aside>;
-    case 'footer':
-      return <footer {...props}>{children}</footer>;
-    case 'i':
-      return <i {...props}>{children}</i>;
-    case 'small':
-      return <small {...props}>{children}</small>;
-    case 'span':
-      return <span {...props}>{children}</span>;
-    case 'p':
-      return <p {...props}>{children}</p>;
-    case 'ul':
-      return <ul {...props}>{children}</ul>;
-    case 'ol':
-      return <ol {...props}>{children}</ol>;
-    case 'li':
-      return <li {...props}>{children}</li>;
-    case 'section':
-      return <section {...props}>{children}</section>;
-    case 'blockquote':
-      return <blockquote {...props}>{children}</blockquote>;
-    case 'address':
-      return <address {...props}>{children}</address>;
-    default:
-      return <div {...props}>{children}</div>;
+  if (Component) {
+    return <Component {...props}>{children}</Component>;
   }
+
+  return createElement(as || 'div', {
+    ...props,
+    children
+  });
+};
+
+let observer: IntersectionObserver;
+
+const _LazyBox: FC<BoxProps> = ({ as, children, component, ...props }): JSX.Element => {
+  const Component = component;
+  const windowWidth = useContext(AppWindowContext);
+  const [rendered, setRendered] = useState(false);
+  const [shouldRecalculate, setShouldRecalculate] = useState(true);
+  const [renderChildren, setRenderChildren] = useState(true);
+  let elementRef = useRef<HTMLElement | null>(null);
+
+  const recalculate = useCallback(
+    (element: HTMLElement) => {
+      const numChildren = element.children.length;
+
+      if (numChildren || renderChildren) {
+        element.style.height = 'auto';
+        delay(windowWidth < 768 ? 200 : 100).then(() => {
+          if (element.children.length && element) {
+            element.style.height = `${element.offsetHeight}px`;
+            setShouldRecalculate(false);
+          }
+        });
+      }
+    },
+    [renderChildren, windowWidth]
+  );
+
+  useEffect(() => {
+    setRendered(true);
+    delay(25).then(() => {
+      const element = elementRef.current;
+
+      observer = createIntersectionObserver(
+        null,
+        (entries) => {
+          entries.forEach((entry) => {
+            setRenderChildren(entry.isIntersecting);
+          });
+        },
+        { threshold: 0 }
+      );
+
+      if (element) {
+        observer.observe(element);
+      }
+    });
+
+    return () => setRendered(false);
+  }, []);
+
+  useEffect(() => {
+    if (windowWidth) {
+      setShouldRecalculate(true);
+    }
+  }, [windowWidth]);
+
+  useEffect(() => {
+    delay(25).then(() => {
+      const element = elementRef.current;
+
+      if (element && (shouldRecalculate || !element.style.height) && renderChildren) {
+        recalculate(element);
+      }
+    });
+  }, [renderChildren, shouldRecalculate, recalculate]);
+
+  if (props._ref) {
+    props.ref = elementRef = props._ref;
+    delete props._ref;
+  } else if (!props.ref) {
+    props.ref = elementRef as any;
+  }
+
+  if (!props.style?.minHeight && rendered) {
+    props.style = {
+      ...(props.style || {}),
+      opacity: renderChildren ? 1 : 0,
+      transitionProperty: 'opacity, transform',
+      transitionDuration: '0.5s'
+    };
+  }
+
+  //Fix for SSR error: 'Warning: Expected server HTML to contain a matching <div> in <nav>'
+  if (typeof window === 'undefined' || !rendered) return <></>;
+
+  if (Component) {
+    return <Component {...props}>{renderChildren && children}</Component>;
+  }
+
+  return createElement(as || 'div', {
+    ...props,
+    children: renderChildren && children
+  });
 };
 
 export const Box = memo(_Box);
+export const LazyBox = memo(_LazyBox);

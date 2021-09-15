@@ -166,7 +166,7 @@ h6 {
 }
 
 a {
-  color: $theme-primary;
+  color: $theme-primary-v4;
   text-decoration: none;
 
   // &:not(.Button) {
@@ -179,7 +179,7 @@ a {
   &:hover,
   &:active,
   &:focus {
-    color: $theme-secondary-v2;
+    color: $theme-primary-v3;
     text-decoration: underline;
 
     // &:not(.Button) {
@@ -219,7 +219,8 @@ img,
 iframe {
   max-width: 100%;
   vertical-align: middle;
-  transition: 1s;
+  transition: transform 1s, opacity 1s;
+  height: auto;
   // animation: fadeIn 1.5s;
 
   &[aria-hidden='true'],

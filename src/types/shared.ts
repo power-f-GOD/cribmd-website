@@ -6,7 +6,8 @@ import {
   HTMLAttributes,
   RefObject,
   BlockquoteHTMLAttributes,
-  ImgHTMLAttributes
+  ImgHTMLAttributes,
+  FC
 } from 'react';
 
 export interface FAQDataProps {
@@ -66,6 +67,7 @@ export interface BoxProps
     >
   > {
   as?: BoxAs;
+  component?: FC<any>;
   _ref?: RefObject<
     HTMLElement & HTMLParagraphElement & HTMLOListElement & HTMLUListElement & HTMLLIElement
   >;
@@ -96,6 +98,7 @@ export type TransitionAnimName =
   | 'scaleY';
 
 export type SVGIconName =
+  | 'picture'
   | 'cribmd-logo-text'
   | 'cribmd-logo--blue'
   | 'mail'
@@ -154,6 +157,7 @@ export type SVGIconName =
 export type SVGShapeName = 'wave';
 
 export type BoxAs =
+  | 'strong'
   | 'address'
   | 'nav'
   | 'header'

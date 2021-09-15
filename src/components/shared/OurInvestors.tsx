@@ -1,14 +1,13 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import { memo, useCallback, useMemo } from 'react';
-import { Container } from 'react-bootstrap';
 
-import { Box, Img, Anchor } from '.';
+import { Box, Img, Anchor, LazyBox } from '.';
 import { GetImage } from 'src/utils';
 import { RevealOnScroll } from './RevealOnScroll';
 
 const _OurInvestors = (): JSX.Element => {
   return (
-    <Container as="section" className="OurInvestors">
+    <LazyBox as="section" className="OurInvestors container">
       <RevealOnScroll easing="ease">
         <Box as="h2" className="text-md-center">
           Our Investors
@@ -29,14 +28,15 @@ const _OurInvestors = (): JSX.Element => {
                 key={investor}
                 title={url}
                 target="_blank"
-                className="__grid-item d-flex align-items-center p-3 px-md-5 py-md-4">
-                <Img src={GetImage.investorLogo(imageName)} />
+                className="__grid-item d-flex align-items-center p-3 px-md-5 py-md-4"
+                rel="noopener">
+                <Img src={GetImage.investorLogo(imageName)} width="125" height="55" />
               </Anchor>
             );
           }, [])
         )}
       </RevealOnScroll>
-    </Container>
+    </LazyBox>
   );
 };
 

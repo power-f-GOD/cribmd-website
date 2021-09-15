@@ -29,10 +29,9 @@
   }
 
   .Logo {
-    transition: 0.3s;
-
     &.lighten {
-      opacity: 0.25;
+      opacity: 0;
+      pointer-events: none;
     }
 
     &:hover,
@@ -70,7 +69,7 @@
 
         &::before {
           opacity: 0.25;
-          transform: translateY(-0.9rem);
+          transform: translateY(-0.9em);
         }
       }
     }
@@ -153,6 +152,7 @@ ul.AppNav__ctas-container {
       $t: 110%
     );
     opacity: 0.25;
+    transform: translateY(1em);
     transition-delay: 0.1s;
     z-index: 1;
   }
@@ -231,9 +231,17 @@ div.AppNav__menu {
       }
     }
 
+    &.name__picture,
     &.name__credit-card-individual {
       &::before {
         background: rgba(101, 28, 191, 0.1);
+      }
+    }
+
+    &.name__picture {
+      svg {
+        height: 60%;
+        width: 60%;
       }
     }
 

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import { memo, useState, useCallback, FC, useEffect, useMemo } from 'react';
 import { Container } from 'react-bootstrap';
@@ -6,6 +7,7 @@ import { Box, Img, RevealOnScroll, Anchor, Button, SVGIcon } from 'src/component
 import { GetImage, interval, delay } from 'src/utils';
 import S from 'src/styles/pages/about/in-the-news/Main.module.scss';
 import { news } from 'src/data/about/in-the-news';
+import { LazyBox } from 'src/components/shared';
 
 const articles = news.filter((story) => !story.iframeUrl);
 let unmounted = false;
@@ -65,7 +67,7 @@ const MainArticles: FC<{ carouselChunkSize: number; windowWidth?: number }> = ({
         </Container>
       </RevealOnScroll>
 
-      <Container as="section" className={`${S.mediaGridWrapper} text-center`}>
+      <LazyBox as="section" className={`${S.mediaGridWrapper} text-center container`}>
         <Box
           className={`${S.mediaGrid} mb-3`}
           style={useMemo(
@@ -76,7 +78,7 @@ const MainArticles: FC<{ carouselChunkSize: number; windowWidth?: number }> = ({
           )}>
           {useMemo(() => articles, []).map(
             useCallback(
-              ({ caption, rider, imageName, iframeUrl, anchorHref }, i) => {
+              ({ caption, rider, imageName, anchorHref }, i) => {
                 const inActiveRange = !(
                   i >= (activeArticlesIndex + 1) * carouselChunkSize ||
                   i < activeArticlesIndex * carouselChunkSize
@@ -85,12 +87,19 @@ const MainArticles: FC<{ carouselChunkSize: number; windowWidth?: number }> = ({
                 return (
                   <Box
                     key={i}
+                    component={
+                      i > activeArticlesIndex * carouselChunkSize * 2 ||
+                      i < activeArticlesIndex * carouselChunkSize * 2
+                        ? LazyBox
+                        : undefined
+                    }
                     className={`${S.mediaItemContainer}`}
                     style={{
-                      transform: `translateY(${inActiveRange ? 0 : '3em'}) scale(${
+                      transform: `translateY(${inActiveRange ? 0 : '2.5em'}) scale(${
                         !inActiveRange ? '0.75' : '1'
                       })`,
-                      opacity: inActiveRange ? 1 : 0.5,
+                      pointerEvents: inActiveRange ? 'unset' : 'none',
+                      opacity: inActiveRange ? 1 : 0,
                       transitionDelay: inActiveRange
                         ? `${(i % carouselChunkSize) * 0.1}s`
                         : undefined
@@ -99,24 +108,19 @@ const MainArticles: FC<{ carouselChunkSize: number; windowWidth?: number }> = ({
                     <Box
                       className={`${S.mediaImageContainer} __grid-item d-flex align-items-center`}
                       style={{ height: '6em' }}>
-                      {imageName ? (
-                        <Img src={GetImage.mediaLogo(imageName)} />
-                      ) : (
-                        <iframe
-                          src={iframeUrl}
-                          title={rider}
-                          frameBorder="0"
-                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                          allowFullScreen
-                        />
-                      )}
+                      <Img width="125" height="70" src={GetImage.mediaLogo(imageName!)} />
                     </Box>
                     <Box className={S.mediaContentContainer}>
-                      <Box as="h6"> {caption}</Box>
+                      <Box as="strong" className="h6">
+                        {' '}
+                        {caption}
+                      </Box>
                       <Anchor
-                        {...(inActiveRange ? { href: anchorHref } : {})}
+                        href={anchorHref}
                         target="_blank"
-                        tabIndex={inActiveRange ? 0 : -1}>
+                        tabIndex={inActiveRange ? 0 : -1}
+                        rel="noopener"
+                        aria-hidden={!inActiveRange}>
                         {rider}
                       </Anchor>
                     </Box>
@@ -147,7 +151,7 @@ const MainArticles: FC<{ carouselChunkSize: number; windowWidth?: number }> = ({
             </Button>
           </Box>
         </RevealOnScroll>
-      </Container>
+      </LazyBox>
     </>
   );
 };

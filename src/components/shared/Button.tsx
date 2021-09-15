@@ -30,7 +30,8 @@ const _PlaystoreButton: FC<{ className?: string }> = ({ className }) => {
       button
       target="_blank"
       href="https://play.google.com/store/apps/details?id=cribmd.com.CribMD"
-      className={`PlaystoreButton ${className || ''}`.trim()}>
+      className={`PlaystoreButton ${className || ''}`.trim()}
+      rel="noopener">
       <SVGIcon name="playstore-button" />
     </Anchor>
   );
@@ -42,7 +43,8 @@ const _AppstoreButton: FC<{ className?: string }> = ({ className }) => {
       button
       target="_blank"
       href="https://apps.apple.com/us/app/id1534919330"
-      className={`AppstoreButton ${className || ''}`.trim()}>
+      className={`AppstoreButton ${className || ''}`.trim()}
+      rel="noopener">
       <SVGIcon name="appstore-button" />
     </Anchor>
   );
