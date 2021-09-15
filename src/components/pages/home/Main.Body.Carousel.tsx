@@ -9,6 +9,7 @@ import { interval, delay } from 'src/utils';
 
 let clearServiceInterval = false;
 let unmounted = false;
+const duration = 2500;
 
 const MainBodyCarousel = (): JSX.Element => {
   const windowWidth = useContext(AppWindowContext);
@@ -22,7 +23,7 @@ const MainBodyCarousel = (): JSX.Element => {
       () => {
         handleCarouselButtonClick('next')();
       },
-      4000,
+      duration,
       () => clearServiceInterval
     );
     // eslint-disable-next-line
@@ -42,7 +43,7 @@ const MainBodyCarousel = (): JSX.Element => {
 
       if (clear) {
         clearServiceInterval = true;
-        delay(4000).then(() => {
+        delay(duration).then(() => {
           if (clearServiceInterval) {
             clearServiceInterval = false;
             handleCarouselInterval();
@@ -55,11 +56,11 @@ const MainBodyCarousel = (): JSX.Element => {
   );
 
   const handleNextCarouselClick = useCallback(() => {
-    handleCarouselButtonClick('next')();
+    handleCarouselButtonClick('next', true)();
   }, [handleCarouselButtonClick]);
 
   const handlePreviousCarouselClick = useCallback(() => {
-    handleCarouselButtonClick('previous')();
+    handleCarouselButtonClick('previous', true)();
   }, [handleCarouselButtonClick]);
 
   const handleRenderParticles = useCallback(
@@ -71,8 +72,8 @@ const MainBodyCarousel = (): JSX.Element => {
 
   useEffect(() => {
     if (!isMobile) {
-      clearServiceInterval = !true;
-      unmounted = !true;
+      clearServiceInterval = false;
+      unmounted = false;
       handleNextCarouselClick();
     }
 

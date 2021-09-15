@@ -32,19 +32,6 @@ const AppNav = (): JSX.Element => {
     [isPC]
   );
 
-  // const handleSidebarBgClick = useCallback(
-  //   (e) => {
-  //     if (isPC || !isPC) return;
-
-  //     const target = e.target as HTMLElement;
-
-  //     if (/AppNav__nav-links-container/.test(target.className)) {
-  //       handleNavOpenClick();
-  //     }
-  //   },
-  //   [isPC, handleNavOpenClick]
-  // );
-
   const handleNavAnimationEnd = useCallback(
     (e: AnimationEvent<HTMLUListElement>) => {
       const self = e.target as HTMLElement;
@@ -87,7 +74,7 @@ const AppNav = (): JSX.Element => {
           }
         }
       },
-      isPC ? 25 : 100
+      isPC ? 25 : 50
     );
   }, [clearScrollTimeout, isPC]);
 
@@ -109,10 +96,6 @@ const AppNav = (): JSX.Element => {
       window.removeEventListener('scroll', handleWindowScroll);
     };
   }, [handleWindowScroll]);
-
-  // if (typeof window === 'undefined') {
-  //   return <></>;
-  // }
 
   return (
     <Box
