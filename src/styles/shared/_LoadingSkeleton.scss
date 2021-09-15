@@ -19,10 +19,10 @@
   height: 100%;
   width: 100%;
   background-color: #eee;
-  border-radius: $br;
   position: relative;
   left: 0;
   top: 0;
+  border-radius: inherit;
   z-index: 1;
   transition: 0.5s;
   animation: fadeIn 0.3s;
@@ -35,7 +35,8 @@
     }
   }
 
-  &.erred {
+  &.erred,
+  &.has-loaded {
     &::before {
       animation: unset;
     }

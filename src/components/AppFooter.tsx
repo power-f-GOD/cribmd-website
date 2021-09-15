@@ -1,15 +1,53 @@
 // This is the global AppFooter that is common to all pages.
 
 import { Container, Row, Col } from 'react-bootstrap';
-import { memo, useRef, useContext, useEffect } from 'react';
+import { memo, useRef, useContext, useEffect, useCallback } from 'react';
 
 import { Box, Anchor, Logo, RevealOnScroll, SVGIcon, LazyBox } from '.';
 import { AppWindowContext } from 'src/pages/_app';
 import { ScrollReveal } from 'src/utils';
+import { SVGIconName } from 'src/types';
+
+const socialLinks = [
+  'facebook|https://facebook.com/cribmd',
+  'twitter|https://twitter.com/crib_md',
+  'instagram|https://www.instagram.com/cribmd/',
+  'youtube|https://www.youtube.com/channel/UCMiVsvcvj-ru54-gwwH3d7g'
+];
+const linksForPatients = [
+  'Search for Doctos|https://app.cribmd.com/login?rURL=patient/doctors-list',
+  'Login|https://app.cribmd.com/login',
+  'Signup|https://app.cribmd.com/signup',
+  'Booking|https://app.cribmd.com/login?rURL=patient/appointments'
+];
+const linksForDoctors = [
+  'Appointments|https://app.cribmd.com/login?rURL=doctor/dashboard',
+  'Login|https://app.cribmd.com/login',
+  'Signup|https://app.cribmd.com/login'
+];
+const companyLinks = [
+  'Home|/',
+  'Our Company|/about/our-company',
+  'CribMD in the News|/about/in-the-news',
+  'Gallery|/about/gallery',
+  'Individual Health Plan|/health-plans/individual',
+  'Corporate Health Plan|/health-plans/corporate',
+  'FAQ|/faq'
+];
 
 const AppFooter = (): JSX.Element => {
   const windowWidth = useContext(AppWindowContext);
   const footerRef = useRef<HTMLElement | null>(null);
+
+  const handleRenderLinks = useCallback((link: string) => {
+    const [text, url] = link.split('|');
+
+    return (
+      <Box key={text}>
+        <Anchor href={url}>{text}</Anchor>
+      </Box>
+    );
+  }, []);
 
   useEffect(() => {
     const footer = footerRef.current;
@@ -43,22 +81,22 @@ const AppFooter = (): JSX.Element => {
             </Box>
 
             <Box className="__social-links d-flex my-3">
-              <Anchor
-                button
-                _type="icon-button"
-                href="https://facebook.com/cribmd"
-                target="_blank"
-                rel="noopener">
-                <SVGIcon name="facebook" />
-              </Anchor>
-              <Anchor
-                button
-                _type="icon-button"
-                href="https://twitter.com/crib_md"
-                target="_blank"
-                rel="noopener">
-                <SVGIcon name="twitter" />
-              </Anchor>
+              {socialLinks.map((link) => {
+                const [iconName, url] = link.split('|');
+
+                return (
+                  <Anchor
+                    key={iconName}
+                    button
+                    _type="icon-button"
+                    href={url}
+                    target="_blank"
+                    rel="noopener">
+                    <SVGIcon name={iconName as SVGIconName} />
+                  </Anchor>
+                );
+              })}
+
               {/* <Anchor
                 button
                 _type="icon-button"
@@ -67,22 +105,6 @@ const AppFooter = (): JSX.Element => {
                 rel="noopener">
                 <SVGIcon name="facebook" />
               </Anchor> */}
-              <Anchor
-                button
-                _type="icon-button"
-                href="https://www.instagram.com/cribmd/"
-                target="_blank"
-                rel="noopener">
-                <SVGIcon name="instagram" />
-              </Anchor>
-              <Anchor
-                button
-                _type="icon-button"
-                href="https://www.youtube.com/channel/UCMiVsvcvj-ru54-gwwH3d7g"
-                target="_blank"
-                rel="noopener">
-                <SVGIcon name="youtube" />
-              </Anchor>
             </Box>
 
             <hr className="my-4" />
@@ -117,67 +139,21 @@ const AppFooter = (): JSX.Element => {
               <Box as="h3" className="mb-3">
                 For Patients
               </Box>
-              <Box>
-                <Anchor href="https://app.cribmd.com/login?rURL=patient/doctors-list">
-                  Search for Doctors
-                </Anchor>
-              </Box>
-              <Box>
-                <Anchor href="https://app.cribmd.com/login">Login</Anchor>
-              </Box>
-              <Box>
-                <Anchor href="https://app.cribmd.com/signup">Register</Anchor>
-              </Box>
-              <Box>
-                <Anchor href="https://app.cribmd.com/login?rURL=patient/appointments">
-                  Booking
-                </Anchor>
-              </Box>
+              {linksForPatients.map(handleRenderLinks)}
             </Col>
 
             <Col xs={6} md={3} className="__for-doctors __group mb-4 pe-0">
               <Box as="h3" className="mb-3">
                 For Doctors
               </Box>
-              <Box>
-                <Anchor href="https://app.cribmd.com/login?rURL=doctor/dashboard">
-                  Appointments
-                </Anchor>
-              </Box>
-              <Box>
-                <Anchor href="https://app.cribmd.com/login">Login</Anchor>
-              </Box>
-              <Box>
-                <Anchor href="https://app.cribmd.com/signup">Register</Anchor>
-              </Box>
+              {linksForDoctors.map(handleRenderLinks)}
             </Col>
 
             <Col xs={6} md={3} className="__company __group mb-4 ps-0">
               <Box as="h3" className="mb-3">
                 Company
               </Box>
-              <Box>
-                <Anchor routeLink href="/about/our-company">
-                  About Us
-                </Anchor>
-              </Box>
-
-              <Box>
-                <Anchor routeLink href="/health-plans/individual">
-                  Individual Plan
-                </Anchor>
-              </Box>
-
-              <Box>
-                <Anchor routeLink href="/health-plans/corporate">
-                  Corporate Plan
-                </Anchor>
-              </Box>
-              <Box>
-                <Anchor routeLink href="/faq">
-                  FAQ
-                </Anchor>
-              </Box>
+              {companyLinks.map(handleRenderLinks)}
             </Col>
 
             <Col xs={6} md={3} className="__legal __group mb-4 ps-md-0">

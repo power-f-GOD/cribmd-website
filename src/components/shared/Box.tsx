@@ -58,7 +58,7 @@ const _LazyBox: FC<BoxProps> = ({ as, children, component, ...props }): JSX.Elem
   const windowWidth = useContext(AppWindowContext);
   const [rendered, setRendered] = useState(false);
   const [shouldRecalculate, setShouldRecalculate] = useState(true);
-  const [renderChildren, setRenderChildren] = useState(true);
+  const [renderChildren, setRenderChildren] = useState(!true);
   let elementRef = useRef<HTMLElement | null>(null);
 
   const recalculate = useCallback(
@@ -68,7 +68,7 @@ const _LazyBox: FC<BoxProps> = ({ as, children, component, ...props }): JSX.Elem
       if (numChildren || renderChildren) {
         element.style.height = 'auto';
         delay(windowWidth < 768 ? 200 : 100).then(() => {
-          if (element.children.length && element) {
+          if (element && element.children.length) {
             element.style.height = `${element.offsetHeight}px`;
             setShouldRecalculate(false);
           }
@@ -102,19 +102,24 @@ const _LazyBox: FC<BoxProps> = ({ as, children, component, ...props }): JSX.Elem
   }, []);
 
   useEffect(() => {
-    if (windowWidth) {
+    if (!isNaN(windowWidth)) {
       setShouldRecalculate(true);
     }
   }, [windowWidth]);
 
   useEffect(() => {
-    delay(25).then(() => {
-      const element = elementRef.current;
+    if (renderChildren) {
+      delay(50).then(() => {
+        const element = elementRef.current;
 
-      if (element && (shouldRecalculate || !element.style.height) && renderChildren) {
-        recalculate(element);
-      }
-    });
+        if (
+          element &&
+          (shouldRecalculate || !element.style.height || element.style.height === 'auto')
+        ) {
+          recalculate(element);
+        }
+      });
+    }
   }, [renderChildren, shouldRecalculate, recalculate]);
 
   if (props._ref) {
